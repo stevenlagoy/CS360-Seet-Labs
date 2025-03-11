@@ -6,14 +6,49 @@
     <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
 
   </head>
+  <!-- com.sun.tools.javac.Main-->
+  <!-- sun.tools.jar.Main -->
+
   <body>
     <script>
 
       (async function () {
         await cheerpjInit();
         cheerpjCreateDisplay(800, 600);
-        await cheerpjRunJar("/app/HelloTest.jar");
+         await cheerpjRunMain(
+          "Main",
+          "/app/ClearFiles.jar",
+
+        );
+        console.log("Attempting to run the compiler")
+         await cheerpjRunMain(
+          "com.sun.tools.javac.Main",
+          "/app/tools.jar",
+          // args
+          "-d",
+          "/files/",
+          "/app/Test.java"
+        );
+        console.log("Attempting to make a jar")
+        await cheerpjRunMain(
+          "sun.tools.jar.Main",
+          "/app/tools.jar",
+            // args
+          "-cf",   "/files/Test.jar", "/files/Test.class"
+        );
+       await cheerpjRunMain(
+          "Main",
+          "/app/ListFiles.jar",
+
+        );
+      console.log("Attempting to run the program")
+      await cheerpjRunMain(
+          "Test",
+          "/files/Test.jar",
+
+        );
       })();
+
     </script>
   </body>
 </html>
