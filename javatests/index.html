@@ -10,11 +10,18 @@
   <!-- sun.tools.jar.Main -->
 
   <body>
+    <h2>output:</h2>
+    <textarea id = "output" rows="10" cols="40" readonly></textarea>
+
     <script>
+      async function Java_JSOutputStream_jsWrite(lib /*: CJ3Library*/,self /*java object???*/, b /*number, probably*/)
+      {
+        let out = document.getElementById("output").innerHTML+=String.fromCharCode(b);
+      }
 
       (async function () {
-        await cheerpjInit();
-        cheerpjCreateDisplay(800, 600);
+        await cheerpjInit( {natives: { Java_JSOutputStream_jsWrite }} );
+
          await cheerpjRunMain(
           "Main",
           "/app/ClearFiles.jar",
@@ -27,26 +34,30 @@
           // args
           "-d",
           "/files/",
-          "/app/Test.java"
+          "/app/Test.java",
+          "/app/JSOutputStream.java"
         );
         console.log("Attempting to make a jar")
         await cheerpjRunMain(
           "sun.tools.jar.Main",
           "/app/tools.jar",
             // args
-          "-cf",   "/files/Test.jar", "/files/Test.class"
+          "-cf",   "/files/Test.jar",
+          "-C", "/files",
+          "Test.class",
+          "JSOutputStream.class"
         );
        await cheerpjRunMain(
           "Main",
-          "/app/ListFiles.jar",
+          "/app/ListFiles.jar",);
 
-        );
       console.log("Attempting to run the program")
       await cheerpjRunMain(
           "Test",
           "/files/Test.jar",
 
         );
+
       })();
 
     </script>
