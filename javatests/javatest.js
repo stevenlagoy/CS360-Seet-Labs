@@ -1,6 +1,6 @@
 async function Java_JSOutputStream_jsWrite(lib /*: CJ3Library*/,self /*java object???*/, b /*number, probably*/)
 {
-    let out = document.getElementById("output").innerHTML+=String.fromCharCode(b);
+    document.getElementById("output").innerHTML+=String.fromCharCode(b);
 }
 
 
@@ -36,8 +36,8 @@ async function compile()
 
     document.getElementById("status").innerHTML = "Status: Compiling";
     retVal = await cheerpjRunMain(
-        "com.sun.tools.javac.Main",
-        "/app/tools.jar",
+        "JavaCLauncher",
+        "/app/tools_modified.jar",
         // args
         "-d",
         "/files/",
@@ -48,13 +48,14 @@ async function compile()
     if(await retVal !== 0)
     {
         document.getElementById("status").innerHTML = "Status: Compilation Failed";
+        document.getElementById("compile").removeAttribute("disabled");
         return;
     }
 
     document.getElementById("status").innerHTML = "Status: Making Jar";
     retVal = await cheerpjRunMain(
         "sun.tools.jar.Main",
-        "/app/tools.jar",
+        "/app/tools_modified.jar",
         // args
         "-cf",   "/files/Lab.jar",
         "-C", "/files",
@@ -66,6 +67,7 @@ async function compile()
     if(await retVal !== 0)
     {
         document.getElementById("status").innerHTML = "Status: Failed to make Jar.";
+        document.getElementById("compile").removeAttribute("disabled");
         return;
     }
 
