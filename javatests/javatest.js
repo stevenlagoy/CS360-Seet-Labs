@@ -3,34 +3,39 @@ async function Java_JSOutputStream_jsWrite(lib /*: CJ3Library*/,self /*java obje
     let out = document.getElementById("output").innerHTML+=String.fromCharCode(b);
 }
 
-let initialized = false;
+
 
 (async function ()
 {
     await cheerpjInit( {natives: { Java_JSOutputStream_jsWrite }} );
-    await cheerpjRunMain(
+    let val = await cheerpjRunMain(
         "Main",
         "/app/ClearFiles.jar",
     );
-    initialized = true;
+    if(await val !== 0)
+    {
+        alert("Initialization failed.");
+        return;
+    }
+
+    document.getElementById("compile").removeAttribute("disabled");
+    document.getElementById("status").innerHTML = "Status: Ready";
 })();
 
 
 
 async function compile()
 {
-    if(!initialized)
-    {
-        alert("Not yet initialized, please wait");
-        return;
-    }
+    document.getElementById("compile").setAttribute("disabled", "");
 
-     document.getElementById("output").innerHTML = "";
+    document.getElementById("output").innerHTML = "";
 
     cheerpOSAddStringFile("/str/Lab.java", document.getElementById("input").value);
 
-    console.log("Attempting to run the compiler")
-    await cheerpjRunMain(
+     let retVal = 0;
+
+    document.getElementById("status").innerHTML = "Status: Compiling";
+    retVal = await cheerpjRunMain(
         "com.sun.tools.javac.Main",
         "/app/tools.jar",
         // args
@@ -40,9 +45,14 @@ async function compile()
         "/app/LabLauncher.java",
         "/app/JSOutputStream.java"
     );
+    if(await retVal !== 0)
+    {
+        document.getElementById("status").innerHTML = "Status: Compilation Failed";
+        return;
+    }
 
-    console.log("Attempting to make a jar")
-    await cheerpjRunMain(
+    document.getElementById("status").innerHTML = "Status: Making Jar";
+    retVal = await cheerpjRunMain(
         "sun.tools.jar.Main",
         "/app/tools.jar",
         // args
@@ -53,16 +63,22 @@ async function compile()
         "JSOutputStream.class"
     );
 
-    /*await cheerpjRunMain(
-        "Main",
-        "/app/ListFiles.jar",
-    );*/
+    if(await retVal !== 0)
+    {
+        document.getElementById("status").innerHTML = "Status: Failed to make Jar.";
+        return;
+    }
 
-    console.log("Attempting to run the program")
-    await cheerpjRunMain(
+
+    document.getElementById("status").innerHTML = "Status: Running Program";
+    retVal = await cheerpjRunMain(
         "LabLauncher",
         "/files/Lab.jar",
     );
+
+
+    document.getElementById("status").innerHTML = "Status: Returned with code "+await retVal;
+    document.getElementById("compile").removeAttribute("disabled");
 
 }
 
