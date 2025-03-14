@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+
+
+.answerChoices {
+    margin-top: 1.5vh;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.choice-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+#firstChoice {
+    margin-right: 3vw;
+}
+
+#question-number {
+    font-family: Inter;
+    font-size: 20px;
+    margin-bottom: 1vh;
+}
+
+.correct {
+    @include mat.radio-overrides((
+        disabled-selected-icon-opacity: 1,
+        disabled-unselected-icon-opacity: 1,
+        disabled-selected-icon-color: rgb(40, 179, 40),
+        disabled-unselected-icon-color: rgb(40, 179, 40),
+        disabled-label-color: rgb(40, 179, 40),
+    ));
+}
+
+.inCorrect {
+    @include mat.radio-overrides((
+        disabled-selected-icon-opacity: 1,
+        disabled-unselected-icon-opacity: 1,
+        disabled-selected-icon-color: rgb(228, 44, 50),
+        disabled-unselected-icon-color: rgb(228, 44, 50),
+        disabled-label-color: rgb(228, 44, 50),
+    ));
+}
+
