@@ -2,8 +2,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 </head>
 
-<progress-bar></progress-bar>
-
 <h1>Button Showcase</h1>
 <p>Click Click Click!</p>
 
@@ -46,6 +44,28 @@
 
 <hr>
 
-<h1>Radio Buttons/Check Boxes</h1>
+<h1>Radio Buttons/Quiz Card</h1>
 
 <quiz-card></quiz-card>
+
+<hr>
+
+<h1>Progress Bar/Query Loading</h1>
+
+<p>Query/Request Loading</p>
+<mat-progress-bar class="progress-bar-value" mode="query"></mat-progress-bar>
+
+<p>Module Progress Bar (Horizontal)</p>
+<mat-progress-bar class="progress-bar-value" mode="determinate" value="90"></mat-progress-bar>
+
+<p>Spinning Loader</p>
+<mat-progress-spinner
+    class="progressSpinner"
+    value="40"
+    mode="indeterminate"
+></mat-progress-spinner>
+
+<p>Custom Progress Bar</p>
+<div class="test">
+    <progress-bar value="33"></progress-bar>
+</div>
