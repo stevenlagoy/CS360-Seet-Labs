@@ -1,0 +1,9 @@
+#root {
+    margin: 0.5% 0.5% 0.5% 0.5%;
+    display: flex;
+    justify-content: left;
+}
+
+#icon-button {
+    background-color: #d3e4ff;
+}

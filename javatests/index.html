@@ -5,6 +5,13 @@
     <title>cheerpj test</title>
     <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
     <script src="javatest.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
   </head>
   <!-- com.sun.tools.javac.Main-->
   <!-- sun.tools.jar.Main -->
@@ -12,14 +19,15 @@
   <body>
     <h2>Code:</h2>
     <textarea id = "input" rows="20" cols="80">
-public class Lab
-{
-  public static void main(String[] args)
-  {
-    System.out.println("Hello, world! \nThis is from java!");
-  }
-}
+      public class Lab
+      {
+        public static void main(String[] args)
+        {
+          System.out.println("Hello, world! \nThis is from java!");
+        }
+      }
     </textarea>
+    <pre><code class="language-java"> </code></pre>
     <button id = "compile"  disabled onclick="compile()">Compile</button>
     <h2>Output:</h2>
     <p id="status">Status: Initializing</p>

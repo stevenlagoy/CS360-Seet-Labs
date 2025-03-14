@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@use '@angular/material' as mat;
+
+#inputButton {
+    padding-right: 1vw;
+    padding-left: 1vw;
+    background-color: rgb(18, 81, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    max-height: 4vh;
+    text-decoration: none;
+}
+
+#inputButton p {
+    color: white;
+    font-size: 1.8vh;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+#inputButton:hover {
+    background-color: rgb(44, 100, 252);;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#inputButton p:hover{
+    cursor: pointer;
+}
