@@ -1,0 +1,9 @@
+<mat-form-field [ngStyle]="{'width': width != '' ? width : '15vw', 'height': height != '' ? height : '18vh'}" class="text-area-parent" appearance="outline">
+    @if (label != ''){
+        <mat-label>{{label}}</mat-label>
+    }
+    <textarea [ngStyle]="{'width': '100%', 'height': height != '' ? height : '15vh'}" matInput [value]="value" [placeholder]="placeholder != '' ? placeholder : ''" [readonly]="readonly"></textarea>
+    @if (key != ''){
+        <mat-icon matSuffix>{{key}}</mat-icon>
+    }
+</mat-form-field>

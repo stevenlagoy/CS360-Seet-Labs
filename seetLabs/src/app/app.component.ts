@@ -8,6 +8,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TextAreaComponent } from './components/text-area/text-area.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 
 @Component({
@@ -22,7 +23,8 @@ import { InputFieldComponent } from './components/input-field/input-field.compon
     ProgressBarComponent,
     MatFormFieldModule,
     MatInputModule,
-    InputFieldComponent],
+    InputFieldComponent,
+    TextAreaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   // encapsulation: ViewEncapsulation.None
