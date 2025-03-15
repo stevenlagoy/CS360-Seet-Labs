@@ -8,23 +8,24 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { InputFieldComponent } from './components/input-field/input-field.component';
 
 @Component({
   selector: 'app-root',
-  imports: [MatButtonModule, 
-    MatIcon, 
-    MatIconModule, 
-    GradientHeaderComponent, 
-    QuizCardComponent, 
-    MatProgressBar, 
-    MatProgressSpinnerModule, 
-    ProgressBarComponent, 
+  imports: [MatButtonModule,
+    MatIcon,
+    MatIconModule,
+    GradientHeaderComponent,
+    QuizCardComponent,
+    MatProgressBar,
+    MatProgressSpinnerModule,
+    ProgressBarComponent,
     MatFormFieldModule,
     MatInputModule,
-  ],
+    InputFieldComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   title = 'seetLabs';

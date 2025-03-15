@@ -72,24 +72,11 @@
 <hr>
 <h1>Text Input</h1>
 
-<p>Normal Input Box (Outlined)</p>
-<p>
-    <mat-form-field class="inputBox" appearance="outline">
-        <mat-label>Enter Key</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>key</mat-icon>
-    </mat-form-field>
-</p>
-<p>
-    <mat-form-field class="inputBox" appearance="outline">
-        <mat-label>Enter Key</mat-label>
-        <input matInput placeholder="Placeholder">
-    </mat-form-field>
-</p>
-<div class="inputBox-parent">
-    <mat-form-field class="inputBox" appearance="outline">
-        <input matInput class="readOnlyButton" value="[2,3,4,5]" readonly="">
-    </mat-form-field>
-</div>
+<p>Input w/o Icon</p>
+<app-input-field placeholder="example key" label="Enter This" ></app-input-field>
+<p>Read only input w/o label</p>
+<app-input-field value="read only data" [labelVisible]=false [readonly]=true></app-input-field>
+<p>Input w/ Icon</p>
+<app-input-field placeholder="sd^&*(dslkasd)" label="Enter Key" key="delete"></app-input-field>
 
-<p>dasdsad</p>
+<!-- <app-input-text-area></app-input-text-area> -->

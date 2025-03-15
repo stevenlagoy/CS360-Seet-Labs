@@ -1,0 +1,11 @@
+<p>
+    <mat-form-field class="inputBox" appearance="outline">
+        @if (labelVisible){
+            <mat-label>{{label}}</mat-label>
+        }
+        <input matInput [value]="value" [placeholder]="placeholder != '' ? placeholder : ''" [readonly]="readonly">
+        @if (key != ''){
+            <mat-icon matSuffix>key</mat-icon>
+        }
+    </mat-form-field>
+</p>
