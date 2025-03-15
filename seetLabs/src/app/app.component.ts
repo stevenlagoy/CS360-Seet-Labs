@@ -1,17 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { GradientHeaderComponent } from './components/gradient-header/gradient-header.component';
 import { QuizCardComponent } from './components/quiz-card/quiz-card.component';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-root',
-  imports: [QuizCardComponent, ProgressBarComponent, MatProgressSpinnerModule, MatButtonModule, MatIconModule, GradientHeaderComponent, MatProgressBar],
+  imports: [MatButtonModule, 
+    MatIcon, 
+    MatIconModule, 
+    GradientHeaderComponent, 
+    QuizCardComponent, 
+    MatProgressBar, 
+    MatProgressSpinnerModule, 
+    ProgressBarComponent, 
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'seetLabs';
