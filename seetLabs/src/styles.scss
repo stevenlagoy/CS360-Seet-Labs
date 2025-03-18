@@ -1,6 +1,32 @@
 @use '@angular/material' as mat;
 @use './app/palettes/themePalette.scss';
 
+@font-face {
+  font-family: 'Inter-Extra-Bold';
+  src: url(../src/app/Fonts/static/Inter_24pt-ExtraBold.ttf);
+}
+
+
+@font-face {
+  font-family: 'Inter-Bold';
+  src: url(../src/app/Fonts/static/Inter_24pt-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Inter-Semi-Bold';
+  src: url(../src/app/Fonts/static/Inter_18pt-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'Inter-Medium';
+  src: url(../src/app/Fonts/static/Inter_24pt-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url(../src/app/Fonts/static/Inter_24pt-Regular.ttf);
+}
+
 @include mat.core();
 
 html {
@@ -21,35 +47,27 @@ html {
 
 :root {
   @include mat.icon-button-overrides((
-    icon-color: #1c60a2,
+    icon-color: #1c60a2
+  ));
+  @include mat.fab-overrides((
+    extended-label-text-font: 'Inter-Medium'
+  ));
+  @include mat.button-overrides(( //button fonts
+    filled-label-text-font: 'Inter-Medium',
+    outlined-label-text-font: 'Inter-Medium',
+    protected-label-text-font: 'Inter-Medium',
+    text-label-text-font: 'Inter-Medium'  
+  ));
+  @include mat.card-overrides((
+    title-text-font: 'Inter-Medium',
+    subtitle-text-font: 'Inter-Medium'
   ));
 }
 
-p { font-family: Inter; font-weight: 400; }
-h1 { font-family: Inter; font-weight: 800; font-size: 20px; }
-h2 { font-family: Inter; font-weight: 700; font-size: 18px; }
-h3 { font-family: Inter; font-weight: 650; font-size: 17px; }
-h4 { font-family: Inter; font-weight: 600; font-size: 16px; }
-h5 { font-family: Inter; font-weight: 550; font-size: 16px; }
-h6 { font-family: Inter; font-weight: 550; font-size: 15px; }
-
-
-
-// @include mat.all-component-themes($primary-palette);
-// html {
-//   @include mat.theme((
-//     color: (
-//       primary: $primary-palette,
-//       tertiary: $tertiary-palette,
-//       theme-type: light,
-//     ),
-//     typography: (
-//         plain-family: Inter,
-//         brand-family: Open Sans,
-//         bold-weight: 900,
-//         medium-weight: 500,
-//         regular-weight: 300,
-//     ),
-//     density: 0
-//   ));
-// }
+p { font-family: 'Inter-Regular'; font-weight: 400; }
+h1 { font-family: 'Inter-Bold'; font-weight: 800; font-size: 20px; }
+h2 { font-family: 'Inter-Bold'; font-weight: 700; font-size: 18px; }
+h3 { font-family: 'Inter-Semi-Bold'; font-weight: 650; font-size: 17px; }
+h4 { font-family: 'Inter-Semi-Bold'; font-weight: 600; font-size: 17px; }
+h5 { font-family: 'Inter-Semi-Bold'; font-weight: 600; font-size: 16px; }
+h6 { font-family: 'Inter-Semi-Bold'; font-weight: 550; font-size: 16px; }

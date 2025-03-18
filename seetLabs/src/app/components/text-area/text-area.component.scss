@@ -4,17 +4,20 @@
 
 .text-area-parent {
     @include mat.form-field-overrides((
-        outlined-label-text-font: Inter,
-        container-text-font: Inter,
-        subscript-text-font: Inter,
-        filled-label-text-font: Inter,
+        outlined-label-text-font: 'Inter-Regular',
+        container-text-font: 'Inter-Regular',
+        subscript-text-font: 'Inter-Regular',
+        filled-label-text-font: 'Inter-Regular',
         outlined-label-text-weight: 500,
         container-text-weight: 400,
         subscript-text-weight: 500,
         outlined-container-shape: 10px,
     ));
+}
+
+.text-area-parent {
     margin-right: 200px;
-  }
+}
 
 .text-area-parent textarea {
     resize: none;
