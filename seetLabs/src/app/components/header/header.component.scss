@@ -1,0 +1,45 @@
+.header-parent {
+    width: 100%;
+}
+
+.header {
+    background-color: #fff;
+    opacity: 0.9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+    flex-direction: row;    
+    padding: 0 3vw; 
+    width: 94vw;
+    position: fixed;
+    z-index: 100000;
+}
+
+.left-side {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+.left-side gradient-header {
+    margin-right: 2vw;
+}
+
+.right-side {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+.right-side a:last-child{
+    margin-left: 2vw;
+}
+
+// .right-side a {
+//     color: #fff !important;
+// }
+
+// .left-side a {
+//     color: #fff !important;
+// }

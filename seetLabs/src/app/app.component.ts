@@ -10,6 +10,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextAreaComponent } from './components/text-area/text-area.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,10 @@ import { InputFieldComponent } from './components/input-field/input-field.compon
     MatFormFieldModule,
     MatInputModule,
     InputFieldComponent,
-    TextAreaComponent],
+    TextAreaComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   // encapsulation: ViewEncapsulation.None

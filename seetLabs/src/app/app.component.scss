@@ -1,11 +1,20 @@
 
 @use '@angular/material' as mat;
 
-#root {
-    margin: 0.5% 0.5% 0.5% 0.5%;
-    display: flex;
-    justify-content: left;
+body {
+    margin: 0;
 }
+
+.main-content {
+    padding-top: 10vh !important;
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+// #root {
+//     margin: 0.5% 0.5% 0.5% 0.5%;
+//     display: flex;
+//     justify-content: left;
+// }
 
 #icon-button {
     background-color: #d3e4ff;
