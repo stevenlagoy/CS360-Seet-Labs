@@ -1,4 +1,4 @@
-import { Component, viewChildren } from '@angular/core';
+import { Component, Signal, viewChildren } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
@@ -38,17 +38,22 @@ export class PlaygroundComponent
   public disabled:boolean = true;
 
 
-   codefield= viewChildren(TextAreaComponent)()[0];; 
-   output= viewChildren(TextAreaComponent)()[1];
+ 
+   
+   private textAreas: Signal<readonly TextAreaComponent[]> = viewChildren(TextAreaComponent);
+   private input:TextAreaComponent | null = null;
+   private output:TextAreaComponent | null = null;
 
   get status() {return this._status;}
+
+
 
 
   ngOnInit()
   {
     this.init();
-   // this.codefield = 
-    //this.output  = 
+    this.input = this.textAreas()[0];
+    this.output  = this.textAreas()[1];
   }
   
 
@@ -79,13 +84,13 @@ export class PlaygroundComponent
 
     //cheerpOSAddStringFile("/str/Lab.java", document.getElementById("input").value);
 
-    cheerpOSAddStringFile("/str/Lab.java", this.codefield!.value);
+    cheerpOSAddStringFile("/str/Lab.java", this.input!.value);
      let retVal = 0;
 
     this._status= "Compiling";
     retVal = await cheerpjRunMain(
       "JavaCLauncher",
-      "/app/tools_modified.jar",
+      "/app/java/tools_modified.jar",
       // args
       "-d",
       "/files/",
@@ -103,7 +108,7 @@ export class PlaygroundComponent
     this._status = "Making Jar";
     retVal = await cheerpjRunMain(
         "sun.tools.jar.Main",
-        "/app/tools_modified.jar",
+        "/app/java/tools_modified.jar",
         // args
         "-cf",   "/files/Lab.jar",
         "-C", "/files",
