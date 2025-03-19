@@ -1,34 +1,7 @@
-
 @use '@angular/material' as mat;
 
-body {
-    margin: 0;
-}
-
-.main-content {
+.main-container {
     padding-top: 10vh !important;
     padding-left: 3vw;
     padding-right: 3vw;
-}
-// #root {
-//     margin: 0.5% 0.5% 0.5% 0.5%;
-//     display: flex;
-//     justify-content: left;
-// }
-
-#icon-button {
-    background-color: #d3e4ff;
-}
-
-.progress-bar-value {
-    @include mat.progress-bar-overrides((
-        active-indicator-height: 0.7vh,
-        track-height: 0.7vh
-    ));
-}
-
-.test {
-    width: 20vw;
-    border: 0.5px solid gainsboro;
-    // height: 8vh;
 }
