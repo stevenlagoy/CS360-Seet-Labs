@@ -1,13 +1,13 @@
-<script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
+
 <text-area label="Code" value='public class Lab
 {
   public static void main(String[] args)
   {
     System.out.println("Hello, world! \nThis is from java!");
   }
-}' [readonly]="false" [width]="'100%'"></text-area>
+}' [readonly]="false" [width]="'100%'" [height]="'15em'"></text-area>
 
-<button mat-flat-button>Compile</button>
+<button id="compile" disabled mat-flat-button>Compile</button>    
 <h2>Output</h2>
-<p>Status: Initializing</p>
+<p id = "status" >Status: Initializing</p>
 <text-area label="output" value='' [readonly]="true" [width]="'100%'"></text-area>

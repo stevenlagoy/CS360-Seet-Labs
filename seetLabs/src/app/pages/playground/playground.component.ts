@@ -10,7 +10,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextAreaComponent } from '../../components/text-area/text-area.component';
 import { InputFieldComponent } from '../../components/input-field/input-field.component';
-
+declare var cheerpjInit: any;
+declare var cheerpjRunMain: any;
 
 @Component({
   selector: 'app-playground',
@@ -43,15 +44,14 @@ export class PlaygroundComponent
     await cheerpjInit( /*{natives: { Java_JSOutputStream_jsWrite }}*/ );
     let val = await cheerpjRunMain(
         "Main",
-        "/app/ClearFiles.jar",
+        "/app/java/ClearFiles.jar",
     );
     if(await val !== 0)
     {
         alert("Initialization failed.");
         return;
     }
-
-    alert("Initialization success!");
+  
     //document.getElementById("compile").removeAttribute("disabled");
     //document.getElementById("status").innerHTML = "Status: Ready";
   } 

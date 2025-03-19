@@ -3,5 +3,6 @@
     flex-direction: column;
 }
 button{
-    margin-top:1em; 
+    height: 3em;
+    margin-top:4em; 
 }
