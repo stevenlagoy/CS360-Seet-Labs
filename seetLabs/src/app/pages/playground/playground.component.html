@@ -1,4 +1,3 @@
-
 <text-area label="Code" value='public class Lab
 {
   public static void main(String[] args)
@@ -7,7 +6,9 @@
   }
 }' [readonly]="false" [width]="'100%'" [height]="'15em'"></text-area>
 
-<button id="compile" disabled mat-flat-button>Compile</button>    
+<button id="compile" disabled mat-flat-button [disabled]="disabled" (click)="compile  ()">
+  Compile
+</button>    
 <h2>Output</h2>
-<p id = "status" >Status: Initializing</p>
+<p id = "status" >Status: {{status}}</p>
 <text-area label="output" value='' [readonly]="true" [width]="'100%'"></text-area>

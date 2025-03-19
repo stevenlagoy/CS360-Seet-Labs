@@ -19,4 +19,6 @@ export class TextAreaComponent {
   @Input() readonly = false;
   @Input() value = '';
   @Input() label = '';
+
+  public content:string = "";
 }
