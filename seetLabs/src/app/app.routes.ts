@@ -9,6 +9,17 @@ export const routes: Routes = [{
             )
         },
     },
+    {
+        path: 'playground',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./pages/playground/playground.component').then(
+                module => module.PlaygroundComponent
+            )
+        },
+    },
+
+
     // {
     //     // path: '',
     //     // pathMatch: 'full',
