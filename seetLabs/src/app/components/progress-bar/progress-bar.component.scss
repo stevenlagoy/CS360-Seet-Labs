@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+.progress-bar-parent {
+    display: flex;
+    border-radius: 10px;
+    padding: 5px 10px;
+    flex-direction: column;
+    justify-content: left;
+    // background-color: orange;
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.progress-bar p {
+    margin: 0vw 2vw;
+}
+
+.progress-bar-title {
+    margin: -1.5vh 0px;
+}
+
+.progress-bar-value {
+    @include mat.progress-bar-overrides((
+        active-indicator-color: #4CAF50,
+        track-color: #C8E6C9
+  ));
+}

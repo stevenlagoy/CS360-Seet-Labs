@@ -1,0 +1,87 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+
+
+<div class="main-content">
+    <h1>Button Showcase</h1>
+    <p>Click Click Click!</p>
+
+    <a mat-button href="https://www.google.com/" target="_blank">It all began here</a>
+    <button mat-stroked-button>Stroke Button</button>
+    <br><br>
+    <button mat-flat-button>Flat Button</button>
+    <br><br>
+    <button mat-fab extended>
+        <mat-icon>play_arrow</mat-icon>
+        Run Code
+    </button>
+    <br><br>
+    <button id="icon-button"mat-icon-button>
+        <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-fab extended>
+        <mat-icon>arrow_back</mat-icon>
+        Last Activity
+    </button>
+    <button mat-fab extended>
+        <mat-icon>arrow_forward</mat-icon>
+        Next Activity
+    </button>
+
+    <hr>
+
+    <h1>Labels/Text</h1>
+    <gradient-header size="54px" label="Attention Gradient Getter"></gradient-header>
+    <gradient-header size="36px" label="Header Gradient Text"></gradient-header>
+    <gradient-header size="24px" label="Sub-Heading Gradient Text"></gradient-header>
+
+    <h1>[h1] Wow</h1>
+    <h2>[h2] Still Wow!</h2>
+    <h3>[h3] okay</h3>
+    <h4>[h4] why</h4>
+    <h5>[h5] too small</h5>
+    <h6>[h6] Can you read this?</h6>
+    <p>[p] normal reading text</p>
+
+    <hr>
+
+    <h1>Radio Buttons/Quiz Card</h1>
+
+    <quiz-card></quiz-card>
+
+    <hr>
+
+    <h1>Progress Bar/Query Loading</h1>
+
+    <p>Query/Request Loading</p>
+    <mat-progress-bar class="progress-bar-value" mode="query"></mat-progress-bar>
+
+    <p>Module Progress Bar (Horizontal)</p>
+    <mat-progress-bar class="progress-bar-value" mode="determinate" value="90"></mat-progress-bar>
+
+    <p>Spinning Loader</p>
+    <mat-progress-spinner
+        class="progressSpinner"
+        value="40"
+        mode="indeterminate"
+    ></mat-progress-spinner>
+
+    <p>Custom Progress Bar</p>
+    <div class="test">
+        <progress-bar value="33"></progress-bar>
+    </div>
+    <hr>
+    <h1>Text Input</h1>
+
+    <p>Input w/o Icon</p>
+    <app-input-field placeholder="example key" label="Enter This" ></app-input-field>
+    <p>Read only input w/o label</p>
+    <app-input-field value="read only data" [labelVisible]=false [readonly]=true></app-input-field>
+    <p>Input w/ Icon</p>
+    <app-input-field placeholder="sd^&*(dslkasd)" label="Enter Key" key="delete"></app-input-field>
+    <p>Text Area read only</p>
+    <text-area label="label" value="[2,3,4,5,6]" [readonly]="true"></text-area>
+    <p>Text Area w/ Icon w/ custom size</p>
+    <text-area label="label" width="20vw" key="delete" placeholder="placeholder"></text-area>
+</div>
