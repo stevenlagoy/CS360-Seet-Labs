@@ -3,9 +3,7 @@ import { JsonServerTestService } from '../../services/json-server-test.service';
 import { catchError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { assignmentType } from '../../models/assignmentType.types';
-import template from "./example.html"
-import { HttpClient } from '@angular/common/http';
-// Import HTML template as raw text using webpack raw-loader
+
 @Component({
   selector: 'app-json-server-test',
   imports: [],
@@ -14,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class JsonServerTestComponent implements OnInit {
 
-  constructor(private _route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private _route: ActivatedRoute) {}
 
   getDataService = inject(JsonServerTestService);
   jsonData = signal<assignmentType>({ "id": 0, "type": 0, "file": "reading Material One" });
@@ -28,10 +26,19 @@ export class JsonServerTestComponent implements OnInit {
         console.log(err);
         throw err;
       })
-    ).subscribe((data) => {
+    ).subscribe(async (data) => {
       this.jsonData.set(data);
-      this.template = template;
+      await this.loadReading(data.file);
     });
+  }
+
+  async loadReading(fileName: string) {
+    try {
+      const template = await import(`./../../../../Data/${fileName}`);
+      this.template = template.default;
+    } catch (error) {
+      console.error("Error loading template: " + error);
+    }
   }
 
 }
