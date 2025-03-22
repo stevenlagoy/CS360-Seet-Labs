@@ -1,3 +1,7 @@
-<p>ID: {{jsonData()['id']}}</p>
-<p>Title: {{jsonData()['title']}}</p>
-<p>Views: {{jsonData()['views']}}</p>
+<p>File: {{jsonData().file}}</p>
+<p>Type: {{jsonData().type}}</p>
+<p>ID: {{jsonData().id}}</p>
+<div [innerHTML]="template">
+
+<!-- </div> -->
+<!-- content[0].file -->

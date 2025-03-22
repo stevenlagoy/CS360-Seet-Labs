@@ -10,7 +10,7 @@ export const routes: Routes = [{
         },
     },
     {
-        path: 'json_server_test/:id',
+        path: 'json_server_test/:id/:assignmentNumber',
         pathMatch: 'full',
         loadComponent: () => {
             return import('./pages/json-server-test/json-server-test.component').then(
