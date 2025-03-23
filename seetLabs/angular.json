@@ -11,11 +11,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+                "path": "./extra-webpack.config.js",
+                "replaceDuplicatePlugins": true
+            },
             "outputPath": "dist/seet-labs",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -28,7 +32,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/app/palettes/themePalette.scss"
+              "src/app/palettes/themePalette.scss",
+              "node_modules/highlight.js/styles/github.css"
             ],
             "scripts": []
           },
@@ -57,7 +62,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "seetLabs:build:production"
@@ -86,7 +91,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/highlight.js/styles/github.css"
             ],
             "scripts": []
           }
