@@ -2,7 +2,9 @@
     @if (label != ''){
         <mat-label>{{label}}</mat-label>
     }
-    <textarea [ngStyle]="{'width': '100%', 'height': height != '' ? height : '15vh'}" matInput [value]="value" [placeholder]="placeholder != '' ? placeholder : ''" [readonly]="readonly">{{content}}</textarea>
+    <textarea [ngStyle]="{'width': '100%', 'height': height != '' ? height : '15vh'}" 
+        matInput [placeholder]="placeholder != '' ? placeholder : ''" [readonly]="readonly" [(ngModel)]="content">
+    </textarea>
     @if (key != ''){
         <mat-icon matSuffix>{{key}}</mat-icon>
     }

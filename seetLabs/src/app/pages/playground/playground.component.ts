@@ -1,31 +1,22 @@
 import { Component, Signal, viewChildren } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
-import { QuizCardComponent } from '../../components/quiz-card/quiz-card.component';
-import { MatProgressBar } from '@angular/material/progress-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { ProgressBarComponent } from '../../components/progress-bar/progress-bar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextAreaComponent } from '../../components/text-area/text-area.component';
-import { InputFieldComponent } from '../../components/input-field/input-field.component';
 declare var cheerpjInit: any;
 declare var cheerpjRunMain: any;
 declare var cheerpOSAddStringFile:any;
+
+let instance: PlaygroundComponent | null = null;
+
 
 @Component({
   selector: 'app-playground',
   imports: [MatButtonModule,
     MatIconModule,
-    GradientHeaderComponent,
-    QuizCardComponent,
-    MatProgressBar,
-    MatProgressSpinnerModule,
-    ProgressBarComponent,
     MatFormFieldModule,
     MatInputModule,
-    InputFieldComponent,
     TextAreaComponent
   ],
   templateUrl: './playground.component.html',
@@ -42,7 +33,7 @@ export class PlaygroundComponent
    
    private textAreas: Signal<readonly TextAreaComponent[]> = viewChildren(TextAreaComponent);
    private input:TextAreaComponent | null = null;
-   private output:TextAreaComponent | null = null;
+   public output:TextAreaComponent | null = null;
 
   get status() {return this._status;}
 
@@ -51,6 +42,7 @@ export class PlaygroundComponent
 
   ngOnInit()
   {
+    instance = this;
     this.init();
     this.input = this.textAreas()[0];
     this.output  = this.textAreas()[1];
@@ -59,7 +51,7 @@ export class PlaygroundComponent
 
   private async init()
   {
-    await cheerpjInit( /*{natives: { Java_JSOutputStream_jsWrite }}*/ );
+    await cheerpjInit( {natives: { Java_JSOutputStream_jsWrite }}  );
     let val = await cheerpjRunMain(
         "Main",
         "/app/java/ClearFiles.jar",
@@ -79,12 +71,10 @@ export class PlaygroundComponent
   {
     this.disabled = true;
 
-    this.output!.value = "";
-    //document.getElementById("output").innerHTML = "";
+    this.output!.content = "";
 
-    //cheerpOSAddStringFile("/str/Lab.java", document.getElementById("input").value);
-
-    cheerpOSAddStringFile("/str/Lab.java", this.input!.value);
+    console.log(this.input!.content);
+    cheerpOSAddStringFile("/str/Lab.java", this.input!.content);
      let retVal = 0;
 
     this._status= "Compiling";
@@ -95,8 +85,8 @@ export class PlaygroundComponent
       "-d",
       "/files/",
       "/str/Lab.java",
-      "/app/LabLauncher.java",
-      "/app/JSOutputStream.java"
+      "/app/java/LabLauncher.java",
+      "/app/java/JSOutputStream.java"
     );
     if(await retVal !== 0)
     {
@@ -132,9 +122,21 @@ export class PlaygroundComponent
     );
 
 
-    this._status = "Status: Returned with code "+await retVal;
+    this._status = "Returned with code "+await retVal;
     this.disabled = false;
 
   }
+
+}
+
+async function Java_JSOutputStream_jsWrite(lib:any /*: CJ3Library*/,self:any /*java object???*/, b:number /*number, probably*/)
+{
+  if(instance === null)
+  {
+    console.log("Couldn't find Java output component!");
+    return;
+  }
+  
+  instance.output!.content+=String.fromCharCode(b);
 
 }

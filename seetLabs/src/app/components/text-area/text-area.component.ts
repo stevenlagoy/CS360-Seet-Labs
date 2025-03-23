@@ -3,10 +3,12 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'text-area',
-  imports: [MatFormField, MatInputModule, MatIcon, CommonModule],
+  imports: [MatFormField, MatInputModule, MatIcon, CommonModule, FormsModule],
   templateUrl: './text-area.component.html',
   styleUrl: './text-area.component.scss',
   encapsulation: ViewEncapsulation.ShadowDom
@@ -17,8 +19,13 @@ export class TextAreaComponent {
   @Input() height = '';
   @Input() placeholder = '';
   @Input() readonly = false;
-  @Input() value = '';
   @Input() label = '';
+  @Input() initialValue='';
 
   public content:string = "";
+
+  ngOnInit(){
+    this.content = this.initialValue;
+  }
 }
+
