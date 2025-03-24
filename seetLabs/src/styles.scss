@@ -1,6 +1,10 @@
 @use '@angular/material' as mat;
 @use './app/palettes/themePalette.scss';
 
+.error{
+  color:red;
+}
+
 @font-face {
   font-family: 'Inter-Extra-Bold';
   src: url(../src/app/Fonts/static/Inter_24pt-ExtraBold.ttf);

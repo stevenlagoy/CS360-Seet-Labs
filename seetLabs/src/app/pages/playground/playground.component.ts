@@ -1,9 +1,10 @@
-import { Component, Signal, viewChildren } from '@angular/core';
+import { Component, Signal, ViewChild, viewChild, viewChildren } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextAreaComponent } from '../../components/text-area/text-area.component';
+import {Java_JSOutputStream_jsWrite, JavaOutputComponent} from '../../components/java-output/java-output.component';
 declare var cheerpjInit: any;
 declare var cheerpjRunMain: any;
 declare var cheerpOSAddStringFile:any;
@@ -17,7 +18,8 @@ let instance: PlaygroundComponent | null = null;
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    TextAreaComponent
+    TextAreaComponent,
+    JavaOutputComponent
   ],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.css'
@@ -30,10 +32,9 @@ export class PlaygroundComponent
 
 
  
-   
-   private textAreas: Signal<readonly TextAreaComponent[]> = viewChildren(TextAreaComponent);
-   private input:TextAreaComponent | null = null;
-   public output:TextAreaComponent | null = null;
+  @ViewChild(TextAreaComponent) input!:TextAreaComponent;
+ 
+  @ViewChild(JavaOutputComponent)output!:JavaOutputComponent;
 
   get status() {return this._status;}
 
@@ -42,10 +43,9 @@ export class PlaygroundComponent
 
   ngOnInit()
   {
-    instance = this;
+   
     this.init();
-    this.input = this.textAreas()[0];
-    this.output  = this.textAreas()[1];
+ 
   }
   
 
@@ -71,11 +71,11 @@ export class PlaygroundComponent
   {
     this.disabled = true;
 
-    this.output!.content = "";
+    this.output!.clear();
 
     console.log(this.input!.content);
     cheerpOSAddStringFile("/str/Lab.java", this.input!.content);
-     let retVal = 0;
+    let retVal = 0;
 
     this._status= "Compiling";
     retVal = await cheerpjRunMain(
@@ -126,17 +126,5 @@ export class PlaygroundComponent
     this.disabled = false;
 
   }
-
-}
-
-async function Java_JSOutputStream_jsWrite(lib:any /*: CJ3Library*/,self:any /*java object???*/, b:number /*number, probably*/)
-{
-  if(instance === null)
-  {
-    console.log("Couldn't find Java output component!");
-    return;
-  }
-  
-  instance.output!.content+=String.fromCharCode(b);
 
 }

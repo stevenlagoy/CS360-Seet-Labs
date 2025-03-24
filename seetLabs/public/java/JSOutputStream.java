@@ -2,12 +2,16 @@ import java.io.*;
 public class JSOutputStream extends OutputStream
 {
 
-    public JSOutputStream(){};
+    private boolean error;
+
+    public JSOutputStream(boolean error){
+        this.error = error;
+    };
 
     public void write(int b)
     {
-        jsWrite(b);
+        jsWrite(b, error);
     }
 
-    private native void jsWrite(int b);
+    private native void jsWrite(int b, boolean error);
 }
