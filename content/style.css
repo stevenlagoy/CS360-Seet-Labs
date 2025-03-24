@@ -1,0 +1,10 @@
+.code-block {
+    font-family: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', monospace;
+    color: #0000ff;
+}
+
+.code-block pre {
+    margin: 0;
+    font-family: inherit;
+    color: inherit;
+}
