@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sudo chmod -R 777 ./
-sudo npx json-server ./Data/db.json &   
-sudo ng serve
+chmod -R 777 ./
+npx json-server ./Data/db.json &   
+ng serve
