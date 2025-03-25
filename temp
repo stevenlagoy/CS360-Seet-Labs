@@ -1,8 +1,16 @@
 public class Lab
 {
-    public static void main(String[] args)
+  public static void main(String[] args)
+  {
+    try
     {
-        System.out.print("Hello, world! \nThis is from java! ");
-        System.err.println("BAD!!! ERROR!!!");
+        System.out.println("Hello, world! \nThis is from java!");
+        throw new Exception("You did a bad, bad thing.");
     }
+    catch(Exception e)
+    {
+        e.printStackTrace();
+    }
+    System.out.println("Well, that was weird.");
+  }
 }

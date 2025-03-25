@@ -5,6 +5,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextAreaComponent } from '../../components/text-area/text-area.component';
 import {Java_JSOutputStream_jsWrite, JavaOutputComponent} from '../../components/java-output/java-output.component';
+import {basicSetup} from "codemirror";
+import {EditorView} from "@codemirror/view";
+
 declare var cheerpjInit: any;
 declare var cheerpjRunMain: any;
 declare var cheerpOSAddStringFile:any;
