@@ -1,14 +1,7 @@
-<text-area label="Code" [initialValue]='"public class Lab
-{
-  public static void main(String[] args)
-  {
-    System.out.println(\"Hello, world! \\nThis is from java!\");
-  }
-}"' [readonly]="false" [width]="'100%'" [height]="'15em'"></text-area>
-
+<div ngModel #codeMirrorInsert></div>  
 <button id="compile" disabled mat-flat-button [disabled]="disabled" (click)="compile  ()">
   Compile
-</button>    
+</button>  
 <h2>Output</h2>
 <p id = "status" >Status: {{status}}</p>
 <app-java-output></app-java-output>

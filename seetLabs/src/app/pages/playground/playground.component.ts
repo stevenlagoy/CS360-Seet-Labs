@@ -1,4 +1,4 @@
-import { Component, Signal, ViewChild, viewChild, viewChildren } from '@angular/core';
+import { Component, ElementRef, Signal, ViewChild, viewChild, viewChildren } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -21,7 +21,6 @@ let instance: PlaygroundComponent | null = null;
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    TextAreaComponent,
     JavaOutputComponent
   ],
   templateUrl: './playground.component.html',
@@ -34,10 +33,11 @@ export class PlaygroundComponent
   public disabled:boolean = true;
 
 
- 
-  @ViewChild(TextAreaComponent) input!:TextAreaComponent;
- 
   @ViewChild(JavaOutputComponent)output!:JavaOutputComponent;
+
+  // code mirror
+  @ViewChild('codeMirrorInsert') codeMirrorInsert!:ElementRef;
+  codeMirrorView! :EditorView;
 
   get status() {return this._status;}
 
@@ -48,9 +48,21 @@ export class PlaygroundComponent
   {
    
     this.init();
+
+    
  
   }
   
+  ngAfterViewInit()
+  {
+    
+    this.codeMirrorView = new EditorView({
+      doc: `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis is from java!\");
+    }\n}`,
+      parent: this.codeMirrorInsert.nativeElement,
+      extensions: [basicSetup]
+    })
+  }
 
   private async init()
   {
@@ -76,8 +88,8 @@ export class PlaygroundComponent
 
     this.output!.clear();
 
-    console.log(this.input!.content);
-    cheerpOSAddStringFile("/str/Lab.java", this.input!.content);
+    
+    cheerpOSAddStringFile("/str/Lab.java", this.codeMirrorView.state.doc.toString());
     let retVal = 0;
 
     this._status= "Compiling";
