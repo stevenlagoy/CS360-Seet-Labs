@@ -30,7 +30,7 @@ export class PlaygroundComponent
 {
 
   private _status:string = "Initializing";
-  public disabled:boolean = true;
+  public compileButtonDisabled:boolean = true;
 
 
   @ViewChild(JavaOutputComponent)output!:JavaOutputComponent;
@@ -42,21 +42,17 @@ export class PlaygroundComponent
   get status() {return this._status;}
 
 
-
-
   ngOnInit()
   {
    
     this.init();
-
-    
- 
   }
   
   ngAfterViewInit()
   {
     
     this.codeMirrorView = new EditorView({
+      // starting code. Garbage format, I know, but temporary (hopefully).
       doc: `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis is from java!\");
     }\n}`,
       parent: this.codeMirrorInsert.nativeElement,
@@ -64,9 +60,14 @@ export class PlaygroundComponent
     })
   }
 
+
+
   private async init()
   {
+    // actually init cheerpj.
     await cheerpjInit( {natives: { Java_JSOutputStream_jsWrite }}  );
+
+    // this just deletes files from previous code compilations. It's not strictly needed, really.
     let val = await cheerpjRunMain(
         "Main",
         "/app/java/ClearFiles.jar",
@@ -78,46 +79,82 @@ export class PlaygroundComponent
     }
   
     this._status = "Ready";
-    this.disabled = false;
+    this.compileButtonDisabled = false;
  
   } 
 
   public async compile()
   {
-    this.disabled = true;
 
-    this.output!.clear();
-
+    this.compileButtonDisabled = true;
+    this.output!.clear();  
     
-    cheerpOSAddStringFile("/str/Lab.java", this.codeMirrorView.state.doc.toString());
-    let retVal = 0;
+    // paths here 
+    let javaFile:String = "/str/Lab.java";
+    let classFile:String = "Lab.class";
+    let jarFile:String = "/files/Lab.jar";
 
+    cheerpOSAddStringFile(javaFile, this.codeMirrorView.state.doc.toString());
+  
+
+    if(!await this.compileJava(javaFile))
+    {
+      this.compileButtonDisabled = false;
+      return;
+    }  
+
+    if(!await this.CreateExecutableJar(classFile, jarFile))
+    {
+      this.compileButtonDisabled = false;
+      return;
+    }  
+
+    this._status = "Running Program";
+    let retVal = await cheerpjRunMain(
+        "LabLauncher",
+        jarFile,
+    );
+
+
+    this._status = "Returned with code "+await retVal;
+    this.compileButtonDisabled = false;
+
+  }
+
+
+  private async compileJava(javaFile:String) : Promise<boolean>
+  {
     this._status= "Compiling";
-    retVal = await cheerpjRunMain(
+    let retVal = await cheerpjRunMain(
       "JavaCLauncher",
       "/app/java/tools_modified.jar",
       // args
       "-d",
       "/files/",
-      "/str/Lab.java",
+      javaFile,
       "/app/java/LabLauncher.java",
       "/app/java/JSOutputStream.java"
     );
     if(await retVal !== 0)
     {
       this._status = "Compilation Failed";
-      this.disabled = false;
-        return;
+      return false;
     }
 
+    return true;
+  }
+
+  // creates a jar file from clas files.
+  private async CreateExecutableJar(classFile:String, jarFile:String) : Promise<boolean>
+  {
     this._status = "Making Jar";
-    retVal = await cheerpjRunMain(
+    let retVal = await cheerpjRunMain(
         "sun.tools.jar.Main",
         "/app/java/tools_modified.jar",
         // args
-        "-cf",   "/files/Lab.jar",
+        "-cf",  "/files/Lab.jar",
         "-C", "/files",
-        "Lab.class",
+        classFile,
         "LabLauncher.class",
         "JSOutputStream.class"
     );
@@ -125,21 +162,10 @@ export class PlaygroundComponent
     if(await retVal !== 0)
     {
         this._status= "Failed to make Jar.";
-        this.disabled = false;
-        return;
+        return false;
     }
 
-
-    this._status = "Running Program";
-    retVal = await cheerpjRunMain(
-        "LabLauncher",
-        "/files/Lab.jar",
-    );
-
-
-    this._status = "Returned with code "+await retVal;
-    this.disabled = false;
-
+    return true;
   }
 
 }

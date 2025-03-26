@@ -1,7 +1,9 @@
-<div ngModel #codeMirrorInsert></div>  
-<button id="compile" disabled mat-flat-button [disabled]="disabled" (click)="compile  ()">
+<div class="leftCol" ngModel #codeMirrorInsert></div>  
+<div class="RightCol">
+<button id="compile" disabled mat-flat-button [disabled]="compileButtonDisabled" (click)="compile  ()">
   Compile
 </button>  
 <h2>Output</h2>
 <p id = "status" >Status: {{status}}</p>
 <app-java-output></app-java-output>
+</div>
