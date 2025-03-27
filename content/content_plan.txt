@@ -1,0 +1,91 @@
+Head First Java:
+1) Breaking the Surface
+2) A Trip to Objectville
+3) Know Your Variables
+4) How Objects Behave
+5) Extra-Strength Methods
+6) Using the Java Library
+7) Better Living in Objectville
+8) Serious Polymorphism
+9) Life and Death of an Object
+10) Numbers Matter
+11) Data Structures
+12) Lambdas and Streams
+13) Risky Behavior
+14) A Very Graphic Story
+15) Work on Your Swing
+16) Saving Objects (and Text)
+17) Make a Connection
+18) Dealing with Concurrency Issues
+
+Our Content:
+0) Introduction to Java
+    A) What is Java?
+    B) Why Use Java?
+    C) Setting up the JDK
+    D) Simple Java Program
+    E) Understanding Main
+    F) IDEs and the Command Line
+1) Variables and Data Types
+    A) Primitives
+    B) Reference types
+    C) Type conversion and casting
+    D) Constants
+    E) Variable scope and lifetime
+2) Control Flow
+    A) Conditionals
+    B) Looping
+    C) Advanced Looping (for each)
+    D) Break and Continue
+    E) Nested Loops and Conditionals
+3) Methods and Subprograms
+    A) Defining and Calling
+    B) Method Returns and Parameters
+    C) Overloading
+    D) Pass-by-value, Pass-by-Reference
+    E) Recursion
+4) Objects and Classes
+    A) Defining Classes
+    B) Instance Variables and Methods
+    C) Constructors
+    D) Static Members
+    E) This Keyword
+5) OOP, Interfaces, and Inheritance
+    A) Encapsulation, Abstraction, Inheritance, Polymorphism
+    B) Creating and Using Interfaces
+    C) Abstract Classes
+    D) Method Overriding
+    E) Super Keyword
+    F) Object Class, Common Methods
+6) Exception Handling
+    A) Understanding Exceptions
+    B) Try Catch Finally Blocks
+    C) Throwing and Catching
+    D) Checked and Unchecked
+    E) Custom Exceptions
+7) Input and Output
+    A) Scanner for the Console
+    B) Reading and Writing Files
+    C) Working with Streams
+    D) Serialization, Deserialization
+    E) I/O Exceptions
+8) Arrays and Collections
+    A) Declaring and Using Arrays
+    B) Multidimensional Arrays
+    C) Lists
+    D) Sets
+    E) Maps
+    F) Iterators
+9) Data Structures, Generics
+    A) Stack, Queue, Dequeue
+    B) LinkedList vs ArrayList
+    C) Binary Trees
+    D) HashMaps and Sets In Detail
+    E) Generics and Wildcards
+    F) Creating Generic Classes and Methods
+10) Lambdas and Functional Programming
+    A) Functional Programming
+    B) Lambda Expressions
+    C) Functional Interfaces
+    D) Streams API
+    E) Method References and Optional Class
