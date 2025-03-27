@@ -6,7 +6,7 @@
         "activity1" : {
             "name" : "Reading 1",
             "id" : "1-1",
-            "type" : "Reading Activity",
+            "type" : "reading_activity",
             "content" : {
                 "1t" : "Arrays",
                 "1h1" : "What is an Array?",
@@ -24,7 +24,7 @@
         "activity2" : {
             "name" : "Reading 2",
             "id" : "1-2",
-            "type" : "Reading Activity",
+            "type" : "reading_activity",
             "content" : {
                 "t" : "Multi-Dimensional Arrays",
                 "1h1" : "Arrays of Arrays",
@@ -34,7 +34,7 @@
         "activity3" : {
             "name" : "Coding 1",
             "id" : "1-3",
-            "type" : "Coding Activity",
+            "type" : "coding_activity",
             "content" : {
                 "" : ""
             }
@@ -42,7 +42,7 @@
         "activity4" : {
             "name" : "Quiz 1",
             "id" : "1-4",
-            "type" : "Quiz Activity",
+            "type" : "quiz_activity",
             "content" : {
                 "question1" : {
                     "type" : "Multiple choice",

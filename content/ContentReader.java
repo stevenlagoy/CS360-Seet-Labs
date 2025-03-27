@@ -213,7 +213,7 @@ public class ContentReader {
 
     public static void createHTML(LinkedHashMap<Object, Object> JSON) {
         List<String> htmlContent = JSONtoHTML(JSON);
-        File htmlFile = new File(contentFolder + JSON.get("name") + ".html");
+        File htmlFile = new File(contentFolder + JSON.get("id") + ".html");
         try {
             htmlFile.createNewFile();
             try (FileWriter writer = new FileWriter(htmlFile, false)) {
@@ -270,10 +270,12 @@ public class ContentReader {
         add (new Markup("%%", "%"));
         add (new Markup("%n", "<br>"));
         add (new Markup("%t", "&#9;"));
+        add (new Markup("%\\", "\""));
         add (new Markup("%i", "<i>", "%/i", "</i>"));
+        add (new Markup("%k", "<span class=\"keyword\">", "%/k", "</span>"));
+        add (new Markup("%c", "</p>\n\t<pre><code class=\"language-java\">", "%/c", "</code></pre>\n\t<p>"));
         add (new Markup("%b", "<b>", "%/b", "</b>"));
-        add (new Markup("%c", "</p>\n\t<div class=\"code-block\"><pre>", "%/c", "</pre></div>\n\t<p>"));
-        add (new Markup("%k", "<b>", "%/k", "</b>"));
+        add (new Markup("%l", "<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">", "%/l", "</a>"));
     }};
     public static Markup findMarkupByTag(String tag) {
         for (Markup markup : markupTags) {
@@ -285,7 +287,7 @@ public class ContentReader {
     public static List<String> JSONtoHTML(LinkedHashMap<Object, Object> JSON) {
         List<String> html = new ArrayList<>();
         
-        if (JSON.get("type").toString().equals("Reading Activity")) {
+        if (JSON.get("type").toString().equals("reading_activity")) {
 
             // Create HTML setup and Head section
             html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
