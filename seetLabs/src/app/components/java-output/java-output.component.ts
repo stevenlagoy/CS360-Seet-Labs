@@ -12,7 +12,7 @@ let instance: JavaOutputComponent|null = null;
 export class JavaOutputComponent 
 {
 
-  public content:string = "Test...";
+  public content:string = "";
   private errorOpen:boolean = false;
 
   ngOnInit()

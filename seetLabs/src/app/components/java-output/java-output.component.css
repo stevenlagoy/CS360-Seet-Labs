@@ -1,11 +1,14 @@
 :host{
     display:block;
-    border:.1em solid black;
-    border-radius: .8em;
+    border-top:.2em solid  #ddd; /*#427ec2;*/
     padding:.5em;
+    
+   
 }
 
 p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size:10pt;
     white-space: pre-wrap;
 }
 
