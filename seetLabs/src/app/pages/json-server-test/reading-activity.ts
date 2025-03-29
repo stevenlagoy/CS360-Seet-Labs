@@ -8,12 +8,12 @@ import java from 'highlight.js/lib/languages/java';
 import { CommonModule } from '@angular/common';
 import { ModuleSubHeaderComponent } from '../../components/module-sub-header/module-sub-header.component';
 @Component({
-  selector: 'app-json-server-test',
+  selector: 'readingActivity',
   imports: [CommonModule, ModuleSubHeaderComponent],
-  templateUrl: './json-server-test.component.html',
-  styleUrl: './json-server-test.component.scss' // Use inline template
+  templateUrl: './readingActivity.component.html',
+  styleUrl: './readingActivity.component.scss' // Use inline template
 })
-export class JsonServerTestComponent implements OnInit {
+export class readingActivity implements OnInit {
 
   constructor(private _route: ActivatedRoute, private cdr: ChangeDetectorRef) {}
   

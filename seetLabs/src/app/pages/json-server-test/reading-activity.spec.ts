@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JsonServerTestComponent } from './json-server-test.component';
+import { readingActivity } from './reading-activity';
 
-describe('JsonServerTestComponent', () => {
-  let component: JsonServerTestComponent;
-  let fixture: ComponentFixture<JsonServerTestComponent>;
+describe('readingActivity', () => {
+  let component: readingActivity;
+  let fixture: ComponentFixture<readingActivity>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JsonServerTestComponent]
+      imports: [readingActivity]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(JsonServerTestComponent);
+    fixture = TestBed.createComponent(readingActivity);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
