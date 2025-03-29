@@ -1,0 +1,38 @@
+.sub-header-parent {
+    width: 100%;
+}
+
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 3vw;
+    width: 88vw;
+    height: 7vh;
+    margin-bottom: 6vh;
+}
+
+.progress-bar {
+    width: 30vw !important;
+    height: 7vh;
+}
+
+.sub-header-bottom-parent-parent {
+    width: 94vw;
+}
+
+.sub-header-bottom-parent {
+    margin-top: 4vh;
+    display: flex;
+    justify-content: center;
+}
+
+.sub-header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 64vw;
+    margin-bottom: 6vh;
+}
