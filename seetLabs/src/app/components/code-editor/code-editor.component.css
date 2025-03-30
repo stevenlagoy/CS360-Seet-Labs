@@ -1,0 +1,41 @@
+.code-editor{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+   
+    background-color: #ddd;/*#427ec2;*/
+    padding: .5em;
+    border-radius: .5em;
+    align-items: stretch;
+
+}
+button{
+    height: 3em;
+}
+
+
+.leftCol
+{
+    display:flex;
+    flex-direction: column;
+    flex-grow: 2; 
+    background-color: white;
+    width:100%;
+}
+
+
+
+.RightCol{
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: white;
+    margin-left: .5em;
+    width:50%;
+}
+
+.info
+{
+    margin: .5em;
+}

@@ -1,0 +1,20 @@
+<div class="code-editor" style ="height:{{height}}">
+  <div class="leftCol" ngModel #codeMirrorInsert></div>  
+  <div class="RightCol">
+    <div class = "info">
+    
+      <button id="compile" disabled mat-flat-button [disabled]="status.compileButtonDisabled" (click)="compile  ()">
+        {{status.buttonStatus}}
+      </button>  
+     
+      <p id = "status" >
+        @if (status.additionalStatus !== "") {
+          Status: {{status.additionalStatus}}
+
+        }
+      </p>
+      <h2>Output</h2>
+    </div>
+    <app-java-output></app-java-output>
+  </div>
+</div>
