@@ -14,6 +14,9 @@ export class JavaOutputComponent
 
   public content:string = "";
   private errorOpen:boolean = false;
+  private _empty:boolean = true;
+
+  get empty() { return this._empty?"color:#666;font-style:italic;":"";}
 
   ngOnInit()
   {
@@ -23,22 +26,32 @@ export class JavaOutputComponent
     }
 
     instance = this;
+    this.clear();
   }
 
   public clear():void{
-    this.content = "";
+    this.content = "Program output will appear here.";
+    this._empty = true;
   }
 
   public append(str:string)
   {
+    if(this._empty)
+    {
+      this._empty = false;
+      this.content = "";
+    }
     this.errorOpen = false;
     this.content+=str;
   }
 
   public appendError(str:string)
   {
-
-  
+    if(this._empty)
+    {
+      this._empty =false;
+      this.content="";
+    }
     let text = this.content;
     if(this.errorOpen)
     {

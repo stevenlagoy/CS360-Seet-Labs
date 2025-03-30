@@ -1,8 +1,9 @@
 :host{
     display:block;
-    border-top:.2em solid  #ddd; /*#427ec2;*/
+    border-top:.4em solid  #ddd; /*#427ec2;*/
     padding:.5em;
-    
+    flex-basis: 100%;
+
    
 }
 

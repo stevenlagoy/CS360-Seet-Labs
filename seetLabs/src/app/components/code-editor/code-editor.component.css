@@ -3,39 +3,74 @@
     flex-direction: row;
     width:100%;
     justify-content: space-between;
-   
-    background-color: #ddd;/*#427ec2;*/
-    padding: .5em;
-    border-radius: .5em;
+    background-color:   #3d79bd;/*#427ec2;*/
+    padding: .8em;
+    border-radius: .8em;
     align-items: stretch;
 
 }
 button{
+    margin:1em; 
+    
     height: 3em;
+    
 }
 
-
-.leftCol
-{
-    display:flex;
-    flex-direction: column;
-    flex-grow: 2; 
-    background-color: white;
+.code-editor h3{
+    background-color: #3d79bd;
+    color:#eee;
+    margin-top:0;
+    margin-bottom: 0;
     width:100%;
+    padding-bottom:.6em;
+    padding-top:.2em;
+
 }
 
+.colBase
+{
+    background-color:  #3d79bd;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
 
+.left{
+    flex-basis: 70%;
 
-.RightCol{
+}
+
+.col{
     display:flex;
     flex-direction: column;
-    flex-grow: 1;
     background-color: white;
-    margin-left: .5em;
-    width:50%;
+    border-radius: .8em;
+    flex-basis: 100%;
+    align-items: stretch;
+    overflow-y:scroll;
 }
 
-.info
+.right
 {
-    margin: .5em;
+    flex-basis: 30%;
+    margin-left: .8em;
+  
 }
+
+.rightContent
+{
+    display:flex;
+    flex-direction: column;
+    padding: 0 .5em 0 .5em;
+}
+
+
+
+.codemirror-insert
+{
+    height:100%;
+}
+
+
+
+

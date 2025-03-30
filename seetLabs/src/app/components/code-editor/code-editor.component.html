@@ -1,20 +1,31 @@
 <div class="code-editor" style ="height:{{height}}">
-  <div class="leftCol" ngModel #codeMirrorInsert></div>  
-  <div class="RightCol">
-    <div class = "info">
-    
-      <button id="compile" disabled mat-flat-button [disabled]="status.compileButtonDisabled" (click)="compile  ()">
-        {{status.buttonStatus}}
-      </button>  
-     
-      <p id = "status" >
-        @if (status.additionalStatus !== "") {
-          Status: {{status.additionalStatus}}
 
-        }
-      </p>
-      <h2>Output</h2>
+  <div class="left colBase">
+    <h3>Code Editor</h3>
+    <div class = "col">
+      
+      <div class = "codemirror-insert" ngModel #codeMirrorInsert></div>  
     </div>
-    <app-java-output></app-java-output>
+  </div>
+ 
+  <div class="right colBase">
+    <h3>Output</h3>
+    <div class="col">
+     
+      <div class = "rightContent">
+      
+        <button id="compile" disabled mat-flat-button [disabled]="status.compileButtonDisabled" (click)="compile  ()">
+          {{status.buttonStatus}}
+        </button>  
+      
+        <p id = "status" >
+          @if (status.additionalStatus !== "") {
+            Status: {{status.additionalStatus}}
+
+          }
+        </p>
+      </div>
+      <app-java-output></app-java-output>
+    </div>
   </div>
 </div>
