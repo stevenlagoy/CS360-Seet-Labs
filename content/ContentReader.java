@@ -10,6 +10,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.HashMap;
@@ -54,8 +55,10 @@ public class ContentReader {
         Set<LinkedHashMap<Object, Object>> JSONs = new HashSet<>();
         Set<String> filenames = listFiles(dir);
         for (String filename : filenames) {
-            if (filename.contains(".json"))
-                JSONs.add(readJSONFile(contentFolder + filename));
+            if (filename.contains(".json")) {
+                LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentFolder + filename);
+                if (fileJSON != null) JSONs.add(fileJSON);
+            }
         }
         return JSONs;
     }
@@ -106,6 +109,7 @@ public class ContentReader {
             new Exception("The JSON object is malformed.").printStackTrace();
             return null;
         }
+        if (contents.size() == 0) return null;
         return readJSONObject(contents.subList(1, contents.size()-1));
     }
     public static LinkedHashMap<Object, Object> readJSONObject(List<String> contents) {
@@ -137,8 +141,13 @@ public class ContentReader {
                     }
                     value = list.toString();
                 }
-                else
-                    value = value.replace(",","");
+                else {
+                    for (int j = 0; j < value.length(); j++) {
+                        if (value.charAt(j) == ',' && !isInString(value, j)) {
+                            value = value.substring(0, j) + value.substring(j + 1, value.length());
+                        }
+                    }
+                }
             }
             catch (ArrayIndexOutOfBoundsException e) {
                 // do nothing - this is expected at the end of a JSON object
@@ -203,7 +212,7 @@ public class ContentReader {
     }
 
     public static void createHTMLs(LinkedHashMap<Object, Object> JSON){
-        for (int i = 0; i < Integer.parseInt(JSON.get("activity_count").toString()); i++){
+        for (int i = 1; i < Integer.parseInt(JSON.get("activity_count").toString()); i++){
             @SuppressWarnings("unchecked")
             LinkedHashMap<Object, Object> activityContent = (LinkedHashMap<Object, Object>) ((LinkedHashMap<Object, Object>) JSON.get("content")).get("activity" + i);
             if (activityContent != null)
