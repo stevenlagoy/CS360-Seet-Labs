@@ -1,0 +1,64 @@
+{
+    "name" : "module_4",
+    "title" : "Module 4: Objects and Classes",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 4",
+            "id" : "4-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Objects and Classes",
+                "2h1" : "Defining Classes",
+                "2p" : "A %kclass%/k is a blueprint for creating objects. In Java, we define a class like this:%cpublic class Car {%n%t// Class body%nt}%/c A class groups related data and behaviors into one unit.",
+                "3h1" : "Instance Variables and Methods",
+                "3p" : "Objects have %bstate%/b (data) and %bbehavior%/b (methods).%nInstance variables hold data:%cpublic class Car {%n%tString model;%n%tint year;%nt}%/cMethods define behaviors:%cpublic void drive() {%n%tSystem.out.println(%'The car is driving.%');%n}%/c",
+                "4h1" : "Constructors",
+                "4p" : "A %kconstructor%/k is a special method that initializes objects. It has the same name as the class:%cpublic Car(String model, int year) {%n%tthis.model = model;%n%tthis.year = year;%nt}%/c It’s called automatically when an object is created.",
+                "5h1" : "Static Members",
+                "5p" : "%kstatic%/k variables and methods belong to the class, not instances. For example:%cpublic static int carCount = 0;%/c Static methods cannot access instance variables directly.%nTo call a static method, use the class name:%cCar.showTotalCars();%/c",
+                "6h1" : "This Keyword",
+                "6p" : "The %kthis%/k keyword refers to the current object. It helps distinguish instance variables from parameters:%cpublic void setModel(String model) {%n%tthis.model = model;%nt}%/c Without %kthis%/k, Java assumes both 'model' refer to the parameter."
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 4",
+            "id" : "4-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 4",
+            "id" : "4-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "What is the purpose of a constructor?",
+                    "options" : {"1" : "To create a new class", "2" : "To initialize an object", "3" : "To destroy an object", "4" : "To define static methods"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Not quite. A constructor initializes objects, not classes.",
+                        "2" : "Correct! A constructor initializes an object’s state when it is created.",
+                        "3" : "Java has garbage collection to handle object destruction.",
+                        "4" : "Static methods do not require a constructor." 
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: Static methods can directly access instance variables.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. Static methods can only access static variables and methods.",
+                        "2" : "That's right! Static methods do not operate on specific instances." 
+                    }
+                }
+            }
+        }
+    }
+}

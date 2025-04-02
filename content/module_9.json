@@ -1,0 +1,66 @@
+{
+    "name" : "module_9",
+    "title" : "Module 9: Data Structures and Generics",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 9",
+            "id" : "9-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Data Structures and Generics",
+                "2h1" : "Stack, Queue, Dequeue",
+                "2p" : "A %bStack%/b follows Last-In-First-Out (LIFO) order, whereas a %bQueue%/b follows First-In-First-Out (FIFO). The %bDeque%/b (Double-Ended Queue) allows insertions and deletions from both ends.%c Stack<Integer> stack = new Stack<>();%nstack.push(10);%/c",
+                "3h1" : "LinkedList vs ArrayList",
+                "3p" : "%bLinkedLists%/b are efficient for insertions/deletions, while %bArrayLists%/b offer fast random access.%c List<Integer> list = new LinkedList<>();%/c",
+                "4h1" : "Binary Trees",
+                "4p" : "Binary trees are hierarchical structures where each node has up to two children. They are used in search trees and heaps.%c class Node { int value; Node left, right; }%/c",
+                "5h1" : "HashMaps and Sets In Detail",
+                "5p" : "%bHashMaps%/b store key-value pairs, and %bHashSets%/b maintain unique elements using hash functions.%c Map<String, Integer> map = new HashMap<>();%/c",
+                "6h1" : "Generics and Wildcards",
+                "6p" : "Generics enable type safety and code reusability. Wildcards like %b?%/b provide flexibility.%c List<? extends Number> numbers;%/c",
+                "7h1" : "Creating Generic Classes and Methods",
+                "7p" : "Generic classes and methods define placeholders for types, enhancing code reusability.%c class Box<T> { T value; }%/c"
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 9",
+            "id" : "9-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 9",
+            "id" : "9-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which data structure follows Last-In-First-Out (LIFO) order?",
+                    "options" : {"1" : "Queue", "2" : "Stack", "3" : "HashSet", "4" : "Binary Tree"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. Queues follow First-In-First-Out (FIFO).",
+                        "2" : "Correct! Stacks use LIFO order.",
+                        "3" : "Not quite. HashSets store unique elements with no specific order.",
+                        "4" : "Wrong. Binary trees are hierarchical, not LIFO." 
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: Generics in Java allow for defining methods that work with multiple data types.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "That's right! Generics enhance reusability by allowing parameterized types.",
+                        "2" : "Incorrect. Generics provide flexibility for multiple data types." 
+                    }
+                }
+            }
+        }
+    }
+}

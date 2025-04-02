@@ -1,0 +1,64 @@
+{
+    "name" : "module_2",
+    "title" : "Module 2: Control Flow",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 2",
+            "id" : "2-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Control Flow",
+                "2h1" : "Conditionals",
+                "2p" : "Programs don't just execute line by line—they make decisions! %bConditionals%/b allow us to control which code runs based on certain conditions. In Java, we use %kif%/k statements to check conditions: %cif (temperature > 30) { %n%tSystem.out.println(%'It's hot outside!%'); %n}%/c We can extend our decision-making with %kelse if%/k and %kelse%/k clauses to handle multiple conditions.",
+                "3h1" : "Looping",
+                "3p" : "Sometimes, we need to repeat actions %bmultiple times%/b. Loops help us avoid writing the same code over and over. The %kwhile%/h loop repeats as long as a condition is true: %cint count = 0;%nwhile (count < 5) { %n%tSystem.out.println(count); %n%tcount++; %n}%/c The %kfor%/k loop is useful when we know exactly how many times we need to repeat: %cfor (int i = 0; i < 5; i++) { %n%tSystem.out.println(i); %n}%/c",
+                "4h1" : "Advanced Looping (For-Each)",
+                "4p" : "Sometimes, we just want to loop %bthrough every item%/b in a collection. The %kfor-each%/k loop makes this easy: %cint[] numbers = {1, 2, 3, 4, 5};%nfor (int num : numbers) { %n%tSystem.out.println(num); %n}%/c The for-each loop is simple and avoids the need for indexing!",
+                "5h1" : "Break and Continue",
+                "5p" : "We can control loops even further using %kbreak%/k and %kcontinue%/k. The %kbreak%/k statement %bexits a loop early%/b: %cfor (int i = 0; i < 10; i++) { %n%tif (i == 5) { %n%t%tbreak; %n%t} %n%tSystem.out.println(i); %n}%/c The %kcontinue%/k statement %bskips the rest of the loop iteration%/b and %bjumps%/b to the next one: %cfor (int i = 0; i < 10; i++) { %n%tif (i % 2 == 0) { %n%t%tcontinue; %n%t} %n%tSystem.out.println(i); %n}%/c",
+                "6h1" : "Nested Loops and Conditionals",
+                "6p" : "We can %bnest%/b loops and conditionals inside each other to handle more complex logic. For example: %cfor (int i = 0; i < 3; i++) { %n%tfor (int j = 0; j < 3; j++) { %n%t%tSystem.out.println(%'i: %' + i + %' j: %' + j); %n%t} %n}%/c Be careful! Nested loops can grow exponentially and slow down programs if not used wisely."
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 2",
+            "id" : "2-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 2",
+            "id" : "2-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which loop should you use when you know exactly how many times to iterate?",
+                    "options" : {"1" : "while", "2" : "for", "3" : "do-while", "4" : "foreach"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Not quite. While loops are great when we don’t know how many times we need to loop.",
+                        "2" : "Correct! The for loop is best when we know the exact number of iterations.",
+                        "3" : "Do-while loops ensure at least one iteration but are not necessarily best when we know the count.",
+                        "4" : "The for-each loop is great for collections but not for a fixed number of iterations."
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: The 'break' statement skips the rest of the current loop iteration and moves to the next one.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. 'break' completely exits the loop, while 'continue' skips to the next iteration.",
+                        "2" : "That's right! 'break' stops the loop entirely, while 'continue' moves to the next iteration."
+                    }
+                }
+            }
+        }
+    }
+}

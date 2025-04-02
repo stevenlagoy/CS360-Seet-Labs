@@ -62,5 +62,71 @@
                 }
             }
         }
+    },
+    "" : {
+        "name" : "module_8",
+        "title" : "Module 8: Arrays and Collections",
+        "activity_count" : 4,
+        "content" : {
+            "activity1" : {
+                "name" : "Reading 8",
+                "id" : "8-1",
+                "type" : "reading_activity",
+                "content" : {
+                    "1t" : "Arrays and Collections",
+                    "2h1" : "Declaring and Using Arrays",
+                    "2p" : "Arrays in Java are used to store multiple values of the same type:%c int[] numbers = {1, 2, 3, 4, 5};%/c Elements are accessed by their index, starting at 0.",
+                    "3h1" : "Multidimensional Arrays",
+                    "3p" : "Java supports multidimensional arrays, such as 2D arrays:%c int[][] matrix = {{1, 2}, {3, 4}};%/c These are often used for grid-based structures.",
+                    "4h1" : "Lists",
+                    "4p" : "The %bArrayList%/b class provides dynamic resizing and flexibility over arrays:%c ArrayList<String> list = new ArrayList<>();%nlist.add(%'Hello%');%/c",
+                    "5h1" : "Sets",
+                    "5p" : "Sets store unique elements and do not allow duplicates. The %bHashSet%/b class is commonly used:%c Set<Integer> set = new HashSet<>();%nset.add(10);%/c",
+                    "6h1" : "Maps",
+                    "6p" : "Maps store key-value pairs. The %bHashMap%/b class is frequently used:%c Map<String, Integer> map = new HashMap<>();%nmap.put(%'Alice%', 25);%/c",
+                    "7h1" : "Iterators",
+                    "7p" : "Iterators provide a way to traverse collections. The %bIterator%/b interface allows element retrieval:%c Iterator<Integer> it = list.iterator();%nwhile (it.hasNext()) {%n%tSystem.out.println(it.next());%n}%/c"
+                }
+            },
+            "activity2" : {
+                "name" : "Coding 8",
+                "id" : "8-3",
+                "type" : "coding_activity",
+                "content" : {
+                    "" : ""
+                }
+            },
+            "activity3" : {
+                "name" : "Quiz 8",
+                "id" : "8-4",
+                "type" : "quiz_activity",
+                "content" : {
+                    "question1" : {
+                        "type" : "multiple choice",
+                        "question" : "Which collection type does not allow duplicate elements?",
+                        "options" : {"1" : "List", "2" : "Set", "3" : "Map", "4" : "Array"},
+                        "correct_responses" : ["2"],
+                        "points" : 10,
+                        "feedback" : {
+                            "1" : "Incorrect. Lists allow duplicates.",
+                            "2" : "Correct! Sets do not allow duplicate elements.",
+                            "3" : "Not quite. Maps store key-value pairs but allow duplicate values.",
+                            "4" : "Incorrect. Arrays can contain duplicates." 
+                        }
+                    },
+                    "question2" : {
+                        "type" : "true false",
+                        "question" : "True/False: An ArrayList has a fixed size that cannot change during runtime.",
+                        "options" : {"1" : "True", "2" : "False"},
+                        "correct_responses" : ["2"],
+                        "points" : 10,
+                        "feedback" : {
+                            "1" : "Incorrect. Unlike arrays, ArrayLists dynamically resize.",
+                            "2" : "That's right! ArrayLists grow and shrink dynamically." 
+                        }
+                    }
+                }
+            }
+        }
     }
 }

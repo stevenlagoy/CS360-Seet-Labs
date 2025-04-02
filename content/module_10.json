@@ -1,0 +1,64 @@
+{
+    "name" : "module_10",
+    "title" : "Module 10: Lambdas and Functional Programming",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 10",
+            "id" : "10-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Lambdas and Functional Programming",
+                "2h1" : "Functional Programming",
+                "2p" : "%bFunctional programming%/b treats computation as the evaluation of mathematical functions and avoids changing state and mutable data.%c Function<Integer, Integer> square = x -> x * x;%/c",
+                "3h1" : "Lambda Expressions",
+                "3p" : "%bLambda expressions%/b are anonymous functions that allow concise function representation.%c (int x, int y) -> x + y;%/c",
+                "4h1" : "Functional Interfaces",
+                "4p" : "A %bfunctional interface%/b has a single abstract method (SAM) and can be used with lambda expressions.%c @FunctionalInterface%ns interface MyFunction { int apply(int x); }%/c",
+                "5h1" : "Streams API",
+                "5p" : "The %bStreams API%/b processes collections in a functional style, supporting operations like filtering and mapping.%c List<String> names = List.of(\"Alice\", \"Bob\", \"Charlie\");%nnames.stream().filter(n -> n.startsWith(\"A\")).forEach(System.out::println);%/c",
+                "6h1" : "Method References and Optional Class",
+                "6p" : "%bMethod references%/b provide a shorthand for calling methods directly.%c list.forEach(System.out::println);%/c%nThe %bOptional%/b class is used to avoid null checks and handle missing values gracefully.%c Optional<String> opt = Optional.of(\"Hello\");%/c"
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 10",
+            "id" : "10-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 10",
+            "id" : "10-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which Java feature allows anonymous functions?",
+                    "options" : {"1" : "Method References", "2" : "Lambda Expressions", "3" : "Functional Interfaces", "4" : "Streams API"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. Method references are shorthand for calling existing methods.",
+                        "2" : "Correct! Lambda expressions provide anonymous function capabilities.",
+                        "3" : "Not quite. Functional interfaces define single abstract methods.",
+                        "4" : "Wrong. Streams API processes collections functionally but isn't for defining functions." 
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: The Optional class helps avoid null pointer exceptions.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "That's right! Optional helps manage null values safely.",
+                        "2" : "Incorrect. Optional is specifically designed to prevent null-related errors." 
+                    }
+                }
+            }
+        }
+    }
+}

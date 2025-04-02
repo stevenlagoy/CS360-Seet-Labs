@@ -1,0 +1,72 @@
+{
+    "name" : "module_3",
+    "title" : "Module 3: Methods and Subprograms",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 3",
+            "id" : "3-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Methods and Subprograms",
+                "2h1" : "Defining and Calling",
+                "2p" : "%bMethods%/b are blocks of code that perform specific tasks. In Java, you define a method with its %breturn type%/b, %bname%/b, and %bparameters%/b. For example:%cpublic void greet() {%n%tSystem.out.println(%'Hello, World!%');%n}%/cThis method %bdefines%/b how to greet, and you %kinvoke%/k it by simply calling %kgreet()%/k in your code.",
+                "3h1" : "Method Returns and Parameters",
+                "3p" : "Methods can %breturn values%/b and accept parameters to work with different inputs. Consider:%cpublic int add(int a, int b) {%n%treturn a + b;%n}%/cHere, %kadd%/k takes two parameters and returns their sum. The return type of %kint%/k tells us what kind of value to expect.",
+                "4h1" : "Overloading",
+                "4p" : "Java allows you to have multiple methods with the same name as long as their parameter lists differ. This is called %boverloading%/b. For example:%cpublic void display(int num) {%n%tSystem.out.println(num);%n}%npublic void display(String message) {%n%tSystem.out.println(message);%n}%/cBoth methods are named %kdisplay%/k, but Java knows which one to call based on the type of argument you pass.",
+                "5h1" : "Pass-by-Value, Pass-by-Reference",
+                "5p" : "Java is strictly %bpass-by-value%/b. This means that when you pass a variable to a method, a copy of the value is used. For objects, the %breference%/b is passed by value, so changes to the object's internals affect the original object. For example:%cpublic void updateValue(int num) {%n%tnum = 100;%n}%n%npublic void updateObject(MyClass obj) {%n%tobj.value = 100;%n}%/c",
+                "6h1" : "Recursion",
+                "6p" : "A method can call itself; this is known as %brecursion%/b. It’s a powerful technique for solving problems that can be broken down into similar subproblems. For instance, the factorial function:%cpublic int factorial(int n) {%n%tif (n <= 1) {%n%t%treturn 1;%n%t}%n%treturn n * factorial(n - 1);%n}%/cRemember, with recursion, always ensure there’s a %bbase case%/b to avoid infinite loops!"
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 3",
+            "id" : "3-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 3",
+            "id" : "3-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which term best describes a method that calls itself?",
+                    "options" : {
+                        "1" : "Iteration",
+                        "2" : "Recursion",
+                        "3" : "Overloading",
+                        "4" : "Encapsulation"
+                    },
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Not quite. Iteration involves repeating a block of code using loops.",
+                        "2" : "Correct! Recursion is when a method calls itself.",
+                        "3" : "Overloading means having multiple methods with the same name but different parameters.",
+                        "4" : "Encapsulation is about bundling data with methods that operate on that data."
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: In Java, method overloading allows two methods with the same name to have identical parameter lists.",
+                    "options" : {
+                        "1" : "True",
+                        "2" : "False"
+                    },
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. Overloaded methods must differ in their parameter lists.",
+                        "2" : "That's right! They need to differ to be distinguishable."
+                    }
+                }
+            }
+        }
+    }
+}

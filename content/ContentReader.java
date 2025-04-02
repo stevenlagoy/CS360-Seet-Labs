@@ -279,7 +279,7 @@ public class ContentReader {
         add (new Markup("%%", "%"));
         add (new Markup("%n", "<br>"));
         add (new Markup("%t", "&#9;"));
-        add (new Markup("%\\", "\""));
+        add (new Markup("%'", "\""));
         add (new Markup("%i", "<i>", "%/i", "</i>"));
         add (new Markup("%k", "<span class=\"keyword\">", "%/k", "</span>"));
         add (new Markup("%c", "</p>\n\t<pre><code class=\"language-java\">", "%/c", "</code></pre>\n\t<p>"));
@@ -339,6 +339,9 @@ public class ContentReader {
         StringBuilder result = new StringBuilder();
     
         for (int i = startIndex; i < text.length(); i++) {
+            if (text.charAt(i) == '&') {
+                System.out.println("found");
+            }
             if (text.charAt(i) == '%') {
                 if (i + 1 >= text.length()) {
                     result.append('%');
@@ -353,7 +356,7 @@ public class ContentReader {
                 // Get markup tag
                 Markup markup = findMarkupByTag(text.substring(i, i + 2));
                 if (markup == null) {
-                    System.out.println("WARNING: Unrecognized markup " + text.substring(i, i + 2));
+                    System.out.println("WARNING: Unrecognized markup " + text.substring(i, i + 2) + " in ..." + text.substring(Integer.max(0, i - 10), Integer.min(text.length(), i + 10)) + "...");
                     result.append(text.charAt(i));
                     continue;
                 }

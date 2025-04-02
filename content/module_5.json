@@ -1,0 +1,66 @@
+{
+    "name" : "module_5",
+    "title" : "Module 5: OOP, Interfaces, and Inheritance",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 5",
+            "id" : "5-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "OOP, Interfaces, and Inheritance",
+                "2h1" : "Encapsulation, Abstraction, Inheritance, Polymorphism",
+                "2p" : "Object-Oriented Programming (OOP) relies on four key principles: %bEncapsulation%/b (hiding details), %bAbstraction%/b (simplifying complexity), %bInheritance%/b (reusing code), and %bPolymorphism%/b (methods behaving differently for different objects).",
+                "3h1" : "Creating and Using Interfaces",
+                "3p" : "An %kinterface%/k defines methods that a class must implement:%cinterface Animal {%n%tvoid makeSound();%nt}%/c A class implements an interface using %kimplements%/k:%cclass Dog implements Animal {%n%tpublic void makeSound() {%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c",
+                "4h1" : "Abstract Classes",
+                "4p" : "An %kabstract class%/k is a class that cannot be instantiated and may contain abstract methods:%cabstract class Vehicle {%n%tabstract void move();%nt}%/c Subclasses must define abstract methods before use.",
+                "5h1" : "Method Overriding",
+                "5p" : "%kMethod Overriding%/k allows a subclass to provide a specific implementation of a method from its superclass:%cclass Animal {%n%tvoid makeSound() {%n%t%tSystem.out.println(%'Some sound%');%n%t}%nt}%n%/c%/nclass Dog extends Animal {%n%t@Override%n%tvoid makeSound() {%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c",
+                "6h1" : "Super Keyword",
+                "6p" : "The %ksuper%/k keyword refers to the parent class and allows access to its methods and constructors:%cclass Animal {%n%tvoid makeSound() {%n%t%tSystem.out.println(%'Animal makes a sound%');%n%t}%nt}%n%nclass Dog extends Animal {%n%tvoid makeSound() {%n%t%tsuper.makeSound();%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c",
+                "7h1" : "Object Class, Common Methods",
+                "7p" : "All Java classes inherit from the %bObject%/b class, which provides common methods like %ktoString()%/k, %kequals()%/k, and %khashCode()%/k. These can be overridden for custom behavior.%c@Override%npublic String toString() {%n%treturn %'Dog instance%';%nt}%/c"
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 5",
+            "id" : "5-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 5",
+            "id" : "5-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "What is the primary purpose of an interface in Java?",
+                    "options" : {"1" : "To define reusable constants", "2" : "To enforce a class structure", "3" : "To inherit behavior from another class", "4" : "To create anonymous objects"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Not quite. Interfaces define behavior, not constants.",
+                        "2" : "Correct! Interfaces enforce method structure in implementing classes.",
+                        "3" : "Inheritance is done using 'extends', not 'implements'.",
+                        "4" : "Anonymous objects do not require interfaces." 
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: Abstract classes can be instantiated directly.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. Abstract classes cannot be instantiated directly.",
+                        "2" : "That's right! Abstract classes must be extended and their methods implemented." 
+                    }
+                }
+            }
+        }
+    }
+}

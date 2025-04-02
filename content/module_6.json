@@ -1,0 +1,64 @@
+{
+    "name" : "module_6",
+    "title" : "Module 6: Exception Handling",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 6",
+            "id" : "6-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Exception Handling",
+                "2h1" : "Understanding Exceptions",
+                "2p" : "Exceptions are unexpected events that occur during program execution. In Java, exceptions are objects that describe an error condition and can be handled to prevent program crashes.",
+                "3h1" : "Try Catch Finally Blocks",
+                "3p" : "Exception handling in Java is done using %ktry%/k, %kcatch%/k, and %kfinally%/k blocks:%c try {%n%t// Code that may throw an exception%n} catch (ExceptionType e) {%n%t// Handle the exception%n} finally {%n%t// Code that always executes%n} %/c",
+                "4h1" : "Throwing and Catching",
+                "4p" : "Exceptions can be explicitly thrown using the %kthrow%/k keyword:%c throw new ExceptionType(%'Error message%');%/c. They are caught using a matching %kcatch%/k block.",
+                "5h1" : "Checked and Unchecked Exceptions",
+                "5p" : "Exceptions in Java are categorized as %bchecked%/b (must be handled) and %bunchecked%/b (can be optionally handled). Checked exceptions include IOExceptions, while unchecked exceptions include NullPointerExceptions.",
+                "6h1" : "Custom Exceptions",
+                "6p" : "Developers can define custom exceptions by extending the %bException%/b class:%cclass MyException extends Exception {%n%tpublic MyException(String message) {%n%t%tsuper(message);%n%t}%n}%/c"
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 6",
+            "id" : "6-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 6",
+            "id" : "6-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which keyword is used to define an exception that must be handled?",
+                    "options" : {"1" : "throw", "2" : "throws", "3" : "try", "4" : "catch"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. 'throw' is used to raise an exception, not enforce handling.",
+                        "2" : "Correct! 'throws' declares checked exceptions that must be handled.",
+                        "3" : "Not quite. 'try' defines a block where exceptions might occur.",
+                        "4" : "'catch' handles exceptions but does not enforce handling." 
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: A finally block always executes, regardless of whether an exception occurs.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "That's right! The finally block always runs.",
+                        "2" : "Incorrect. The finally block runs regardless of exceptions." 
+                    }
+                }
+            }
+        }
+    }
+}

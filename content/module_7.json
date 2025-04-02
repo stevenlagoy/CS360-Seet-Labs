@@ -1,0 +1,64 @@
+{
+    "name" : "module_7",
+    "title" : "Module 7: Input and Output",
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 7",
+            "id" : "7-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Input and Output",
+                "2h1" : "Scanner for the Console",
+                "2p" : "The %kScanner%/k class is used to read user input from the console:%c Scanner scanner = new Scanner(System.in);%nString input = scanner.nextLine();%/c",
+                "3h1" : "Reading and Writing Files",
+                "3p" : "Java provides the %kFileReader%/k and %kFileWriter%/k classes for basic file operations. To read a file:%c FileReader reader = new FileReader(%'file.txt%');%/c To write to a file:%c FileWriter writer = new FileWriter(%'file.txt%');%/c",
+                "4h1" : "Working with Streams",
+                "4p" : "Java offers %bInputStream%/b and %bOutputStream%/b for handling byte streams. These classes are essential for reading and writing binary data.",
+                "5h1" : "Serialization, Deserialization",
+                "5p" : "Serialization converts an object into a byte stream for storage or transmission using %kObjectOutputStream%/k. Deserialization reconstructs the object from the byte stream using %kObjectInputStream%/k.",
+                "6h1" : "I/O Exceptions",
+                "6p" : "File and stream operations often throw %bIOExceptions%/b, which must be handled using %ktry-catch%/k blocks to prevent program crashes."
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 7",
+            "id" : "7-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 7",
+            "id" : "7-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which class is used to read user input from the console?",
+                    "options" : {"1" : "BufferedReader", "2" : "Scanner", "3" : "InputStream", "4" : "FileReader"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. BufferedReader reads from streams, but Scanner is more commonly used for console input.",
+                        "2" : "Correct! Scanner is used for reading user input from the console.",
+                        "3" : "Not quite. InputStream is a more general class for byte input.",
+                        "4" : "Incorrect. FileReader is used for reading files, not console input." 
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: The FileReader class is used to write data to a file.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. FileReader is used for reading files, not writing.",
+                        "2" : "That's right! FileWriter is used for writing data to a file." 
+                    }
+                }
+            }
+        }
+    }
+}
