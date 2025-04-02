@@ -1,0 +1,34 @@
+<module-sub-header></module-sub-header>
+
+
+<div class="content-parent">
+    <div class="quiz-navigation-parent">
+        <div class="quiz-navigation">
+            <button mat-flat-button type="submit" (click)="checkQuizResults()">Submit Quiz</button>
+            @if (submitted()){
+                <div class="quiz-results">
+                    <p>Score: {{earnedPoints()}}/{{totalPoints()}} ({{percentage()}}%)</p>
+                    <p>Passed: {{percentage() > 80 ? "True" : "False (You need at least an 80% to pass)"}}</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="quiz-questions">
+        @for (question of questions(); track question; let i = $index) {
+            <div class="quiz-question">
+                <quiz-card
+                    title="Question {{i+1}}"
+                    questionTitle="{{question.question}}"
+                    [choices]="question.options"
+                    points="{{question.points}}"
+                    [correctChoices]="question.correct_responses"
+                    [feedback]="question.feedback"
+                ></quiz-card>
+            </div>
+        }
+        
+    </div>
+</div>
+
+
+<!-- <module-sub-header [headerBottom]=true></module-sub-header> -->

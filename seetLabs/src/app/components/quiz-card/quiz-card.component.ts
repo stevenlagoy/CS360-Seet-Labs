@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
@@ -12,22 +12,36 @@ import { CommonModule } from '@angular/common';
   styleUrl: './quiz-card.component.scss'
 })
 export class QuizCardComponent {
-  userChoice: string = "";
-  choices: string[] = ['Choice A', 'Choice B', 'Choice C', 'Choice D', 'Choice E'];
-  correctChoice: number = 0; //index
+
+  userChoice: number = -1;
+  correctOptionsSet: Set<number> = new Set<number>;
   submitted: boolean = false;
+  correct: boolean = false;
+  @Input() title: string = "";
+  @Input() questionTitle: string = "";
+  @Input() choices: string[] = [];
+  @Input() points: string = "0";
+  @Input() correctChoices: string[] = [];
+  @Input() feedback: string[] = [];
+
+  ngOnInit() : void {
+    for (let i = 0; i <= this.correctChoices.length; i++){
+      this.correctOptionsSet.add(parseInt(this.correctChoices[i]));
+    }
+  }
 
   validateAnswer(): boolean {
     this.submitted = true;
-    return this.userChoice == this.choices[this.correctChoice] ? true : false;
+    this.correct = this.correctOptionsSet.has(this.userChoice+1) ? true : false;
+    return this.correctOptionsSet.has(this.userChoice+1) ? true : false;
   }
 
-  isCorrect(choice: String): boolean {
-    console.log('running isCorrect on ' + choice);
-    return this.submitted == true && choice == this.choices[this.correctChoice];
+  parseInt(arg: string): number {
+    console.log(arg);
+    return this.parseInt(arg);
   }
 
-  isIncorrect(choice: String): boolean {
-    return this.submitted == true && choice != this.choices[this.correctChoice] && this.userChoice == choice;
+  parseStr(arg: number) : string {
+    return arg.toString();
   }
 }

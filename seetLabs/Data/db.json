@@ -2,11 +2,11 @@
     "1": [
         {"id": "1", "type": 0, "file": "readingOne.html"},
         {"id": "2", "type": 0, "file": "readingTwo.html"},
-        {"id": "3", "type": 1, "Questions": 
+        {"id": "3", "type": 1, "questions": 
         {
             "name" : "Quiz 1",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "Multiple choice",
                     "question" : "In a few words, what is Java? Pick the best answer.",
                     "options" : {
@@ -20,7 +20,7 @@
                         "3" : "Sure, Java can do that, but it does a lot more too!"
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "True/False",
                     "question" : "Java is a relatively niche, unknown programming language.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -31,7 +31,7 @@
                         "2" : "Correct! Java is proudly boasted to %\"run on more than 60 billion machines worldwide%\", and is one of the most popular coding languages used today."
                     }
                 },
-                "question3" : {
+                "3" : {
                     "type" : "Multiple choice",
                     "question" : "Which of these programs or systems was made with Java?",
                     "options" : {
@@ -48,7 +48,72 @@
                         "3" : "Actually, all of these are written with Java! Nice Job!",
                         "4" : "Actually, all of these are written with Java! Nice Job!"
                     }
-                }
+                },
+                "4": {
+                    "type": "Multiple choice",
+                    "question": "Which of the following is a key feature of Java?",
+                    "options": {
+                        "1": "Manual memory management",
+                        "2": "Platform independence",
+                        "3": "Lack of object-oriented support",
+                        "4": "No support for multithreading"
+                    },
+                    "correct_responses": ["2"],
+                    "points": 10,
+                    "feedback": {
+                        "1": "Incorrect. Java uses automatic memory management via garbage collection.",
+                        "2": "Correct! Java's 'write once, run anywhere' philosophy is due to its platform independence.",
+                        "3": "Incorrect. Java is a fully object-oriented programming language.",
+                        "4": "Incorrect. Java has strong support for multithreading."
+                    }
+                },
+                "5": {
+                    "type": "True/False",
+                    "question": "Java code is compiled directly into machine code.",
+                    "options": {
+                        "1": "True",
+                        "2": "False"
+                    },
+                    "correct_responses": ["2"],
+                    "points": 10,
+                    "feedback": {
+                        "1": "Incorrect. Java code is compiled into bytecode, which runs on the Java Virtual Machine (JVM).",
+                        "2": "Correct! Java compiles to bytecode, not machine code, allowing it to run on any platform with a JVM."
+                    }
+                    },
+                    "6": {
+                    "type": "Multiple choice",
+                    "question": "Which of these is NOT a Java keyword?",
+                    "options": {
+                        "1": "static",
+                        "2": "interface",
+                        "3": "define",
+                        "4": "extends"
+                    },
+                    "correct_responses": ["3"],
+                    "points": 10,
+                    "feedback": {
+                        "1": "Incorrect. 'static' is a valid Java keyword.",
+                        "2": "Incorrect. 'interface' is used to define interfaces in Java.",
+                        "3": "Correct! 'define' is not a Java keyword.",
+                        "4": "Incorrect. 'extends' is used for class inheritance in Java."
+                    }
+                  },
+                  "7": {
+                    "type": "True/False",
+                    "question": "Java supports both method overloading and method overriding.",
+                    "options": {
+                      "1": "True",
+                      "2": "False"
+                    },
+                    "correct_responses": ["1"],
+                    "points": 10,
+                    "feedback": {
+                      "1": "Correct! Java supports both overloading (same method name, different parameters) and overriding (subclass redefines superclass method).",
+                      "2": "Incorrect. Java does support both method overloading and overriding."
+                    }
+                  }
+                
             }
         }
 

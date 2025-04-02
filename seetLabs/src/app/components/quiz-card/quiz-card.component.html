@@ -1,32 +1,35 @@
-<form #quizForm="ngForm" (ngSubmit)="validateAnswer()">
+<form #quizForm="ngForm">
     <mat-card appearance="outlined" class="mat-card-parent">
-        <mat-card-header>
-            <mat-card-title id="question-number">Question One</mat-card-title>
-            <mat-card-subtitle>What is the correct choice?</mat-card-subtitle>
-        </mat-card-header>
+        <div class="card-header">
+            <div class="question-points">
+                <h2 id="question-number">{{title}}</h2>
+                <p id="points">{{points}} Points</p>
+            </div>
+            <p id="question">{{questionTitle}}</p>
+        </div>
         <mat-card-content>
             <mat-radio-group
             class="answerChoices"
-            name="radioButtons"
+            name="radioButtons-{{title}}"
             >
                 @for (choice of choices; track choice; let i = $index) {
                     @if (i % 2 == 0 && i + 1 < choices.length){
                         <div class="choice-row">
-                            <mat-radio-button 
-                            [ngClass]="{'correct': submitted == true && choices[correctChoice] == choices[i], 
-                            'inCorrect': this.submitted == true && choices[i] != choices[correctChoice] && userChoice == choices[i]}"
+                            <mat-radio-button
+                            [ngClass]="{'correct': this.submitted == true && this.correctOptionsSet.has(i+1), 
+                            'inCorrect': this.submitted == true && !this.correctOptionsSet.has(this.userChoice+1) && (this.userChoice) == i}" 
                             id="firstChoice"
                             [value]="choices[i]"
-                            (change)="userChoice=choices[i]"
+                            (change)="userChoice=i"
                             [disabled]="submitted"
                             >
                                 <p>{{choices[i]}}</p>
                             </mat-radio-button>
                             <mat-radio-button 
-                            [ngClass]="{'correct': submitted == true && choices[correctChoice] == choices[i+1], 
-                            'inCorrect': this.submitted == true && choices[i+1] != choices[correctChoice] && userChoice == choices[i+1]}"
+                            [ngClass]="{'correct': this.submitted == true && this.correctOptionsSet.has(i+2), 
+                            'inCorrect': this.submitted == true && !this.correctOptionsSet.has(this.userChoice+1) && (this.userChoice) == i+1}" 
                             [value]="choices[i+1]"
-                            (change)="userChoice=choices[i+1]"
+                            (change)="userChoice=i+1"
                             [disabled]="submitted"
                             >
                                 <p>{{choices[i+1]}}</p>
@@ -36,10 +39,10 @@
                     @else if (i % 2 == 0 && i + 1 == choices.length) {
                         <div>
                             <mat-radio-button 
-                            [ngClass]="{'correct': submitted == true && choices[correctChoice] == choices[i], 
-                            'inCorrect': this.submitted == true && choices[i] != choices[correctChoice] && userChoice == choices[i]}"
+                            [ngClass]="{'correct': this.submitted == true && this.correctOptionsSet.has(i+1), 
+                            'inCorrect': this.submitted == true && !this.correctOptionsSet.has(this.userChoice+1) && (this.userChoice) == i}" 
                             [value]="choices[i]"
-                            (change)="userChoice=choices[i]"
+                            (change)="userChoice=i"
                             [disabled]="submitted"
                             >
                                 <p>{{choices[i]}}</p>
@@ -49,12 +52,12 @@
                     
                 }
             </mat-radio-group>
+            @if (this.submitted && userChoice != -1){
+                <span><h4>Feedback</h4><p>{{feedback[userChoice]}}</p></span>
+            }
         </mat-card-content>
- 
     </mat-card>
     <br>
-    <button mat-flat-button type="submit" [disabled]="submitted">Submit Quiz</button>
-    <p>uC: {{userChoice}}</p>
 </form>
 
 

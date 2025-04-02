@@ -1,0 +1,34 @@
+.content-parent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    // background-color: orange;
+}
+
+.quiz-navigation-parent {
+    width: 20%;
+    // background-color: cyan;
+    margin-right: 3vw;
+}
+
+.quiz-navigation {
+    position: fixed;
+    text-overflow: ellipsis;
+    // background-color: lime;
+    width: 20vw;
+}
+.quiz-questions {
+    width: 50%;
+}
+
+.quiz-question {
+    margin-bottom: 2vh;
+}
+
+.quiz-results {
+    margin-top: 2.5vh;
+    padding: 1vh 1vw;
+    border: 0.5px solid grey;
+    border-radius: 5px;
+}
