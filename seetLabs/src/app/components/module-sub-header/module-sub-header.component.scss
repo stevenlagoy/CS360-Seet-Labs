@@ -5,7 +5,7 @@
 .sub-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center !important;
     flex-direction: row;
     padding: 0 3vw;
     width: 88vw;
@@ -15,7 +15,6 @@
 
 .progress-bar {
     width: 30vw !important;
-    height: 7vh;
 }
 
 .sub-header-bottom-parent-parent {
