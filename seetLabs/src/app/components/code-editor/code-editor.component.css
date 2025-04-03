@@ -1,0 +1,76 @@
+.code-editor{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+    background-color:   #3d79bd;/*#427ec2;*/
+    padding: .8em;
+    border-radius: .8em;
+    align-items: stretch;
+
+}
+button{
+    margin:1em; 
+    
+    height: 3em;
+    
+}
+
+.code-editor h3{
+    background-color: #3d79bd;
+    color:#eee;
+    margin-top:0;
+    margin-bottom: 0;
+    width:100%;
+    padding-bottom:.6em;
+    padding-top:.2em;
+
+}
+
+.colBase
+{
+    background-color:  #3d79bd;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.left{
+    flex-basis: 70%;
+
+}
+
+.col{
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: .8em;
+    flex-basis: 100%;
+    align-items: stretch;
+    overflow-y:scroll;
+}
+
+.right
+{
+    flex-basis: 30%;
+    margin-left: .8em;
+  
+}
+
+.rightContent
+{
+    display:flex;
+    flex-direction: column;
+    padding: 0 .5em 0 .5em;
+}
+
+
+
+.codemirror-insert
+{
+    height:100%;
+}
+
+
+
+
