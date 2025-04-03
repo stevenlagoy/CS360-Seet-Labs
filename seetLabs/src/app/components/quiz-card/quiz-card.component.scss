@@ -21,7 +21,28 @@
 #question-number {
     font-family: 'Inter-Regular';
     font-size: 20px;
-    margin-bottom: 1vh;
+}
+
+.card-header {
+    padding: 0.5vh 1.5vw 0vh 1.5vw;
+}
+
+#points {
+    color: grey;
+}
+
+#question {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.question-points {
+    display: flex;
+    width: 100%;
+    // background-color: cyan;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 }
 
 .correct {

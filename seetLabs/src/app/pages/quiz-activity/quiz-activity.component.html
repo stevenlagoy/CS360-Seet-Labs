@@ -1,0 +1,46 @@
+
+<module-sub-header [goForward]="goForward()" [goBack]="goBack()" [assignmentNumber]="assignmentNumber()" [moduleNumber]="moduleNumber()"></module-sub-header>
+
+<div class="content-parent">
+    <div class="quiz-navigation-parent">
+        <div class="quiz-navigation">
+            @if (!submitted()){
+                <button mat-flat-button type="submit" (click)="checkQuizResults()" [disabled]="(attempted() == numQuestions) ? false : true">Submit Quiz</button>
+            }
+            @if (submitted()){
+                <div class="quiz-results">
+                    <p>Score: {{earnedPoints()}}/{{totalPoints()}} ({{percentage()}}%)</p>
+                    <p>Passed: {{percentage() > 80 ? "True" : "False (You need at least an 80% to pass)"}}</p>
+                </div>
+            }
+            <br>
+            <div class="question-nav">
+                @for (question of getCounter(numQuestions); track question; let i = $index){
+                    <a href="/module/{{moduleNumber()}}/{{ assignmentNumber() }}#question-{{i+1}}" 
+                        [ngClass]="{'attempted': rendered() && !this.submitted() && this.quizCards.get(i)?.attempted,
+                            'incorrect': rendered() && !this.quizCards.get(i)?.correct && this.submitted(),
+                            'correct': rendered() && this.quizCards.get(i)?.correct && this.submitted()
+                        }"
+                    mat-fab extended>{{i+1}}</a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="quiz-questions">
+        @for (question of questions(); track question; let i = $index) {
+            <div class="quiz-question">
+                <quiz-card
+                    (attemptChanged)="attemptChanged($event)"
+                    id="question-{{i+1}}"
+                    title="Question {{i+1}}"
+                    questionTitle="{{question.question}}"
+                    [choices]="question.options"
+                    points="{{question.points}}"
+                    [correctChoices]="question.correct_responses"
+                    [feedback]="question.feedback"
+                ></quiz-card>
+            </div>
+        }
+        
+    </div>
+</div>

@@ -9,4 +9,5 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 })
 export class ProgressBarComponent {
   @Input() value = ''
+  @Input() title = ''
 }
