@@ -21,6 +21,24 @@ let instance: PlaygroundComponent | null = null;
 export class PlaygroundComponent 
 {
 
+  public splashText:string = "";
+
+  constructor()
+  {
+    let splashTexts 
+    = ["What will you create?", "Infinite Possibilities.", 
+      "Go on, play!", "Don't let the bugs get you down.", 
+      "You can make anything you can imagine.",
+       "Hmm. I wonder what this does...", "Remember to write your Javadoc(tm)!"]
+
+
+    this.splashText = splashTexts[Math.floor(Math.random()*splashTexts.length)];
+
+    if(Math.random()<.02)
+    {
+      this.splashText="Be careful. Mr. Seet is watching.";
+    }
+  }
  
 
 }
