@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, signal } from '@angular/core';
+import { Component, OnInit, ViewChildren, signal, AfterViewInit, QueryList } from '@angular/core';
 import { inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JsonServerTestService } from '../../services/json-server-test.service';
@@ -16,23 +16,40 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './quiz-activity.component.html',
   styleUrl: './quiz-activity.component.scss'
 })
-export class QuizActivityComponent implements OnInit {
+export class QuizActivityComponent implements OnInit, AfterViewInit {
 
   constructor(private _route: ActivatedRoute) {}
-  
-  questions = signal<questionType[]>([]);
 
+  questions = signal<questionType[]>([]);
   jsonDataService = inject(JsonServerTestService);
   quizName = signal<string>('')
   totalPoints = signal(0);
   earnedPoints = signal(0);
   numQuestions : number = 0;
   percentage = signal(0);
+  attempted = signal<number>(0);
   submitted = signal(false);
+  rendered = signal<boolean>(false);
+  
+  //nav
+  moduleNumber = signal<string>("");
+  assignmentNumber = signal<string>("");
+  goForward = signal<boolean>(true);
+  goBack = signal<boolean>(true);
+
+  @ViewChildren(QuizCardComponent) quizCards!: QueryList<QuizCardComponent>;
+
+  ngAfterViewInit(): void {
+    this.quizCards.changes.subscribe((card: QueryList<QuizCardComponent>) => {
+      this.rendered.set(true);
+    })
+  }
 
   ngOnInit(): void {
     const module = this._route.snapshot.paramMap.get('id');
     const assignmentNumber = this._route.snapshot.paramMap.get('assignmentNumber');
+    this.moduleNumber.set(module as string);
+    this.assignmentNumber.set(assignmentNumber as string);
     this.jsonDataService.getDataFromAPI(module, assignmentNumber).pipe(
       catchError((err) => {
         console.error(err);
@@ -70,12 +87,10 @@ export class QuizActivityComponent implements OnInit {
     return arr;
   }
 
-  @ViewChildren(QuizCardComponent) quizCards!: QuizCardComponent[];
-
   checkQuizResults(): void {
     this.submitted.set(true);
-    let correctCount: number = 0;
     this.quizCards.forEach(card => {
+      // console.log(card.submitted);
       this.totalPoints.update(val => val + parseInt(card.points));
       if (card.validateAnswer()){
         this.earnedPoints.update(val => val + parseInt(card.points));
@@ -83,5 +98,16 @@ export class QuizActivityComponent implements OnInit {
       }
     })
     this.percentage.set(Math.round((this.earnedPoints() / this.totalPoints()) * 100));
+    document.documentElement.scrollTop = 0; //scroll back to top of page
+  }
+
+  getCounter(value: number): any[] {
+    return Array(value);
+  }
+
+  attemptChanged(value: Boolean): void {
+    if (value){
+      this.attempted.update(val => val + 1);
+    }
   }
 }

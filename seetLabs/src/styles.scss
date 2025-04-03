@@ -35,6 +35,7 @@
 
 html {
   @include mat.all-component-themes(themePalette.$light-theme);
+  scroll-padding-top: 100px;
 }
 
 body {

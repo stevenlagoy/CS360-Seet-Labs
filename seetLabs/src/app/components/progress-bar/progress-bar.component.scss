@@ -5,7 +5,7 @@
     border-radius: 10px;
     padding: 5px 10px;
     flex-direction: column;
-    justify-content: left;
+    justify-content: center;
     // background-color: orange;
 }
 
@@ -20,9 +20,11 @@
     margin: 0vw 2vw;
 }
 
-.progress-bar-title {
-    margin: -1.5vh 0px;
+.progress-bar h4 {
+    margin: 0vw 2vw;
+    width: auto;
 }
+
 
 .progress-bar-value {
     @include mat.progress-bar-overrides((

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
@@ -17,12 +17,22 @@ export class QuizCardComponent {
   correctOptionsSet: Set<number> = new Set<number>;
   submitted: boolean = false;
   correct: boolean = false;
+  attempted: boolean = false;
   @Input() title: string = "";
   @Input() questionTitle: string = "";
   @Input() choices: string[] = [];
   @Input() points: string = "0";
   @Input() correctChoices: string[] = [];
   @Input() feedback: string[] = [];
+
+  @Output() attemptChanged = new EventEmitter<Boolean>();
+  
+  onAttempt() {
+    if (!this.attempted){
+      this.attempted = true;
+      this.attemptChanged.emit(this.attempted);
+    }
+  }
 
   ngOnInit() : void {
     for (let i = 0; i <= this.correctChoices.length; i++){

@@ -3,7 +3,11 @@
         <div class="card-header">
             <div class="question-points">
                 <h2 id="question-number">{{title}}</h2>
-                <p id="points">{{points}} Points</p>
+                @if (this.submitted){
+                    <p id="points">{{correct ? points : 0}}/{{points}} Points</p>
+                } @else {
+                    <p id="points">{{points}} Points</p>
+                }
             </div>
             <p id="question">{{questionTitle}}</p>
         </div>
@@ -20,16 +24,16 @@
                             'inCorrect': this.submitted == true && !this.correctOptionsSet.has(this.userChoice+1) && (this.userChoice) == i}" 
                             id="firstChoice"
                             [value]="choices[i]"
-                            (change)="userChoice=i"
+                            (change)="userChoice=i; onAttempt()"
                             [disabled]="submitted"
                             >
-                                <p>{{choices[i]}}</p>
+                                <p>{{choices[i]}}</p    >
                             </mat-radio-button>
                             <mat-radio-button 
                             [ngClass]="{'correct': this.submitted == true && this.correctOptionsSet.has(i+2), 
                             'inCorrect': this.submitted == true && !this.correctOptionsSet.has(this.userChoice+1) && (this.userChoice) == i+1}" 
                             [value]="choices[i+1]"
-                            (change)="userChoice=i+1"
+                            (change)="userChoice=i+1; onAttempt()"
                             [disabled]="submitted"
                             >
                                 <p>{{choices[i+1]}}</p>
@@ -42,7 +46,7 @@
                             [ngClass]="{'correct': this.submitted == true && this.correctOptionsSet.has(i+1), 
                             'inCorrect': this.submitted == true && !this.correctOptionsSet.has(this.userChoice+1) && (this.userChoice) == i}" 
                             [value]="choices[i]"
-                            (change)="userChoice=i"
+                            (change)="userChoice=i; onAttempt()"
                             [disabled]="submitted"
                             >
                                 <p>{{choices[i]}}</p>
