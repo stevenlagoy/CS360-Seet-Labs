@@ -1,5 +1,5 @@
 export type assignmentType = {
-    id: number,
+    id: number
     type: number
     file: string
 }

@@ -6,14 +6,14 @@ import { assignmentType } from '../../models/assignmentType.types';
 import hljs from 'highlight.js/lib/core';
 import java from 'highlight.js/lib/languages/java';
 import { CommonModule } from '@angular/common';
-
+import { ModuleSubHeaderComponent } from '../../components/module-sub-header/module-sub-header.component';
 @Component({
-  selector: 'app-json-server-test',
-  imports: [CommonModule],
-  templateUrl: './json-server-test.component.html',
-  styleUrl: './json-server-test.component.scss' // Use inline template
+  selector: 'readingActivity',
+  imports: [CommonModule, ModuleSubHeaderComponent],
+  templateUrl: './readingActivity.component.html',
+  styleUrl: './readingActivity.component.scss' // Use inline template
 })
-export class JsonServerTestComponent implements OnInit {
+export class readingActivity implements OnInit {
 
   constructor(private _route: ActivatedRoute, private cdr: ChangeDetectorRef) {}
   
@@ -21,10 +21,19 @@ export class JsonServerTestComponent implements OnInit {
   jsonData = signal<assignmentType>({ "id": 0, "type": 0, "file": "reading Material One" });
   template: string = "";
 
+  // Nav Data Members
+  goForward = signal<boolean>(true);
+  goBack = signal<boolean>(true);
+  moduleNumber = signal<string>("");
+  assignmentNumber = signal<string>("");
+
   ngOnInit(): void {
     hljs.registerLanguage('java', java);
     const id = this._route.snapshot.paramMap.get('id');
     const assignmentNumber = this._route.snapshot.paramMap.get('assignmentNumber');
+    this.moduleNumber.set(id as string);
+    this.assignmentNumber.set(assignmentNumber as string);
+    this.setNavSignals(assignmentNumber);
     this.getDataService.getDataFromAPI(id, assignmentNumber).pipe(
       catchError((err) => {
         console.log(err);
@@ -34,6 +43,15 @@ export class JsonServerTestComponent implements OnInit {
       this.jsonData.set(data);
       await this.loadReading(data.file);
     });
+  }
+
+  setNavSignals(assignmentNumber : any) {
+    assignmentNumber = assignmentNumber as number;
+    if (assignmentNumber == 1){
+      this.goBack.set(false);
+    } else if (assignmentNumber == 5){
+      this.goForward.set(false);
+    }
   }
 
 
