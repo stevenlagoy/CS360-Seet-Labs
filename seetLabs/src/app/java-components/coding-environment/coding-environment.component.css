@@ -1,0 +1,15 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.right
+{
+    flex-basis: 30%;
+}
+
+
+.center-left
+{
+    flex-basis: 70%;
+}

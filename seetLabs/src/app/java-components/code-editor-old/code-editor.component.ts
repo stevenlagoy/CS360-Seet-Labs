@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextAreaComponent } from '../../components/text-area/text-area.component';
-import {Java_JSOutputStream_jsWrite, JavaOutputComponent} from '../../components/java-output/java-output.component';
+import {Java_JSOutputStream_jsWrite, JavaOutputComponent} from '../java-output/java-output.component';
 import {Extension, EditorState} from "@codemirror/state"
 import {
   EditorView, keymap, highlightSpecialChars, drawSelection,

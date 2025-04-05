@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 
-import { CodeEditorComponent } from '../../components/code-editor/code-editor.component';
 import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
+import { CodingEnvironmentComponent } from '../../java-components/coding-environment/coding-environment.component';
 
 
 declare var cheerpjInit: any;
@@ -13,7 +13,7 @@ let instance: PlaygroundComponent | null = null;
 
 @Component({
   selector: 'app-playground',
-  imports: [CodeEditorComponent, GradientHeaderComponent
+  imports: [CodingEnvironmentComponent, GradientHeaderComponent
   ],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.css'
