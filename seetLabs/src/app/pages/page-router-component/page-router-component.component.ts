@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JsonServerTestService } from '../../services/json-server-test.service';
 import { catchError } from 'rxjs';
 import { CommonModule, NgIf } from '@angular/common';
+import { CodingActivityComponent } from '../coding-activity/coding-activity.component';
 
 
 @Component({
@@ -37,9 +38,12 @@ export class PageRouterComponentComponent {
       if (assignmentType === 0){
         const { readingActivity} = await import('../json-server-test/reading-activity');
         this.componentToRender = readingActivity;
-      } else if (assignmentType == 1){
+      } else if (assignmentType === 1){
         const { QuizActivityComponent } = await import("../quiz-activity/quiz-activity.component");
         this.componentToRender = QuizActivityComponent;
+      } else if (assignmentType === 3){
+        const { CodingActivityComponent } = await import("../coding-activity/coding-activity.component");
+        this.componentToRender = CodingActivityComponent;
       }
     })    
   } 
