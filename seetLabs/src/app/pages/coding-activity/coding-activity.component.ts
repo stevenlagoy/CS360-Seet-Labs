@@ -19,8 +19,6 @@ export class CodingActivityComponent
 
 
   // Nav Data Members
-  goForward = signal<boolean>(true);
-  goBack = signal<boolean>(true);
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
 
@@ -35,22 +33,6 @@ export class CodingActivityComponent
     const assignmentNumber = this._route.snapshot.paramMap.get('assignmentNumber');
     this.moduleNumber.set(id as string);
     this.assignmentNumber.set(assignmentNumber as string);
-
-    this.setNavSignals(assignmentNumber);
-    
-
   }
-
-  setNavSignals(assignmentNumber : any) 
-  {
-    assignmentNumber = assignmentNumber as number;
-    if (assignmentNumber == 1){
-      this.goBack.set(false);
-    } else if (assignmentNumber == 4){
-      this.goForward.set(false);
-    }
-  }
-
-
 
 }

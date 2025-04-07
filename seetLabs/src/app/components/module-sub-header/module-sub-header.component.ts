@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit, signal} from '@angular/core';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,12 +10,21 @@ import { CommonModule } from '@angular/common';
   templateUrl: './module-sub-header.component.html',
   styleUrl: './module-sub-header.component.scss'
 })
-export class ModuleSubHeaderComponent {
+
+export class ModuleSubHeaderComponent implements OnInit {
   @Input() headerBottom = false;
-  @Input() goForward = true;
-  @Input() goBack = true;
   @Input() moduleNumber = '';
   @Input() assignmentNumber = '';
+  goForward = signal<Boolean>(true);
+  goBack = signal<Boolean>(true);
+
+  ngOnInit(): void {
+    if (this.assignmentNumber == "1"){
+      this.goBack.set(false);
+    } else if (this.assignmentNumber == "5"){
+      this.goForward.set(false);
+    }
+  }
 
   incrementAssignment() : string {
     const num = parseInt(this.assignmentNumber);

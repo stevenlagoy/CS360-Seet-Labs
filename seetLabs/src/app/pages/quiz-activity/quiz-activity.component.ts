@@ -34,8 +34,6 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
   //nav
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
-  goForward = signal<boolean>(true);
-  goBack = signal<boolean>(true);
 
   @ViewChildren(QuizCardComponent) quizCards!: QueryList<QuizCardComponent>;
 

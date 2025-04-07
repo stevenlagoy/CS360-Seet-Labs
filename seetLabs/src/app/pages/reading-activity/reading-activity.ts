@@ -22,8 +22,6 @@ export class readingActivity implements OnInit {
   template: string = "";
 
   // Nav Data Members
-  goForward = signal<boolean>(true);
-  goBack = signal<boolean>(true);
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
 
@@ -33,7 +31,6 @@ export class readingActivity implements OnInit {
     const assignmentNumber = this._route.snapshot.paramMap.get('assignmentNumber');
     this.moduleNumber.set(id as string);
     this.assignmentNumber.set(assignmentNumber as string);
-    this.setNavSignals(assignmentNumber);
     this.getDataService.getDataFromAPI(id, assignmentNumber).pipe(
       catchError((err) => {
         console.log(err);
@@ -45,16 +42,8 @@ export class readingActivity implements OnInit {
     });
   }
 
-  setNavSignals(assignmentNumber : any) {
-    assignmentNumber = assignmentNumber as number;
-    if (assignmentNumber == 1){
-      this.goBack.set(false);
-    } else if (assignmentNumber == 5){
-      this.goForward.set(false);
-    }
-  }
-
-
+  
+  
   async loadReading(fileName: string) {
     try {
       const template = await import(`./../../../../Data/${fileName}`);
