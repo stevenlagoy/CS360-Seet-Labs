@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextAreaComponent } from '../../components/text-area/text-area.component';
-import {Java_JSOutputStream_jsWrite, JavaOutputComponent} from '../../components/java-output/java-output.component';
+import {Java_JSOutputStream_jsWrite, JavaOutputComponent} from '../java-output/java-output.component';
 import {Extension, EditorState} from "@codemirror/state"
 import {
   EditorView, keymap, highlightSpecialChars, drawSelection,
@@ -16,7 +16,8 @@ import {
   bracketMatching, foldGutter, foldKeymap
 } from "@codemirror/language"
 import {
-  defaultKeymap, history, historyKeymap
+  defaultKeymap, history, historyKeymap,
+  indentWithTab
 } from "@codemirror/commands"
 import {
   searchKeymap, highlightSelectionMatches
@@ -27,6 +28,7 @@ import {
 } from "@codemirror/autocomplete"
 import {lintKeymap} from "@codemirror/lint"
 import {java} from "@codemirror/lang-java"
+import { Status } from './Status';
 
 
 declare var cheerpjInit: any;
@@ -34,37 +36,14 @@ declare var cheerpjRunMain: any;
 declare var cheerpOSAddStringFile:any;
 
 
-class Status
+
+let LabLauncher:any = null;
+export async function Java_LabLauncher_callJS(lib:any /*: CJ3Library*/,self:any /*java object???*/)
 {
-  private _buttonStatus:string ="Initializing";
-  private _additionalStatus:string = "";
-  private _compilationAllowed:boolean = false;
-
-  get buttonStatus() {return this._buttonStatus;}
-  get additionalStatus(){return this._additionalStatus;}
-  get compileButtonDisabled(){return !this._compilationAllowed;}
-
-  public setStatus(status:string, isAdditional:boolean, compilationAllowed?:boolean):void
-  {
-    if(compilationAllowed == undefined)
-    {
-      compilationAllowed = isAdditional;
-    }
-
-    this._compilationAllowed = compilationAllowed;
-
-    if(isAdditional)
-    {
-      this._additionalStatus = status;
-      this._buttonStatus = "Compile";
-      return;
-    }
-
-    this._additionalStatus="";
-    this._buttonStatus=status;
-    
-  }
+  LabLauncher = self;
+  return new Promise(() => {}); // Keeps the function from returning
 }
+
 
 @Component({
   selector: 'app-code-editor',
@@ -84,6 +63,8 @@ export class CodeEditorComponent
   private _status:Status = new Status();
   get status() {return this._status;}
   
+  private baseCode:string = `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis is from java!\");
+    }\n}`;
 
 
   @ViewChild(JavaOutputComponent)output!:JavaOutputComponent;
@@ -106,8 +87,7 @@ export class CodeEditorComponent
     
     this.codeMirrorView = new EditorView({
       // starting code. Garbage format, I know, but temporary (hopefully).
-      doc: `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis is from java!\");
-    }\n}`,
+      doc: this.baseCode,
       parent: this.codeMirrorInsert.nativeElement,
       extensions: [  // A line number gutter
         lineNumbers(),
@@ -157,7 +137,8 @@ export class CodeEditorComponent
           // Autocompletion keys
           ...completionKeymap,
           // Keys related to the linter system
-          ...lintKeymap
+          ...lintKeymap,
+          indentWithTab
       ]),
       java()
       ]
@@ -169,7 +150,7 @@ export class CodeEditorComponent
   private async init()
   {
     // actually init cheerpj.
-    await cheerpjInit( {natives: { Java_JSOutputStream_jsWrite }}  );
+    await cheerpjInit( {natives: { Java_JSOutputStream_jsWrite, Java_LabLauncher_callJS }}  );
 
     // this just deletes files from previous code compilations. It's not strictly needed, really.
     let val = await cheerpjRunMain(
@@ -185,6 +166,36 @@ export class CodeEditorComponent
     this._status.setStatus("", true, true);
  
   } 
+
+  public resetEditor()
+  {
+    if(!confirm("Reset the code editor? You will lose any changes you made."))
+    {
+      return;
+    }
+
+    this.codeMirrorView.dispatch({changes: {
+      from: 0,
+      to: this.codeMirrorView.state.doc.length,
+      insert: this.baseCode
+    }})
+
+  }
+
+  public async mainButton()
+  {
+    if(!this._status.programRunning)
+    {
+      this.compile();
+      return;
+    }
+
+    // stop the program.
+    this._status.programRunning = false;
+    this._status.setStatus("Program Stopped", true);
+    LabLauncher?.end();
+  }
+
 
   public async compile()
   {
@@ -209,12 +220,13 @@ export class CodeEditorComponent
       return;
     }  
 
-    this._status.setStatus("Running Program", false);
+    this._status.setStatus("Stop Program", false, true);
+    this._status.programRunning = true;
     let retVal = await cheerpjRunMain(
         "LabLauncher",
         jarFile,
     );
-
+    this._status.programRunning = false;
 
     this._status.setStatus("Returned with code "+await retVal, true);
 

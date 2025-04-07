@@ -8,7 +8,44 @@
     border-radius: .8em;
     align-items: stretch;
 
+   
 }
+
+
+.row
+{
+    display: flex;
+    flex-direction: row;
+    padding-bottom:.5em;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:.1em;
+    margin-right: .5em;
+}
+
+.minirow
+{
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+    
+}
+
+.minirow p
+{
+    font-size: 80%;
+    color:#eee;
+    margin: 0;
+    margin-left: 2em;
+    font-style: italic;
+    
+
+
+}
+
+
 button{
     margin:1em; 
     
@@ -16,16 +53,31 @@ button{
     
 }
 
+.status{
+    font-size:90%;
+    color:#777;
+}
+
+ 
+
+.reset{
+    font-size: 90%;
+    color:#eee;
+    margin: 0;
+    font-style: italic;
+    text-decoration: underline;
+   
+}
+
 .code-editor h3{
-    background-color: #3d79bd;
     color:#eee;
     margin-top:0;
     margin-bottom: 0;
     width:100%;
-    padding-bottom:.6em;
-    padding-top:.2em;
+   
 
 }
+
 
 .colBase
 {

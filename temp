@@ -1,16 +1,19 @@
 public class Lab
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
-		System.out.println("Hello, world! \nThis is from java!");
-        for(int i = 0; i<25; i++) System.out.println(i);
         try
         {
-            throw new Exception("Whoops!");
+            while(true)
+            {
+                System.out.println("Hello, world!");
+                Thread.sleep(1000);
+            }
         }
         catch(Exception e)
         {
-          e.printStackTrace();
+            System.out.println("weird");
         }
+     
     }
 }
