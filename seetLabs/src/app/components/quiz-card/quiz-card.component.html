@@ -22,7 +22,6 @@
                             <mat-radio-button
                             [ngClass]="{'correct': this.submitted == true && this.correctOptionsSet.has(i+1), 
                             'inCorrect': this.submitted == true && !this.correctOptionsSet.has(this.userChoice+1) && (this.userChoice) == i}" 
-                            id="firstChoice"
                             [value]="choices[i]"
                             (change)="userChoice=i; onAttempt()"
                             [disabled]="submitted"
