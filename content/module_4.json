@@ -1,6 +1,7 @@
 {
     "name" : "module_4",
     "title" : "Module 4: Objects and Classes",
+    "number" : 4,
     "activity_count" : 4,
     "content" : {
         "activity1" : {

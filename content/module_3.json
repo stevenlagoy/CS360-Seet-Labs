@@ -1,6 +1,7 @@
 {
     "name" : "module_3",
     "title" : "Module 3: Methods and Subprograms",
+    "number" : 3,
     "activity_count" : 4,
     "content" : {
         "activity1" : {
@@ -10,7 +11,7 @@
             "content" : {
                 "1t" : "Methods and Subprograms",
                 "2h1" : "Defining and Calling",
-                "2p" : "%bMethods%/b are blocks of code that perform specific tasks. In Java, you define a method with its %breturn type%/b, %bname%/b, and %bparameters%/b. For example:%cpublic void greet() {%n%tSystem.out.println(%'Hello, World!%');%n}%/cThis method %bdefines%/b how to greet, and you %kinvoke%/k it by simply calling %kgreet()%/k in your code.",
+                "2p" : "%bMethods%/b are blocks of code that perform specific tasks. In Java, you define a method with its %breturn type%/b, %bname%/b, and %bparameters%/b. For example:%cpublic void greet() {%n%tSystem.out.println(%'Hello, World!%');%n}%/cThis method %bdefines%/b how to greet, and you %binvoke%/b it by simply calling %kgreet()%/k in your code. This is a basic function.",
                 "3h1" : "Method Returns and Parameters",
                 "3p" : "Methods can %breturn values%/b and accept parameters to work with different inputs. Consider:%cpublic int add(int a, int b) {%n%treturn a + b;%n}%/cHere, %kadd%/k takes two parameters and returns their sum. The return type of %kint%/k tells us what kind of value to expect.",
                 "4h1" : "Overloading",

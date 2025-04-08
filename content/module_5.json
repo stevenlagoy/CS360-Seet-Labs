@@ -1,6 +1,7 @@
 {
     "name" : "module_5",
     "title" : "Module 5: OOP, Interfaces, and Inheritance",
+    "number" : 5,
     "activity_count" : 4,
     "content" : {
         "activity1" : {
