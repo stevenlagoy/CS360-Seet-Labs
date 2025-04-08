@@ -25,7 +25,7 @@ public class ContentReader {
 
     public static void main(String[] args) {
         try {
-            Set<LinkedHashMap<Object, Object>> filesContents = readAllJSONFiles(contentFolder);
+            Set<LinkedHashMap<Object, Object>> filesContents = readAllJSONFiles(contentJSONSource);
             for (LinkedHashMap<Object, Object> module : filesContents) {
                 createHTMLs(module);
             }
@@ -36,12 +36,12 @@ public class ContentReader {
             e.printStackTrace();
             System.exit(-1);
         }
-
-        // TODO: create the db.json file
     }
 
-    public static final String contentFolder = "content/";
-    public static final String dataFolder = "seetLabs/Data/";
+    public static final String contentJSONSource = "content/";
+    public static final String contentHTMLDestination = "seetLabs/Data/";
+    public static final String javaBaseDestination = "seetLabs/Data/";
+    public static final String unitTestDestination = "seetLabs/Data/";
 
     public static class ScannerUtil {
         public Scanner createScanner(InputStream inputStream) {
@@ -60,7 +60,7 @@ public class ContentReader {
         Set<String> filenames = listFiles(dir);
         for (String filename : filenames) {
             if (filename.contains(".json")) {
-                LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentFolder + filename);
+                LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentJSONSource + filename);
                 if (fileJSON != null) JSONs.add(fileJSON);
             }
         }
@@ -227,7 +227,7 @@ public class ContentReader {
 
     public static void createHTML(LinkedHashMap<Object, Object> JSON) {
         List<String> htmlContent = JSONtoHTML(JSON);
-        File htmlFile = new File(contentFolder + JSON.get("id") + ".html");
+        File htmlFile = new File(contentHTMLDestination + JSON.get("id") + ".html");
         try {
             htmlFile.createNewFile();
             try (FileWriter writer = new FileWriter(htmlFile, false)) {
@@ -402,7 +402,7 @@ public class ContentReader {
     }
 
     private static void createJavaFile(String filename, String content) {
-        File javaFile = new File(contentFolder + filename + ".java");
+        File javaFile = new File(javaBaseDestination + filename + ".java");
         try {
             javaFile.createNewFile();
             try (FileWriter writer = new FileWriter(javaFile, false)) {
@@ -549,14 +549,14 @@ public class ContentReader {
                 result.append("\", \"type\" : \"");
                 result.append(ids.get(module).get(activity));
                 result.append("\", \"file\" : \"");
-                result.append(String.format("%s-%s", module.toString(), ids.get(module).toString()));
+                result.append(String.format("%s-%s.html", module.toString(), activity.toString()));
                 result.append("\"}");
             }
             result.append("\n\t]");
         }
         result.append("\n}");
         try {
-            File dbFile = new File(dataFolder + "db.json");
+            File dbFile = new File(contentHTMLDestination + "db.json");
             dbFile.createNewFile();
             try (FileWriter writer = new FileWriter(dbFile, false)) {
                 writer.write(result.toString());
