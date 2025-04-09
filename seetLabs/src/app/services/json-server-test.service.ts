@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { assignmentType } from '../models/assignmentType.types';
+import { CodingActivityData } from '../models/codingActivityData';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,9 @@ export class JsonServerTestService {
     return this.http.get<assignmentType>(url, {responseType: 'json'});
   }
 
+  getCodingActivityData(id: string | null, assignment: string | null)
+  {
+    const url = `http://localhost:3000/${id}/${assignment}`;
+    return this.http.get<CodingActivityData>(url, {responseType: 'json'});
+  }
 }

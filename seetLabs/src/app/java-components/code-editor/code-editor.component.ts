@@ -44,6 +44,17 @@ export class CodeEditorComponent
 
   public getCode = () => this.codeMirrorView.state.doc.toString();
 
+  public async setBaseCode(baseFile:string)
+  { 
+    this.baseCode = await import(`./../../../../Data/${baseFile}`);
+    console.log(this.baseCode);
+    // this.codeMirrorView.dispatch({changes: {
+    //   from: 0,
+    //   to: this.codeMirrorView.state.doc.length,
+    //   insert: this.baseCode
+    // }})
+  }
+
   public reset()
   {
     if(!confirm("Reset the code editor? You will lose any changes you made."))

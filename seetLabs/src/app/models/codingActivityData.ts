@@ -1,5 +1,6 @@
 export type CodingActivityData = {
     id: number
     type: number
-    file: string
+    context: string
+    base: string
 }

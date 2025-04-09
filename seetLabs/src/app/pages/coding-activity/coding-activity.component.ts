@@ -50,16 +50,18 @@ export class CodingActivityComponent
   setupContext()
   {
 
-    this.getDataService.getDataFromAPI(this.moduleNumber(), this.assignmentNumber()).pipe(
+    this.getDataService.getCodingActivityData(this.moduleNumber(), this.assignmentNumber()).pipe(
         catchError((err) => {
           console.log(err);
           throw err;
         })
       ).subscribe(async (data) => {
         this.jsonData.set(data);
-        console.log(data);
-        console.log("sent");
-        await this.environment.ContextPane!.loadContext(this.jsonData()!.file);
+  
+        console.log("Going to set context pane");
+        await this.environment.ContextPane!.loadContext(this.jsonData()!.context);
+        console.log("Going to set base code");
+        await this.environment.Editor.setBaseCode(this.jsonData()!.base);
       });
     
   }
