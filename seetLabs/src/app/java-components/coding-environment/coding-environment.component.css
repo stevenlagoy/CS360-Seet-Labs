@@ -1,0 +1,29 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.right
+{
+    flex-basis: 30%;
+}
+
+
+.center-left
+{
+    flex-basis: 70%;
+}
+
+
+.center
+{
+    flex-basis:50%;
+    border-radius: 0;
+    padding-left:0;
+}
+
+
+.left
+{
+    flex-basis: 20%;
+}

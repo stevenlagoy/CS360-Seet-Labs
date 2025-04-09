@@ -1,0 +1,14 @@
+<div class = "main" style ="height:{{height}}">
+    
+    @if(shouldDisplayContext)
+    {
+        <app-context-pane class = "left"></app-context-pane>
+        <app-code-editor class="center"></app-code-editor>
+    }
+    @else
+    {
+        <app-code-editor class="left-center"></app-code-editor>
+    }
+    
+    <app-code-control class="right" ></app-code-control>
+</div>

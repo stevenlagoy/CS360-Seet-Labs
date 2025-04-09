@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JsonServerTestComponent } from './json-server-test.component';
+import { CodeControlComponent } from './code-control.component';
 
-describe('JsonServerTestComponent', () => {
-  let component: JsonServerTestComponent;
-  let fixture: ComponentFixture<JsonServerTestComponent>;
+describe('CodeControlComponent', () => {
+  let component: CodeControlComponent;
+  let fixture: ComponentFixture<CodeControlComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JsonServerTestComponent]
+      imports: [CodeControlComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(JsonServerTestComponent);
+    fixture = TestBed.createComponent(CodeControlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

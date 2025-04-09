@@ -1,0 +1,37 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+
+@if (headerBottom == false){
+    <div class="sub-header-parent">
+        <div class="sub-header">
+            <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" [ngStyle]="{'visibility': goBack() ? 'visible' : 'hidden'}" mat-fab extended>
+                <mat-icon>arrow_back</mat-icon>
+                Last Activity
+            </a>
+            <div class="progress-bar">
+                <progress-bar title="Module Completion" value="50"></progress-bar>
+            </div>
+            <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" [ngStyle]="{'visibility': goForward() ? 'visible' : 'hidden'}" mat-fab extended>
+                <mat-icon>arrow_forward</mat-icon>
+                Next Activity
+            </a>
+        </div>
+    </div>
+}
+@else {
+    <div class="sub-header-bottom-parent-parent">
+        <div class="sub-header-bottom-parent">
+            <div class="sub-header-bottom">
+                <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" [ngStyle]="{'visibility': goBack() ? 'visible' : 'hidden'}" mat-fab extended>
+                    <mat-icon>arrow_back</mat-icon>
+                    Last Activity
+                </a>
+                <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" [ngStyle]="{'visibility': goForward() ? 'visible' : 'hidden'}" mat-fab extended>
+                    <mat-icon>arrow_forward</mat-icon>
+                    Next Activity
+                </a>
+            </div>
+        </div>
+    </div>
+}

@@ -1,10 +1,18 @@
 @use '@angular/material' as mat;
 @use './app/palettes/themePalette.scss';
 
+/*css for the playground specifically*/
 .error{
   color:red;
 }
 
+.cm-editor
+{
+    width:100%;
+    height:100%;
+}
+
+/*Fonts I guess? I didn't write this*/
 @font-face {
   font-family: 'Inter-Extra-Bold';
   src: url(../src/app/Fonts/static/Inter_24pt-ExtraBold.ttf);
@@ -35,6 +43,7 @@
 
 html {
   @include mat.all-component-themes(themePalette.$light-theme);
+  scroll-padding-top: 100px;
 }
 
 body {

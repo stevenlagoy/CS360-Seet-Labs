@@ -1,4 +1,7 @@
-import { Routes } from '@angular/router';
+import { ActivatedRoute, Routes } from '@angular/router';
+import { JsonServerTestService } from './services/json-server-test.service';
+import { inject } from '@angular/core';
+import { catchError } from 'rxjs';
 
 export const routes: Routes = [{
         path: 'components',
@@ -21,11 +24,11 @@ export const routes: Routes = [{
     },
 
     {
-        path: 'json_server_test/:id/:assignmentNumber',
+        path: 'module/:id/:assignmentNumber',
         pathMatch: 'full',
         loadComponent: () => {
-            return import('./pages/json-server-test/json-server-test.component').then(
-                module => module.JsonServerTestComponent
+            return import('./pages/page-router-component/page-router-component.component').then(
+                module => module.PageRouterComponentComponent
             )
         }, 
     }

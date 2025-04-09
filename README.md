@@ -17,7 +17,7 @@ The elevator went down. The intern avoided any eye contact. He sighed deeply.
 "Oh- quite. Don't worry about me." He nervously chuckled.
 
 The elvator ride took quite a while. Longer than felt reasonable. The lab must have several undergound floors that I wasn't even aware of. That alone was disconserting.
-Before I had too long to stew in my thoughts, the elevator stopped. The intern led me down a few halways, until we found a sliding glass door labeled 'Mr. Seet - Visitors entrance' Through the door appeared to be another elevator.
+Before I had too long to stew in my thoughts, the elevator stopped. The intern led me down a few hallways, until we found a sliding glass door labeled 'Mr. Seet - Visitors entrance' Through the door appeared to be another elevator.
 
 "This is as far as I can take you." The boy said, his voice nearly wavering. "Simply go down the elevator to meet Mr. Seet. Try not to take up too much of his time."
 
@@ -25,3 +25,58 @@ Before I had too long to stew in my thoughts, the elevator stopped. The intern l
 
 ---
 
+Only a few months ago, I had never heard of Mr. Seet or his company. I first came across the listing for an open position in the office on one of those job sites. I can't remember which one exactly: I had looked in some admittedly strange places for anyone who would hire me. I do remember the slight sense of... unease? that came over me the moment I clicked on the listing. I felt suddenly like I was being looked at. Not "watched" so much as someone somewhere suddenly Knew about me. Even so, I decided to close my windows and check that the front door of my little apartment was locked before I went back to my computer.
+
+That feeling really didn't go away over the next few weeks. The interviewing process was pretty strange too: all kinds of strange questions bordering on personal interrogation. A less desparate person might have called them some kind of violation, but I honestly really needed the job. I could overlook a couple nosy HR people- it's nothing I hadn't experienced before. But still, their insistence on knowing some of the strangest details was startling. The moment I sat down for my final interview, their first question was "Do you believe there's a god?". Nothing about prior work experience or my personal skills... and to be frank I'm kinda glad they didn't ask those kind of questions. No, they wanted to hear my thoughs about the nature of God. Best I could tell them was "if there is a God, I've never met him!" My attempt at humor didn't seem too funny to that hiring manager- blank stares in return, then a quick note on whatever paper she was hiding from me.
+
+Why did I accept the position then? Well like I've said, I was kinda desparate. The pay was... decent. And the benefits were good, surprisingly good. They gave me an offer I was in no position to refuse. And so here I am.
+
+I eventually became more used to that feeling of strange exposure since starting the job. They gave me a little office on one of the higher floors of the building. Only one small window, but it's better than nothing; although I did choose to keep the blinds on that window closed almost all the time. But there were plenty of other things to put my mind to. No matter how much I could push away that feeling of being looked at, there was one thing that always brought my mind back into the awareness of it: my new boss's name. Mr. Seet. I feel a little strange even saying it now. But It's unavoidable that you have to say your boss's name pretty regularly in an office like this. It's at the top of internal letters, included on emails, and of course he signs for my paychecks.
+
+The thing that was strange though is that it seemed like very few people in the office had met Mr. Seet in person more than a few times. After all, everyone said, "Mr. Seet is a very busy man." And the way my coworkers talk about those few times they have met him... well they just mention a time they entered his office and everyone else kinda nods knowingly. But I wasn't one of the ones who knew what he's really like, and I kept that to myself. I think everyone could tell despite my secrecy.
+
+---
+I fell- then promptly jerked awake, now realizing I had been asleep moments prior. Now, however, I stood in what I could only describe as an extremely tall chamber. The room was dark, save for a spotlight on myself. Enormous supporting pillars stretched what must have been stories high beyond the shadows. The walls, wherever they must have been, were too far in the shadows for me to see. In the middle distance, I could barely make out a form. glowing eyes. There was a heavy clunk as another light sputtered to life, illuminating what I could only imagine was Mr. Seet.
+An old man, bald, with what might be called a kindly face in other circumstances. He at once seemed approachable, a few feet away, and the size of a building, looming on the horizon. He had no desk. He simply sat in a chair- or, perhaps more accurately, a brutalist throne of polished concrete, the only notable feature of the chamber visible in the dark. 
+
+He spoke, with a tinny and slow cadence. "Harold. I don't belive we've been properly introduced." That subtle feeling that I had pushed to the back of my head after all these months suddently came to the forefront. I was being observed, no- Someone knew of me- they knew me, in and out, in a way I didn't know myself. It almost burned, looking into Seet's eyes.
+
+I returned, almost feeling as if I was compelled said it, "No, sir."
+
+"I am called Mr. Seet. Do you know why you're here?" He asked plainly.
+
+"No, sir."
+
+"I appologize, you misunderstand my question." He leaned forward, putting his delicate, yet collosal hands together. "Not here today. Why are you here, on this Earth of ours?"
+
+Even more than before, his glowing yellow eyes seemed to pierce into my very soul, puncturing and extracting something, as if with a syringe. "No, sir, I don't." 
+
+"Good. So mortal you are." Mr. Seet leaned back, and things returned to some sense of normalcy.
+
+"As you know, I am a very busy man. So I will make this short." I nodded. "I am a greedy man. I... used to belive that my employees held value because they allowed us to generate monetary wealth." He shook his head, briefly closing his piercing eyes. "This is a foolish notion. Money is but one thing. All things hold value. I want... Everything." The dreadful Mr. Seet paused.
+
+"Harold. You are here because you have nothing. No friends, hardly any family left, and barely any wealth to your name."
+
+I blinked. Like a deer in headlights.
+
+"You are here today because I would like to make a wager with you." His gaze looked down on me, pinning me to where I stood.
+
+"Y- Yes, sir?"
+
+"Like I said. I am a man of many projects. I have great desires for many things. Some things... are not so easily obtained." He looked at me. He knew me. "I belive you have quite the aptitude to aid me in these efforts."
+
+"What would you have me do, sir?" I asked, some part of my mind trying to hold on to this being a normal boss-employee interaction.
+
+"Keep up your desk job if you wish. Appearences are useful. You will see messages. Emails, texts. Graffiti. Patterns of ants marching to their deaths. Do as they say."
+
+I blinked. What?
+
+"I know what you're thinking, Harold. Remember, I am a **very** busy man. You will find yourself quite unable to contact me. Understood?" 
+
+"I- I think so sir."
+
+"Good." He smiled, self satisfied. "And I will be watching you. I have been for quite some time now."
+
+That was the last thing I remembered of that day.
+
+---
