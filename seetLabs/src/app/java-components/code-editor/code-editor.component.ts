@@ -23,9 +23,6 @@ import {
 import {lintKeymap} from "@codemirror/lint"
 import {java} from "@codemirror/lang-java"
 
-
-
-
 @Component({
   selector: 'app-code-editor',
   imports: [],
@@ -46,8 +43,14 @@ export class CodeEditorComponent
 
   public async setBaseCode(baseFile:string)
   { 
-    this.baseCode = await import(`./../../../../Data/${baseFile}`);
+    // this.baseCode = await import(`./../../../../Data/TestOne.java?raw`);
+    await fetch('./../../../../Data/TestOne.java?raw')
+      .then(res => res.text())
+      .then(code => {
+        console.log(code);
+      })
     console.log(this.baseCode);
+    // console.log(this.baseCode);
     // this.codeMirrorView.dispatch({changes: {
     //   from: 0,
     //   to: this.codeMirrorView.state.doc.length,
@@ -69,9 +72,6 @@ export class CodeEditorComponent
     }})
 
   }
-
-
-
 
   ngAfterViewInit()
   {
