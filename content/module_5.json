@@ -11,17 +11,19 @@
             "content" : {
                 "1t" : "OOP, Interfaces, and Inheritance",
                 "2h1" : "Encapsulation, Abstraction, Inheritance, Polymorphism",
-                "2p" : "Object-Oriented Programming (OOP) relies on four key principles: %bEncapsulation%/b (hiding details), %bAbstraction%/b (simplifying complexity), %bInheritance%/b (reusing code), and %bPolymorphism%/b (methods behaving differently for different objects).",
+                "2p" : "Object-Oriented Programming (OOP) relies on four core principles: %bEncapsulation%/b (hiding internal details), %bAbstraction%/b (exposing only necessary features), %bInheritance%/b (extending existing code), and %bPolymorphism%/b (treating objects of different types uniformly). These principles help organize complex systems into manageable components.",
                 "3h1" : "Creating and Using Interfaces",
-                "3p" : "An %kinterface%/k defines methods that a class must implement:%cinterface Animal {%n%tvoid makeSound();%nt}%/c A class implements an interface using %kimplements%/k:%cclass Dog implements Animal {%n%tpublic void makeSound() {%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c",
+                "3p" : "An %kinterface%/k defines a contract of methods without implementation. Any class that %kimplements%/k the interface must provide bodies for its methods. Example:%cinterface Animal {%n%tvoid makeSound();%nt}%n%/c%ccclass Dog implements Animal {%n%tpublic void makeSound() {%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c Interfaces allow unrelated classes to share common behavior.",
                 "4h1" : "Abstract Classes",
-                "4p" : "An %kabstract class%/k is a class that cannot be instantiated and may contain abstract methods:%cabstract class Vehicle {%n%tabstract void move();%nt}%/c Subclasses must define abstract methods before use.",
-                "5h1" : "Method Overriding",
-                "5p" : "%kMethod Overriding%/k allows a subclass to provide a specific implementation of a method from its superclass:%cclass Animal {%n%tvoid makeSound() {%n%t%tSystem.out.println(%'Some sound%');%n%t}%nt}%n%/c%/nclass Dog extends Animal {%n%t@Override%n%tvoid makeSound() {%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c",
-                "6h1" : "Super Keyword",
-                "6p" : "The %ksuper%/k keyword refers to the parent class and allows access to its methods and constructors:%cclass Animal {%n%tvoid makeSound() {%n%t%tSystem.out.println(%'Animal makes a sound%');%n%t}%nt}%n%nclass Dog extends Animal {%n%tvoid makeSound() {%n%t%tsuper.makeSound();%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c",
-                "7h1" : "Object Class, Common Methods",
-                "7p" : "All Java classes inherit from the %bObject%/b class, which provides common methods like %ktoString()%/k, %kequals()%/k, and %khashCode()%/k. These can be overridden for custom behavior.%c@Override%npublic String toString() {%n%treturn %'Dog instance%';%nt}%/c"
+                "4p" : "An %kabstract class%/k can include both abstract methods (without body) and concrete methods. It cannot be instantiated directly. Example:%cabstract class Vehicle {%n%tabstract void move();%n%tvoid stop() { System.out.println(%'Stopped%'); }%nt}%n%ccclass Car extends Vehicle {%n%tvoid move() { System.out.println(%'Car moving%'); }%nt}%/c Abstract classes are useful for sharing code among related classes.",
+                "5h1" : "Inheritance and Method Overriding",
+                "5p" : "%bInheritance%/b lets a subclass reuse fields and methods from a superclass using %kextends%/k. Subclasses can %boverride%/b inherited methods to provide specialized behavior. Example:%cclass Animal {%n%tvoid makeSound() { System.out.println(%'Some sound%'); }%nt}%n%ccclass Cat extends Animal {%n%t@Override%n%tvoid makeSound() { System.out.println(%'Meow%'); }%nt}%/c Overriding requires matching method signature and allows polymorphic calls.",
+                "6h1" : "The %ksuper%/k Keyword",
+                "6p" : "%ksuper%/k refers to the immediate parent class. Use it to call superclass constructors or methods. Example:%cclass Animal {%n%tString name;%n%tAnimal(String name) { this.name = name; }%nt}%n%ccclass Dog extends Animal {%n%tDog(String name) { super(name); }%n%tvoid printName() { System.out.println(super.name); }%nt}%/c Using %ksuper%/k helps initialize and access inherited members.",
+                "7h1" : "Object Class and Common Methods",
+                "7p" : "All classes implicitly extend %bObject%/b, which provides methods like %ktoString()%/k, %kequals()%/k, and %khashCode()%/k. Override these for meaningful behavior. Example:%c@Override%npublic String toString() { return %'Dog: %' + name; }%/c",
+                "8h1" : "Design Tips",
+                "8p" : "- Favor composition over inheritance when possible to reduce tight coupling.%n- Keep interfaces focused: define only related methods.%n- Use abstract classes for shared code and interfaces for behavior contracts.%n- Apply polymorphism to write flexible and extensible code.%n- Document overridden methods with @Override annotation for clarity."
             }
         },
         "activity2" : {
@@ -39,27 +41,19 @@
             "content" : {
                 "question1" : {
                     "type" : "multiple choice",
-                    "question" : "What is the primary purpose of an interface in Java?",
-                    "options" : {"1" : "To define reusable constants", "2" : "To enforce a class structure", "3" : "To inherit behavior from another class", "4" : "To create anonymous objects"},
+                    "question" : "What does the 'implements' keyword indicate in Java?",
+                    "options" : {"1" : "Class inheritance", "2" : "Interface implementation", "3" : "Abstract class instantiation", "4" : "Method overriding"},
                     "correct_responses" : ["2"],
                     "points" : 10,
-                    "feedback" : {
-                        "1" : "Not quite. Interfaces define behavior, not constants.",
-                        "2" : "Correct! Interfaces enforce method structure in implementing classes.",
-                        "3" : "Inheritance is done using 'extends', not 'implements'.",
-                        "4" : "Anonymous objects do not require interfaces." 
-                    }
+                    "feedback" : {"1" : "Not quite. 'extends' is for inheritance.","2" : "Correct! 'implements' signals interface adoption.","3" : "Abstract classes use 'extends'.","4" : "Overriding uses @Override, not 'implements'."}
                 },
                 "question2" : {
                     "type" : "true false",
-                    "question" : "True/False: Abstract classes can be instantiated directly.",
+                    "question" : "True/False: Abstract classes can contain both abstract and concrete methods.",
                     "options" : {"1" : "True", "2" : "False"},
-                    "correct_responses" : ["2"],
+                    "correct_responses" : ["1"],
                     "points" : 10,
-                    "feedback" : {
-                        "1" : "Incorrect. Abstract classes cannot be instantiated directly.",
-                        "2" : "That's right! Abstract classes must be extended and their methods implemented." 
-                    }
+                    "feedback" : {"1" : "Correct! Abstract classes mix method types.","2" : "Incorrect. They can have concrete methods too."}
                 }
             }
         }

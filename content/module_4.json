@@ -11,15 +11,21 @@
             "content" : {
                 "1t" : "Objects and Classes",
                 "2h1" : "Defining Classes",
-                "2p" : "A %kclass%/k is a blueprint for creating objects. In Java, we define a class like this:%cpublic class Car {%n%t// Class body%nt}%/c A class groups related data and behaviors into one unit.",
+                "2p" : "A %kclass%/k is a blueprint that defines the %bstate%/b (fields) and %bbehavior%/b (methods) of objects. In Java, declare a class with:%cpublic class Car {%n%t// fields and methods%n}%/c Classes group related functionality into a single unit.",
                 "3h1" : "Instance Variables and Methods",
-                "3p" : "Objects have %bstate%/b (data) and %bbehavior%/b (methods).%nInstance variables hold data:%cpublic class Car {%n%tString model;%n%tint year;%nt}%/cMethods define behaviors:%cpublic void drive() {%n%tSystem.out.println(%'The car is driving.%');%n}%/c",
+                "3p" : "%bInstance variables%/b (fields) store object data, and %bmethods%/b define actions. Example fields:%cpublic class Car {%n%tString model; // e.g., \"Tesla\"%n%tint year; // e.g., 2025%n}%/c Example method:%cpublic void drive() {%n%tSystem.out.println(%'The car is driving.%');%n}%/c",
                 "4h1" : "Constructors",
-                "4p" : "A %kconstructor%/k is a special method that initializes objects. It has the same name as the class:%cpublic Car(String model, int year) {%n%tthis.model = model;%n%tthis.year = year;%nt}%/c It’s called automatically when an object is created.",
+                "4p" : "A %kconstructor%/k initializes new objects. It has no return type and matches the class name. Example:%cpublic Car(String model, int year) {%n%tthis.model = model; // set instance field%n%tthis.year = year;%n}%/c If no constructor is defined, Java provides a default no-argument constructor.",
                 "5h1" : "Static Members",
-                "5p" : "%kstatic%/k variables and methods belong to the class, not instances. For example:%cpublic static int carCount = 0;%/c Static methods cannot access instance variables directly.%nTo call a static method, use the class name:%cCar.showTotalCars();%/c",
-                "6h1" : "This Keyword",
-                "6p" : "The %kthis%/k keyword refers to the current object. It helps distinguish instance variables from parameters:%cpublic void setModel(String model) {%n%tthis.model = model;%nt}%/c Without %kthis%/k, Java assumes both 'model' refer to the parameter."
+                "5p" : "%kstatic%/k fields and methods belong to the class itself rather than any instance. Use static for shared data or utility methods. Example:%cpublic static int carCount = 0; // shared among all Car objects%npublic static void showTotalCars() {%n%tSystem.out.println(%'Total cars: %' + carCount);%n}%/c Access static members via %kCar.showTotalCars()%/k.",
+                "6h1" : "The %kthis%/k Keyword",
+                "6p" : "%kthis%/k refers to the current object. It clarifies references when parameter names match field names:%cpublic void setModel(String model) {%n%tthis.model = model; // assigns parameter to field%n}%/c Without %kthis%/k, Java treats %kmodel%/k as the parameter.",
+                "7h1" : "Encapsulation",
+                "7p" : "%bEncapsulation%/b hides internal details by using %baccess modifiers%/b (private, public, protected). Provide %bgetters%/b and %bsetters%/b to control field access:%cprivate String model;%npublic String getModel() { return model; }%npublic void setModel(String model) { this.model = model; }%/c",
+                "8h1" : "Nested and Inner Classes",
+                "8p" : "Java allows classes within classes. %bStatic nested classes%/b act like top-level classes but scoped inside another. %bInner classes%/b (non-static) have access to outer instance members. Use them for logically grouping related classes.",
+                "9h1" : "Best Practices",
+                "9p" : "- Keep classes focused: each should have a single responsibility.%n- Use private fields and public getters/setters for encapsulation.%n- Limit use of static: prefer instance methods unless shared behavior is needed.%n- Comment constructors and complex methods for clarity.%n- Follow naming conventions: classes in PascalCase, methods and fields in camelCase."
             }
         },
         "activity2" : {
@@ -42,10 +48,10 @@
                     "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
-                        "1" : "Not quite. A constructor initializes objects, not classes.",
-                        "2" : "Correct! A constructor initializes an object’s state when it is created.",
-                        "3" : "Java has garbage collection to handle object destruction.",
-                        "4" : "Static methods do not require a constructor." 
+                        "1" : "Not quite. Classes define types, constructors initialize instances.",
+                        "2" : "Correct! A constructor sets up a new object's initial state.",
+                        "3" : "Object destruction is handled by garbage collection.",
+                        "4" : "Static methods are independent of constructors."
                     }
                 },
                 "question2" : {
@@ -55,8 +61,8 @@
                     "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
-                        "1" : "Incorrect. Static methods can only access static variables and methods.",
-                        "2" : "That's right! Static methods do not operate on specific instances." 
+                        "1" : "Incorrect. Static methods belong to the class and can't access instance-specific data.",
+                        "2" : "Correct! They can only access static members directly."
                     }
                 }
             }

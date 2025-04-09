@@ -83,9 +83,4 @@ Our Content:
     D) HashMaps and Sets In Detail
     E) Generics and Wildcards
     F) Creating Generic Classes and Methods
-10) Lambdas and Functional Programming
-    A) Functional Programming
-    B) Lambda Expressions
-    C) Functional Interfaces
-    D) Streams API
-    E) Method References and Optional Class
+10) Recap

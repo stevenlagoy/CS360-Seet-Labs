@@ -11,15 +11,19 @@
             "content" : {
                 "1t" : "Exception Handling",
                 "2h1" : "Understanding Exceptions",
-                "2p" : "Exceptions are unexpected events that occur during program execution. In Java, exceptions are objects that describe an error condition and can be handled to prevent program crashes.",
-                "3h1" : "Try Catch Finally Blocks",
-                "3p" : "Exception handling in Java is done using %ktry%/k, %kcatch%/k, and %kfinally%/k blocks:%c try {%n%t// Code that may throw an exception%n} catch (ExceptionType e) {%n%t// Handle the exception%n} finally {%n%t// Code that always executes%n} %/c",
-                "4h1" : "Throwing and Catching",
-                "4p" : "Exceptions can be explicitly thrown using the %kthrow%/k keyword:%c throw new ExceptionType(%'Error message%');%/c. They are caught using a matching %kcatch%/k block.",
-                "5h1" : "Checked and Unchecked Exceptions",
-                "5p" : "Exceptions in Java are categorized as %bchecked%/b (must be handled) and %bunchecked%/b (can be optionally handled). Checked exceptions include IOExceptions, while unchecked exceptions include NullPointerExceptions.",
-                "6h1" : "Custom Exceptions",
-                "6p" : "Developers can define custom exceptions by extending the %bException%/b class:%cclass MyException extends Exception {%n%tpublic MyException(String message) {%n%t%tsuper(message);%n%t}%n}%/c"
+                "2p" : "Exceptions are unexpected events during program execution. In Java, an exception is an object that represents an error or unusual condition. By handling exceptions, you can prevent crashes and provide meaningful feedback.",
+                "3h1" : "Try-Catch-Finally",
+                "3p" : "Use %ktry%/k to wrap code that may throw exceptions, %kcatch%/k to handle specific exception types, and %kfinally%/k for cleanup:%ctry {%n%t// risky code%n} catch (IOException e) {%n%t// handle I/O error%n} finally {%n%t// always runs%n}%/c",
+                "4h1" : "Throwing Exceptions",
+                "4p" : "You can explicitly throw exceptions using %kthrow%/k. This is useful for validating input or signaling errors:%cthrow new IllegalArgumentException(%'Invalid input%');%/c",
+                "5h1" : "Declaring Exceptions (throws)",
+                "5p" : "Methods that can throw checked exceptions must declare them with %kthrows%/k in the signature:%cpublic void readFile(String path) throws IOException {%n%t// read file%n}%/c This alerts callers to handle or further declare the exception.",
+                "6h1" : "Checked vs Unchecked",
+                "6p" : "%bChecked exceptions%/b (subclasses of Exception) must be handled or declared. %bUnchecked exceptions%/b (subclasses of RuntimeException) can occur anywhere and need not be declared. Use checked for recoverable conditions, unchecked for programming errors.",
+                "7h1" : "Custom Exceptions",
+                "7p" : "Define your own exceptions by extending %bException%/b or %bRuntimeException%/b:%cpublic class MyException extends Exception {%n%tpublic MyException(String msg) {%n%t%tsuper(msg);%n%t}%n}%/c Custom exceptions improve clarity and error categorization.",
+                "8h1" : "Best Practices",
+                "8p" : "- Catch the most specific exception first.%n- Avoid empty catch blocks—always handle or log errors.%n- Use %kfinally%/k or try-with-resources for resource cleanup.%n- Document thrown exceptions in method comments.%n- Prefer unchecked exceptions for programming logic errors."
             }
         },
         "activity2" : {
@@ -37,26 +41,26 @@
             "content" : {
                 "question1" : {
                     "type" : "multiple choice",
-                    "question" : "Which keyword is used to define an exception that must be handled?",
-                    "options" : {"1" : "throw", "2" : "throws", "3" : "try", "4" : "catch"},
+                    "question" : "Which keyword declares that a method may throw a checked exception?",
+                    "options" : {"1" : "throw","2" : "throws","3" : "try","4" : "catch"},
                     "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
-                        "1" : "Incorrect. 'throw' is used to raise an exception, not enforce handling.",
-                        "2" : "Correct! 'throws' declares checked exceptions that must be handled.",
-                        "3" : "Not quite. 'try' defines a block where exceptions might occur.",
-                        "4" : "'catch' handles exceptions but does not enforce handling." 
+                        "1" : "Incorrect. 'throw' raises an exception instance.",
+                        "2" : "Correct! 'throws' declares checked exceptions.",
+                        "3" : "'try' starts a block for catching exceptions.",
+                        "4" : "'catch' handles exceptions, not declares them."
                     }
                 },
                 "question2" : {
                     "type" : "true false",
-                    "question" : "True/False: A finally block always executes, regardless of whether an exception occurs.",
-                    "options" : {"1" : "True", "2" : "False"},
-                    "correct_responses" : ["1"],
+                    "question" : "True/False: Unchecked exceptions must be declared in the method signature.",
+                    "options" : {"1" : "True","2" : "False"},
+                    "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
-                        "1" : "That's right! The finally block always runs.",
-                        "2" : "Incorrect. The finally block runs regardless of exceptions." 
+                        "1" : "Incorrect. Unchecked exceptions need not be declared.",
+                        "2" : "Correct! Only checked exceptions require declaration."
                     }
                 }
             }
