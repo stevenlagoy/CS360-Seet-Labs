@@ -25,10 +25,12 @@ public class ContentReader {
 
     public static void main(String[] args) {
         try {
-            Set<LinkedHashMap<Object, Object>> filesContents = readAllJSONFiles(contentFolder);
+            Set<LinkedHashMap<Object, Object>> filesContents = readAllJSONFiles(contentJSONSource);
             for (LinkedHashMap<Object, Object> module : filesContents) {
                 createHTMLs(module);
             }
+
+            createDBFile(determineStructure(filesContents));
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -36,7 +38,10 @@ public class ContentReader {
         }
     }
 
-    public static final String contentFolder = "content/";
+    public static final String contentJSONSource = "content/";
+    public static final String contentHTMLDestination = "seetLabs/Data/";
+    public static final String javaBaseDestination = "seetLabs/Data/";
+    public static final String unitTestDestination = "seetLabs/Data/";
 
     public static class ScannerUtil {
         public Scanner createScanner(InputStream inputStream) {
@@ -54,8 +59,10 @@ public class ContentReader {
         Set<LinkedHashMap<Object, Object>> JSONs = new HashSet<>();
         Set<String> filenames = listFiles(dir);
         for (String filename : filenames) {
-            if (filename.contains(".json"))
-                JSONs.add(readJSONFile(contentFolder + filename));
+            if (filename.contains(".json")) {
+                LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentJSONSource + filename);
+                if (fileJSON != null) JSONs.add(fileJSON);
+            }
         }
         return JSONs;
     }
@@ -106,6 +113,7 @@ public class ContentReader {
             new Exception("The JSON object is malformed.").printStackTrace();
             return null;
         }
+        if (contents.size() == 0) return null;
         return readJSONObject(contents.subList(1, contents.size()-1));
     }
     public static LinkedHashMap<Object, Object> readJSONObject(List<String> contents) {
@@ -137,8 +145,13 @@ public class ContentReader {
                     }
                     value = list.toString();
                 }
-                else
-                    value = value.replace(",","");
+                else {
+                    for (int j = 0; j < value.length(); j++) {
+                        if (value.charAt(j) == ',' && !isInString(value, j)) {
+                            value = value.substring(0, j) + value.substring(j + 1, value.length());
+                        }
+                    }
+                }
             }
             catch (ArrayIndexOutOfBoundsException e) {
                 // do nothing - this is expected at the end of a JSON object
@@ -203,7 +216,8 @@ public class ContentReader {
     }
 
     public static void createHTMLs(LinkedHashMap<Object, Object> JSON){
-        for (int i = 0; i < Integer.parseInt(JSON.get("activity_count").toString()); i++){
+        if (JSON.size() <= 1) return;
+        for (int i = 1; i < Integer.parseInt(JSON.get("activity_count").toString()); i++){
             @SuppressWarnings("unchecked")
             LinkedHashMap<Object, Object> activityContent = (LinkedHashMap<Object, Object>) ((LinkedHashMap<Object, Object>) JSON.get("content")).get("activity" + i);
             if (activityContent != null)
@@ -213,7 +227,7 @@ public class ContentReader {
 
     public static void createHTML(LinkedHashMap<Object, Object> JSON) {
         List<String> htmlContent = JSONtoHTML(JSON);
-        File htmlFile = new File(contentFolder + JSON.get("name") + ".html");
+        File htmlFile = new File(contentHTMLDestination + JSON.get("id") + ".html");
         try {
             htmlFile.createNewFile();
             try (FileWriter writer = new FileWriter(htmlFile, false)) {
@@ -227,9 +241,6 @@ public class ContentReader {
                 e.printStackTrace();
                 return;
             }
-            // Write to the file
-            
-
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -270,10 +281,12 @@ public class ContentReader {
         add (new Markup("%%", "%"));
         add (new Markup("%n", "<br>"));
         add (new Markup("%t", "&#9;"));
+        add (new Markup("%'", "\""));
         add (new Markup("%i", "<i>", "%/i", "</i>"));
+        add (new Markup("%k", "<span class=\"keyword\">", "%/k", "</span>"));
+        add (new Markup("%c", "</p>\n\t<pre><code class=\"language-java\">", "%/c", "</code></pre>\n\t<p>"));
         add (new Markup("%b", "<b>", "%/b", "</b>"));
-        add (new Markup("%c", "</p>\n\t<div class=\"code-block\"><pre>", "%/c", "</pre></div>\n\t<p>"));
-        add (new Markup("%k", "<b>", "%/k", "</b>"));
+        add (new Markup("%l", "<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">", "%/l", "</a>"));
     }};
     public static Markup findMarkupByTag(String tag) {
         for (Markup markup : markupTags) {
@@ -283,9 +296,10 @@ public class ContentReader {
     }
 
     public static List<String> JSONtoHTML(LinkedHashMap<Object, Object> JSON) {
+
         List<String> html = new ArrayList<>();
-        
-        if (JSON.get("type").toString().equals("Reading Activity")) {
+
+        if (JSON.get("type").toString().equals("reading_activity")) {
 
             // Create HTML setup and Head section
             html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
@@ -300,31 +314,135 @@ public class ContentReader {
             HashMap<Object, Object> contents = (HashMap<Object, Object>) JSON.get("content");
 
             for (Object content : contents.keySet()) {
-                String contentLabel = content.toString().substring(1);
-                if (contentLabel.equals("t")) {
-                    // Title
-                    html.add("\t" + openingTags.get("t") + contents.get(content) + closingTags.get("t"));
+                try {
+                    String contentLabel = content.toString().split("^\\d+")[1];
+                    if (contentLabel.equals("t")) {
+                        // Title
+                        html.add("\t" + openingTags.get("t") + contents.get(content) + closingTags.get("t"));
+                    }
+                    else if (contentLabel.equals("h1")) {
+                        // Header 1
+                        html.add("\t" + openingTags.get("h1") + contents.get(content) + closingTags.get("h1"));
+                    }
+                    else if (contentLabel.equals("p")) {
+                        // Paragraph
+                        String text = contents.get(content).toString();
+                        String processed = processHTMLMarkup(text, 0);
+                        html.add("\t" + openingTags.get("p") + processed + closingTags.get("p"));
+                    }
                 }
-                else if (contentLabel.equals("h1")) {
-                    // Header 1
-                    html.add("\t" + openingTags.get("h1") + contents.get(content) + closingTags.get("h1"));
-                }
-                else if (contentLabel.equals("p")) {
-                    // Paragraph
-                    String text = contents.get(content).toString();
-                    String processed = processMarkup(text, 0);
-                    html.add("\t" + openingTags.get("p") + processed + closingTags.get("p"));
+                catch (IndexOutOfBoundsException e) {
+                    continue; // expected when there is no content label
                 }
             }
 
             html.add("</body>");
             html.add("</html>");
+
+            return html;
         } // end of Reading Activity
+
+        if (JSON.get("type").toString().equals("coding_activity")) {
+            
+            // CREATE HTML FOR INSTRUCTIONS / CONTEXT
+            html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+            html.add("\t<title>" + JSON.get("name") + "</title>");
+            html.add("\t<link rel=\"stylesheet\" href=\"style.css\">");
+            html.add("</head>");
+            
+            // Create Body section
+            html.add("<body>");
+
+            @SuppressWarnings("unchecked")
+            HashMap<Object, Object> contents = (HashMap<Object, Object>) ((HashMap<Object, Object>) JSON.get("content")).get("context");
+            if (contents != null) {
+                for (Object content : contents.keySet()) {
+                    try {
+                        String contentLabel = content.toString().split("^\\d+")[1];
+                        if (contentLabel.equals("t")) {
+                            // Title
+                            html.add("\t" + openingTags.get("t") + contents.get(content) + closingTags.get("t"));
+                        }
+                        else if (contentLabel.equals("h1")) {
+                            // Header 1
+                            html.add("\t" + openingTags.get("h1") + contents.get(content) + closingTags.get("h1"));
+                        }
+                        else if (contentLabel.equals("p")) {
+                            // Paragraph
+                            String text = contents.get(content).toString();
+                            String processed = processHTMLMarkup(text, 0);
+                            html.add("\t" + openingTags.get("p") + processed + closingTags.get("p"));
+                        }
+                    }
+                    catch (IndexOutOfBoundsException e) {
+                        continue; // expected when there is not content label
+                    }
+                }
+            }
+            html.add("</body>");
+            html.add("</html>");
+
+            // CREATE JAVA FILE FOR BASE CODE
+
+            try {
+                String baseCode = (((HashMap<Object, Object>) JSON.get("content")).get("base_code")).toString();
+                String processed = processJavaMarkup(baseCode, 0);
+                createJavaFile(JSON.get("id") + "_basecode", processed);
+            }
+            catch (NullPointerException e) {
+            }
+
+
+            // create test cases file in a common useful format
+            // two types: console out, unit tests - identified by a flag in the file
+            // the user will write a function or class based on the instructions. the test code will use that function or class, by name as a black box, and check the output
+        } // end of Coding Activity
 
         return html;
     }
 
-    private static String processMarkup(String text, int startIndex) {
+    private static void createJavaFile(String filename, String content) {
+        File javaFile = new File(javaBaseDestination + filename + ".java");
+        try {
+            javaFile.createNewFile();
+            try (FileWriter writer = new FileWriter(javaFile, false)) {
+                writer.write(content);
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String processJavaMarkup(String text, int startIndex) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = startIndex; i < text.length(); i++) {
+            if (text.charAt(i) == '%') {
+                if (i + 1 >= text.length()) {
+                    result.append('%');
+                    continue;
+                }
+                char markupChar = text.charAt(i+1);
+                if (markupChar == 'n') {
+                    result.append('\n');
+                    i++;
+                }
+                else if (markupChar == 't') {
+                    result.append('\t');
+                    i++;
+                }
+            }
+            else result.append(text.charAt(i));
+        }
+
+        return result.toString();
+    }
+
+    private static String processHTMLMarkup(String text, int startIndex) {
         StringBuilder result = new StringBuilder();
     
         for (int i = startIndex; i < text.length(); i++) {
@@ -342,7 +460,7 @@ public class ContentReader {
                 // Get markup tag
                 Markup markup = findMarkupByTag(text.substring(i, i + 2));
                 if (markup == null) {
-                    System.out.println("WARNING: Unrecognized markup " + text.substring(i, i + 2));
+                    System.out.println("WARNING: Unrecognized markup " + text.substring(i, i + 2) + " in ..." + text.substring(Integer.max(0, i - 10), Integer.min(text.length(), i + 10)) + "...");
                     result.append(text.charAt(i));
                     continue;
                 }
@@ -356,7 +474,7 @@ public class ContentReader {
                 
                 // Handle paired tags
                 i += 2; // Skip the opening tag
-                String processed = processMarkup(text, i);
+                String processed = processHTMLMarkup(text, i);
                 if (processed == null) {
                     System.out.println("WARNING: Unclosed tag at position " + i);
                     continue;
@@ -381,4 +499,74 @@ public class ContentReader {
         return result.toString();
     }
 
+    public static HashMap<Integer, HashMap<Integer, Integer>> determineStructure(Set<LinkedHashMap<Object, Object>> contents) {
+        // 0 is reading, 1 is quiz, 2 is coding
+        
+        HashMap<Integer, HashMap<Integer, Integer>> result = new HashMap<Integer, HashMap<Integer, Integer>>();
+
+        for (LinkedHashMap<Object, Object> module : contents) {
+            LinkedHashMap<Object, Object> moduleContents = (LinkedHashMap<Object, Object>) module.get("content");
+            HashMap<Integer, Integer> activityStructure = new HashMap<>();
+            for (Object activity : moduleContents.keySet()) {
+                HashMap<Object, Object> activityContents = (HashMap<Object, Object>) moduleContents.get(activity);
+                int activityNumber = Integer.parseInt(activityContents.get("id").toString().split("-")[1]);
+                String type = activityContents.get("type").toString();
+                int activityType = type.equals("reading_activity") ? 0 : type.equals("quiz_activity") ? 1 : type.equals("coding_activity") ? 2 : -1;
+                activityStructure.put(activityNumber, activityType);
+                System.out.println(activityNumber + " " + activityType);
+            }
+            result.put(Integer.parseInt(module.get("number").toString()), activityStructure);
+        }
+
+        return result;
+    }
+
+    public static void createDBFile(HashMap<Integer, HashMap<Integer, Integer>> ids) {
+        // 0 is reading, 1 is quiz, 2 is coding
+
+        /* like this:
+        "1": [
+            {"id": "1", "type": 0, "file": "readingOne.html"},
+            {"id": "2", "type": 0, "file": "readingTwo.html"}
+        ],
+        "2": [
+            {"id": "1", "type": 1, "file": "Quiz Material One"},
+            {"id": "2", "type": 1, "file": "Quiz Material Two"}
+        ] 
+        */
+
+        StringBuilder result = new StringBuilder();
+
+        result.append("{\n");
+        for (Integer module : ids.keySet()) {
+            if (result.charAt(result.length() - 1) == ']') result.append(",\n");
+            result.append("\t\"").append(module.toString()).append("\" : [\n");
+            for (Integer activity : ids.get(module).keySet()) {
+                if (result.charAt(result.length() - 1) == '}') result.append(",\n\t");
+                else result.append("\t");
+                result.append("\t{\"id\" : \"");
+                result.append(activity.toString());
+                result.append("\", \"type\" : \"");
+                result.append(ids.get(module).get(activity));
+                result.append("\", \"file\" : \"");
+                result.append(String.format("%s-%s.html", module.toString(), activity.toString()));
+                result.append("\"}");
+            }
+            result.append("\n\t]");
+        }
+        result.append("\n}");
+        try {
+            File dbFile = new File(contentHTMLDestination + "db.json");
+            dbFile.createNewFile();
+            try (FileWriter writer = new FileWriter(dbFile, false)) {
+                writer.write(result.toString());
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

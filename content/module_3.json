@@ -1,0 +1,77 @@
+{
+    "name" : "module_3",
+    "title" : "Module 3: Methods and Subprograms",
+    "number" : 3,
+    "activity_count" : 4,
+    "content" : {
+        "activity1" : {
+            "name" : "Reading 3",
+            "id" : "3-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Methods and Subprograms",
+                "2h1" : "Defining and Calling",
+                "2p" : "%bMethods%/b are named blocks of code designed to perform specific tasks. In Java, you declare a method by specifying its %breturn type%/b, %bname%/b, and %bparameters%/b. For example:%cpublic void greet() {%n%tSystem.out.println(%'Hello, World!%');%n}%/c This method definition tells Java what to do when you %binvoke%/b %kgreet()%/k in your program.",
+                "3h1" : "Method Returns and Parameters",
+                "3p" : "Methods can %breturn values%/b and accept parameters to handle different inputs. For instance:%cpublic int add(int a, int b) {%n%treturn a + b;%n}%/c Here, %kadd%/k takes two %bint%/b parameters and returns their sum. The return type %bint%/b indicates the method yields an integer result.",
+                "4h1" : "Overloading",
+                "4p" : "%bOverloading%/b lets you define multiple methods with the same name but different parameter lists. Java chooses the correct method based on the arguments provided. Example:%cpublic void display(int num) {%n%tSystem.out.println(num);%n}%npublic void display(String message) {%n%tSystem.out.println(message);%n}%/c Both methods are named %kdisplay%/k, yet Java distinguishes them by their parameter types.",
+                "5h1" : "Pass-by-Value vs Pass-by-Reference",
+                "5p" : "Java uses %bpass-by-value%/b for all method arguments. This means a copy of the variable’s value is passed. For primitive types, the value itself is copied. For objects, the reference is copied, so methods can modify object state but cannot reassign the original reference. Example:%cpublic void updateValue(int num) {%n%tnum = 100; // only the copy changes%n}%n%npublic void updateObject(MyClass obj) {%n%tobj.value = 100; // modifies the actual object%n}%/c",
+                "6h1" : "Recursion",
+                "6p" : "%bRecursion%/b occurs when a method calls itself to solve a smaller instance of the same problem. A clear %bbase case%/b is essential to stop recursion. Example: factorial:%cpublic int factorial(int n) {%n%tif (n <= 1) {%n%t%treturn 1; // base case%n%t}%n%treturn n * factorial(n - 1);%n}%/c Without the base case, the calls would continue indefinitely.",
+                "7h1" : "Anonymous Inner Classes and Lambdas",
+                "7p" : "Before Java 8, %banonymous inner classes%/b were used for quick, one-off implementations of interfaces. Java 8 introduced %blambda expressions%/b for a more concise syntax. Example anonymous class:%cbutton.addActionListener(new ActionListener() {%n%tpublic void actionPerformed(ActionEvent e) {%n%t%tSystem.out.println(%'Clicked%');%n%t}%n});%/c Lambda equivalent (covered in Module 10):%cbutton.addActionListener(e -> System.out.println(%'Clicked%'));%/c",
+                "8h1" : "Best Practices",
+                "8p" : "- Keep methods focused: each should do one task.%n- Choose descriptive names: %kgreetUser()%/k is clearer than %kmethod1()%/k.%n- Limit parameters: if you need many, consider grouping them into an object.%n- Document non-obvious behavior with comments.%n- Write small helper methods to simplify complex logic."
+            }
+        },
+        "activity2" : {
+            "name" : "Coding 3",
+            "id" : "3-3",
+            "type" : "coding_activity",
+            "content" : {
+                "" : ""
+            }
+        },
+        "activity3" : {
+            "name" : "Quiz 3",
+            "id" : "3-4",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which term best describes a method that calls itself?",
+                    "options" : {
+                        "1" : "Iteration",
+                        "2" : "Recursion",
+                        "3" : "Overloading",
+                        "4" : "Encapsulation"
+                    },
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Iteration uses loops rather than self-calls.",
+                        "2" : "Correct! Recursion is when a method calls itself.",
+                        "3" : "Overloading involves multiple methods sharing a name.",
+                        "4" : "Encapsulation bundles data and methods together."
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: In Java, overloaded methods must have different parameter lists.",
+                    "options" : {
+                        "1" : "True",
+                        "2" : "False"
+                    },
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Correct! Overloaded methods differ by parameters.",
+                        "2" : "Incorrect. They must differ in parameter lists."
+                    }
+                }
+            }
+        }
+    }
+}
