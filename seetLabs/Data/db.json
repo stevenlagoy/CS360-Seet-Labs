@@ -118,7 +118,8 @@
         }
 
         },
-        {"id": "4", "type": 3}
+        {"id": "4", "type": 3, "file":"readingOne.html"},
+        {"id": "5", "type": 3, "file":"readingTwo.html"}
     ],
     "2": [
         {"id": "1", "type": 1, "file": "Quiz Material One"},
