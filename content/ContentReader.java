@@ -25,14 +25,15 @@ import java.util.Stack;
 public class ContentReader {
 
     public static final String contentJSONSource = "content/";
-    public static final String contentHTMLDestination = "seetLabs/Data/";
-    public static final String javaBaseDestination = "seetLabs/Data/";
-    public static final String unitTestDestination = "seetLabs/Data/test_cases/";
+    public static final String dataFolder = "seetLabs/Data/";
+    public static final String contentHTMLDestination = dataFolder;
+    public static final String javaBaseDestination = dataFolder;
+    public static final String unitTestDestination = dataFolder + "test_cases/";
 
     public static final String htmlFileExtension = ".html";
     public static final String jsonFileExtension = ".json";
     public static final String javaFileExtension = ".txt";
-    public static final String textFileExtension = ".txt";
+    public static final String txtFileExtension = ".txt";
 
     public static final Set<String> ignoredFiles = Set.of(
         "test_cases/"
@@ -40,13 +41,13 @@ public class ContentReader {
 
     public static void main(String[] args) {
         try {
-            Set<LinkedHashMap<Object, Object>> filesContents = readAllJSONFiles(contentJSONSource);
+            Set<LinkedHashMap<Object, Object>> filesContents = JSONProcessor.readAllJSONFiles(contentJSONSource);
             FileOperations.emptyFiles("seetLabs/Data/", htmlFileExtension);
             FileOperations.emptyFiles("seetLabs/Data/", jsonFileExtension);
             FileOperations.emptyFiles("seetLabs/Data/", javaFileExtension);
-            FileOperations.emptyFiles("seetLabs/Data/", textFileExtension);
+            FileOperations.emptyFiles("seetLabs/Data/", txtFileExtension);
             for (LinkedHashMap<Object, Object> module : filesContents) {
-                createHTMLs(module);
+                HTMLGenerator.createAllHTMLs(module);
             }
 
             createDBFile(determineStructure(filesContents));
@@ -54,20 +55,6 @@ public class ContentReader {
         catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
-        }
-    }
-
-    public enum ActivityType {
-        READING("reading_activity", 0),
-        QUIZ("quiz_activity", 1),
-        CODING("coding_activity", 2);
-
-        private final String type;
-        private final int value;
-
-        ActivityType(String type, int value) {
-            this.type = type;
-            this.value = value;
         }
     }
 
@@ -95,32 +82,47 @@ public class ContentReader {
         }
 
         public static void emptyFiles(String dir, String extension) throws IOException {
-            try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
-                for (Path path : stream) {
-                    String fileName = path.getFileName().toString();
-                    if (ContentReader.ignoredFiles.contains(fileName)) {
-                        continue;
-                    }
-                    if (Files.isDirectory(path)) {
-                        continue;
-                    }
-                    
-                    // Delete if extension matches or if wildcard
-                    if (extension.equals("*") || fileName.endsWith(extension)) {
-                        try {
-                            Files.delete(path);
-                        } catch (IOException e) {
-                            System.err.println("Failed to delete file: " + fileName);
-                            throw e;
-                        }
+            Set<String> files = listFiles(dir);
+            for (String fileName : files) {
+                // Delete if extension matches or if wildcard
+                if (extension.equals("*") || fileName.endsWith(extension)) {
+                    try {
+                        Path path = Paths.get(dir, fileName);
+                        Files.delete(path);
+                    } catch (IOException e) {
+                        System.err.println("Failed to delete file: " + fileName);
+                        throw e;
                     }
                 }
             }
         }
 
         public static void writeHTML(String filename, List<String> content) {
-            File file = new File(ContentReader.contentHTMLDestination + filename + ContentReader.htmlFileExtension);
-            writeFile(file, content);
+            writeFile(filename, ContentReader.htmlFileExtension, ContentReader.contentHTMLDestination, content);
+        }
+        public static void writeHTML(String filename, String content) {
+            writeFile(filename, ContentReader.htmlFileExtension, ContentReader.contentHTMLDestination, content);
+        }
+
+        public static void writeJava(String filename, List<String> content) {
+            writeFile(filename, ContentReader.htmlFileExtension, ContentReader.contentHTMLDestination, content);
+        }
+        public static void writeJava(String filename, String content) {
+            writeFile(filename, ContentReader.htmlFileExtension, ContentReader.contentHTMLDestination, content);
+        }
+
+        public static void writeJSON(String filename, List<String> content) {
+            writeFile(filename, ContentReader.jsonFileExtension, ContentReader.dataFolder, content);
+        }
+        public static void writeJSON(String filename, String content) {
+            writeFile(filename, ContentReader.jsonFileExtension, ContentReader.dataFolder, content);
+        }
+
+        public static void writeTxt(String filename, List<String> content) {
+            writeFile(filename, ContentReader.txtFileExtension, ContentReader.dataFolder, content);
+        }
+        public static void writeTxt(String filename, String content) {
+            writeFile(filename, ContentReader.txtFileExtension, ContentReader.dataFolder, content);
         }
 
         public static void writeFile(String filename, String extension, String destination, String content) {
@@ -145,19 +147,58 @@ public class ContentReader {
         }
     }
 
-    public static Set<LinkedHashMap<Object, Object>> readAllJSONFiles(String dir) throws IOException {
-        Set<LinkedHashMap<Object, Object>> JSONs = new HashSet<>();
-        Set<String> filenames = FileOperations.listFiles(dir);
-        for (String filename : filenames) {
-            if (filename.contains(jsonFileExtension)) {
-                LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentJSONSource + filename);
-                if (fileJSON != null) JSONs.add(fileJSON);
-            }
-        }
-        return JSONs;
-    }
-
     public static class JSONProcessor {
+
+        public static Set<LinkedHashMap<Object, Object>> readAllJSONFiles(String dir) throws IOException {
+            Set<LinkedHashMap<Object, Object>> JSONs = new HashSet<>();
+            Set<String> filenames = FileOperations.listFiles(dir);
+            for (String filename : filenames) {
+                if (filename.contains(jsonFileExtension)) {
+                    LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentJSONSource + filename);
+                    if (fileJSON != null) JSONs.add(fileJSON);
+                }
+            }
+            return JSONs;
+        }
+
+        public static LinkedHashMap<Object, Object> readJSONFile(String filename) {
+            ArrayList<String> contents = new ArrayList<String>();
+            try {
+                File file = new File(filename);
+                Scanner scanner = ScannerUtil.createScanner(file);
+                while (scanner.hasNextLine()) {
+                    contents.add(scanner.nextLine());
+                }
+                scanner.close();
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+                return null;
+            }
+            // split the contents by JSON object, use nested Lists to represent the JSON structure
+            Stack<Integer> stack = new Stack<Integer>();
+            Integer[] indices = new Integer[contents.size()];
+            for (int i = 0; i < contents.size(); i++) {
+                if (contents.get(i) == null) break;
+                if (contents.get(i).contains("{")) stack.push(i);
+                if (contents.get(i).contains("}")) {
+                    try {
+                        indices[stack.pop()] = i;
+                    }
+                    catch (EmptyStackException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+            }
+            if (!stack.isEmpty()) {
+                new Exception("The JSON object is malformed.").printStackTrace();
+                return null;
+            }
+            if (contents.size() == 0) return null;
+            return JSONProcessor.readJSONObject(contents.subList(1, contents.size()-1));
+        }
+
         public static LinkedHashMap<Object, Object> readJSONObject(List<String> contents) {
             LinkedHashMap<Object, Object> object = new LinkedHashMap<Object, Object>();
             for (int i = 0; i < contents.size(); i++) {
@@ -257,62 +298,6 @@ public class ContentReader {
             return false;
         }
     }
-    
-    public class HTMLBuilder {
-
-        private List<String> html = new ArrayList<>();
-    
-        public HTMLBuilder addHeader(String title) {
-            html.add("<!DOCTYPE html>\n<html lang=\"en\">");
-            html.add("<head>");
-            html.add("\t<meta charset=\"UTF-8\">");
-            html.add("\t<title>" + title + "</title>");
-            return this;
-        }
-        
-        public HTMLBuilder addContent(String content) {
-            html.add(content);
-            return this;
-        }
-        
-        public List<String> build() {
-            return html;
-        }
-    }
-
-    public static void createHTMLs(LinkedHashMap<Object, Object> JSON){
-        if (JSON.size() <= 1) return;
-        for (int i = 1; i < Integer.parseInt(JSON.get("activity_count").toString()); i++){
-            @SuppressWarnings("unchecked")
-            LinkedHashMap<Object, Object> activityContent = (LinkedHashMap<Object, Object>) ((LinkedHashMap<Object, Object>) JSON.get("content")).get("activity" + i);
-            if (activityContent != null)
-                createHTML(activityContent);
-        }
-    }
-
-    public static void createHTML(LinkedHashMap<Object, Object> JSON) {
-        HTMLGenerator generator = new HTMLGenerator();
-        List<String> htmlContent = generator.generateHTML(JSON);
-        File htmlFile = new File(contentHTMLDestination + JSON.get("id") + htmlFileExtension);
-        try {
-            htmlFile.createNewFile();
-            try (FileWriter writer = new FileWriter(htmlFile, false)) {
-                // Automatically clear the file
-
-                for (String line : htmlContent) {
-                    writer.write(line + "\n");
-                }
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-                return;
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-    }
 
     public static class HTMLGenerator {
         public static final Map<String, String> openingTags = Map.of(
@@ -340,7 +325,41 @@ public class ContentReader {
             }
         }
 
-        private List<String> generateReadingActivity(LinkedHashMap<Object, Object> JSON) {
+        public static void createAllHTMLs(LinkedHashMap<Object, Object> JSON){
+            if (JSON.size() <= 1) return;
+            for (int i = 1; i < Integer.parseInt(JSON.get("activity_count").toString()); i++){
+                @SuppressWarnings("unchecked")
+                LinkedHashMap<Object, Object> activityContent = (LinkedHashMap<Object, Object>) ((LinkedHashMap<Object, Object>) JSON.get("content")).get("activity" + i);
+                if (activityContent != null)
+                    createHTML(activityContent);
+            }
+        }
+    
+        public static void createHTML(LinkedHashMap<Object, Object> JSON) {
+            HTMLGenerator generator = new HTMLGenerator();
+            List<String> htmlContent = generator.generateHTML(JSON);
+            File htmlFile = new File(contentHTMLDestination + JSON.get("id") + htmlFileExtension);
+            try {
+                htmlFile.createNewFile();
+                try (FileWriter writer = new FileWriter(htmlFile, false)) {
+                    // Automatically clear the file
+    
+                    for (String line : htmlContent) {
+                        writer.write(line + "\n");
+                    }
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+
+        private static List<String> generateReadingActivity(LinkedHashMap<Object, Object> JSON) {
 
             List<String> html = new ArrayList<>();
 
@@ -385,7 +404,7 @@ public class ContentReader {
             return html;
         }
         
-        private List<String> generateCodingActivity(LinkedHashMap<Object, Object> JSON) {
+        private static List<String> generateCodingActivity(LinkedHashMap<Object, Object> JSON) {
 
             List<String> html = new ArrayList<>();
 
@@ -432,7 +451,7 @@ public class ContentReader {
             try {
                 String baseCode = (((HashMap<Object, Object>) JSON.get("content")).get("base_code")).toString();
                 String processed = processJavaMarkup(baseCode, 0);
-                createJavaFile(JSON.get("id") + "_basecode", processed);
+                FileOperations.writeJava(JSON.get("id") + "_basecode", processed);
             }
             catch (NullPointerException e) {
             }
@@ -445,7 +464,7 @@ public class ContentReader {
             // the user will write a function or class based on the instructions. the test code will use that function or class, by name as a black box, and check the output
         }
         
-        private List<String> generateQuizActivity(LinkedHashMap<Object, Object> JSON) {
+        private static List<String> generateQuizActivity(LinkedHashMap<Object, Object> JSON) {
 
             List<String> html = new ArrayList<>();
 
@@ -460,44 +479,6 @@ public class ContentReader {
             return html;
         }
 
-    }
-
-    public static LinkedHashMap<Object, Object> readJSONFile(String filename) {
-        ArrayList<String> contents = new ArrayList<String>();
-        try {
-            File file = new File(filename);
-            Scanner scanner = ScannerUtil.createScanner(file);
-            while (scanner.hasNextLine()) {
-                contents.add(scanner.nextLine());
-            }
-            scanner.close();
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-        // split the contents by JSON object, use nested Lists to represent the JSON structure
-        Stack<Integer> stack = new Stack<Integer>();
-        Integer[] indices = new Integer[contents.size()];
-        for (int i = 0; i < contents.size(); i++) {
-            if (contents.get(i) == null) break;
-            if (contents.get(i).contains("{")) stack.push(i);
-            if (contents.get(i).contains("}")) {
-                try {
-                    indices[stack.pop()] = i;
-                }
-                catch (EmptyStackException e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-        }
-        if (!stack.isEmpty()) {
-            new Exception("The JSON object is malformed.").printStackTrace();
-            return null;
-        }
-        if (contents.size() == 0) return null;
-        return JSONProcessor.readJSONObject(contents.subList(1, contents.size()-1));
     }
     
     private static class Markup {
@@ -534,22 +515,6 @@ public class ContentReader {
                 if (markup.startTag.equals(tag)) return markup;
             }
             return null;
-        }
-    }
-
-    private static void createJavaFile(String filename, String content) {
-        File javaFile = new File(javaBaseDestination + filename + javaFileExtension);
-        try {
-            javaFile.createNewFile();
-            try (FileWriter writer = new FileWriter(javaFile, false)) {
-                writer.write(content);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -657,6 +622,21 @@ public class ContentReader {
         return result;
     }
 
+
+    public enum ActivityType {
+        READING("reading_activity", 0),
+        QUIZ("quiz_activity", 1),
+        CODING("coding_activity", 2);
+
+        private final String type;
+        private final int value;
+
+        ActivityType(String type, int value) {
+            this.type = type;
+            this.value = value;
+        }
+    }
+
     public static void createDBFile(HashMap<Integer, HashMap<Integer, Integer>> ids) {
         // 0 is reading, 1 is quiz, 2 is coding
 
@@ -668,7 +648,7 @@ public class ContentReader {
         "2": [
             {"id": "1", "type": 1, "file": "Quiz Material One"},
             {"id": "2", "type": 1, "file": "Quiz Material Two"}
-        ] 
+        ]
         */
 
         StringBuilder result = new StringBuilder();
@@ -680,13 +660,13 @@ public class ContentReader {
             for (Integer activity : ids.get(module).keySet()) {
                 if (result.charAt(result.length() - 1) == '}') result.append(",\n\t");
                 else result.append("\t");
-                result.append("\t{\"id\" : \"");
-                result.append(activity.toString());
-                result.append("\", \"type\" : \"");
-                result.append(ids.get(module).get(activity));
-                result.append("\", \"file\" : \"");
-                result.append(String.format("%s-%s" + htmlFileExtension, module.toString(), activity.toString()));
-                result.append("\"}");
+                result.append("\t{\"id\" : \"")
+                      .append(String.format("%d-%d", module, activity))
+                      .append("\", \"type\" : ")
+                      .append(ids.get(module).get(activity))
+                      .append(", \"file\" : \"")
+                      .append(String.format("%s-%s" + htmlFileExtension, module.toString(), activity.toString()))
+                      .append("\"}");
             }
             result.append("\n\t]");
         }
