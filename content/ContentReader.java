@@ -128,13 +128,20 @@ public class ContentReader {
 
         public static Set<String> listFiles(String dir) throws IOException {
             Set<String> fileSet = new HashSet<>();
-            try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
+            Path dirPath = Paths.get(dir).normalize();
+            if(!Files.exists(dirPath)) Files.createDirectories(dirPath);
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath)) {
                 for (Path path : stream) {
-                    if (!Files.isDirectory(path) && !ContentReader.ignoredFiles.contains(path.getFileName().toString())) {
-                        fileSet.add(path.getFileName().toString());
+                    String fileName = path.getFileName().toString();
+                    if (!Files.isDirectory(path) && !ContentReader.ignoredFiles.contains(fileName)) {
+                        fileSet.add(fileName);
                     }
                 }
                 return fileSet;
+            }
+            catch (IOException e) {
+                System.out.println("Error accessing directory: " + dirPath);
+                throw e;
             }
         }
 
@@ -695,7 +702,6 @@ public class ContentReader {
 
         return result;
     }
-
 
     public enum ActivityType {
         READING("reading_activity", 0),
