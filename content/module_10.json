@@ -31,16 +31,8 @@
             }
         },
         "activity2" :  {
-            "name" :  "Coding 10",
-            "id" :  "10-3",
-            "type" :  "coding_activity",
-            "content" :  {
-                "prompt" :  "Create a program that reads a list of integers from the console, stores them in an ArrayList, sorts the list, and then prints only the even numbers. Use exception handling to manage input errors and apply generics where appropriate."
-            }
-        },
-        "activity3" :  {
             "name" :  "Quiz 10",
-            "id" :  "10-4",
+            "id" :  "10-2",
             "type" :  "quiz_activity",
             "content" :  {
                 "questions" :  {
@@ -50,21 +42,24 @@
                         "options" : {"1" :  "function", "2" :  "define", "3" :  "class", "4" :  "public"},
                         "correct_responses" : ["3"],
                         "points" : 10,
-                        "feedback" : {"3" :  "Correct! 'class' is the keyword to define a class."} },
+                        "feedback" : {"3" :  "Correct! 'class' is the keyword to define a class."}
+                    },
                     "question2" : {
                         "type" : "true false",
                         "question" : "True/False: A 'while' loop always runs at least once.",
                         "options" : {"1" :  "True", "2" :  "False"},
                         "correct_responses" : ["2"],
                         "points" : 10,
-                        "feedback" : {"2" :  "Correct! Unlike 'do-while', 'while' might never run."} },
+                        "feedback" : {"2" :  "Correct! Unlike 'do-while', 'while' might never run."}
+                    },
                     "question3" : {
                         "type" : "multiple choice",
                         "question" : "What is the return type of a method that doesn't return anything?",
                         "options" : {"1" :  "null", "2" :  "void", "3" :  "None", "4" :  "return"},
                         "correct_responses" : ["2"],
                         "points" : 10,
-                        "feedback" : {"2" :  "Correct! 'void' means no return value."} },
+                        "feedback" : {"2" :  "Correct! 'void' means no return value."}
+                    },
                     "question4" : {
                         "type" : "multiple choice",
                         "question" : "Which term best describes using the same method name with different parameters?",

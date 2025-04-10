@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reading 7</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<title>Input and Output</title>
+	<h1>Console Input with Scanner</h1>
+	<p>The <span class="keyword">Scanner</span> class simplifies reading console input. Create a Scanner on <span class="keyword">System.in</span> and use methods like <span class="keyword">nextLine()</span>, <span class="keyword">nextInt()</span>, or <span class="keyword">nextDouble()</span> to retrieve values:</p>
+	<pre><code class="language-java">Scanner scanner = new Scanner(System.in);<br>System.out.print("Enter name:");<br>String name = scanner.nextLine();<br>int age = scanner.nextInt();<br>// consume leftover newline<br>scanner.nextLine();<br>String comment = scanner.nextLine();<br>scanner.close();</code></pre>
+	<p> Handle invalid input by checking <span class="keyword">scanner.hasNextInt()</span> first.</p>
+	<h1>Buffered I/O with Readers and Writers</h1>
+	<p>For efficient character I/O, wrap file streams in <span class="keyword">BufferedReader</span> and <span class="keyword">BufferedWriter</span>. Example reading lines:</p>
+	<pre><code class="language-java">try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {<br>&#9;String line;<br>&#9;while ((line = br.readLine()) != null) {<br>&#9;&#9;System.out.println(line);<br>&#9;}<br>} catch (IOException e) {<br>&#9;// handle exception<br>}</code></pre>
+	<p> Writing lines:</p>
+	<pre><code class="language-java">try (BufferedWriter bw = new BufferedWriter(new FileWriter("out.txt"))) {<br>&#9;bw.write("First line");<br>&#9;bw.newLine();<br>&#9;bw.write("Second line");<br>} catch (IOException e) {<br>&#9;// handle exception<br>}</code></pre>
+	<p></p>
+	<h1>Byte Streams: InputStream and OutputStream</h1>
+	<p><b>InputStream</b> and <b>OutputStream</b> handle raw binary data. Use <span class="keyword">FileInputStream</span> and <span class="keyword">FileOutputStream</span> for files. Example copying a file with a buffer:</p>
+	<pre><code class="language-java">ctry (InputStream in = new FileInputStream("src.bin");<br>&#9;OutputStream out = new FileOutputStream("dest.bin")) {<br>&#9;byte[] buffer = new byte[4096];<br>&#9;int bytesRead;<br>&#9;while ((bytesRead = in.read(buffer)) != -1) {<br>&#9;&#9;out.write(buffer, 0, bytesRead);<br>&#9;}<br>} catch (IOException e) {<br>&#9;// handle exception<br>}</code></pre>
+	<p> Always choose a buffer size that balances memory and performance.</p>
+	<h1>Serialization and Deserialization</h1>
+	<p>Serialization converts objects to byte streams via <span class="keyword">ObjectOutputStream</span>. Deserialization uses <span class="keyword">ObjectInputStream</span> to rebuild objects. Ensure classes implement <b>Serializable</b> and define a <b>serialVersionUID</b>. Example:</p>
+	<pre><code class="language-java">ctry (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("obj.dat"))) {<br>&#9;oos.writeObject(myObject);<br>} catch (IOException e) {<br>&#9;// handle<br>}</code></pre>
+	<p> Deserialize:</p>
+	<pre><code class="language-java">try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("obj.dat"))) {<br>&#9;MyClass obj = (MyClass) ois.readObject();<br>} catch (IOException | ClassNotFoundException e) {<br>&#9;// handle<br>}</code></pre>
+	<p></p>
+	<h1>I/O Exceptions and Try-with-Resources</h1>
+	<p>Most I/O operations throw <b>IOException</b>. Use <span class="keyword">try-with-resources</span> to auto-close streams and readers, ensuring resources are released even if exceptions occur. Always catch or declare exceptions to maintain robust code.</p>
+	<h1>Tips & Best Practices</h1>
+	<p>- Validate user input with Scanner methods.<br>- Prefer buffered I/O for large files.<br>- Use NIO.2 for simpler and faster file operations.<br>- Always close resources or use try-with-resources.<br>- Handle character encoding explicitly to avoid data corruption.<br>- Log exceptions with meaningful messages.</p>
+</body>
+</html>

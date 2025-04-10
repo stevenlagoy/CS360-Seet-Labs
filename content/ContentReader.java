@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
-import java.util.prefs.BackingStoreException;
 
 public class ContentReader {
 
@@ -29,7 +28,7 @@ public class ContentReader {
     public static final Path contentJSONSource = Path.of("content");
     public static final Path DATA_PATH = BASE_PATH.resolve("Data");
     public static final Path contentHTMLDestination = DATA_PATH;
-    public static final Path javaBaseDestination = DATA_PATH;
+    public static final Path javaBaseDestination = DATA_PATH.resolve("base_code");
     public static final Path unitTestDestination = DATA_PATH.resolve("test_cases");
 
     public static final String htmlFileExtension = ".html";
@@ -38,7 +37,8 @@ public class ContentReader {
     public static final String txtFileExtension = ".txt";
 
     public static final Set<String> ignoredFiles = Set.of(
-        "test_cases/"
+        "test_cases/",
+        "base_code/"
     );
 
     // MAIN FUNCTIONS ---------------------------------------------------------
@@ -169,10 +169,10 @@ public class ContentReader {
         }
 
         public static void writeJava(String filename, List<String> content) {
-            writeFile(filename, ContentReader.javaFileExtension, ContentReader.contentHTMLDestination, content);
+            writeFile(filename, ContentReader.javaFileExtension, ContentReader.javaBaseDestination, content);
         }
         public static void writeJava(String filename, String content) {
-            writeFile(filename, ContentReader.javaFileExtension, ContentReader.contentHTMLDestination, content);
+            writeFile(filename, ContentReader.javaFileExtension, ContentReader.javaBaseDestination, content);
         }
 
         public static void writeJSON(String filename, List<String> content) {
@@ -515,6 +515,7 @@ public class ContentReader {
             // CREATE JAVA FILE FOR BASE CODE
 
             try {
+                @SuppressWarnings("unchecked")
                 String baseCode = (((HashMap<Object, Object>) JSON.get("content")).get("base_code")).toString();
                 String processed = processJavaMarkup(baseCode, 0);
                 FileOperations.writeJava(JSON.get("id") + "_basecode", processed);
@@ -688,9 +689,11 @@ public class ContentReader {
         HashMap<Integer, HashMap<Integer, Integer>> result = new HashMap<Integer, HashMap<Integer, Integer>>();
 
         for (LinkedHashMap<Object, Object> module : contents) {
+            @SuppressWarnings("unchecked")
             LinkedHashMap<Object, Object> moduleContents = (LinkedHashMap<Object, Object>) module.get("content");
             HashMap<Integer, Integer> activityStructure = new HashMap<>();
             for (Object activity : moduleContents.keySet()) {
+                @SuppressWarnings("unchecked")
                 HashMap<Object, Object> activityContents = (HashMap<Object, Object>) moduleContents.get(activity);
                 int activityNumber = Integer.parseInt(activityContents.get("id").toString().split("-")[1]);
                 String type = activityContents.get("type").toString();
@@ -708,8 +711,8 @@ public class ContentReader {
         QUIZ("quiz_activity", 1),
         CODING("coding_activity", 2);
 
-        private final String type;
-        private final int value;
+        public final String type;
+        public final int value;
 
         ActivityType(String type, int value) {
             this.type = type;

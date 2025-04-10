@@ -24,11 +24,25 @@
                 "7p" : "Define generic classes and methods with type parameters. For example, a generic container:%cclass Box<T> {%n%tprivate T value;%n%tpublic void set(T value) { this.value = value; }%n%tpublic T get() { return value; }%n}%/c%nYou can also define generic methods:%cpublic static <U> void printArray(U[] arr) {%n%tfor (U elem : arr) System.out.println(elem);%n}%/c Generics support multiple type parameters and bounds: %cclass Pair<K, V> { ... }%/c."
             }
         },
-        "activity2" : {
-            "name" : "Coding 9",
-            "id" : "9-3",
-            "type" : "coding_activity",
-            "content" : { "" : "" }
+        "activity2": {
+            "name": "Coding 9",
+            "id": "9-3",
+            "type": "coding_activity",
+            "content": {
+                "context": {
+                    "1h1": "Stack, Queue, HashMap, and Generics",
+                    "1p": "Practice working with core Java data structures and generics. This challenge will involve using a stack, a queue, a map, and writing a generic method. Complete the tasks below using appropriate data structures."
+                },
+                "base_code": "import java.util.*;%n%npublic class Lab {%n%n%t// Task 1: Reverse an array using a stack%n%tpublic static int[] reverseArray(int[] input) {%n%t%t// Your code here%n%t%treturn input;%n%t}%n%n%t// Task 2: Sum the first and last elements in a queue%n%tpublic static int sumQueueEnds(Queue<Integer> queue) {%n%t%t// Your code here%n%t%treturn 0;%n%t}%n%n%t// Task 3: Count occurrences using HashMap%n%tpublic static Map<String, Integer> countWords(String[] words) {%n%t%t// Your code here%n%t%treturn new HashMap<>();%n%t}%n%n%t// Task 4: Generic method to print an array%n%tpublic static <T> void printArray(T[] arr) {%n%t%t// Your code here%n%t}%n%n%tpublic static void main(String[] args) {%n%t%t// You can test your methods here%n%t}%n}",
+                "output_type": "console out",
+                "number_test_cases": 1,
+                "test_cases": {
+                    "case_1": {
+                        "input": "",
+                        "output": ""
+                    }
+                }
+            }
         },
         "activity3" : {
             "name" : "Quiz 9",

@@ -18,14 +18,10 @@
                 "4p" : "%bInputStream%/b and %bOutputStream%/b handle raw binary data. Use %kFileInputStream%/k and %kFileOutputStream%/k for files. Example copying a file with a buffer:%cctry (InputStream in = new FileInputStream(%'src.bin%');%n%tOutputStream out = new FileOutputStream(%'dest.bin%')) {%n%tbyte[] buffer = new byte[4096];%n%tint bytesRead;%n%twhile ((bytesRead = in.read(buffer)) != -1) {%n%t%tout.write(buffer, 0, bytesRead);%n%t}%n} catch (IOException e) {%n%t// handle exception%n}%/c Always choose a buffer size that balances memory and performance.",
                 "5h1" : "Serialization and Deserialization",
                 "5p" : "Serialization converts objects to byte streams via %kObjectOutputStream%/k. Deserialization uses %kObjectInputStream%/k to rebuild objects. Ensure classes implement %bSerializable%/b and define a %bserialVersionUID%/b. Example:%cctry (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(%'obj.dat%'))) {%n%toos.writeObject(myObject);%n} catch (IOException e) {%n%t// handle%n}%/c Deserialize:%ctry (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(%'obj.dat%'))) {%n%tMyClass obj = (MyClass) ois.readObject();%n} catch (IOException | ClassNotFoundException e) {%n%t// handle%n}%/c",
-                "6h1" : "NIO.2: Files and Paths API",
-                "6p" : "Java NIO.2 (%bjava.nio.file%/b) offers modern file operations. Use %kPaths%/k and %kFiles%/k for concise code:%cPath path = Paths.get(%'notes.txt%');%nList<String> lines = Files.readAllLines(path);%nFiles.write(path, Collections.singletonList(%'New line%'), StandardOpenOption.APPEND);%/c Handle %bIOException%/b as usual.",
-                "7h1" : "Character Encodings",
-                "7p" : "Always specify charset when reading or writing text to avoid platform defaults. Example:%ctry (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {%n%t// read%n}%/c",
-                "8h1" : "I/O Exceptions and Try-with-Resources",
-                "8p" : "Most I/O operations throw %bIOException%/b. Use %ktry-with-resources%/k to auto-close streams and readers, ensuring resources are released even if exceptions occur. Always catch or declare exceptions to maintain robust code.",
-                "9h1" : "Tips & Best Practices",
-                "9p" : "- Validate user input with Scanner methods.%n- Prefer buffered I/O for large files.%n- Use NIO.2 for simpler and faster file operations.%n- Always close resources or use try-with-resources.%n- Handle character encoding explicitly to avoid data corruption.%n- Log exceptions with meaningful messages."
+                "6h1" : "I/O Exceptions and Try-with-Resources",
+                "6p" : "Most I/O operations throw %bIOException%/b. Use %ktry-with-resources%/k to auto-close streams and readers, ensuring resources are released even if exceptions occur. Always catch or declare exceptions to maintain robust code.",
+                "7h1" : "Tips & Best Practices",
+                "7p" : "- Validate user input with Scanner methods.%n- Prefer buffered I/O for large files.%n- Use NIO.2 for simpler and faster file operations.%n- Always close resources or use try-with-resources.%n- Handle character encoding explicitly to avoid data corruption.%n- Log exceptions with meaningful messages."
             }
         },
         "activity2" : {

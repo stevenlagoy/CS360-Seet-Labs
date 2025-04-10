@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reading 5</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<title>OOP, Interfaces, and Inheritance</title>
+	<h1>Encapsulation, Abstraction, Inheritance, Polymorphism</h1>
+	<p>Object-Oriented Programming (OOP) relies on four core principles: <b>Encapsulation</b> (hiding internal details), <b>Abstraction</b> (exposing only necessary features), <b>Inheritance</b> (extending existing code), and <b>Polymorphism</b> (treating objects of different types uniformly). These principles help organize complex systems into manageable components. By embracing these ideas, developers can build software that's modular, easier to debug, and more adaptable to future changes. Each of these principles reinforces the others, making them more powerful when used together. Mastering them is crucial for professional software development in Java and many other modern languages.</p>
+	<h1>Creating and Using Interfaces</h1>
+	<p>An <span class="keyword">interface</span> defines a contract of methods without implementation. Any class that <span class="keyword">implements</span> the interface must provide bodies for its methods. Example:</p>
+	<pre><code class="language-java">interface Animal {<br>&#9;void makeSound();<br>t}<br></code></pre>
+	<p></p>
+	<pre><code class="language-java">cclass Dog implements Animal {<br>&#9;public void makeSound() {<br>&#9;&#9;System.out.println("Bark!");<br>&#9;}<br>t}</code></pre>
+	<p> Interfaces allow unrelated classes to share common behavior. This helps create a flexible and scalable architecture. For instance, both a <span class="keyword">Dog</span> and a <span class="keyword">Robot</span> can implement a <span class="keyword">Speakable</span> interface. Even though they are unrelated by inheritance, they can be treated the same by code that relies on shared interfaces. This is a powerful tool for building reusable components in Java.</p>
+	<h1>Abstract Classes</h1>
+	<h1>Inheritance and Method Overriding</h1>
+	<h1>The %ksuper%/k Keyword</h1>
+	<h1>Object Class and Common Methods</h1>
+	<p>All classes implicitly extend <b>Object</b>, which provides methods like <span class="keyword">toString()</span>, <span class="keyword">equals()</span>, and <span class="keyword">hashCode()</span>. Override these for meaningful behavior. Example:</p>
+	<pre><code class="language-java">@Override<br>public String toString() { return "Dog: " + name; }</code></pre>
+	<p> These methods are fundamental to how Java manages objects and compares them. For example, <span class="keyword">equals()</span> checks logical equality, while <span class="keyword">hashCode()</span> is used in hashing structures like <span class="keyword">HashMap</span>. If you override <span class="keyword">equals()</span>, you should also override <span class="keyword">hashCode()</span> to maintain consistency. A well-written <span class="keyword">toString()</span> method helps during debugging and logging by providing useful object descriptions.</p>
+	<h1>Design Tips</h1>
+	<p>- Favor composition over inheritance when possible to reduce tight coupling and increase flexibility.<br>- Keep interfaces focused: define only related methods to uphold the Interface Segregation Principle.<br>- Use abstract classes when you have shared code across multiple subclasses, and interfaces when you want multiple unrelated types to share a contract.<br>- Apply polymorphism to write flexible and extensible code that can grow without constant refactoring.<br>- Document overridden methods with @Override annotation for clarity and to help the compiler catch errors. Also, use Javadoc to explain non-obvious implementations so that others (and your future self) understand your design choices more easily.</p>
+</body>
+</html>
