@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,9 +24,27 @@ import java.util.Stack;
 
 public class ContentReader {
 
+    public static final String contentJSONSource = "content/";
+    public static final String contentHTMLDestination = "seetLabs/Data/";
+    public static final String javaBaseDestination = "seetLabs/Data/";
+    public static final String unitTestDestination = "seetLabs/Data/test_cases/";
+
+    public static final String htmlFileExtension = ".html";
+    public static final String jsonFileExtension = ".json";
+    public static final String javaFileExtension = ".txt";
+    public static final String textFileExtension = ".txt";
+
+    public static final Set<String> ignoredFiles = Set.of(
+        "test_cases/"
+    );
+
     public static void main(String[] args) {
         try {
             Set<LinkedHashMap<Object, Object>> filesContents = readAllJSONFiles(contentJSONSource);
+            FileOperations.emptyFiles("seetLabs/Data/", htmlFileExtension);
+            FileOperations.emptyFiles("seetLabs/Data/", jsonFileExtension);
+            FileOperations.emptyFiles("seetLabs/Data/", javaFileExtension);
+            FileOperations.emptyFiles("seetLabs/Data/", textFileExtension);
             for (LinkedHashMap<Object, Object> module : filesContents) {
                 createHTMLs(module);
             }
@@ -38,181 +57,227 @@ public class ContentReader {
         }
     }
 
-    public static final String contentJSONSource = "content/";
-    public static final String contentHTMLDestination = "seetLabs/Data/";
-    public static final String javaBaseDestination = "seetLabs/Data/";
-    public static final String unitTestDestination = "seetLabs/Data/";
+    public enum ActivityType {
+        READING("reading_activity", 0),
+        QUIZ("quiz_activity", 1),
+        CODING("coding_activity", 2);
+
+        private final String type;
+        private final int value;
+
+        ActivityType(String type, int value) {
+            this.type = type;
+            this.value = value;
+        }
+    }
 
     public static class ScannerUtil {
-        public Scanner createScanner(InputStream inputStream) {
+        public static Scanner createScanner(InputStream inputStream) {
             return new Scanner(inputStream, StandardCharsets.UTF_8.name());
         }
-        public Scanner createScanner(File file) throws FileNotFoundException {
+        public static Scanner createScanner(File file) throws FileNotFoundException {
             return new Scanner(file, StandardCharsets.UTF_8.name());
         }
     }
 
-    static ScannerUtil scannerUtil = new ScannerUtil();
-    static Scanner stdin = scannerUtil.createScanner(System.in);
+    public static class FileOperations {
+
+        public static Set<String> listFiles(String dir) throws IOException {
+            Set<String> fileSet = new HashSet<>();
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
+                for (Path path : stream) {
+                    if (!Files.isDirectory(path) && !ContentReader.ignoredFiles.contains(path.getFileName().toString())) {
+                        fileSet.add(path.getFileName().toString());
+                    }
+                }
+                return fileSet;
+            }
+        }
+
+        public static void emptyFiles(String dir, String extension) throws IOException {
+            try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
+                for (Path path : stream) {
+                    String fileName = path.getFileName().toString();
+                    if (ContentReader.ignoredFiles.contains(fileName)) {
+                        continue;
+                    }
+                    if (Files.isDirectory(path)) {
+                        continue;
+                    }
+                    
+                    // Delete if extension matches or if wildcard
+                    if (extension.equals("*") || fileName.endsWith(extension)) {
+                        try {
+                            Files.delete(path);
+                        } catch (IOException e) {
+                            System.err.println("Failed to delete file: " + fileName);
+                            throw e;
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void writeHTML(String filename, List<String> content) {
+            File file = new File(ContentReader.contentHTMLDestination + filename + ContentReader.htmlFileExtension);
+            writeFile(file, content);
+        }
+
+        public static void writeFile(String filename, String extension, String destination, String content) {
+            writeFile(filename, extension, destination, Collections.singletonList(content));
+        }
+        public static void writeFile(String filename, String extension, String destination, List<String> content) {
+            File file = new File(destination + filename + extension);
+            writeFile(file, content);
+        }
+
+        public static void writeFile(File file, List<String> content) {
+            try {
+                file.createNewFile();
+                try (FileWriter writer = new FileWriter(file, false)) {
+                    for (String line : content) {
+                        writer.write(line + "\n");
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static Set<LinkedHashMap<Object, Object>> readAllJSONFiles(String dir) throws IOException {
         Set<LinkedHashMap<Object, Object>> JSONs = new HashSet<>();
-        Set<String> filenames = listFiles(dir);
+        Set<String> filenames = FileOperations.listFiles(dir);
         for (String filename : filenames) {
-            if (filename.contains(".json")) {
+            if (filename.contains(jsonFileExtension)) {
                 LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentJSONSource + filename);
                 if (fileJSON != null) JSONs.add(fileJSON);
             }
         }
         return JSONs;
     }
-    
-    public static Set<String> listFiles(String dir) throws IOException {
-        Set<String> fileSet = new HashSet<>();
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
-            for (Path path : stream) {
-                if (!Files.isDirectory(path)) {
-                    fileSet.add(path.getFileName().toString());
-                }
-            }
-            return fileSet;
-        }
-    }
 
-    public static LinkedHashMap<Object, Object> readJSONFile(String filename) {
-        ArrayList<String> contents = new ArrayList<String>();
-        try {
-            File file = new File(filename);
-            Scanner scanner = scannerUtil.createScanner(file);
-            while (scanner.hasNextLine()) {
-                contents.add(scanner.nextLine());
-            }
-            scanner.close();
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-        // split the contents by JSON object, use nested Lists to represent the JSON structure
-        Stack<Integer> stack = new Stack<Integer>();
-        Integer[] indices = new Integer[contents.size()];
-        for (int i = 0; i < contents.size(); i++) {
-            if (contents.get(i) == null) break;
-            if (contents.get(i).contains("{")) stack.push(i);
-            if (contents.get(i).contains("}")) {
+    public static class JSONProcessor {
+        public static LinkedHashMap<Object, Object> readJSONObject(List<String> contents) {
+            LinkedHashMap<Object, Object> object = new LinkedHashMap<Object, Object>();
+            for (int i = 0; i < contents.size(); i++) {
+                String line = contents.get(i);
+                if (line.trim().isEmpty()) continue; // Skip empty lines
+                String key = line.split(":")[0].trim().replace("\"", "");
+                if (key.equals("")) continue; // Skip empty keys: invalid entry format
+                String value = "";
                 try {
-                    indices[stack.pop()] = i;
-                }
-                catch (EmptyStackException e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-        }
-        if (!stack.isEmpty()) {
-            new Exception("The JSON object is malformed.").printStackTrace();
-            return null;
-        }
-        if (contents.size() == 0) return null;
-        return readJSONObject(contents.subList(1, contents.size()-1));
-    }
-    public static LinkedHashMap<Object, Object> readJSONObject(List<String> contents) {
-        LinkedHashMap<Object, Object> object = new LinkedHashMap<Object, Object>();
-        for (int i = 0; i < contents.size(); i++) {
-            String line = contents.get(i);
-            if (line.trim().isEmpty()) continue; // Skip empty lines
-            String key = line.split(":")[0].trim().replace("\"", "");
-            if (key.equals("")) continue; // Skip empty keys: invalid entry format
-            String value = "";
-            try {
-                int colonIndex = -1;
-                for (int j = 0; j < line.length(); j++) {
-                    if (line.charAt(j) == ':' && !isInString(line, j)) {
-                        colonIndex = j;
-                        break;
+                    int colonIndex = -1;
+                    for (int j = 0; j < line.length(); j++) {
+                        if (line.charAt(j) == ':' && !isInString(line, j)) {
+                            colonIndex = j;
+                            break;
+                        }
                     }
-                }
-                if (colonIndex != -1) {
-                    value = line.substring(colonIndex + 1).trim();
-                }
-                else {
-                    value = "";
-                }
-                if (containsUnquotedChar(value, '[')) { // the value is a list
-                    List<String> list = new ArrayList<String>(); 
-                    for (String entry : value.replaceAll("\\[|\\]", "").split(",")) {
-                        list.add(entry.replace("\"","").trim());
+                    if (colonIndex != -1) {
+                        value = line.substring(colonIndex + 1).trim();
                     }
-                    value = list.toString();
-                }
-                else {
-                    for (int j = 0; j < value.length(); j++) {
-                        if (value.charAt(j) == ',' && !isInString(value, j)) {
-                            value = value.substring(0, j) + value.substring(j + 1, value.length());
+                    else {
+                        value = "";
+                    }
+                    if (containsUnquotedChar(value, '[')) { // the value is a list
+                        List<String> list = new ArrayList<String>(); 
+                        for (String entry : value.replaceAll("\\[|\\]", "").split(",")) {
+                            list.add(entry.replace("\"","").trim());
+                        }
+                        value = list.toString();
+                    }
+                    else {
+                        for (int j = 0; j < value.length(); j++) {
+                            if (value.charAt(j) == ',' && !isInString(value, j)) {
+                                value = value.substring(0, j) + value.substring(j + 1, value.length());
+                            }
                         }
                     }
                 }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                // do nothing - this is expected at the end of a JSON object
-            }
-            if (containsUnquotedChar(line, '{') && !containsUnquotedChar(line, '}')) { // start of an object
-                // jump over recursively-read lines to start of next object
-                int braceCount = 1, startIndex = i + 1;
-                while (braceCount > 0 && i < contents.size() - 1) {
-                    i++;
-                    String currentLine = contents.get(i);
-                    if (containsUnquotedChar(currentLine, '{')) braceCount++;
-                    if (containsUnquotedChar(currentLine, '}')) braceCount--;
+                catch (ArrayIndexOutOfBoundsException e) {
+                    // do nothing - this is expected at the end of a JSON object
                 }
-                // read the object
-                object.put(key, readJSONObject(contents.subList(startIndex, contents.size())));
-            }
-            else if (!containsUnquotedChar(line, '{') && containsUnquotedChar(line, '}')) { // end of an object
-                // end the object
-                return object;
-            }
-            else if (containsUnquotedChar(line, '{') && containsUnquotedChar(line, '}')) { // object all on one line
-                String objectContent = line.substring(line.indexOf("{") + 1, line.indexOf("}")).trim();
-                LinkedHashMap<Object, Object> innerObject = new LinkedHashMap<>();
-                if (!objectContent.isEmpty()) {
-                    String[] pairs = objectContent.split(",");
-                    for (String pair : pairs) {
-                        String[] keyValue = pair.split(":");
-                        if (keyValue.length == 2) {
-                            String innerKey = keyValue[0].trim().replace("\"", "");
-                            String innerValue = keyValue[1].trim().replace("\"", "");
-                            innerObject.put(innerKey, innerValue);
+                if (containsUnquotedChar(line, '{') && !containsUnquotedChar(line, '}')) { // start of an object
+                    // jump over recursively-read lines to start of next object
+                    int braceCount = 1, startIndex = i + 1;
+                    while (braceCount > 0 && i < contents.size() - 1) {
+                        i++;
+                        String currentLine = contents.get(i);
+                        if (containsUnquotedChar(currentLine, '{')) braceCount++;
+                        if (containsUnquotedChar(currentLine, '}')) braceCount--;
+                    }
+                    // read the object
+                    object.put(key, readJSONObject(contents.subList(startIndex, contents.size())));
+                }
+                else if (!containsUnquotedChar(line, '{') && containsUnquotedChar(line, '}')) { // end of an object
+                    // end the object
+                    return object;
+                }
+                else if (containsUnquotedChar(line, '{') && containsUnquotedChar(line, '}')) { // object all on one line
+                    String objectContent = line.substring(line.indexOf("{") + 1, line.indexOf("}")).trim();
+                    LinkedHashMap<Object, Object> innerObject = new LinkedHashMap<>();
+                    if (!objectContent.isEmpty()) {
+                        String[] pairs = objectContent.split(",");
+                        for (String pair : pairs) {
+                            String[] keyValue = pair.split(":");
+                            if (keyValue.length == 2) {
+                                String innerKey = keyValue[0].trim().replace("\"", "");
+                                String innerValue = keyValue[1].trim().replace("\"", "");
+                                innerObject.put(innerKey, innerValue);
+                            }
                         }
                     }
+                    object.put(key, innerObject);
+                    return object;
                 }
-                object.put(key, innerObject);
-                return object;
+                else{
+                    object.put(key, value.trim().replace("\"", ""));
+                }
             }
-            else{
-                object.put(key, value.trim().replace("\"", ""));
-            }
+            return object;
         }
-        return object;
-    }
-
-    private static boolean isInString(String line, int position) {
-        boolean inString = false;
-        for (int i = 0; i < position; i++) {
-            if (line.charAt(i) == '"' && (i == 0 || line.charAt(i-1) != '\\')) {
-                inString = !inString;
+        
+        public static boolean isInString(String line, int position) {
+            boolean inString = false;
+            for (int i = 0; i < position; i++) {
+                if (line.charAt(i) == '"' && (i == 0 || line.charAt(i-1) != '\\')) {
+                    inString = !inString;
+                }
             }
+            return inString;
         }
-        return inString;
+        
+        public static boolean containsUnquotedChar(String line, char target) {
+            for (int i = 0; i < line.length(); i++) {
+                if (line.charAt(i) == target && !isInString(line, i)) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
     
-    private static boolean containsUnquotedChar(String line, char target) {
-        for (int i = 0; i < line.length(); i++) {
-            if (line.charAt(i) == target && !isInString(line, i)) {
-                return true;
-            }
+    public class HTMLBuilder {
+
+        private List<String> html = new ArrayList<>();
+    
+        public HTMLBuilder addHeader(String title) {
+            html.add("<!DOCTYPE html>\n<html lang=\"en\">");
+            html.add("<head>");
+            html.add("\t<meta charset=\"UTF-8\">");
+            html.add("\t<title>" + title + "</title>");
+            return this;
         }
-        return false;
+        
+        public HTMLBuilder addContent(String content) {
+            html.add(content);
+            return this;
+        }
+        
+        public List<String> build() {
+            return html;
+        }
     }
 
     public static void createHTMLs(LinkedHashMap<Object, Object> JSON){
@@ -226,8 +291,9 @@ public class ContentReader {
     }
 
     public static void createHTML(LinkedHashMap<Object, Object> JSON) {
-        List<String> htmlContent = JSONtoHTML(JSON);
-        File htmlFile = new File(contentHTMLDestination + JSON.get("id") + ".html");
+        HTMLGenerator generator = new HTMLGenerator();
+        List<String> htmlContent = generator.generateHTML(JSON);
+        File htmlFile = new File(contentHTMLDestination + JSON.get("id") + htmlFileExtension);
         try {
             htmlFile.createNewFile();
             try (FileWriter writer = new FileWriter(htmlFile, false)) {
@@ -248,58 +314,35 @@ public class ContentReader {
         }
     }
 
-    public static final Map<String, String> openingTags = Map.of(
-        "t", "<title>",
-        "h1", "<h1>",
-        "p", "<p>"
-    );
-    public static final Map<String, String> closingTags = Map.of(
-        "t", "</title>",
-        "h1", "</h1>",
-        "p", "</p>"
-    );
-    
-    private static class Markup {
-        public String startTag;
-        public String startReplacement;
-        public String endTag;
-        public String endReplacement;
-        public Markup(String tag, String replacement) {
-            this(tag, replacement, null, null);
+    public static class HTMLGenerator {
+        public static final Map<String, String> openingTags = Map.of(
+            "t", "<title>",
+            "h1", "<h1>",
+            "p", "<p>"
+        );
+        public static final Map<String, String> closingTags = Map.of(
+            "t", "</title>",
+            "h1", "</h1>",
+            "p", "</p>"
+        );
+
+        public List<String> generateHTML(LinkedHashMap<Object, Object> JSON) {
+            String type = JSON.get("type").toString();
+            switch (type) {
+                case "reading_activity" :
+                    return generateReadingActivity(JSON);
+                case "coding_activity" :
+                    return generateCodingActivity(JSON);
+                case "quiz_activity" :
+                    return generateQuizActivity(JSON);
+                default :
+                    throw new IllegalArgumentException("Unknown activity type: " + type);
+            }
         }
-        public Markup(String startTag, String startReplacement, String endTag, String endReplacement) {
-            this.startTag = startTag;
-            this.startReplacement = startReplacement;
-            this.endTag = endTag;
-            this.endReplacement = endReplacement;
-        }
-    }
 
-    // Markup Tags have a start and end tag and provide a modification to whatever lies between those tags. Tags must start with % followed by a unique set of characters.
-    // Praise be to Object Oriented Programming
-    public static final List<Markup> markupTags = new ArrayList<Markup>() {{
-        add (new Markup("%%", "%"));
-        add (new Markup("%n", "<br>"));
-        add (new Markup("%t", "&#9;"));
-        add (new Markup("%'", "\""));
-        add (new Markup("%i", "<i>", "%/i", "</i>"));
-        add (new Markup("%k", "<span class=\"keyword\">", "%/k", "</span>"));
-        add (new Markup("%c", "</p>\n\t<pre><code class=\"language-java\">", "%/c", "</code></pre>\n\t<p>"));
-        add (new Markup("%b", "<b>", "%/b", "</b>"));
-        add (new Markup("%l", "<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">", "%/l", "</a>"));
-    }};
-    public static Markup findMarkupByTag(String tag) {
-        for (Markup markup : markupTags) {
-            if (markup.startTag.equals(tag)) return markup;
-        }
-        return null;
-    }
+        private List<String> generateReadingActivity(LinkedHashMap<Object, Object> JSON) {
 
-    public static List<String> JSONtoHTML(LinkedHashMap<Object, Object> JSON) {
-
-        List<String> html = new ArrayList<>();
-
-        if (JSON.get("type").toString().equals("reading_activity")) {
+            List<String> html = new ArrayList<>();
 
             // Create HTML setup and Head section
             html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
@@ -340,10 +383,12 @@ public class ContentReader {
             html.add("</html>");
 
             return html;
-        } // end of Reading Activity
+        }
+        
+        private List<String> generateCodingActivity(LinkedHashMap<Object, Object> JSON) {
 
-        if (JSON.get("type").toString().equals("coding_activity")) {
-            
+            List<String> html = new ArrayList<>();
+
             // CREATE HTML FOR INSTRUCTIONS / CONTEXT
             html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
             html.add("\t<title>" + JSON.get("name") + "</title>");
@@ -393,16 +438,107 @@ public class ContentReader {
             }
 
 
+            return html;
+
             // create test cases file in a common useful format
             // two types: console out, unit tests - identified by a flag in the file
             // the user will write a function or class based on the instructions. the test code will use that function or class, by name as a black box, and check the output
-        } // end of Coding Activity
+        }
+        
+        private List<String> generateQuizActivity(LinkedHashMap<Object, Object> JSON) {
 
-        return html;
+            List<String> html = new ArrayList<>();
+
+            html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+            html.add("\t<title>" + JSON.get("name") + "</title>");
+            html.add("\t<link rel=\"stylesheet\" href=\"style.css\">");
+            html.add("</head>");
+
+            html.add("<!-- THIS IS A QUIZ ACTIVITY -->\n<!-- Let me know if you want there to be actual formatted HTML here. -S -->");
+            html.add("</html>");
+
+            return html;
+        }
+
+    }
+
+    public static LinkedHashMap<Object, Object> readJSONFile(String filename) {
+        ArrayList<String> contents = new ArrayList<String>();
+        try {
+            File file = new File(filename);
+            Scanner scanner = ScannerUtil.createScanner(file);
+            while (scanner.hasNextLine()) {
+                contents.add(scanner.nextLine());
+            }
+            scanner.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+        // split the contents by JSON object, use nested Lists to represent the JSON structure
+        Stack<Integer> stack = new Stack<Integer>();
+        Integer[] indices = new Integer[contents.size()];
+        for (int i = 0; i < contents.size(); i++) {
+            if (contents.get(i) == null) break;
+            if (contents.get(i).contains("{")) stack.push(i);
+            if (contents.get(i).contains("}")) {
+                try {
+                    indices[stack.pop()] = i;
+                }
+                catch (EmptyStackException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+        if (!stack.isEmpty()) {
+            new Exception("The JSON object is malformed.").printStackTrace();
+            return null;
+        }
+        if (contents.size() == 0) return null;
+        return JSONProcessor.readJSONObject(contents.subList(1, contents.size()-1));
+    }
+    
+    private static class Markup {
+
+        // Markup Tags have a start and end tag and provide a modification to whatever lies between those tags. Tags must start with % followed by a unique set of characters.
+        public static final List<Markup> markupTags = new ArrayList<Markup>() {{
+            add (new Markup("%%", "%"));
+            add (new Markup("%n", "<br>"));
+            add (new Markup("%t", "&#9;"));
+            add (new Markup("%'", "\""));
+            add (new Markup("%i", "<i>", "%/i", "</i>"));
+            add (new Markup("%k", "<span class=\"keyword\">", "%/k", "</span>"));
+            add (new Markup("%c", "</p>\n\t<pre><code class=\"language-java\">", "%/c", "</code></pre>\n\t<p>"));
+            add (new Markup("%b", "<b>", "%/b", "</b>"));
+            add (new Markup("%l", "<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">", "%/l", "</a>"));
+        }};
+
+        public String startTag;
+        public String startReplacement;
+        public String endTag;
+        public String endReplacement;
+        public Markup(String tag, String replacement) {
+            this(tag, replacement, null, null);
+        }
+        public Markup(String startTag, String startReplacement, String endTag, String endReplacement) {
+            this.startTag = startTag;
+            this.startReplacement = startReplacement;
+            this.endTag = endTag;
+            this.endReplacement = endReplacement;
+        }
+
+        public static Markup find(String tag) {
+            for (Markup markup : markupTags) {
+                if (markup.startTag.equals(tag)) return markup;
+            }
+            return null;
+        }
     }
 
     private static void createJavaFile(String filename, String content) {
-        File javaFile = new File(javaBaseDestination + filename + ".java");
+        File javaFile = new File(javaBaseDestination + filename + javaFileExtension);
         try {
             javaFile.createNewFile();
             try (FileWriter writer = new FileWriter(javaFile, false)) {
@@ -458,7 +594,7 @@ public class ContentReader {
                 }
                 
                 // Get markup tag
-                Markup markup = findMarkupByTag(text.substring(i, i + 2));
+                Markup markup = Markup.find(text.substring(i, i + 2));
                 if (markup == null) {
                     System.out.println("WARNING: Unrecognized markup " + text.substring(i, i + 2) + " in ..." + text.substring(Integer.max(0, i - 10), Integer.min(text.length(), i + 10)) + "...");
                     result.append(text.charAt(i));
@@ -549,14 +685,14 @@ public class ContentReader {
                 result.append("\", \"type\" : \"");
                 result.append(ids.get(module).get(activity));
                 result.append("\", \"file\" : \"");
-                result.append(String.format("%s-%s.html", module.toString(), activity.toString()));
+                result.append(String.format("%s-%s" + htmlFileExtension, module.toString(), activity.toString()));
                 result.append("\"}");
             }
             result.append("\n\t]");
         }
         result.append("\n}");
         try {
-            File dbFile = new File(contentHTMLDestination + "db.json");
+            File dbFile = new File(contentHTMLDestination + "db" + jsonFileExtension);
             dbFile.createNewFile();
             try (FileWriter writer = new FileWriter(dbFile, false)) {
                 writer.write(result.toString());
