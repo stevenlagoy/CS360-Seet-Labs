@@ -40,23 +40,73 @@ public class ContentReader {
     );
 
     public static void main(String[] args) {
+
+        char input;
+        Scanner stdin = ScannerUtil.createScanner(System.in);
+        boolean active = true;
+        do {
+            System.out.print("> ");
+            input = Character.toLowerCase(stdin.next().charAt(0));
+            switch (input) {
+                case 'c' :
+                    active = active && clean();
+                    break;
+                case 'm' :
+                    active = active && make();
+                    break;
+                case 'a' :
+                    active = active && all();
+                    break;
+                case 'q' :
+                    System.out.println("Quit");
+                    break;
+                default :
+                    System.out.println("Commands:\n - [c]lean - Delete all non-ignored, non-directory files from the Data folder.\n - [m]ake - Create all files from JSON content.\n - [a]ll - Clean and Make. (Make will not run if Clean fails).\n - [q]uit - Exit ContentReader.");
+            }
+        } while (active && input != 'q');
+        System.out.println("ContentReader Finished");
+        stdin.close();
+        System.exit(0);
+    }
+    
+    public static boolean clean() {
         try {
-            Set<LinkedHashMap<Object, Object>> filesContents = JSONProcessor.readAllJSONFiles(contentJSONSource);
+            System.out.println("Clean");
             FileOperations.emptyFiles("seetLabs/Data/", htmlFileExtension);
             FileOperations.emptyFiles("seetLabs/Data/", jsonFileExtension);
             FileOperations.emptyFiles("seetLabs/Data/", javaFileExtension);
             FileOperations.emptyFiles("seetLabs/Data/", txtFileExtension);
-            for (LinkedHashMap<Object, Object> module : filesContents) {
-                HTMLGenerator.createAllHTMLs(module);
-            }
-
-            createDBFile(determineStructure(filesContents));
+            System.out.println("Successfully cleared Data folder");
+            return true;
         }
         catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
+            return false;
         }
-        System.out.println("ContentReader Finished");
+    }
+
+    public static boolean make() {
+        try {
+            System.out.println("Make");
+            Set<LinkedHashMap<Object, Object>> filesContents = JSONProcessor.readAllJSONFiles(contentJSONSource);
+            for (LinkedHashMap<Object, Object> module : filesContents) {
+                HTMLGenerator.createAllHTMLs(module);
+            }
+            System.out.println("Successfully created content HTML files");
+            createDBFile(determineStructure(filesContents));
+            System.out.println("Successfully created database file");
+            return true;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+            
+    }
+
+    public static boolean all() {
+        System.out.println("All");
+        return clean() && make();
     }
 
     public static class ScannerUtil {
@@ -703,6 +753,6 @@ public class ContentReader {
     }
 
     public static void createTestCaseFile(HashMap<Object, Object> testCases) {
-        
+
     }
 }
