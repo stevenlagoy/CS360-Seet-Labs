@@ -746,7 +746,7 @@ public class ContentReader {
         }
         result.append("\n}");
         try {
-            File dbFile = new File(contentHTMLDestination + "db" + jsonFileExtension);
+            File dbFile = contentHTMLDestination.resolve("db" + jsonFileExtension).toFile();
             dbFile.createNewFile();
             try (FileWriter writer = new FileWriter(dbFile, false)) {
                 writer.write(result.toString());
