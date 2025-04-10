@@ -23,9 +23,6 @@ import {
 import {lintKeymap} from "@codemirror/lint"
 import {java} from "@codemirror/lang-java"
 
-
-
-
 @Component({
   selector: 'app-code-editor',
   imports: [],
@@ -75,9 +72,6 @@ export class CodeEditorComponent
     }})
 
   }
-
-
-
 
   ngAfterViewInit()
   {
