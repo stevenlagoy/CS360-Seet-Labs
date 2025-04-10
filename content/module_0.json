@@ -23,7 +23,7 @@
             }
         },
         "activity2" : {
-            "name" : "Coding 1",
+            "name" : "Coding 1 : Hello World!",
             "id" : "0-2",
             "type" : "coding_activity",
             "content" : {
@@ -32,14 +32,15 @@
                     "1p" : "Welcome to the Playground. While we don't have monkey bars or a slide, you can still have fun writing all kinds of programs here. Remember that %'Hello, World!%' program we talked about in the reading? Copy that program here and hit run to continue." 
                 },
                 "base_code" : "public class Lab {%n%tpublic static void HelloWorld() {%n%t%t// Write your code below%n%t%t%n%t}%n}",
-                "output_type" : "",
+                "output_type" : "console out",
+                "number_test_cases" : 1,
                 "test_cases" : {
-                    "case_1" : {"number" : 1, "input" : "", "output" : "Hello, World!"}
+                    "case_1" : {"input" : "", "output" : "Hello, World!"}
                 }
             }
         },
         "activity3" : {
-            "name" : "Quiz 1",
+            "name" : "Quiz 1 : Java Introduction",
             "id" : "0-3",
             "type" : "quiz_activity",
             "content" : {

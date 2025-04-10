@@ -56,6 +56,7 @@ public class ContentReader {
             e.printStackTrace();
             System.exit(-1);
         }
+        System.out.println("ContentReader Finished");
     }
 
     public static class ScannerUtil {
@@ -105,10 +106,10 @@ public class ContentReader {
         }
 
         public static void writeJava(String filename, List<String> content) {
-            writeFile(filename, ContentReader.htmlFileExtension, ContentReader.contentHTMLDestination, content);
+            writeFile(filename, ContentReader.javaFileExtension, ContentReader.contentHTMLDestination, content);
         }
         public static void writeJava(String filename, String content) {
-            writeFile(filename, ContentReader.htmlFileExtension, ContentReader.contentHTMLDestination, content);
+            writeFile(filename, ContentReader.javaFileExtension, ContentReader.contentHTMLDestination, content);
         }
 
         public static void writeJSON(String filename, List<String> content) {
@@ -192,7 +193,7 @@ public class ContentReader {
                 }
             }
             if (!stack.isEmpty()) {
-                new Exception("The JSON object is malformed.").printStackTrace();
+                new Exception("The JSON object is malformed. File: " + filename).printStackTrace();
                 return null;
             }
             if (contents.size() == 0) return null;
@@ -481,10 +482,10 @@ public class ContentReader {
 
     }
     
-    private static class Markup {
+    public static class Markup {
 
         // Markup Tags have a start and end tag and provide a modification to whatever lies between those tags. Tags must start with % followed by a unique set of characters.
-        public static final List<Markup> markupTags = new ArrayList<Markup>() {{
+        private static final List<Markup> htmlMarkupTags = new ArrayList<Markup>() {{
             add (new Markup("%%", "%"));
             add (new Markup("%n", "<br>"));
             add (new Markup("%t", "&#9;"));
@@ -494,6 +495,14 @@ public class ContentReader {
             add (new Markup("%c", "</p>\n\t<pre><code class=\"language-java\">", "%/c", "</code></pre>\n\t<p>"));
             add (new Markup("%b", "<b>", "%/b", "</b>"));
             add (new Markup("%l", "<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">", "%/l", "</a>"));
+        }};
+
+        private static final List<Markup> javaMarkupTags = new ArrayList<Markup>() {{
+            add (new Markup("%%", "%"));
+            add (new Markup("%n", "\n"));
+            add (new Markup("%t", "\t"));
+            add (new Markup("%'", "\""));
+            add (new Markup("%w", " "));
         }};
 
         public String startTag;
@@ -510,8 +519,15 @@ public class ContentReader {
             this.endReplacement = endReplacement;
         }
 
-        public static Markup find(String tag) {
-            for (Markup markup : markupTags) {
+        public static Markup findJavaMarkup(String tag) {
+            for (Markup markup : javaMarkupTags) {
+                if (markup.startTag.equals(tag)) return markup;
+            }
+            return null;
+        }
+
+        public static Markup findHTMLMarkup(String tag) {
+            for (Markup markup : htmlMarkupTags) {
                 if (markup.startTag.equals(tag)) return markup;
             }
             return null;
@@ -527,15 +543,16 @@ public class ContentReader {
                     result.append('%');
                     continue;
                 }
-                char markupChar = text.charAt(i+1);
-                if (markupChar == 'n') {
-                    result.append('\n');
-                    i++;
+                Markup markup = Markup.findJavaMarkup(text.substring(i, i + 2));
+                if (markup == null) {
+                    System.out.println("WARNING: Unrecognized markup " + text.substring(i, i + 2) + " in ..." + text.substring(Integer.max(0, i - 10), Integer.min(text.length(), i + 10)) + "...");
+                    result.append(text.charAt(i));
+                    continue;
                 }
-                else if (markupChar == 't') {
-                    result.append('\t');
-                    i++;
-                }
+
+                result.append(markup.startReplacement);
+
+                i += 1;
             }
             else result.append(text.charAt(i));
         }
@@ -559,7 +576,7 @@ public class ContentReader {
                 }
                 
                 // Get markup tag
-                Markup markup = Markup.find(text.substring(i, i + 2));
+                Markup markup = Markup.findHTMLMarkup(text.substring(i, i + 2));
                 if (markup == null) {
                     System.out.println("WARNING: Unrecognized markup " + text.substring(i, i + 2) + " in ..." + text.substring(Integer.max(0, i - 10), Integer.min(text.length(), i + 10)) + "...");
                     result.append(text.charAt(i));
@@ -614,7 +631,6 @@ public class ContentReader {
                 String type = activityContents.get("type").toString();
                 int activityType = type.equals("reading_activity") ? 0 : type.equals("quiz_activity") ? 1 : type.equals("coding_activity") ? 2 : -1;
                 activityStructure.put(activityNumber, activityType);
-                System.out.println(activityNumber + " " + activityType);
             }
             result.put(Integer.parseInt(module.get("number").toString()), activityStructure);
         }
@@ -684,5 +700,9 @@ public class ContentReader {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void createTestCaseFile(HashMap<Object, Object> testCases) {
+        
     }
 }

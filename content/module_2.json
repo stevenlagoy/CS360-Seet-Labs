@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity1" : {
-            "name" : "Reading 2",
+            "name" : "Reading 3 : Control Flow",
             "id" : "2-1",
             "type" : "reading_activity",
             "content" : {
@@ -30,17 +30,26 @@
                 "10p" : "We can %bnest%/b loops and conditionals inside each other to tackle complex problems. For example: %cfor (int i = 0; i < 3; i++) { %n%tfor (int j = 0; j < 3; j++) { %n%t%tSystem.out.println(%'i: %' + i + %' j: %' + j); %n%t} %n}%/c This is when you might want to use 'j' as an index like we talked about before. In this code, the inner loop will be fully executed for each time the outer loop is run. A total of 9 lines will be print by this code.%nBeware! nesting too many loops can make your code as tangled as a bowl of spaghetti! And nested conditionals? They're like decision trees in a magical forest- it's easy to lose the path: %cif (score >= 90) { %n%tif (bonus) { %n%t%tSystem.out.println(%'A+%'); %n%t} else { %n%t%tSystem.out.println(%'A%'); %n%t} %n}%/c There are certainly uses for nested conditionals, but you should be careful to make your code clear and readable."
             }
         },
-        "activity2" : {
-            "name" : "Coding 2",
-            "id" : "2-3",
-            "type" : "coding_activity",
-            "content" : {
-                "" : ""
+        "activity2": {
+            "name": "Coding 2",
+            "id": "2-2",
+            "type": "coding_activity",
+            "content": {
+                "context": {
+                    "1h1": "Practice with Control Flow",
+                    "1p": "You've learned how Java uses conditionals and loops to control the flow of a program. In this activity, we'll solve a classic coding problem called FizzBuzz. Use a %kfor%/k or %kwhile%/k loop with a range from 0 to 100 (including 0 and 100). If the number is divisible by both 5 and 3, print %'FizzBuzz%'. If it is divisible only by 5, print %'Fizz%'. If divisible only by 3, print %'Buzz%'. If divisible by neither, print the number itself. Make sure your output matches these instructions exactly. Use conditionals to implement this behavior.%nHINT: To check if one number is a factor of another, use the modulo %k%%%/k operator. %kX %% Y == 0%/k is true if Y is a factor of X."
+                },
+                "base_code": "public class Lab {%n%tpublic static void fizzBuzz() {%n%t%t// Write your code below%n%t%t%n%t}%n}",
+                "output_type": "console out",
+                "number_test_cases": 5,
+                "test_cases": {
+                    "case_1": {"input": "", "output": "FizzBuzz%w1%w2%wBuzz%w4%wFizz%wBuzz%w7%w8%wBuzz%wFizz%w11%wBuzz%w13%w14%wFizzBuzz%w16%w17%wBuzz%w19%wFizz%wBuzz%w22%w23%wBuzz%wFizz%w26%wBuzz%w28%w29%wFizzBuzz%w31%w32%wBuzz%w34%wFizz%wBuzz%w37%w38%wBuzz%wFizz%w41%wBuzz%w43%w44%wFizzBuzz%w46%w47%wBuzz%w49%wFizz%wBuzz%w52%w53%wBuzz%wFizz%w56%wBuzz%w58%w59%wFizzBuzz%w61%w62%wBuzz%w64%wFizz%wBuzz%w67%w68%wBuzz%wFizz%w71%wBuzz%w73%w74%wFizzBuzz%w76%w77%wBuzz%w79%wFizz%wBuzz%w82%w83%wBuzz%wFizz%w86%wBuzz%w88%w89%wFizzBuzz%w91%w92%wBuzz%w94%wFizz%wBuzz%w97%w98%wBuzz%wFizz%w"}
+                }
             }
         },
         "activity3" : {
             "name" : "Quiz 2",
-            "id" : "2-4",
+            "id" : "2-3",
             "type" : "quiz_activity",
             "content" : {
                 "question1" : {
