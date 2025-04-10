@@ -27,13 +27,14 @@ public class ContentReader {
     public static final Path BASE_PATH = Path.of("seetLabs");
     public static final Path contentJSONSource = Path.of("content");
     public static final Path DATA_PATH = BASE_PATH.resolve("Data");
+    public static final Path PUBLIC_PATH = BASE_PATH.resolve("public");
     public static final Path contentHTMLDestination = DATA_PATH;
-    public static final Path javaBaseDestination = DATA_PATH.resolve("base_code");
+    public static final Path javaBaseDestination = PUBLIC_PATH.resolve("base-code");
     public static final Path unitTestDestination = DATA_PATH.resolve("test_cases");
 
     public static final String htmlFileExtension = ".html";
     public static final String jsonFileExtension = ".json";
-    public static final String javaFileExtension = ".txt";
+    public static final String javaFileExtension = ".java";
     public static final String txtFileExtension = ".txt";
 
     public static final Set<String> ignoredFiles = Set.of(
