@@ -46,14 +46,20 @@ export class CodeEditorComponent
 
   public async setBaseCode(baseFile:string)
   { 
-    this.baseCode = await import(`./../../../../Data/${baseFile}`);
-    console.log(this.baseCode);
-    // this.codeMirrorView.dispatch({changes: {
-    //   from: 0,
-    //   to: this.codeMirrorView.state.doc.length,
-    //   insert: this.baseCode
-    // }})
+    
+    await fetch("base-code/"+baseFile)
+      .then(res => res.text())
+      .then(code => {
+        this.baseCode = code;
+      })
+ 
+    this.codeMirrorView.dispatch({changes: {
+      from: 0,
+      to: this.codeMirrorView.state.doc.length,
+      insert: this.baseCode
+    }})
   }
+  
 
   public reset()
   {

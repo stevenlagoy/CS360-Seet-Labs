@@ -26,7 +26,6 @@ export class CodingEnvironmentComponent {
 
   ngAfterViewInit()
   {
-    console.log("ran");
     this.ControlPanel.getCode = this.Editor.getCode;
   
   }

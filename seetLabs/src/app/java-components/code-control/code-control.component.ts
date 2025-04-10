@@ -1,7 +1,8 @@
-import { Component, Input, signal, Signal, ViewChild } from '@angular/core';
+import { Component, inject, Input, signal, Signal, ViewChild } from '@angular/core';
 import { Java_JSOutputStream_jsWrite, JavaOutputComponent } from '../java-output/java-output.component';
 import { MatButtonModule } from '@angular/material/button';
 import { Status } from './Status';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 declare var cheerpjInit: any;
@@ -27,6 +28,7 @@ export async function Java_LabLauncher_callJS(lib:any /*: CJ3Library*/,self:any 
 export class CodeControlComponent 
 {
 
+    private domSanitizer = inject(DomSanitizer);
     private _status:Status = new Status();
     get status() {return this._status;}
 
@@ -37,6 +39,8 @@ export class CodeControlComponent
 
     ngOnInit()
     {
+     
+      console.log(this.domSanitizer.bypassSecurityTrustUrl( "/java/LabLauncher.java"));
      
       this.init();
     }
@@ -126,7 +130,8 @@ export class CodeControlComponent
       "/files/",
       javaFile,
       "/app/java/LabLauncher.java",
-      "/app/java/JSOutputStream.java"
+      "/app/java/JSOutputStream.java",
+      "/app/launchers/PlaygroundLauncher.java"
     );
     if(await retVal !== 0)
     {

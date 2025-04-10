@@ -58,9 +58,8 @@ export class CodingActivityComponent
       ).subscribe(async (data) => {
         this.jsonData.set(data);
   
-        console.log("Going to set context pane");
+      
         await this.environment.ContextPane!.loadContext(this.jsonData()!.context);
-        console.log("Going to set base code");
         await this.environment.Editor.setBaseCode(this.jsonData()!.base);
       });
     
