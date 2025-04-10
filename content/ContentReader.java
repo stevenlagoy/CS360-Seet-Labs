@@ -21,14 +21,16 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
+import java.util.prefs.BackingStoreException;
 
 public class ContentReader {
 
-    public static final String contentJSONSource = "content/";
-    public static final String dataFolder = "seetLabs/Data/";
-    public static final String contentHTMLDestination = dataFolder;
-    public static final String javaBaseDestination = dataFolder;
-    public static final String unitTestDestination = dataFolder + "test_cases/";
+    public static final Path BASE_PATH = Path.of("seetLabs");
+    public static final Path contentJSONSource = Path.of("content");
+    public static final Path DATA_PATH = BASE_PATH.resolve("Data");
+    public static final Path contentHTMLDestination = DATA_PATH;
+    public static final Path javaBaseDestination = DATA_PATH;
+    public static final Path unitTestDestination = DATA_PATH.resolve("test_cases");
 
     public static final String htmlFileExtension = ".html";
     public static final String jsonFileExtension = ".json";
@@ -38,6 +40,8 @@ public class ContentReader {
     public static final Set<String> ignoredFiles = Set.of(
         "test_cases/"
     );
+
+    // MAIN FUNCTIONS ---------------------------------------------------------
 
     public static void main(String[] args) {
 
@@ -109,6 +113,8 @@ public class ContentReader {
         return clean() && make();
     }
 
+    // END MAIN FUNCTIONS -----------------------------------------------------
+
     public static class ScannerUtil {
         public static Scanner createScanner(InputStream inputStream) {
             return new Scanner(inputStream, StandardCharsets.UTF_8.name());
@@ -163,29 +169,31 @@ public class ContentReader {
         }
 
         public static void writeJSON(String filename, List<String> content) {
-            writeFile(filename, ContentReader.jsonFileExtension, ContentReader.dataFolder, content);
+            writeFile(filename, ContentReader.jsonFileExtension, ContentReader.DATA_PATH, content);
         }
         public static void writeJSON(String filename, String content) {
-            writeFile(filename, ContentReader.jsonFileExtension, ContentReader.dataFolder, content);
+            writeFile(filename, ContentReader.jsonFileExtension, ContentReader.DATA_PATH, content);
         }
 
         public static void writeTxt(String filename, List<String> content) {
-            writeFile(filename, ContentReader.txtFileExtension, ContentReader.dataFolder, content);
+            writeFile(filename, ContentReader.txtFileExtension, ContentReader.DATA_PATH, content);
         }
         public static void writeTxt(String filename, String content) {
-            writeFile(filename, ContentReader.txtFileExtension, ContentReader.dataFolder, content);
+            writeFile(filename, ContentReader.txtFileExtension, ContentReader.DATA_PATH, content);
         }
 
-        public static void writeFile(String filename, String extension, String destination, String content) {
+        public static void writeFile(String filename, String extension, Path destination, String content) {
             writeFile(filename, extension, destination, Collections.singletonList(content));
         }
-        public static void writeFile(String filename, String extension, String destination, List<String> content) {
-            File file = new File(destination + filename + extension);
+        public static void writeFile(String filename, String extension, Path destination, List<String> content) {
+            Path filePath = destination.resolve(filename + extension);
+            File file = filePath.toFile();
             writeFile(file, content);
         }
 
         public static void writeFile(File file, List<String> content) {
             try {
+                Files.createDirectories(file.getParentFile().toPath());
                 file.createNewFile();
                 try (FileWriter writer = new FileWriter(file, false)) {
                     for (String line : content) {
@@ -200,22 +208,22 @@ public class ContentReader {
 
     public static class JSONProcessor {
 
-        public static Set<LinkedHashMap<Object, Object>> readAllJSONFiles(String dir) throws IOException {
+        public static Set<LinkedHashMap<Object, Object>> readAllJSONFiles(Path dir) throws IOException {
             Set<LinkedHashMap<Object, Object>> JSONs = new HashSet<>();
-            Set<String> filenames = FileOperations.listFiles(dir);
+            Set<String> filenames = FileOperations.listFiles(dir.toString());
             for (String filename : filenames) {
                 if (filename.contains(jsonFileExtension)) {
-                    LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentJSONSource + filename);
+                    LinkedHashMap<Object, Object> fileJSON = readJSONFile(contentJSONSource.resolve(filename));
                     if (fileJSON != null) JSONs.add(fileJSON);
                 }
             }
             return JSONs;
         }
 
-        public static LinkedHashMap<Object, Object> readJSONFile(String filename) {
+        public static LinkedHashMap<Object, Object> readJSONFile(Path filepath) {
             ArrayList<String> contents = new ArrayList<String>();
             try {
-                File file = new File(filename);
+                File file = filepath.toFile();
                 Scanner scanner = ScannerUtil.createScanner(file);
                 while (scanner.hasNextLine()) {
                     contents.add(scanner.nextLine());
@@ -243,7 +251,7 @@ public class ContentReader {
                 }
             }
             if (!stack.isEmpty()) {
-                new Exception("The JSON object is malformed. File: " + filename).printStackTrace();
+                new Exception("WARNING: The JSON object is malformed. File: " + filepath.toString()).printStackTrace();
                 return null;
             }
             if (contents.size() == 0) return null;
@@ -389,7 +397,7 @@ public class ContentReader {
         public static void createHTML(LinkedHashMap<Object, Object> JSON) {
             HTMLGenerator generator = new HTMLGenerator();
             List<String> htmlContent = generator.generateHTML(JSON);
-            File htmlFile = new File(contentHTMLDestination + JSON.get("id") + htmlFileExtension);
+            File htmlFile = contentHTMLDestination.resolve(JSON.get("id") + htmlFileExtension).toFile();
             try {
                 htmlFile.createNewFile();
                 try (FileWriter writer = new FileWriter(htmlFile, false)) {
