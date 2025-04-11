@@ -1,29 +1,31 @@
 import java.io.File;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.*;
 
 //package com.seet.labs;
 
 public class LabLauncher
 {
 	private final static String className = "Lab";
+	private Method userMethod = null;
 
 	public LabLauncher()
 	{
-		new Thread(()->{new LabLauncher().callJS();}).start();
+		new Thread(()->{this.callJS();}).start();
         System.setOut(new PrintStream(new JSOutputStream(false), true));
 		System.setErr(new PrintStream(new JSOutputStream(true), true));
 	}
 
 
 
-	public Method getUserMethod(String methodName, Class returnType, Class<?>... parameterTypes)
+	public void getUserMethod(String methodName, Class<?> returnType, Class<?>... parameterTypes)
 	{
-		Method toReturn;
+		
 		try
 		{
 			Class<?> lab = Class.forName(className);
-			toReturn = lab.getDeclaredMethod(methodName, formalParameters);
+			userMethod = lab.getDeclaredMethod(methodName, parameterTypes);
 
 
 		}
@@ -40,25 +42,48 @@ public class LabLauncher
 			System.exit(1);
 		}
 
-		if(!returnType.equals(toReturn.getReturnType()))
+		if(!returnType.equals(userMethod.getReturnType()))
 		{
-			System.err.println("'"+methodName+"' returns '"+toReturn.getReturnType().getName()+"', but we expected '"+returnType.getName()+"'.");
+			System.err.println("'"+methodName+"' returns '"+userMethod.getReturnType().getName()+"', but we expected '"+userMethod.getName()+"'.");
 			System.exit(1);
 		}
 
-		if(!Modifier.isStatic(toReturn.getModifiers()))
+		if(!Modifier.isStatic(userMethod.getModifiers()))
 		{
 			System.err.println("'"+methodName+"' should be static.");
 			System.exit(1);
 		}
 
-		toReturn.setAccessible(true);
-		return toReturn;
+		
+	}
+
+
+	public Object launchMethod(Object... arguments)
+	{
+		
+		try
+        {
+            userMethod.invoke(null, arguments);
+        }
+        catch(InvocationTargetException e)
+        {
+			e.getCause().printStackTrace();
+			System.exit(1);
+        }
+        catch(IllegalAccessException e)
+        {
+            System.err.println("Couldn't access '"+userMethod.getName()+"'.");
+			System.err.println("Your method should be declared as public, i.e. public static "+userMethod.getName()+"( ... arguments ... )");
+			System.exit(1);
+        }
+
+		return null;
+	
 	}
 
 
 
-	private native void callJS();
+	public native void callJS();
 	public void end()
 	{
 		// exit prematurely
