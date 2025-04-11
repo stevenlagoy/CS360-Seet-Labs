@@ -16,8 +16,8 @@
 	],
 	"3" : [
 		{"id" : "3-1", "type" : 0, "file" : "3-1.html"},
-		{"id" : "3-3", "type" : 2, "file" : "3-3.html"},
-		{"id" : "3-4", "type" : 1, "file" : "3-4.html"}
+		{"id" : "3-2", "type" : 2, "file" : "3-2.html"},
+		{"id" : "3-3", "type" : 1, "file" : "3-3.html"}
 	],
 	"4" : [
 		{"id" : "4-1", "type" : 0, "file" : "4-1.html"},
@@ -36,7 +36,6 @@
 	],
 	"7" : [
 		{"id" : "7-1", "type" : 0, "file" : "7-1.html"},
-		{"id" : "7-3", "type" : 2, "file" : "7-3.html"},
 		{"id" : "7-4", "type" : 1, "file" : "7-4.html"}
 	],
 	"8" : [

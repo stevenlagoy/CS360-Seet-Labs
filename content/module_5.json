@@ -39,7 +39,7 @@
                 "output_type": "input output",
                 "number_test_cases": 1,
                 "test_cases": {
-                    "case_1": {"input": "", "output": "Woof%wMeow"}
+                    "case_1": {"input": "", "output": "Woof Meow"}
                 }
             }
         },

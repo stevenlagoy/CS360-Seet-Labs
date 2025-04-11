@@ -37,7 +37,7 @@
                 "output_type": "console out",
                 "number_test_cases": 1,
                 "test_cases": {
-                    "case_1": {"input": "", "output": "100%w20.0%wJ%true%wHello"}
+                    "case_1": {"input": "", "output": "100 20.0 J%true Hello"}
                 }
             }
         },

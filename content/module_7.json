@@ -24,14 +24,6 @@
                 "7p" : "- Validate user input with Scanner methods.%n- Prefer buffered I/O for large files.%n- Use NIO.2 for simpler and faster file operations.%n- Always close resources or use try-with-resources.%n- Handle character encoding explicitly to avoid data corruption.%n- Log exceptions with meaningful messages."
             }
         },
-        "activity2" : {
-            "name" : "Coding 7",
-            "id" : "7-3",
-            "type" : "coding_activity",
-            "content" : {
-                "" : ""
-            }
-        },
         "activity3" : {
             "name" : "Quiz 7",
             "id" : "7-4",

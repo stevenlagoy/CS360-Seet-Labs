@@ -41,9 +41,9 @@
                 },
                 "base_code": "public class Lab {%n%tpublic static void fizzBuzz() {%n%t%t// Write your code below%n%t%t%n%t}%n}",
                 "output_type": "console out",
-                "number_test_cases": 5,
+                "number_test_cases": 1,
                 "test_cases": {
-                    "case_1": {"input": "", "output": "FizzBuzz%w1%w2%wBuzz%w4%wFizz%wBuzz%w7%w8%wBuzz%wFizz%w11%wBuzz%w13%w14%wFizzBuzz%w16%w17%wBuzz%w19%wFizz%wBuzz%w22%w23%wBuzz%wFizz%w26%wBuzz%w28%w29%wFizzBuzz%w31%w32%wBuzz%w34%wFizz%wBuzz%w37%w38%wBuzz%wFizz%w41%wBuzz%w43%w44%wFizzBuzz%w46%w47%wBuzz%w49%wFizz%wBuzz%w52%w53%wBuzz%wFizz%w56%wBuzz%w58%w59%wFizzBuzz%w61%w62%wBuzz%w64%wFizz%wBuzz%w67%w68%wBuzz%wFizz%w71%wBuzz%w73%w74%wFizzBuzz%w76%w77%wBuzz%w79%wFizz%wBuzz%w82%w83%wBuzz%wFizz%w86%wBuzz%w88%w89%wFizzBuzz%w91%w92%wBuzz%w94%wFizz%wBuzz%w97%w98%wBuzz%wFizz%w"}
+                    "case_1": {"input": "", "output": "FizzBuzz 1 2 Buzz 4 Fizz Buzz 7 8 Buzz Fizz 11 Buzz 13 14 FizzBuzz 16 17 Buzz 19 Fizz Buzz 22 23 Buzz Fizz 26 Buzz 28 29 FizzBuzz 31 32 Buzz 34 Fizz Buzz 37 38 Buzz Fizz 41 Buzz 43 44 FizzBuzz 46 47 Buzz 49 Fizz Buzz 52 53 Buzz Fizz 56 Buzz 58 59 FizzBuzz 61 62 Buzz 64 Fizz Buzz 67 68 Buzz Fizz 71 Buzz 73 74 FizzBuzz 76 77 Buzz 79 Fizz Buzz 82 83 Buzz Fizz 86 Buzz 88 89 FizzBuzz 91 92 Buzz 94 Fizz Buzz 97 98 Buzz Fizz "}
                 }
             }
         },

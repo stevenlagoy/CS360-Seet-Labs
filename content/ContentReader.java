@@ -22,6 +22,8 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
 
+import content.StringOperations;
+
 public class ContentReader {
 
     public static final Path BASE_PATH = Path.of("seetLabs");
@@ -30,7 +32,7 @@ public class ContentReader {
     public static final Path PUBLIC_PATH = BASE_PATH.resolve("public");
     public static final Path contentHTMLDestination = DATA_PATH;
     public static final Path javaBaseDestination = PUBLIC_PATH.resolve("base-code");
-    public static final Path unitTestDestination = DATA_PATH.resolve("test_cases");
+    public static final Path unitTestDestination = PUBLIC_PATH.resolve("test-cases");
 
     public static final String htmlFileExtension = ".html";
     public static final String jsonFileExtension = ".json";
@@ -98,6 +100,8 @@ public class ContentReader {
                 HTMLGenerator.createAllHTMLs(module);
             }
             System.out.println("Successfully created content HTML files");
+            System.out.println("Successfully created base code Java files");
+            System.out.println("Successfully created test case Text files");
             createDBFile(determineStructure(filesContents));
             System.out.println("Successfully created database file");
             return true;
@@ -277,7 +281,7 @@ public class ContentReader {
                 try {
                     int colonIndex = -1;
                     for (int j = 0; j < line.length(); j++) {
-                        if (line.charAt(j) == ':' && !isInString(line, j)) {
+                        if (line.charAt(j) == ':' && !StringOperations.isInString(line, j)) {
                             colonIndex = j;
                             break;
                         }
@@ -288,7 +292,7 @@ public class ContentReader {
                     else {
                         value = "";
                     }
-                    if (containsUnquotedChar(value, '[')) { // the value is a list
+                    if (StringOperations.containsUnquotedChar(value, '[')) { // the value is a list
                         List<String> list = new ArrayList<String>(); 
                         for (String entry : value.replaceAll("\\[|\\]", "").split(",")) {
                             list.add(entry.replace("\"","").trim());
@@ -297,7 +301,7 @@ public class ContentReader {
                     }
                     else {
                         for (int j = 0; j < value.length(); j++) {
-                            if (value.charAt(j) == ',' && !isInString(value, j)) {
+                            if (value.charAt(j) == ',' && !StringOperations.isInString(value, j)) {
                                 value = value.substring(0, j) + value.substring(j + 1, value.length());
                             }
                         }
@@ -306,27 +310,27 @@ public class ContentReader {
                 catch (ArrayIndexOutOfBoundsException e) {
                     // do nothing - this is expected at the end of a JSON object
                 }
-                if (containsUnquotedChar(line, '{') && !containsUnquotedChar(line, '}')) { // start of an object
+                if (StringOperations.containsUnquotedChar(line, '{') && !StringOperations.containsUnquotedChar(line, '}')) { // start of an object
                     // jump over recursively-read lines to start of next object
                     int braceCount = 1, startIndex = i + 1;
                     while (braceCount > 0 && i < contents.size() - 1) {
                         i++;
                         String currentLine = contents.get(i);
-                        if (containsUnquotedChar(currentLine, '{')) braceCount++;
-                        if (containsUnquotedChar(currentLine, '}')) braceCount--;
+                        if (StringOperations.containsUnquotedChar(currentLine, '{')) braceCount++;
+                        if (StringOperations.containsUnquotedChar(currentLine, '}')) braceCount--;
                     }
                     // read the object
                     object.put(key, readJSONObject(contents.subList(startIndex, contents.size())));
                 }
-                else if (!containsUnquotedChar(line, '{') && containsUnquotedChar(line, '}')) { // end of an object
+                else if (!StringOperations.containsUnquotedChar(line, '{') && StringOperations.containsUnquotedChar(line, '}')) { // end of an object
                     // end the object
                     return object;
                 }
-                else if (containsUnquotedChar(line, '{') && containsUnquotedChar(line, '}')) { // object all on one line
+                else if (StringOperations.containsUnquotedChar(line, '{') && StringOperations.containsUnquotedChar(line, '}')) { // object all on one line
                     String objectContent = line.substring(line.indexOf("{") + 1, line.indexOf("}")).trim();
                     LinkedHashMap<Object, Object> innerObject = new LinkedHashMap<>();
                     if (!objectContent.isEmpty()) {
-                        String[] pairs = objectContent.split(",");
+                        String[] pairs = StringOperations.splitByUnquotedString(objectContent, ",");
                         for (String pair : pairs) {
                             String[] keyValue = pair.split(":");
                             if (keyValue.length == 2) {
@@ -337,32 +341,12 @@ public class ContentReader {
                         }
                     }
                     object.put(key, innerObject);
-                    return object;
                 }
                 else{
                     object.put(key, value.trim().replace("\"", ""));
                 }
             }
             return object;
-        }
-        
-        public static boolean isInString(String line, int position) {
-            boolean inString = false;
-            for (int i = 0; i < position; i++) {
-                if (line.charAt(i) == '"' && (i == 0 || line.charAt(i-1) != '\\')) {
-                    inString = !inString;
-                }
-            }
-            return inString;
-        }
-        
-        public static boolean containsUnquotedChar(String line, char target) {
-            for (int i = 0; i < line.length(); i++) {
-                if (line.charAt(i) == target && !isInString(line, i)) {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 
@@ -424,6 +408,26 @@ public class ContentReader {
                 e.printStackTrace();
                 return;
             }
+        }
+
+        public static void createTestCaseFile(String activityID, LinkedHashMap<Object, Object> testCases, int numTestCases, boolean isInputOutput) {
+            StringBuilder result = new StringBuilder();
+            int counted = 0;
+            result.append(numTestCases)
+                  .append(isInputOutput ? " io" : " co")
+                  .append("\n");
+            for (Object key : testCases.keySet()) {
+                counted++;
+                String input = ((HashMap<Object, Object>) testCases.get(key)).get("input").toString();
+                String output = ((HashMap<Object, Object>) testCases.get(key)).get("output").toString();
+                result.append(key.toString()).append(" : \"")
+                      .append(input).append("\" : \"").append(output)
+                      .append("\"\n");
+            }
+            if (counted != numTestCases) {
+                System.out.printf("WARNING: Incorrect number of test cases. Expected %d test cases but only found %d. Activity: %s%n", numTestCases, counted, activityID);
+            }
+            FileOperations.writeFile(activityID + "_test_cases", ContentReader.txtFileExtension, ContentReader.unitTestDestination, result.toString().trim());
         }
 
         private static List<String> generateReadingActivity(LinkedHashMap<Object, Object> JSON) {
@@ -522,6 +526,23 @@ public class ContentReader {
                 FileOperations.writeJava(JSON.get("id") + "_basecode", processed);
             }
             catch (NullPointerException e) {
+            }
+
+            // CREATE TEXT FILE FOR TEST CASES
+            try {
+                HashMap<Object, Object> content = (HashMap<Object, Object>) JSON.get("content");
+                String activityID = JSON.get("id").toString();
+                LinkedHashMap<Object, Object> testCases = (LinkedHashMap<Object, Object>) content.get("test_cases");
+                int numTestCases = Integer.parseInt(content.get("number_test_cases").toString());
+                boolean isInputOutput = content.get("output_type").toString().equals("input output");
+                createTestCaseFile(activityID, testCases, numTestCases, isInputOutput);
+            }
+            catch (NumberFormatException e){
+                System.out.println("Expected number, got " + JSON.get("number_test_cases").toString() + " in activity " + JSON.get("id").toString());
+            }
+            catch (NullPointerException e) {
+                System.out.print("WARNING: ");
+                e.printStackTrace();
             }
 
 
@@ -768,9 +789,5 @@ public class ContentReader {
         catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void createTestCaseFile(HashMap<Object, Object> testCases) {
-
     }
 }
