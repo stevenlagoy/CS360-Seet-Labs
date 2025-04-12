@@ -436,7 +436,7 @@ public class ContentReader {
 
             // Create HTML setup and Head section
             html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-            html.add("\t<title>" + JSON.get("name") + "</title>");
+            html.add("\t<p>" + JSON.get("name") + "</p>");
             html.add("\t<link rel=\"stylesheet\" href=\"style.css\">");
             html.add("</head>");
             
@@ -481,7 +481,7 @@ public class ContentReader {
 
             // CREATE HTML FOR INSTRUCTIONS / CONTEXT
             html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-            html.add("\t<title>" + JSON.get("name") + "</title>");
+            html.add("\t<p>" + JSON.get("name") + "</p>");
             html.add("\t<link rel=\"stylesheet\" href=\"style.css\">");
             html.add("</head>");
             
@@ -558,7 +558,7 @@ public class ContentReader {
             List<String> html = new ArrayList<>();
 
             html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-            html.add("\t<title>" + JSON.get("name") + "</title>");
+            html.add("\t<p>" + JSON.get("name") + "</p>");
             html.add("\t<link rel=\"stylesheet\" href=\"style.css\">");
             html.add("</head>");
 
