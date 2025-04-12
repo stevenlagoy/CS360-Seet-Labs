@@ -10,7 +10,7 @@
             @if (submitted()){
                 <div class="quiz-results">
                     <p>Score: {{earnedPoints()}}/{{totalPoints()}} ({{percentage()}}%)</p>
-                    <p>Passed: {{percentage() > 80 ? "True" : "False (You need at least an 80% to pass)"}}</p>
+                    <p>Passed: {{percentage() >= 80 ? "True" : "False (You need at least an 80% to pass)"}}</p>
                 </div>
             }
             <br>

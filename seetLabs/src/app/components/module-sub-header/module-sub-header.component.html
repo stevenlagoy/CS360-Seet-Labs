@@ -24,7 +24,7 @@
                 </a>
             }
             <div class="progress-bar">
-                <progress-bar title="Module Completion" value="50"></progress-bar>
+                <progress-bar title="Module {{moduleNumber}} Completion" value="50"></progress-bar>
             </div>
             @if (moduleNumber != '10' && getAssignmentNumber() < numberAssignments() || (moduleNumber == '10' && getAssignmentNumber() < numberAssignments())){
                 <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" mat-fab extended>
