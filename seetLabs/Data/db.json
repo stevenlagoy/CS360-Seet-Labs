@@ -1,13 +1,60 @@
 {
 	"0" : [
-		{"id" : "0-1", "type" : 0, "file" : "0-1.html"},
-		{"id" : "0-2", "type" : 2, "file" : "0-2.html"},
-		{"id" : "0-3", "type" : 1, "file" : "0-3.html"}
+		{"id" : "1", "type" : 0, "file" : "0-1.html"},
+		{"id" : "2", "type" : 2, "file" : "0-2.html"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 1 : Java Introduction",
+            "content" : {
+                "1" : {
+                    "type" : "Multiple choice",
+                    "question" : "In a few words, what is Java? Pick the best answer.",
+                    "options" : {
+                        "1" : "A Programming Language", "2" : "Where I get my Coffee from", "3" : "Something that prints %'Hello, World!%'"
+                    },
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Correct! Java is a Programming Language.",
+                        "2" : "While that may be true, that's very different from the Java we're talking about.",
+                        "3" : "Sure, Java can do that, but it does a lot more too!"
+                    }
+                },
+                "2" : {
+                    "type" : "True False",
+                    "question" : "Java is a relatively niche, unknown programming language.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Not quite. Java is one of the most popular coding languages used today and is anything but %'niche%'.",
+                        "2" : "Correct! Java is proudly boasted to %'run on more than 60 billion machines worldwide%', and is one of the most popular coding languages used today."
+                    }
+                },
+                "3" : {
+                    "type" : "Multiple choice",
+                    "question" : "Which of these programs or systems was made with Java?",
+                    "options" : {
+                        "1" : "NASA's Maestro Mars Rover controller",
+                        "2" : "Wikipedia Search",
+                        "3" : "Android",
+                        "4" : "Minecraft"
+                    },
+                    "correct_responses" : ["1", "2", "3", "4"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Actually, all of these are written with Java! Nice Job!",
+                        "2" : "Actually, all of these are written with Java! Nice Job!",
+                        "3" : "Actually, all of these are written with Java! Nice Job!",
+                        "4" : "Actually, all of these are written with Java! Nice Job!"
+                    }
+                }
+            }
+		}}
 	],
 	"1" : [
-		{"id" : "1-1", "type" : 0, "file" : "1-1.html"},
-		{"id" : "1-2", "type" : 2, "file" : "1-2.html"},
-		{"id" : "1-3", "type" : 1, "file" : "1-3.html"}
+		{"id" : "1", "type" : 0, "file" : "1-1.html"},
+		{"id" : "2", "type" : 2, "file" : "1-2.html"},
+		{"id" : "3", "type" : 1, "file" : "1-3.html"}
 	],
 	"2" : [
 		{"id" : "2-1", "type" : 0, "file" : "2-1.html"},

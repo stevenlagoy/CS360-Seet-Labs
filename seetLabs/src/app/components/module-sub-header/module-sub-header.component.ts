@@ -1,8 +1,10 @@
-import { Component, Input, OnInit, signal} from '@angular/core';
+import { Component, Input, OnInit, inject, signal} from '@angular/core';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { JsonServerTestService } from '../../services/json-server-test.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'module-sub-header',
@@ -17,13 +19,15 @@ export class ModuleSubHeaderComponent implements OnInit {
   @Input() assignmentNumber = '';
   goForward = signal<Boolean>(true);
   goBack = signal<Boolean>(true);
+  
+  numberAssignments = signal<number>(0);
+  numberModules = signal<number>(10);
+  lastModuleLastActivityNum = signal<number>(0);
+  getDataService = inject(JsonServerTestService);
 
-  ngOnInit(): void {
-    if (this.assignmentNumber == "1"){
-      this.goBack.set(false);
-    } else if (this.assignmentNumber == "5"){
-      this.goForward.set(false);
-    }
+  async ngOnInit(): Promise<void> {
+    this.numberAssignments.set(await this.getDataService.getModuleContents(this.moduleNumber));
+    this.lastModuleLastActivityNum.set(await this.getDataService.getModuleContents(this.decrementModule()));
   }
 
   incrementAssignment() : string {
@@ -34,5 +38,19 @@ export class ModuleSubHeaderComponent implements OnInit {
   decrementAssignment() : string {
     const num = parseInt(this.assignmentNumber);
     return (num-1).toString();
+  }
+
+  incrementModule() : string {
+    const num = parseInt(this.moduleNumber);
+    return (num+1).toString();
+  }
+
+  decrementModule() : string {
+    const num = parseInt(this.moduleNumber);
+    return (num-1).toString();
+  }
+
+  getAssignmentNumber(): number {
+    return Number(this.assignmentNumber);
   }
 }
