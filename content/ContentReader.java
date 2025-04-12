@@ -352,12 +352,12 @@ public class ContentReader {
 
     public static class HTMLGenerator {
         public static final Map<String, String> openingTags = Map.of(
-            "t", "<title>",
+            "t", "<p>",
             "h1", "<h1>",
             "p", "<p>"
         );
         public static final Map<String, String> closingTags = Map.of(
-            "t", "</title>",
+            "t", "</p>",
             "h1", "</h1>",
             "p", "</p>"
         );
@@ -766,7 +766,7 @@ public class ContentReader {
                 if (result.charAt(result.length() - 1) == '}') result.append(",\n\t");
                 else result.append("\t");
                 result.append("\t{\"id\" : \"")
-                      .append(String.format("%d-%d", module, activity))
+                      .append(String.format("%d", activity))
                       .append("\", \"type\" : ")
                       .append(ids.get(module).get(activity))
                       .append(", \"file\" : \"")

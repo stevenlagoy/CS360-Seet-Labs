@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<title>Input and Output</title>
+	<p>Input and Output</p>
 	<h1>Console Input with Scanner</h1>
 	<p>The <span class="keyword">Scanner</span> class simplifies reading console input. Create a Scanner on <span class="keyword">System.in</span> and use methods like <span class="keyword">nextLine()</span>, <span class="keyword">nextInt()</span>, or <span class="keyword">nextDouble()</span> to retrieve values:</p>
 	<pre><code class="language-java">Scanner scanner = new Scanner(System.in);<br>System.out.print("Enter name:");<br>String name = scanner.nextLine();<br>int age = scanner.nextInt();<br>// consume leftover newline<br>scanner.nextLine();<br>String comment = scanner.nextLine();<br>scanner.close();</code></pre>

@@ -19,8 +19,11 @@ public class CodeTester {
         for (String arg : args) {
             System.out.println(arg);
         }
-        String testFileName = "3-2_test_cases";
+        String testFileName = args[0];
         runAllTests(readTestCasesFile(unitTestSource.resolve(testFileName)));
+
+        // call launcher.getUserMethod("method name", return type, parameter types)
+        // then launcher.launchMethod(parameter values)
     }
 
     public static class ScannerUtil {
