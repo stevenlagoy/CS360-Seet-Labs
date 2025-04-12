@@ -7,13 +7,17 @@ import java.lang.reflect.*;
 
 public class LabLauncher
 {
+
+	private JSOutputStream out;
+
 	private final static String className = "Lab";
 	private Method userMethod = null;
 
 	public LabLauncher()
 	{
 		new Thread(()->{this.callJS();}).start();
-        System.setOut(new PrintStream(new JSOutputStream(false), true));
+		out = new JSOutputStream(false);
+        System.setOut(new PrintStream(out, true));
 		System.setErr(new PrintStream(new JSOutputStream(true), true));
 	}
 
@@ -63,7 +67,7 @@ public class LabLauncher
 		
 		try
         {
-            userMethod.invoke(null, arguments);
+            return userMethod.invoke(null, arguments);
         }
         catch(InvocationTargetException e)
         {
@@ -79,6 +83,12 @@ public class LabLauncher
 
 		return null;
 	
+	}
+
+
+	public JSOutputStream getJSOutputStream()
+	{
+		return out;
 	}
 
 

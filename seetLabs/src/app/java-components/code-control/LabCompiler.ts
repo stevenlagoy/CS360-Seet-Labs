@@ -8,14 +8,22 @@ export class LabCompiler
 {
 
     private javaPaths = ["/app/java/LabLauncher.java", "/app/java/JSOutputStream.java"];
-    private launcherName:string ="";
+    private launcherName:string ="PlaygroundLauncher";
     private status:Status;
+
+
+    set LauncherName(value:string)
+    {
+      this.launcherName = value;
+    }
+
 
     constructor(status:Status, launcherName:string)
     {
         this.status = status;
-        this.launcherName =launcherName;
-        this.javaPaths.push("/app/launchers/"+launcherName+".java");
+        this.launcherName = launcherName;
+        
+        this.javaPaths.push("/app/launchers/"+this.launcherName+".java");
 
 
     }
@@ -62,7 +70,7 @@ export class LabCompiler
         "/files/",
         this.javaPaths[0], // is there a better way to do this?
         this.javaPaths[1],
-        this.javaPaths[2],
+        this.javaPaths[2],  
         javaFile
       );
       if(await retVal !== 0)

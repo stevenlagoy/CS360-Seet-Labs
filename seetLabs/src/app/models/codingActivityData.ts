@@ -3,4 +3,6 @@ export type CodingActivityData = {
     type: number
     context: string
     base: string
+    launcher:string
+    testCases:string
 }

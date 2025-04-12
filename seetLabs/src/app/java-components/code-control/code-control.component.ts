@@ -39,7 +39,27 @@ export class CodeControlComponent
 
     public getCode!:()=>string;
     private compiler!:LabCompiler;
+
     private launcherName = "PlaygroundLauncher";
+    private testCasesPath = "";
+    private isPlayground:boolean = true;
+
+
+
+
+    public setLauncherClass(value:string)
+    {
+     
+      this.isPlayground = false;
+      this.launcherName = value;
+      if(this.compiler !== undefined)
+        this.compiler.LauncherName = value;
+    }
+
+    public setTestCases(file:string)
+    {
+      this.testCasesPath = "/app/test-cases/"+file;
+    }
 
     ngOnInit()
     {
@@ -109,10 +129,24 @@ export class CodeControlComponent
     let retVal = await cheerpjRunMain(
         this.launcherName,
         "/files/Lab.jar",
+        this.testCasesPath
     );
     this._status.programRunning = false;
 
-    this._status.setStatus("Returned with code "+await retVal, true);
+    if(this.isPlayground)
+    {
+      this._status.setStatus("Returned with code "+await retVal, true);
+      return;
+    }
+    
+    if((await retVal) == 0)
+    {
+      this._status.setStatus("Activity Complete! Good job.", true);
+    }
+    else
+    {
+      this._status.setStatus("Hmm. That's not quite what we were looking for.", true);
+    }
 
   }
 

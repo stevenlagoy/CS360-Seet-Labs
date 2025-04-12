@@ -43,11 +43,11 @@ export class CodingActivityComponent
     this.moduleNumber.set(id as string);
     this.assignmentNumber.set(assignmentNumber as string);
 
-    this.setupContext();
+    this.readJSON();
     
   }
 
-  setupContext()
+  readJSON()
   {
 
     this.getDataService.getCodingActivityData(this.moduleNumber(), this.assignmentNumber()).pipe(
@@ -61,6 +61,9 @@ export class CodingActivityComponent
       
         await this.environment.ContextPane!.loadContext(this.jsonData()!.context);
         await this.environment.Editor.setBaseCode(this.jsonData()!.base);
+        this.environment.ControlPanel.setLauncherClass(this.jsonData()!.launcher);
+        this.environment.ControlPanel.setTestCases(this.jsonData()!.testCases);
+
       });
     
   }

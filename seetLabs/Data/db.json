@@ -118,8 +118,8 @@
         }
 
         },
-        {"id": "4", "type": 3, "context":"readingOne.html", "base":"TestOne.java"},
-        {"id": "5", "type": 3, "context":"readingTwo.html", "base":"TestTwo.java"}
+        {"id": "4", "type": 3, "context":"readingOne.html", "base":"TestOne.java", "launcher":"HelloWorldLauncher", "testCases":""},
+        {"id": "5", "type": 3, "context":"readingTwo.html", "base":"TestTwo.java", "launcher":"ExampleLauncher", "testCases":"Example.txt"}
     ],
     "2": [
         {"id": "1", "type": 1, "file": "Quiz Material One"},    
