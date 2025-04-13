@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import content.FileOperations.ScannerUtil;
+
 public class CodeTester {
     
     public static final Path BASE_PATH = Path.of("seetLabs");
@@ -24,15 +26,6 @@ public class CodeTester {
 
         // call launcher.getUserMethod("method name", return type, parameter types)
         // then launcher.launchMethod(parameter values)
-    }
-
-    public static class ScannerUtil {
-        public static Scanner createScanner(InputStream inputStream) {
-            return new Scanner(inputStream, StandardCharsets.UTF_8.name());
-        }
-        public static Scanner createScanner(File file) throws FileNotFoundException {
-            return new Scanner(file, StandardCharsets.UTF_8.name());
-        }
     }
 
     public static ArrayList<String> readTestCasesFile(Path filepath) {
