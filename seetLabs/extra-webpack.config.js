@@ -5,9 +5,13 @@ module.exports = {
           test: /\.html$/i,
           use: ['raw-loader']
         },
+        {
+          test: /\.java$/,
+          use: ['raw-loader'], // or 'file-loader'
+        },
       ],
     },
     resolve: {
-        extensions: [".ts", ".js", ".html"], // Ensure Webpack recognizes .html files
+        extensions: [".ts", ".js", ".html", ".java"], // Ensure Webpack recognizes .html files
     },
   };

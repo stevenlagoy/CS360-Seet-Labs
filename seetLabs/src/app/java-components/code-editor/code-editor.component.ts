@@ -23,9 +23,6 @@ import {
 import {lintKeymap} from "@codemirror/lint"
 import {java} from "@codemirror/lang-java"
 
-
-
-
 @Component({
   selector: 'app-code-editor',
   imports: [],
@@ -44,6 +41,23 @@ export class CodeEditorComponent
 
   public getCode = () => this.codeMirrorView.state.doc.toString();
 
+  public async setBaseCode(baseFile:string)
+  { 
+    
+    await fetch("base-code/"+baseFile)
+      .then(res => res.text())
+      .then(code => {
+        this.baseCode = code;
+      })
+ 
+    this.codeMirrorView.dispatch({changes: {
+      from: 0,
+      to: this.codeMirrorView.state.doc.length,
+      insert: this.baseCode
+    }})
+  }
+  
+
   public reset()
   {
     if(!confirm("Reset the code editor? You will lose any changes you made."))
@@ -58,9 +72,6 @@ export class CodeEditorComponent
     }})
 
   }
-
-
-
 
   ngAfterViewInit()
   {
