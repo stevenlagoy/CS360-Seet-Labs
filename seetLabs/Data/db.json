@@ -1,55 +1,961 @@
 {
+	"7" : [
+		{"name" : "Module 7: Input and Output"},
+		{"id" : "1", "type" : 0, "file" : "7-1.html"},
+		{"id" : "2", "type" : 1, "questions" : {
+			"name" : "Quiz 7",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "Which Scanner method reads an integer from console?",
+					"options" : {
+						"1" : "next()",
+						"2" : "nextLine()",
+						"3" : "nextInt()",
+						"4" : "nextChar()"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "next() reads a token as String.",
+						"2" : "nextLine() reads a full line.",
+						"3" : "Correct! nextInt() reads an integer.",
+						"4" : "No such method in Scanner."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: FileInputStream reads character data only.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. FileInputStream reads bytes.",
+						"2" : "Correct! It handles raw bytes, not just characters."
+					}
+				},
+				"question3" : {
+					"type" : "multiple choice",
+					"question" : "Which class provides methods for modern file operations in Java NIO.2?",
+					"options" : {
+						"1" : "FileInputStream",
+						"2" : "Files",
+						"3" : "FileReader",
+						"4" : "BufferedWriter"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "No. FileInputStream is for byte streams.",
+						"2" : "Correct! Files contains NIO.2 file utilities.",
+						"3" : "FileReader is character stream.",
+						"4" : "BufferedWriter is for buffered character output."
+					}
+				},
+				"question4" : {
+					"type" : "true false",
+					"question" : "True/False: try-with-resources automatically closes declared resources.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! It ensures resources are closed.",
+						"2" : "Incorrect. try-with-resources closes resources automatically."
+					}
+				}
+				}
+			}
+		}
+	],
 	"0" : [
+		{"name" : "Module 0: Meet Java"},
 		{"id" : "1", "type" : 0, "file" : "0-1.html"},
-		{"id" : "2", "type" : 2, "file" : "0-2.html"},
-		{"id" : "3", "type" : 1, "file" : "0-3.html"}
-	],
-	"1" : [
-		{"id" : "1", "type" : 0, "file" : "1-1.html"},
-		{"id" : "2", "type" : 2, "file" : "1-2.html"},
-		{"id" : "3", "type" : 1, "file" : "1-3.html"}
-	],
-	"2" : [
-		{"id" : "1", "type" : 0, "file" : "2-1.html"},
-		{"id" : "2", "type" : 2, "file" : "2-2.html"},
-		{"id" : "3", "type" : 1, "file" : "2-3.html"}
-	],
-	"3" : [
-		{"id" : "1", "type" : 0, "file" : "3-1.html"},
-		{"id" : "2", "type" : 2, "file" : "3-2.html"},
-		{"id" : "3", "type" : 1, "file" : "3-3.html"}
+		{"id" : "2", "type" : 3, "context" : "0-2.html", "base" : "0-2_base-code", "launcher" : "launcher", "testCases" : "0-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 1 : Java Introduction",
+			"content" : {
+				"question1" : {
+					"type" : "Multiple choice",
+					"question" : "In a few words, what is Java? Pick the best answer.",
+					"options" : {
+						"1" : "A Programming Language 2 : Where I get my Coffee from 3 : Something that prints %'Hello, World!%'"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! Java is a Programming Language.",
+						"2" : "While that may be true, that's very different from the Java we're talking about.",
+						"3" : "Sure, Java can do that, but it does a lot more too!"
+					}
+				},
+				"question2" : {
+					"type" : "True False",
+					"question" : "Java is a relatively niche, unknown programming language.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Not quite. Java is one of the most popular coding languages used today and is anything but %'niche%'.",
+						"2" : "Correct! Java is proudly boasted to %'run on more than 60 billion machines worldwide%', and is one of the most popular coding languages used today."
+					}
+				},
+				"question3" : {
+					"type" : "Multiple choice",
+					"question" : "Which of these programs or systems was made with Java?",
+					"options" : {
+						"1" : "NASA's Maestro Mars Rover controller",
+						"2" : "Wikipedia Search",
+						"3" : "Android",
+						"4" : "Minecraft"
+					},
+					"correct_responses" : [
+						"1", " 2", " 3", " 4"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Actually, all of these are written with Java! Nice Job!",
+						"2" : "Actually, all of these are written with Java! Nice Job!",
+						"3" : "Actually, all of these are written with Java! Nice Job!",
+						"4" : "Actually, all of these are written with Java! Nice Job!"
+					}
+				}
+				}
+			}
+		}
 	],
 	"4" : [
+		{"name" : "Module 4: Objects and Classes"},
 		{"id" : "1", "type" : 0, "file" : "4-1.html"},
-		{"id" : "3", "type" : 2, "file" : "4-3.html"},
-		{"id" : "4", "type" : 1, "file" : "4-4.html"}
-	],
-	"5" : [
-		{"id" : "1", "type" : 0, "file" : "5-1.html"},
-		{"id" : "3", "type" : 2, "file" : "5-3.html"},
-		{"id" : "4", "type" : 1, "file" : "5-4.html"}
-	],
-	"6" : [
-		{"id" : "1", "type" : 0, "file" : "6-1.html"},
-		{"id" : "3", "type" : 2, "file" : "6-3.html"},
-		{"id" : "4", "type" : 1, "file" : "6-4.html"}
-	],
-	"7" : [
-		{"id" : "1", "type" : 0, "file" : "7-1.html"},
-		{"id" : "4", "type" : 1, "file" : "7-4.html"}
-	],
-	"8" : [
-		{"id" : "1", "type" : 0, "file" : "8-1.html"},
-		{"id" : "3", "type" : 2, "file" : "8-3.html"},
-		{"id" : "4", "type" : 1, "file" : "8-4.html"}
+		{"id" : "2", "type" : 3, "context" : "4-2.html", "base" : "4-2_base-code", "launcher" : "launcher", "testCases" : "4-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 4",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "What is the purpose of a constructor?",
+					"options" : {
+						"1" : "To create a new class",
+						"2" : "To initialize an object",
+						"3" : "To destroy an object",
+						"4" : "To define static methods"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Not quite. Classes define types, constructors initialize instances.",
+						"2" : "Correct! A constructor sets up a new object's initial state.",
+						"3" : "Object destruction is handled by garbage collection.",
+						"4" : "Static methods are independent of constructors."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: Static methods can directly access instance variables.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. Static methods belong to the class and can't access instance-specific data.",
+						"2" : "Correct! They can only access static members directly."
+					}
+				}
+				}
+			}
+		}
 	],
 	"9" : [
+		{"name" : "Module 9: Data Structures and Generics"},
 		{"id" : "1", "type" : 0, "file" : "9-1.html"},
-		{"id" : "3", "type" : 2, "file" : "9-3.html"},
-		{"id" : "4", "type" : 1, "file" : "9-4.html"}
+		{"id" : "2", "type" : 3, "context" : "9-2.html", "base" : "9-2_base-code", "launcher" : "launcher", "testCases" : "9-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 9",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "Which data structure follows Last-In-First-Out (LIFO) order?",
+					"options" : {
+						"1" : "Queue",
+						"2" : "Stack",
+						"3" : "HashSet",
+						"4" : "Binary Tree"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. Queues follow FIFO.",
+						"2" : "Correct! Stacks are LIFO.",
+						"3" : "HashSet has no order.",
+						"4" : "Binary Tree is hierarchical."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: Generics in Java allow for defining methods that work with multiple data types.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! Generics enable type parameters.",
+						"2" : "Incorrect. Generics enhance flexibility."
+					}
+				},
+				"question3" : {
+					"type" : "multiple choice",
+					"question" : "Which implementation offers O(1) random access but O(n) insertion in the middle?",
+					"options" : {
+						"1" : "LinkedList",
+						"2" : "ArrayList",
+						"3" : "HashSet",
+						"4" : "TreeMap"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "LinkedList has O(n) access.",
+						"2" : "Correct! ArrayList has fast access but slow middle inserts.",
+						"3" : "HashSet is unordered. 4 : TreeMap is a sorted map."
+					}
+				},
+				"question4" : {
+					"type" : "multiple choice",
+					"question" : "In a HashMap, what happens when two keys have the same hash code?",
+					"options" : {
+						"1" : "One overwrites the other",
+						"2" : "They collide and stored in the same bucket",
+						"3" : "An exception is thrown",
+						"4" : "HashMap resizes immediately"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. Colliding keys coexist.",
+						"2" : "Correct! They go into the same bucket.",
+						"3" : "No exception.",
+						"4" : "Resize happens when load factor exceeded."
+					}
+				},
+				"question5" : {
+					"type" : "true false",
+					"question" : "True/False: A Deque can only add and remove elements at one end.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. Deque supports both ends.",
+						"2" : "Correct! Deque is double-ended."
+					}
+				},
+				"question6" : {
+					"type" : "multiple choice",
+					"question" : "Which wildcard allows reading from a collection of Number or its subclasses?",
+					"options" : {
+						"1" : "List<?>",
+						"2" : "List<? extends Number>",
+						"3" : "List<? super Number>",
+						"4" : "List<Number>"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "? is unbounded.",
+						"2" : "Correct! ? extends Number allows Number or subclass.",
+						"3" : "super allows Number or superclass.",
+						"4" : "Only exactly Number."
+					}
+				}
+				}
+			}
+		}
+	],
+	"3" : [
+		{"name" : "Module 3: Methods and Subprograms"},
+		{"id" : "1", "type" : 0, "file" : "3-1.html"},
+		{"id" : "2", "type" : 3, "context" : "3-2.html", "base" : "3-2_base-code", "launcher" : "launcher", "testCases" : "3-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 3",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "Which term best describes a method that calls itself?",
+					"options" : {
+						"1" : "Iteration",
+						"2" : "Recursion",
+						"3" : "Overloading",
+						"4" : "Encapsulation"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Iteration uses loops rather than self-calls.",
+						"2" : "Correct! Recursion is when a method calls itself.",
+						"3" : "Overloading involves multiple methods sharing a name.",
+						"4" : "Encapsulation bundles data and methods together."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: In Java, overloaded methods must have different parameter lists.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! Overloaded methods differ by parameters.",
+						"2" : "Incorrect. They must differ in parameter lists."
+					}
+				}
+				}
+			}
+		}
+	],
+	"1" : [
+		{"name" : "Module 1: Variables and Data Types"},
+		{"id" : "1", "type" : 0, "file" : "1-1.html"},
+		{"id" : "2", "type" : 3, "context" : "1-2.html", "base" : "1-2_base-code", "launcher" : "launcher", "testCases" : "1-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 2 : Variables",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "Select a real Java primitive type.",
+					"options" : {
+						"1" : "String",
+						"2" : "float",
+						"3" : "Integer",
+						"4" : "string"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "String is a very useful and common data type, but it is not a primitive in Java. Notice that String starts with a capital letter: that indicates it is an Object.",
+						"2" : "Correct! Floats are a primitive data type used to store numbers with decimal parts.",
+						"3" : "While %kint%/k is a primitive type, Integer is the associated wrapper type for int. Notice that Integer is capitalized, which indicates that it is an Object.",
+						"4" : "String (with a capital S) is an Object in Java, but string (with lowercase s) is not."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: To create an object instance, use the %kcreate%/k keyword.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. To create an object instance, we use the %knew%/k keyword.",
+						"2" : "That's right. To create an object instance, we use the %knew%/k keyword."
+					}
+				},
+				"question3" : {
+					"type" : "true false",
+					"question" : "True/False: Variables declared as %kfinal%/k are immutable and their value cannot be changed.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "That's correct. Using the %kfinal%/k keyword makes a variable immutable and means its value cannot be reassigned.",
+						"2" : "Nope, %kfinal%/k variables are immutable with unchanging values."
+					}
+				},
+				"question4" : {
+					"type" : "multiple choice",
+					"question" : "Which of these statements represents or involves a Widening conversion?",
+					"options" : {
+						"1" : "float total = 100.0f;",
+						"2" : "int y = (int) 45.5;",
+						"3" : "Integer myInt = 1_000_000;",
+						"4" : "double x = 10;"
+					},
+					"correct_responses" : [
+						"4"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. There is neither a widening nor a narrowing in this statement.",
+						"2" : "Not quite. This is a narrowing conversion, since we're taking a double (with a larger size) and making it an int (with a smaller size).",
+						"3" : "Though this looks like widening at first, this is actually a distinct concept called Autoboxing. Integer is a wrapper class which %icontains%/i the int value.",
+						"4" : "Correct! In this case, the (smaller) int value of 10 is being widened into the (larger) double value of 10.0."
+					}
+				},
+				"question5" : {
+					"type" : "true false",
+					"question" : "True/False: The name of the double type refers to the fact that it is double the size of a float.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "That's correct. A float is 32 bits (4 bytes) in size while a double is 64 bits (8 bytes).",
+						"2" : "This statement is true. A float is 32 bits (4 bytes) in size while a double is 64 bits (8 bytes)."
+					}
+				}
+				}
+			}
+		}
 	],
 	"10" : [
+		{"name" : "Module 10: Recap and Review"},
 		{"id" : "1", "type" : 0, "file" : "10-1.html"},
-		{"id" : "2", "type" : 1, "file" : "10-2.html"}
+		{"id" : "2", "type" : 1, "questions" : {
+			"name" : "Quiz 10",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "What keyword is used to define a class in Java?",
+					"options" : {
+						"1" : "function",
+						"2" : "define",
+						"3" : "class",
+						"4" : "public"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"3" : "Correct! 'class' is the keyword to define a class."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: A 'while' loop always runs at least once.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"2" : "Correct! Unlike 'do-while', 'while' might never run."
+					}
+				},
+				"question3" : {
+					"type" : "multiple choice",
+					"question" : "What is the return type of a method that doesn't return anything?",
+					"options" : {
+						"1" : "null",
+						"2" : "void",
+						"3" : "None",
+						"4" : "return"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"2" : "Correct! 'void' means no return value."
+					}
+				},
+				"question4" : {
+					"type" : "multiple choice",
+					"question" : "Which term best describes using the same method name with different parameters?",
+					"options" : {
+						"1" : "Inheritance",
+						"2" : "Overriding",
+						"3" : "Overloading",
+						"4" : "Encapsulation"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"3" : "Correct! Overloading allows multiple method signatures."
+					}
+				},
+				"question5" : {
+					"type" : "true false",
+					"question" : "True/False: Constructors have the same name as their class.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! Constructors match the class name."
+					}
+				},
+				"question6" : {
+					"type" : "multiple choice",
+					"question" : "Which principle of OOP hides internal details?",
+					"options" : {
+						"1" : "Abstraction",
+						"2" : "Polymorphism",
+						"3" : "Inheritance",
+						"4" : "Encapsulation"
+					},
+					"correct_responses" : [
+						"4"
+					],
+					"points" : 10,
+					"feedback" : {
+						"4" : "Correct! Encapsulation hides implementation details."
+					}
+				},
+				"question7" : {
+					"type" : "multiple choice",
+					"question" : "Which keyword is used to create an interface in Java?",
+					"options" : {
+						"1" : "class",
+						"2" : "abstract",
+						"3" : "interface",
+						"4" : "object"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"3" : "Correct! 'interface' defines an interface."
+					}
+				},
+				"question8" : {
+					"type" : "multiple choice",
+					"question" : "Which block always executes in exception handling?",
+					"options" : {
+						"1" : "try",
+						"2" : "catch",
+						"3" : "throw",
+						"4" : "finally"
+					},
+					"correct_responses" : [
+						"4"
+					],
+					"points" : 10,
+					"feedback" : {
+						"4" : "Correct! 'finally' always runs."
+					}
+				},
+				"question9" : {
+					"type" : "true false",
+					"question" : "True/False: FileReader is used to write data to a file.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"2" : "Correct! FileReader is for reading."
+					}
+				},
+				"question10" : {
+					"type" : "multiple choice",
+					"question" : "Which class is used to take console input in Java?",
+					"options" : {
+						"1" : "InputStream",
+						"2" : "Reader",
+						"3" : "Scanner",
+						"4" : "Stream"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"3" : "Correct! Scanner reads console input."
+					}
+				},
+				"question11" : {
+					"type" : "multiple choice",
+					"question" : "Which data structure allows duplicate values and maintains order?",
+					"options" : {
+						"1" : "Set",
+						"2" : "Map",
+						"3" : "ArrayList",
+						"4" : "HashSet"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"3" : "Correct! ArrayList supports duplicates and order."
+					}
+				},
+				"question12" : {
+					"type" : "true false",
+					"question" : "True/False: Arrays can be resized after creation.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"2" : "Correct! Arrays are fixed size."
+					}
+				},
+				"question13" : {
+					"type" : "multiple choice",
+					"question" : "What is the default initial capacity of an ArrayList in Java?",
+					"options" : {
+						"1" : "0",
+						"2" : "8",
+						"3" : "10",
+						"4" : "16"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"3" : "Correct! Default capacity is 10."
+					}
+				},
+				"question14" : {
+					"type" : "multiple choice",
+					"question" : "Which class is thread-safe for concurrent hash-based maps?",
+					"options" : {
+						"1" : "HashMap",
+						"2" : "Hashtable",
+						"3" : "ConcurrentHashMap",
+						"4" : "TreeMap"
+					},
+					"correct_responses" : [
+						"3"
+					],
+					"points" : 10,
+					"feedback" : {
+						"3" : "Correct! ConcurrentHashMap is thread-safe."
+					}
+				},
+				"question15" : {
+					"type" : "true false",
+					"question" : "True/False: Generic classes allow you to define type-safe templates.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! Generics improve type safety."
+					}
+				}
+				}
+			}
+		}
+	],
+	"6" : [
+		{"name" : "Module 6: Exception Handling"},
+		{"id" : "1", "type" : 0, "file" : "6-1.html"},
+		{"id" : "2", "type" : 3, "context" : "6-2.html", "base" : "6-2_base-code", "launcher" : "launcher", "testCases" : "6-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 6",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "Which keyword declares that a method may throw a checked exception?",
+					"options" : {
+						"1" : "throw",
+						"2" : "throws",
+						"3" : "try",
+						"4" : "catch"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. 'throw' raises an exception instance.",
+						"2" : "Correct! 'throws' declares checked exceptions.",
+						"3" : "'try' starts a block for catching exceptions.",
+						"4" : "'catch' handles exceptions, not declares them."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: Unchecked exceptions must be declared in the method signature.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. Unchecked exceptions need not be declared.",
+						"2" : "Correct! Only checked exceptions require declaration."
+					}
+				}
+				}
+			}
+		}
+	],
+	"5" : [
+		{"name" : "Module 5: OOP, Interfaces, and Inheritance"},
+		{"id" : "1", "type" : 0, "file" : "5-1.html"},
+		{"id" : "2", "type" : 3, "context" : "5-2.html", "base" : "5-2_base-code", "launcher" : "launcher", "testCases" : "5-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 5",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "What does the 'implements' keyword indicate in Java?",
+					"options" : {
+						"1" : "Class inheritance",
+						"2" : "Interface implementation",
+						"3" : "Abstract class instantiation",
+						"4" : "Method overriding"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Not quite. 'extends' is for inheritance.",
+						"2" : "Correct! 'implements' signals interface adoption.",
+						"3" : "Abstract classes use 'extends'.",
+						"4" : "Overriding uses @Override, not 'implements'."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: Abstract classes can contain both abstract and concrete methods.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! Abstract classes mix method types.",
+						"2" : "Incorrect. They can have concrete methods too."
+					}
+				}
+				}
+			}
+		}
+	],
+	"8" : [
+		{"name" : "Module 8: Arrays and Collections"},
+		{"id" : "1", "type" : 0, "file" : "8-1.html"},
+		{"id" : "2", "type" : 3, "context" : "8-2.html", "base" : "8-2_base-code", "launcher" : "launcher", "testCases" : "8-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 8",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "Which declaration creates a 2D array?",
+					"options" : {
+						"1" : "int[][] a;",
+						"2" : "int a[][][];",
+						"3" : "int[2][3] a;",
+						"4" : "int a[2][];"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! int[][] a declares a 2D array.",
+						"2" : "That's 3D.",
+						"3" : "Invalid syntax.",
+						"4" : "Cannot specify sizes in declaration."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: ArrayList allows duplicate elements.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Correct! Lists allow duplicates.",
+						"2" : "Incorrect. ArrayList can contain duplicates."
+					}
+				},
+				"question3" : {
+					"type" : "multiple choice",
+					"question" : "Which class provides utility methods for arrays?",
+					"options" : {
+						"1" : "Collections",
+						"2" : "Arrays",
+						"3" : "ArrayList",
+						"4" : "Math"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Collections is for collections, not arrays.",
+						"2" : "Correct! Arrays has methods like sort and binarySearch.",
+						"3" : "ArrayList is a collection implementation.",
+						"4" : "Math is for math operations."
+					}
+				},
+				"question4" : {
+					"type" : "multiple choice",
+					"question" : "What happens when you access index -1 in an array?",
+					"options" : {
+						"1" : "Returns first element",
+						"2" : "Throws IndexOutOfBoundsException",
+						"3" : "Returns last element",
+						"4" : "Compiler error"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "No, index starts at 0.",
+						"2" : "Correct! Negative index is out of bounds.",
+						"3" : "No automatic wrap-around.",
+						"4" : "It's a runtime exception, not compile-time."
+					}
+				},
+				"question5" : {
+					"type" : "true false",
+					"question" : "True/False: HashSet maintains insertion order.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. HashSet is unordered.",
+						"2" : "Correct! Use LinkedHashSet for insertion order."
+					}
+				}
+				}
+			}
+		}
+	],
+	"2" : [
+		{"name" : "Module 2: Control Flow"},
+		{"id" : "1", "type" : 0, "file" : "2-1.html"},
+		{"id" : "2", "type" : 3, "context" : "2-2.html", "base" : "2-2_base-code", "launcher" : "launcher", "testCases" : "2-2_test-case"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 2",
+			"content" : {
+				"question1" : {
+					"type" : "multiple choice",
+					"question" : "Which loop should you use when you know exactly how many times to iterate?",
+					"options" : {
+						"1" : "while",
+						"2" : "for",
+						"3" : "do-while",
+						"4" : "foreach"
+					},
+					"correct_responses" : [
+						""
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Not quite. While loops are great when we don’t know how many times we need to loop.",
+						"2" : "Correct! The for loop is best when we know the exact number of iterations.",
+						"3" : "Do-while loops ensure at least one iteration but are not necessarily best when we know the count.",
+						"4" : "The for-each loop is great for collections but not for a fixed number of iterations."
+					}
+				},
+				"question2" : {
+					"type" : "true false",
+					"question" : "True/False: The 'break' statement skips the rest of the current loop iteration and moves to the next one.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						""
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. 'break' completely exits the loop, while 'continue' skips to the next iteration.",
+						"2" : "That's right! 'break' stops the loop entirely, while 'continue' moves to the next iteration."
+					}
+				}
+				}
+			}
+		}
 	]
 }

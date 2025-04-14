@@ -30,7 +30,7 @@
         },
         "activity2": {
             "name": "Coding 4",
-            "id": "4-3",
+            "id": "4-2",
             "type": "coding_activity",
             "content": {
                 "context": {
@@ -50,7 +50,7 @@
         },
         "activity3" : {
             "name" : "Quiz 4",
-            "id" : "4-4",
+            "id" : "4-3",
             "type" : "quiz_activity",
             "content" : {
                 "question1" : {

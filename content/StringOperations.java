@@ -5,11 +5,6 @@ import java.util.List;
 
 public class StringOperations {
     
-    public static final String HTML_EXT = ".html";
-    public static final String JSON_EXT = ".json";
-    public static final String JAVA_EXT = ".java";
-    public static final String TEXT_EXT = ".txt";
-
     public static boolean isInString(String line, int position) {
         boolean inString = false;
         for (int i = 0; i < position; i++) {
@@ -187,5 +182,13 @@ public class StringOperations {
         }
         
         return result.toString();
+    }
+
+    public static String replaceLast(String text, String regex, String replacement) {
+        int index = text.lastIndexOf(regex);
+        if (index == -1) {
+            return text;
+        }
+        return text.substring(0, index) + replacement + text.substring(index + regex.length());
     }
 }

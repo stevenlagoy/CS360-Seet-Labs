@@ -26,7 +26,7 @@
         },
         "activity3" : {
             "name" : "Quiz 7",
-            "id" : "7-4",
+            "id" : "7-2",
             "type" : "quiz_activity",
             "content" : {
                 "question1" : {

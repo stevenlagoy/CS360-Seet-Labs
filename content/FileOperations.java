@@ -18,6 +18,15 @@ import java.util.Set;
 
 public class FileOperations {
 
+    public static final String HTML_EXT = ".html";
+    public static final String JSON_EXT = ".json";
+    public static final String JAVA_EXT = ".java";
+    public static final String TEXT_EXT = ".txt";
+
+    public static final String DB_FILE_NAME = "db";
+    public static final String TEST_CASE_DESC = "_test-case";
+    public static final String BASE_CODE_DESC = "_base-code";
+
     public static class ScannerUtil {
         public static Scanner createScanner(InputStream inputStream) {
             return new Scanner(inputStream, StandardCharsets.UTF_8.name());
@@ -62,32 +71,32 @@ public class FileOperations {
         }
     }
 
-    public static void writeHTML(String filename, List<String> content) {
-        writeFile(filename, StringOperations.HTML_EXT, FilePaths.HTML_DEST, content);
+    public static void writeHtml(String filename, List<String> content) {
+        writeFile(filename, HTML_EXT, FilePaths.HTML_DEST, content);
     }
-    public static void writeHTML(String filename, String content) {
-        writeFile(filename, StringOperations.HTML_EXT, FilePaths.HTML_DEST, content);
+    public static void writeHtml(String filename, String content) {
+        writeFile(filename, HTML_EXT, FilePaths.HTML_DEST, content);
     }
 
     public static void writeJava(String filename, List<String> content) {
-        writeFile(filename, StringOperations.JAVA_EXT, FilePaths.JAVA_BASE_DEST, content);
+        writeFile(filename, JAVA_EXT, FilePaths.JAVA_BASE_DEST, content);
     }
     public static void writeJava(String filename, String content) {
-        writeFile(filename, StringOperations.JAVA_EXT, FilePaths.JAVA_BASE_DEST, content);
+        writeFile(filename, JAVA_EXT, FilePaths.JAVA_BASE_DEST, content);
     }
 
     public static void writeJSON(String filename, List<String> content) {
-        writeFile(filename, StringOperations.JSON_EXT, FilePaths.DATA_PATH, content);
+        writeFile(filename, JSON_EXT, FilePaths.DATA_PATH, content);
     }
     public static void writeJSON(String filename, String content) {
-        writeFile(filename, StringOperations.JSON_EXT, FilePaths.DATA_PATH, content);
+        writeFile(filename, JSON_EXT, FilePaths.DATA_PATH, content);
     }
 
-    public static void writeTxt(String filename, List<String> content) {
-        writeFile(filename, StringOperations.TEXT_EXT, FilePaths.DATA_PATH, content);
+    public static void writeText(String filename, List<String> content) {
+        writeFile(filename, TEXT_EXT, FilePaths.DATA_PATH, content);
     }
-    public static void writeTxt(String filename, String content) {
-        writeFile(filename, StringOperations.TEXT_EXT, FilePaths.DATA_PATH, content);
+    public static void writeText(String filename, String content) {
+        writeFile(filename, TEXT_EXT, FilePaths.DATA_PATH, content);
     }
 
     public static void writeFile(String filename, String extension, Path destination, String content) {
