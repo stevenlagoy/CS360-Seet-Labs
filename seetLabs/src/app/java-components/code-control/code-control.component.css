@@ -9,6 +9,15 @@
     width:100%;
 }
 
+/*css for the playground specifically*/
+.error{
+    color:red !important;
+  }
+  
+  .good{
+    color:#77bb77 !important;
+  }
+  
 
 .row
 {

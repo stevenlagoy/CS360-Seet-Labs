@@ -142,10 +142,12 @@ export class CodeControlComponent
     if((await retVal) == 0)
     {
       this._status.setStatus("Activity Complete! Good job.", true);
+      this._status.setStatusClass("good");
     }
     else
     {
       this._status.setStatus("Hmm. That's not quite what we were looking for.", true);
+      this._status.setStatusClass("error");
     }
 
   }

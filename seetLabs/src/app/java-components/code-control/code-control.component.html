@@ -11,7 +11,7 @@
       {{status.buttonStatus}}
     </button>  
   
-    <p class = "status" id = "status" >
+    <p class = "status" [class.error]="status.class=='error'" [class.good]="status.class=='good'" id = "status" >
       @if (status.additionalStatus !== "") {
         {{status.additionalStatus}}
 

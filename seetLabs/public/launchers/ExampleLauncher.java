@@ -16,7 +16,16 @@ public class ExampleLauncher
         int[] arr = {1, 2, 3, 4};
         launcher.getUserMethod("addArray", int.class, arr.getClass());
         Object check = launcher.launchMethod(new Object[]{arr});
-        int toReturn = (((int)check)==10)?0:1;
+
+        int toReturn = 0;
+        if((int)check!=10)
+        {
+            toReturn = 1;
+            System.err.println("We Expected 10, but you returned "+(int)check+".");
+        }
+        
+
+
 
         // read out the test cases file.
         String path = args[0];
