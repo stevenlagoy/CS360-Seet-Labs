@@ -130,7 +130,7 @@
 						"4" : "Minecraft"
 					},
 					"correct_responses" : [
-						"1", " 2", " 3", " 4"
+						"1", "2", "3", "4"
 					],
 					"points" : 10,
 					"feedback" : {

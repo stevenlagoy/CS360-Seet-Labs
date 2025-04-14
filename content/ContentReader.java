@@ -207,7 +207,7 @@ public class ContentReader {
                     questionLines.add(String.format("\"correct_responses\" : ["));
                     List<String> correctResponses = List.of(questionContents.get("correct_responses").toString());
                     for (String response : correctResponses) {
-                        questionLines.add(String.format("\t\"%s\"", response.replace("[", "").replace("]", "").trim().replace(",", "\", \"")));
+                        questionLines.add(String.format("\t\"%s\"", response.replace("[", "").replace("]", "").replace(" ", "").replace(",", "\", \"")));
                         questionLines.set(questionLines.size() - 1, questionLines.get(questionLines.size() - 1) + ",");
                     }
                     questionLines.set(questionLines.size() - 1, StringOperations.replaceLast(questionLines.get(questionLines.size() - 1), ",", ""));
