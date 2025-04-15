@@ -54,7 +54,7 @@
             "content" : {
                 "question1" : {
                     "type" : "multiple choice",
-                    "question" : "Which loop should you use when you know exactly how many times to iterate?",
+                    "question" : "Which loop is usually the best to use when you know exactly how many times to iterate?",
                     "options" : {
                         "1" : "while",
                         "2" : "for",
@@ -66,7 +66,7 @@
                     ],
                     "points" : 10,
                     "feedback" : {
-                        "1" : "Not quite. While loops are great when we don’t know how many times we need to loop.",
+                        "1" : "Not quite. While loops are great when we don't know how many times we need to loop.",
                         "2" : "Correct! The for loop is best when we know the exact number of iterations.",
                         "3" : "Do-while loops ensure at least one iteration but are not necessarily best when we know the count.",
                         "4" : "The for-each loop is great for collections but not for a fixed number of iterations."

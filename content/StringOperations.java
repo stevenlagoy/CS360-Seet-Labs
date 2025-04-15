@@ -54,7 +54,7 @@ public class StringOperations {
         // Markup Tags have a start and end tag and provide a modification to whatever lies between those tags. Tags must start with % followed by a unique set of characters.
         private static final List<Markup> htmlMarkupTags = new ArrayList<Markup>() {{
             add (new Markup("%%", "%"));
-            add (new Markup("%n", "<br>"));
+            add (new Markup("%n", "<br>&#10;"));
             add (new Markup("%t", "&#9;"));
             add (new Markup("%'", "\""));
             add (new Markup("%i", "<i>", "%/i", "</i>"));
@@ -71,7 +71,7 @@ public class StringOperations {
             add (new Markup("%'", "\""));
             add (new Markup("%w", " "));
         }};
-
+        
         public String startTag;
         public String startReplacement;
         public String endTag;

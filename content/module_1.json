@@ -55,30 +55,30 @@
                     "feedback" : {
                         "1" : "String is a very useful and common data type, but it is not a primitive in Java. Notice that String starts with a capital letter: that indicates it is an Object.",
                         "2" : "Correct! Floats are a primitive data type used to store numbers with decimal parts.",
-                        "3" : "While %kint%/k is a primitive type, Integer is the associated wrapper type for int. Notice that Integer is capitalized, which indicates that it is an Object.",
+                        "3" : "While int is a primitive type, Integer is the associated wrapper type for int. Notice that Integer is capitalized, which indicates that it is an Object.",
                         "4" : "String (with a capital S) is an Object in Java, but string (with lowercase s) is not."
                     }
                 },
                 "question2" : {
                     "type" : "true false",
-                    "question" : "True/False: To create an object instance, use the %kcreate%/k keyword.",
+                    "question" : "True/False: To create an object instance, use the 'create' keyword.",
                     "options" : {"1" : "True", "2" : "False"},
                     "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
-                        "1" : "Incorrect. To create an object instance, we use the %knew%/k keyword.",
-                        "2" : "That's right. To create an object instance, we use the %knew%/k keyword."
+                        "1" : "Incorrect. To create an object instance, we use the 'new' keyword.",
+                        "2" : "That's right. To create an object instance, we use the 'new' keyword."
                     }
                 },
                 "question3" : {
                     "type" : "true false",
-                    "question" : "True/False: Variables declared as %kfinal%/k are immutable and their value cannot be changed.",
+                    "question" : "True/False: Variables declared as 'final' are immutable and their value cannot be changed.",
                     "options" : {"1" : "True", "2" : "False"},
                     "correct_responses" : ["1"],
                     "points" : 10,
                     "feedback" : {
-                        "1" : "That's correct. Using the %kfinal%/k keyword makes a variable immutable and means its value cannot be reassigned.",
-                        "2" : "Nope, %kfinal%/k variables are immutable with unchanging values."
+                        "1" : "That's correct. Using the 'final' keyword makes a variable immutable and means its value cannot be reassigned.",
+                        "2" : "Nope, 'final' variables are immutable with unchanging values."
                     }
                 },
                 "question4" : {
@@ -90,7 +90,7 @@
                     "feedback" : {
                         "1" : "Incorrect. There is neither a widening nor a narrowing in this statement.",
                         "2" : "Not quite. This is a narrowing conversion, since we're taking a double (with a larger size) and making it an int (with a smaller size).",
-                        "3" : "Though this looks like widening at first, this is actually a distinct concept called Autoboxing. Integer is a wrapper class which %icontains%/i the int value.",
+                        "3" : "Though this looks like widening at first, this is actually a distinct concept called Autoboxing. Integer is a wrapper class which contains the int value.",
                         "4" : "Correct! In this case, the (smaller) int value of 10 is being widened into the (larger) double value of 10.0."
                     }
                 },

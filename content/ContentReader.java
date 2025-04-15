@@ -120,22 +120,28 @@ public class ContentReader {
     public static List<String> generateAllTestCaseStrings(LinkedHashMap<Object, Object> module) {
         List<String> testCaseStrings = new ArrayList<>();
 
+        @SuppressWarnings("unchecked")
         Map<Object, Object> moduleContents = (Map<Object, Object>) module.get("content");
         for (Object activity : moduleContents.keySet()) {
+            @SuppressWarnings("unchecked")
             Map<Object, Object> activityContents = (Map<Object, Object>) moduleContents.get(activity);
             if (activityContents.get("type").toString().equals("coding_activity")) {
 
                 testCaseStrings.add(String.format("%s", activityContents.get("id").toString()));
 
+                @SuppressWarnings("unchecked")
                 Map<Object, Object> activityContent = (Map<Object, Object>) activityContents.get("content");
                 String numberCases = activityContent.get("number_test_cases").toString();
                 String outputType = activityContent.get("output_type").toString().equals("console out") ? "co" : "io";
                 testCaseStrings.add(String.format("%s %s", numberCases, outputType));
 
+                @SuppressWarnings("unchecked")
                 Map<Object, Object> testCases = (Map<Object, Object>) activityContent.get("test_cases");
                 for (Object testCase : testCases.keySet()) {
                     String testCaseName = testCase.toString();
+                    @SuppressWarnings("unchecked")
                     String input = ((Map<Object, Object>) testCases.get(testCase)).get("input").toString();
+                    @SuppressWarnings("unchecked")
                     String output = ((Map<Object, Object>) testCases.get(testCase)).get("output").toString();
 
                     testCaseStrings.add(String.format("%s : \"%s\" : \"%s\"", testCaseName, input, output));
@@ -148,13 +154,16 @@ public class ContentReader {
     public static List<String> generateAllJavaBaseStrings(LinkedHashMap<Object, Object> module) {
         List<String> baseCodeStrings = new ArrayList<>();
 
+        @SuppressWarnings("unchecked")
         Map<Object, Object> moduleContents = (Map<Object, Object>) module.get("content");
         for (Object activity : moduleContents.keySet()) {
+            @SuppressWarnings("unchecked")
             Map<Object, Object> activityContents = (Map<Object, Object>) moduleContents.get(activity);
             if (activityContents.get("type").toString().equals("coding_activity")) {
 
                 baseCodeStrings.add(String.format("%s", activityContents.get("id").toString()));
 
+                @SuppressWarnings("unchecked")
                 Map<Object, Object> activityContent = (Map<Object, Object>) activityContents.get("content");
                 String baseCode = activityContent.get("base_code").toString();
                 baseCode = StringOperations.processJavaMarkup(baseCode, 0);

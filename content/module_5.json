@@ -54,7 +54,12 @@
                     "options" : {"1" : "Class inheritance", "2" : "Interface implementation", "3" : "Abstract class instantiation", "4" : "Method overriding"},
                     "correct_responses" : ["2"],
                     "points" : 10,
-                    "feedback" : {"1" : "Not quite. 'extends' is for inheritance.","2" : "Correct! 'implements' signals interface adoption.","3" : "Abstract classes use 'extends'.","4" : "Overriding uses @Override, not 'implements'."}
+                    "feedback" : {
+                        "1" : "Not quite. 'extends' is for inheritance.",
+                        "2" : "Correct! 'implements' signals interface adoption.",
+                        "3" : "Abstract classes use 'extends'.",
+                        "4" : "Overriding uses @Override, not 'implements'."
+                    }
                 },
                 "question2" : {
                     "type" : "true false",

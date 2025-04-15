@@ -10,33 +10,33 @@
 	<p>Objects and Classes</p>
 	<h1>Defining Classes</h1>
 	<p>A <span class="keyword">class</span> is a blueprint that defines the <b>state</b> (fields) and <b>behavior</b> (methods) of objects. In Java, declare a class with:</p>
-	<pre><code class="language-java">public class Car {<br>&#9;// fields and methods<br>}</code></pre>
+	<pre><code class="language-java">public class Car {<br>&#10;&#9;// fields and methods<br>&#10;}</code></pre>
 	<p> Classes group related functionality into a single unit.</p>
 	<h1>Instance Variables and Methods</h1>
 	<p><b>Instance variables</b> (fields) store object data, and <b>methods</b> define actions. Example fields:</p>
-	<pre><code class="language-java">public class Car {<br>&#9;String model; // e.g., "Tesla"<br>&#9;int year; // e.g., 2025<br>}</code></pre>
+	<pre><code class="language-java">public class Car {<br>&#10;&#9;String model; // e.g., "Tesla"<br>&#10;&#9;int year; // e.g., 2025<br>&#10;}</code></pre>
 	<p> Example method:</p>
-	<pre><code class="language-java">public void drive() {<br>&#9;System.out.println("The car is driving.");<br>}</code></pre>
+	<pre><code class="language-java">public void drive() {<br>&#10;&#9;System.out.println("The car is driving.");<br>&#10;}</code></pre>
 	<p></p>
 	<h1>Constructors</h1>
 	<p>A <span class="keyword">constructor</span> initializes new objects. It has no return type and matches the class name. Example:</p>
-	<pre><code class="language-java">public Car(String model, int year) {<br>&#9;this.model = model; // set instance field<br>&#9;this.year = year;<br>}</code></pre>
+	<pre><code class="language-java">public Car(String model, int year) {<br>&#10;&#9;this.model = model; // set instance field<br>&#10;&#9;this.year = year;<br>&#10;}</code></pre>
 	<p> If no constructor is defined, Java provides a default no-argument constructor.</p>
 	<h1>Static Members</h1>
 	<p><span class="keyword">static</span> fields and methods belong to the class itself rather than any instance. Use static for shared data or utility methods. Example:</p>
-	<pre><code class="language-java">public static int carCount = 0; // shared among all Car objects<br>public static void showTotalCars() {<br>&#9;System.out.println("Total cars: " + carCount);<br>}</code></pre>
+	<pre><code class="language-java">public static int carCount = 0; // shared among all Car objects<br>&#10;public static void showTotalCars() {<br>&#10;&#9;System.out.println("Total cars: " + carCount);<br>&#10;}</code></pre>
 	<p> Access static members via <span class="keyword">Car.showTotalCars()</span>.</p>
 	<h1>The %kthis%/k Keyword</h1>
 	<p><span class="keyword">this</span> refers to the current object. It clarifies references when parameter names match field names:</p>
-	<pre><code class="language-java">public void setModel(String model) {<br>&#9;this.model = model; // assigns parameter to field<br>}</code></pre>
+	<pre><code class="language-java">public void setModel(String model) {<br>&#10;&#9;this.model = model; // assigns parameter to field<br>&#10;}</code></pre>
 	<p> Without <span class="keyword">this</span>, Java treats <span class="keyword">model</span> as the parameter.</p>
 	<h1>Encapsulation</h1>
 	<p><b>Encapsulation</b> hides internal details by using <b>access modifiers</b> (private, public, protected). Provide <b>getters</b> and <b>setters</b> to control field access:</p>
-	<pre><code class="language-java">private String model;<br>public String getModel() { return model; }<br>public void setModel(String model) { this.model = model; }</code></pre>
+	<pre><code class="language-java">private String model;<br>&#10;public String getModel() { return model; }<br>&#10;public void setModel(String model) { this.model = model; }</code></pre>
 	<p></p>
 	<h1>Nested and Inner Classes</h1>
 	<p>Java allows classes within classes. <b>Static nested classes</b> act like top-level classes but scoped inside another. <b>Inner classes</b> (non-static) have access to outer instance members. Use them for logically grouping related classes.</p>
 	<h1>Best Practices</h1>
-	<p>- Keep classes focused: each should have a single responsibility.<br>- Use private fields and public getters/setters for encapsulation.<br>- Limit use of static: prefer instance methods unless shared behavior is needed.<br>- Comment constructors and complex methods for clarity.<br>- Follow naming conventions: classes in PascalCase, methods and fields in camelCase.</p>
+	<p>- Keep classes focused: each should have a single responsibility.<br>&#10;- Use private fields and public getters/setters for encapsulation.<br>&#10;- Limit use of static: prefer instance methods unless shared behavior is needed.<br>&#10;- Comment constructors and complex methods for clarity.<br>&#10;- Follow naming conventions: classes in PascalCase, methods and fields in camelCase.</p>
 </body>
 </html>

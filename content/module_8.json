@@ -69,7 +69,12 @@
                     "options" : {"1" : "int[][] a;", "2" : "int a[][][];", "3" : "int[2][3] a;", "4" : "int a[2][];"},
                     "correct_responses" : ["1"],
                     "points" : 10,
-                    "feedback" : {"1" : "Correct! int[][] a declares a 2D array.", "2" : "That's 3D.", "3" : "Invalid syntax.", "4" : "Cannot specify sizes in declaration."}
+                    "feedback" : {
+                        "1" : "Correct! int[][] a declares a 2D array.",
+                        "2" : "That's 3D.",
+                        "3" : "Invalid Syntax: you cannot specify sizes in declaration.",
+                        "4" : "Invalid Syntax: you cannot specify sizes in declaration."
+                    }
                 },
                 "question2" : {
                     "type" : "true false",

@@ -22,7 +22,7 @@
 						"1" : "next() reads a token as String.",
 						"2" : "nextLine() reads a full line.",
 						"3" : "Correct! nextInt() reads an integer.",
-						"4" : "No such method in Scanner."
+						"4" : "The Scanner class has no such method."
 					}
 				},
 				"question2" : {
@@ -92,7 +92,7 @@
 					"type" : "Multiple choice",
 					"question" : "In a few words, what is Java? Pick the best answer.",
 					"options" : {
-						"1" : "A Programming Language 2 : Where I get my Coffee from 3 : Something that prints %'Hello, World!%'"
+						"1" : "A Programming Language 2 : Where I get my Coffee from 3 : Something that prints 'Hello, World!'"
 					},
 					"correct_responses" : [
 						"1"
@@ -116,7 +116,7 @@
 					],
 					"points" : 10,
 					"feedback" : {
-						"1" : "Not quite. Java is one of the most popular coding languages used today and is anything but %'niche%'.",
+						"1" : "Not quite. Java is one of the most popular coding languages used today and is anything but 'niche'.",
 						"2" : "Correct! Java is proudly boasted to %'run on more than 60 billion machines worldwide%', and is one of the most popular coding languages used today."
 					}
 				},
@@ -383,13 +383,13 @@
 					"feedback" : {
 						"1" : "String is a very useful and common data type, but it is not a primitive in Java. Notice that String starts with a capital letter: that indicates it is an Object.",
 						"2" : "Correct! Floats are a primitive data type used to store numbers with decimal parts.",
-						"3" : "While %kint%/k is a primitive type, Integer is the associated wrapper type for int. Notice that Integer is capitalized, which indicates that it is an Object.",
+						"3" : "While int is a primitive type, Integer is the associated wrapper type for int. Notice that Integer is capitalized, which indicates that it is an Object.",
 						"4" : "String (with a capital S) is an Object in Java, but string (with lowercase s) is not."
 					}
 				},
 				"question2" : {
 					"type" : "true false",
-					"question" : "True/False: To create an object instance, use the %kcreate%/k keyword.",
+					"question" : "True/False: To create an object instance, use the 'create' keyword.",
 					"options" : {
 						"1" : "True",
 						"2" : "False"
@@ -399,13 +399,13 @@
 					],
 					"points" : 10,
 					"feedback" : {
-						"1" : "Incorrect. To create an object instance, we use the %knew%/k keyword.",
-						"2" : "That's right. To create an object instance, we use the %knew%/k keyword."
+						"1" : "Incorrect. To create an object instance, we use the 'new' keyword.",
+						"2" : "That's right. To create an object instance, we use the 'new' keyword."
 					}
 				},
 				"question3" : {
 					"type" : "true false",
-					"question" : "True/False: Variables declared as %kfinal%/k are immutable and their value cannot be changed.",
+					"question" : "True/False: Variables declared as 'final' are immutable and their value cannot be changed.",
 					"options" : {
 						"1" : "True",
 						"2" : "False"
@@ -415,8 +415,8 @@
 					],
 					"points" : 10,
 					"feedback" : {
-						"1" : "That's correct. Using the %kfinal%/k keyword makes a variable immutable and means its value cannot be reassigned.",
-						"2" : "Nope, %kfinal%/k variables are immutable with unchanging values."
+						"1" : "That's correct. Using the 'final' keyword makes a variable immutable and means its value cannot be reassigned.",
+						"2" : "Nope, 'final' variables are immutable with unchanging values."
 					}
 				},
 				"question4" : {
@@ -435,7 +435,7 @@
 					"feedback" : {
 						"1" : "Incorrect. There is neither a widening nor a narrowing in this statement.",
 						"2" : "Not quite. This is a narrowing conversion, since we're taking a double (with a larger size) and making it an int (with a smaller size).",
-						"3" : "Though this looks like widening at first, this is actually a distinct concept called Autoboxing. Integer is a wrapper class which %icontains%/i the int value.",
+						"3" : "Though this looks like widening at first, this is actually a distinct concept called Autoboxing. Integer is a wrapper class which contains the int value.",
 						"4" : "Correct! In this case, the (smaller) int value of 10 is being widened into the (larger) double value of 10.0."
 					}
 				},
@@ -582,7 +582,7 @@
 				},
 				"question_8" : {
 					"type" : "multiple choice",
-					"question" : "Which block always executes in exception handling?",
+					"question" : "Which block, when defined, always executes fully in exception handling?",
 					"options" : {
 						"1" : "try",
 						"2" : "catch",
@@ -594,6 +594,9 @@
 					],
 					"points" : 10,
 					"feedback" : {
+						"1" : "Not what we're looking for. While a 'try' block always starts, it's not guaranteed to fully execute before an error is thrown.",
+						"2" : "A 'catch' block may or may not be executed, depending on if its exception type is encountered.",
+						"3" : "There is no such thing as a 'throw block'. The 'throw statement' is used to create an Exception.",
 						"4" : "Correct! 'finally' always runs."
 					}
 				},
@@ -609,7 +612,8 @@
 					],
 					"points" : 10,
 					"feedback" : {
-						"2" : "Correct! FileReader is for reading."
+						"1" : "Not right. FileReader is for reading, not writing.",
+						"2" : "Correct! FileReader is for reading, not writing."
 					}
 				},
 				"question_10" : {
@@ -658,6 +662,7 @@
 					],
 					"points" : 10,
 					"feedback" : {
+						"1" : "Arrays are immutable, which means their size cannot be changed.",
 						"2" : "Correct! Arrays are fixed size."
 					}
 				},
@@ -831,8 +836,8 @@
 					"feedback" : {
 						"1" : "Correct! int[][] a declares a 2D array.",
 						"2" : "That's 3D.",
-						"3" : "Invalid syntax.",
-						"4" : "Cannot specify sizes in declaration."
+						"3" : "Invalid Syntax: you cannot specify sizes in declaration.",
+						"4" : "Invalid Syntax: you cannot specify sizes in declaration."
 					}
 				},
 				"question2" : {
@@ -920,7 +925,7 @@
 			"content" : {
 				"question1" : {
 					"type" : "multiple choice",
-					"question" : "Which loop should you use when you know exactly how many times to iterate?",
+					"question" : "Which loop is usually the best to use when you know exactly how many times to iterate?",
 					"options" : {
 						"1" : "while",
 						"2" : "for",
@@ -932,7 +937,7 @@
 					],
 					"points" : 10,
 					"feedback" : {
-						"1" : "Not quite. While loops are great when we don’t know how many times we need to loop.",
+						"1" : "Not quite. While loops are great when we don't know how many times we need to loop.",
 						"2" : "Correct! The for loop is best when we know the exact number of iterations.",
 						"3" : "Do-while loops ensure at least one iteration but are not necessarily best when we know the count.",
 						"4" : "The for-each loop is great for collections but not for a fixed number of iterations."
