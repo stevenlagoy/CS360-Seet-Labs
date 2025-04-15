@@ -55,6 +55,12 @@ body {
   margin: 0;
 }
 
+.keyword {
+  font-family: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', monospace;
+  color: indianred;
+  font-weight: bold;
+}
+
 :root {
   @include mat.fab-overrides((
     container-elevation-shadow: none,
