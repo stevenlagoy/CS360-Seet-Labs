@@ -13,15 +13,13 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
 
-import content.FileOperations;
-
 public class JsonReader {
 
     public static final String jsonFileExtension = ".json";
 
     public static ArrayList<LinkedHashMap<Object, Object>> readAllJSONFiles(Path dir) throws IOException {
         ArrayList<LinkedHashMap<Object, Object>> JSONs = new ArrayList<>();
-        Set<String> filenames = FileOperations.listFiles(dir.toString());
+        Set<String> filenames = FileOperations.listFiles(dir);
         for (String filename : filenames) {
             if (filename.contains(jsonFileExtension)) {
                 LinkedHashMap<Object, Object> fileJSON = readJSONFile(FilePaths.JSON_SOURCE.resolve(filename));

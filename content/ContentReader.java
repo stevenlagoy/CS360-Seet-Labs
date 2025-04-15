@@ -2,12 +2,10 @@ package content;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 import content.FileOperations.ScannerUtil;
 import content.HtmlGenerator.HtmlResult;
@@ -49,10 +47,10 @@ public class ContentReader {
     public static boolean clean() {
         try {
             System.out.println("Clean");
-            FileOperations.emptyFiles("seetLabs/Data/", FileOperations.HTML_EXT);
-            FileOperations.emptyFiles("seetLabs/Data/", FileOperations.JSON_EXT);
-            FileOperations.emptyFiles("seetLabs/Data/", FileOperations.JAVA_EXT);
-            FileOperations.emptyFiles("seetLabs/Data/", FileOperations.TEXT_EXT);
+            FileOperations.emptyFiles(FilePaths.DATA_PATH, FileOperations.HTML_EXT);
+            FileOperations.emptyFiles(FilePaths.DATA_PATH, FileOperations.JSON_EXT);
+            FileOperations.emptyFiles(FilePaths.JAVA_BASE_DEST, FileOperations.JAVA_EXT);
+            FileOperations.emptyFiles(FilePaths.TEST_CASE_DEST, FileOperations.TEXT_EXT);
             System.out.println("Successfully cleared Data folder");
             return true;
         }
@@ -65,12 +63,15 @@ public class ContentReader {
     public static boolean make() {
         try {
             System.out.println("Make");
+
+            // Read JSON files and create HTML strings
             List<LinkedHashMap<Object, Object>> contentsJson = JsonReader.readAllJSONFiles(FilePaths.JSON_SOURCE);
             List<List<HtmlResult>> htmls = new ArrayList<>();
             for (LinkedHashMap<Object, Object> module : contentsJson) {
                 List<HtmlResult> result = HtmlGenerator.generateAllHtmlStrings(module);
                 htmls.add(result);
             }
+            
             // Create all the Html files
             for (List<HtmlResult> module : htmls) {
                 for (HtmlResult activity : module) {
@@ -78,15 +79,25 @@ public class ContentReader {
                 }
             }
             System.out.println("Successfully created content HTML files");
+            
             // Create all the Java files
+            for (LinkedHashMap<Object, Object> module : contentsJson) {
+                List<String> result = generateAllJavaBaseStrings(module);
+                if (result.size() == 0) continue;
+                String id = result.removeFirst();
+                FileOperations.writeFile(id + FileOperations.BASE_CODE_DESC, FileOperations.JAVA_EXT, FilePaths.JAVA_BASE_DEST, result);
+            }
             System.out.println("Successfully created base code Java files");
+            
             // Create test case Text files
-            // for (List<HtmlResult> module : htmls) {
-            //     for (HtmlResult activity : module) {
-            //         FileOperations.writeText(activity.id + FileOperations.TEST_CASE_DESC, createTestCaseStrings());
-            //     }
-            // }
+            for (LinkedHashMap<Object, Object> module : contentsJson) {
+                List<String> result = generateAllTestCaseStrings(module);
+                if (result.size() == 0) continue;
+                String id = result.removeFirst();
+                FileOperations.writeFile(id + FileOperations.TEST_CASE_DESC, FileOperations.TEXT_EXT, FilePaths.TEST_CASE_DEST, result);
+            }
             System.out.println("Successfully created test case Text files");
+            
             // Create DB File
             FileOperations.writeJSON(FileOperations.DB_FILE_NAME, createDBStrings(contentsJson));
             System.out.println("Successfully created database file");
@@ -106,31 +117,51 @@ public class ContentReader {
 
     // END MAIN FUNCTIONS -----------------------------------------------------
 
-    private static HashMap<Integer, HashMap<Integer, Integer>> determineStructure(Set<LinkedHashMap<Object, Object>> contents) {
-        // 0 is reading, 1 is quiz, 2 is coding
-        
-        HashMap<Integer, HashMap<Integer, Integer>> result = new HashMap<Integer, HashMap<Integer, Integer>>();
+    public static List<String> generateAllTestCaseStrings(LinkedHashMap<Object, Object> module) {
+        List<String> testCaseStrings = new ArrayList<>();
 
-        for (LinkedHashMap<Object, Object> module : contents) {
-            @SuppressWarnings("unchecked")
-            LinkedHashMap<Object, Object> moduleContents = (LinkedHashMap<Object, Object>) module.get("content");
-            HashMap<Integer, Integer> activityStructure = new HashMap<>();
-            for (Object activity : moduleContents.keySet()) {
-                @SuppressWarnings("unchecked")
-                HashMap<Object, Object> activityContents = (HashMap<Object, Object>) moduleContents.get(activity);
-                int activityNumber = Integer.parseInt(activityContents.get("id").toString().split("-")[1]);
-                String type = activityContents.get("type").toString();
-                int activityType = type.equals("reading_activity") ? 0 : type.equals("quiz_activity") ? 1 : type.equals("coding_activity") ? 2 : -1;
-                activityStructure.put(activityNumber, activityType);
+        Map<Object, Object> moduleContents = (Map<Object, Object>) module.get("content");
+        for (Object activity : moduleContents.keySet()) {
+            Map<Object, Object> activityContents = (Map<Object, Object>) moduleContents.get(activity);
+            if (activityContents.get("type").toString().equals("coding_activity")) {
+
+                testCaseStrings.add(String.format("%s", activityContents.get("id").toString()));
+
+                Map<Object, Object> activityContent = (Map<Object, Object>) activityContents.get("content");
+                String numberCases = activityContent.get("number_test_cases").toString();
+                String outputType = activityContent.get("output_type").toString().equals("console output") ? "co" : "io";
+                testCaseStrings.add(String.format("%s %s", numberCases, outputType));
+
+                Map<Object, Object> testCases = (Map<Object, Object>) activityContent.get("test_cases");
+                for (Object testCase : testCases.keySet()) {
+                    String testCaseName = testCase.toString();
+                    String input = ((Map<Object, Object>) testCases.get(testCase)).get("input").toString();
+                    String output = ((Map<Object, Object>) testCases.get(testCase)).get("output").toString();
+
+                    testCaseStrings.add(String.format("%s : \"%s\" : \"%s\"", testCaseName, input, output));
+                }
             }
-            result.put(Integer.parseInt(module.get("number").toString()), activityStructure);
         }
-
-        return result;
+        return testCaseStrings;
     }
 
-    public static String createTestCaseStrings() {
-        return null;
+    public static List<String> generateAllJavaBaseStrings(LinkedHashMap<Object, Object> module) {
+        List<String> baseCodeStrings = new ArrayList<>();
+
+        Map<Object, Object> moduleContents = (Map<Object, Object>) module.get("content");
+        for (Object activity : moduleContents.keySet()) {
+            Map<Object, Object> activityContents = (Map<Object, Object>) moduleContents.get(activity);
+            if (activityContents.get("type").toString().equals("coding_activity")) {
+
+                baseCodeStrings.add(String.format("%s", activityContents.get("id").toString()));
+
+                Map<Object, Object> activityContent = (Map<Object, Object>) activityContents.get("content");
+                String baseCode = activityContent.get("base_code").toString();
+                baseCode = StringOperations.processJavaMarkup(baseCode, 0);
+                baseCodeStrings.add(baseCode);
+            }
+        }
+        return baseCodeStrings;
     }
 
     public static List<String> createDBStrings(List<LinkedHashMap<Object, Object>> contentsJson) {
@@ -190,13 +221,15 @@ public class ContentReader {
             
             case "quiz_activity" :
                 List<List<String>> questions = new ArrayList<>();
-                Map<Object, Object> content = (Map<Object, Object>) activity.get("content");
+                @SuppressWarnings("unchecked") Map<Object, Object> content = (Map<Object, Object>) activity.get("content");
                 for (Object questionKey : content.keySet()) {
                     List<String> questionLines = new ArrayList<>();
+                    @SuppressWarnings("unchecked")
                     Map<Object, Object> questionContents = (Map<Object, Object>) content.get(questionKey);
                     questionLines.add(String.format("\"type\" : \"%s\",", questionContents.get("type").toString()));
                     questionLines.add(String.format("\"question\" : \"%s\",", questionContents.get("question").toString()));
                     questionLines.add(String.format("\"options\" : {"));
+                    @SuppressWarnings("unchecked")
                     Map<String, String> questionOptions = (Map<String, String>) questionContents.get("options");
                     for (String option : questionOptions.keySet()) {
                         questionLines.add(String.format("\t\"%s\" : \"%s\"", option, questionOptions.get(option)));
@@ -214,6 +247,7 @@ public class ContentReader {
                     questionLines.add(String.format("],"));
                     questionLines.add(String.format("\"points\" : %s,", questionContents.get("points")));
                     questionLines.add(String.format("\"feedback\" : {"));
+                    @SuppressWarnings("unchecked")
                     Map<String, String> feedbacks = (Map<String, String>) questionContents.get("feedback");
                     for (String feedback : feedbacks.keySet()) {
                         questionLines.add(String.format("\t\"%s\" : \"%s\"", feedback, feedbacks.get(feedback)));
@@ -237,9 +271,9 @@ public class ContentReader {
             
             case "coding_activity" :
                 String contextFile = id + FileOperations.HTML_EXT;
-                String baseFile = id + FileOperations.BASE_CODE_DESC;
+                String baseFile = id + FileOperations.BASE_CODE_DESC + FileOperations.JAVA_EXT;
                 String launcherFile = "launcher";
-                String testCaseFile = id + FileOperations.TEST_CASE_DESC;
+                String testCaseFile = id + FileOperations.TEST_CASE_DESC + FileOperations.TEXT_EXT;
                 return createCodingDBActivity(id, contextFile, baseFile, launcherFile, testCaseFile);
             
             default : return null;

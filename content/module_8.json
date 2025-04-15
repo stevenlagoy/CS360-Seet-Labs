@@ -4,7 +4,7 @@
     "number" : 8,
     "activity_count" : 4,
     "content" : {
-        "activity1" : {
+        "activity_1" : {
             "name" : "Reading 8",
             "id" : "8-1",
             "type" : "reading_activity",
@@ -38,7 +38,7 @@
                 "14p" : "- Prefer collections over arrays when size varies.%n- Use generics to enforce type safety (e.g., List<String>).%n- Choose the right implementation for performance (ArrayList vs LinkedList).%n- Avoid modifying a collection while iterating; use iterators or streams.%n- Always specify initial capacity when possible to reduce resizing overhead.%n- Leverage utility methods in Arrays and Collections for common tasks."
             }
         },
-        "activity2": {
+        "activity_2": {
             "name": "Coding 8",
             "id": "8-2",
             "type": "coding_activity",
@@ -58,7 +58,7 @@
                 }
             }
         },
-        "activity3" : {
+        "activity_3" : {
             "name" : "Quiz 8",
             "id" : "8-3",
             "type" : "quiz_activity",

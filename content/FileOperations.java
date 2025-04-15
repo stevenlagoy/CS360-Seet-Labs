@@ -24,8 +24,8 @@ public class FileOperations {
     public static final String TEXT_EXT = ".txt";
 
     public static final String DB_FILE_NAME = "db";
-    public static final String TEST_CASE_DESC = "_test-case";
-    public static final String BASE_CODE_DESC = "_base-code";
+    public static final String TEST_CASE_DESC = "_test_case";
+    public static final String BASE_CODE_DESC = "_base_code";
 
     public static class ScannerUtil {
         public static Scanner createScanner(InputStream inputStream) {
@@ -36,9 +36,9 @@ public class FileOperations {
         }
     }
 
-    public static Set<String> listFiles(String dir) throws IOException {
+    public static Set<String> listFiles(Path dir) throws IOException {
         Set<String> fileSet = new HashSet<>();
-        Path dirPath = Paths.get(dir).normalize();
+        Path dirPath = dir.normalize();
         if(!Files.exists(dirPath)) Files.createDirectories(dirPath);
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath)) {
             for (Path path : stream) {
@@ -55,13 +55,13 @@ public class FileOperations {
         }
     }
 
-    public static void emptyFiles(String dir, String extension) throws IOException {
-        Set<String> files = listFiles(dir);
+    public static void emptyFiles(Path dir, String extension) throws IOException {
+        Set<String> files = listFiles(dir); // does not include ignored files
         for (String fileName : files) {
             // Delete if extension matches or if wildcard
-            if (extension.equals("*") || fileName.endsWith(extension)) {
+            if (!FilePaths.CONTENT_FILES.contains(fileName) && extension.equals("*") || fileName.endsWith(extension)) {
                 try {
-                    Path path = Paths.get(dir, fileName);
+                    Path path = dir.resolve(fileName);
                     Files.delete(path);
                 } catch (IOException e) {
                     System.err.println("Failed to delete file: " + fileName);

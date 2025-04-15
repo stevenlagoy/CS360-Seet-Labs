@@ -4,7 +4,7 @@
     "number" :  10,
     "activity_count" :  3,
     "content" :  {
-        "activity1" :  {
+        "activity_1" :  {
             "name" :  "Reading 10",
             "id" :  "10-1",
             "type" :  "reading_activity",
@@ -30,12 +30,12 @@
                 "10p" :  "By combining these topics, you're prepared to design robust, maintainable, and scalable Java programs. From handling user input to managing complex data with generics, you've seen how Java supports clean, efficient software development."
             }
         },
-        "activity2" :  {
+        "activity_2" :  {
             "name" :  "Quiz 10",
             "id" :  "10-2",
             "type" :  "quiz_activity",
             "content" :  {
-                "question1" : {
+                "question_1" : {
                     "type" : "multiple choice",
                     "question" : "What keyword is used to define a class in Java?",
                     "options" : {"1" :  "function", "2" :  "define", "3" :  "class", "4" :  "public"},
@@ -43,7 +43,7 @@
                     "points" : 10,
                     "feedback" : {"3" :  "Correct! 'class' is the keyword to define a class."}
                 },
-                "question2" : {
+                "question_2" : {
                     "type" : "true false",
                     "question" : "True/False: A 'while' loop always runs at least once.",
                     "options" : {"1" :  "True", "2" :  "False"},
@@ -51,7 +51,7 @@
                     "points" : 10,
                     "feedback" : {"2" :  "Correct! Unlike 'do-while', 'while' might never run."}
                 },
-                "question3" : {
+                "question_3" : {
                     "type" : "multiple choice",
                     "question" : "What is the return type of a method that doesn't return anything?",
                     "options" : {"1" :  "null", "2" :  "void", "3" :  "None", "4" :  "return"},
@@ -59,7 +59,7 @@
                     "points" : 10,
                     "feedback" : {"2" :  "Correct! 'void' means no return value."}
                 },
-                "question4" : {
+                "question_4" : {
                     "type" : "multiple choice",
                     "question" : "Which term best describes using the same method name with different parameters?",
                     "options" : {"1" :  "Inheritance", "2" :  "Overriding", "3" :  "Overloading", "4" :  "Encapsulation"},
@@ -67,7 +67,7 @@
                     "points" : 10,
                     "feedback" : {"3" :  "Correct! Overloading allows multiple method signatures."}
                 },
-                "question5" : {
+                "question_5" : {
                     "type" : "true false",
                     "question" : "True/False: Constructors have the same name as their class.",
                     "options" : {"1" :  "True", "2" :  "False"},
@@ -75,7 +75,7 @@
                     "points" : 10,
                     "feedback" : {"1" :  "Correct! Constructors match the class name."}
                 },
-                "question6" : {
+                "question_6" : {
                     "type" : "multiple choice",
                     "question" :  "Which principle of OOP hides internal details?",
                     "options" : {"1" :  "Abstraction", "2" :  "Polymorphism", "3" :  "Inheritance", "4" :  "Encapsulation"},
@@ -83,7 +83,7 @@
                     "points" : 10,
                     "feedback" : {"4" :  "Correct! Encapsulation hides implementation details."}
                 },
-                "question7" : {
+                "question_7" : {
                     "type" : "multiple choice",
                     "question" : "Which keyword is used to create an interface in Java?",
                     "options" : {"1" :  "class", "2" :  "abstract", "3" :  "interface", "4" :  "object"},
@@ -91,7 +91,7 @@
                     "points" : 10,
                     "feedback" : {"3" :  "Correct! 'interface' defines an interface."}
                 },
-                "question8" : {
+                "question_8" : {
                     "type" : "multiple choice",
                     "question" : "Which block always executes in exception handling?",
                     "options" : {"1" :  "try", "2" :  "catch", "3" :  "throw", "4" :  "finally"},
@@ -99,7 +99,7 @@
                     "points" : 10,
                     "feedback" : {"4" :  "Correct! 'finally' always runs."}
                 },
-                "question9" : {
+                "question_9" : {
                     "type" : "true false",
                     "question" : "True/False: FileReader is used to write data to a file.",
                     "options" : {"1" :  "True", "2" :  "False"},
@@ -107,7 +107,7 @@
                     "points" : 10,
                     "feedback" : {"2" :  "Correct! FileReader is for reading."}
                 },
-                "question10" : {
+                "question_10" : {
                     "type" : "multiple choice",
                     "question" : "Which class is used to take console input in Java?",
                     "options" : {"1" :  "InputStream", "2" :  "Reader", "3" :  "Scanner", "4" :  "Stream"},
@@ -115,7 +115,7 @@
                     "points" : 10,
                     "feedback" : {"3" :  "Correct! Scanner reads console input."}
                 },
-                "question11" : {
+                "question_11" : {
                     "type" : "multiple choice",
                     "question" : "Which data structure allows duplicate values and maintains order?",
                     "options" : {"1" :  "Set", "2" :  "Map", "3" :  "ArrayList", "4" :  "HashSet"},
@@ -123,7 +123,7 @@
                     "points" : 10,
                     "feedback" : {"3" :  "Correct! ArrayList supports duplicates and order."}
                 },
-                "question12" : {
+                "question_12" : {
                     "type" : "true false",
                     "question" : "True/False: Arrays can be resized after creation.",
                     "options" : {"1" :  "True", "2" :  "False"},
@@ -131,7 +131,7 @@
                     "points" : 10,
                     "feedback" : {"2" :  "Correct! Arrays are fixed size."}
                 },
-                "question13" : {
+                "question_13" : {
                     "type" : "multiple choice",
                     "question" : "What is the default initial capacity of an ArrayList in Java?",
                     "options" : {"1" :  "0", "2" :  "8", "3" :  "10", "4" :  "16"},
@@ -141,7 +141,7 @@
                         "3" :  "Correct! Default capacity is 10."
                     }
                 },
-                "question14" : {
+                "question_14" : {
                     "type" : "multiple choice",
                     "question" : "Which class is thread-safe for concurrent hash-based maps?",
                     "options" : {"1" :  "HashMap", "2" :  "Hashtable", "3" :  "ConcurrentHashMap", "4" :  "TreeMap"},
@@ -151,7 +151,7 @@
                         "3" :  "Correct! ConcurrentHashMap is thread-safe."
                     }
                 },
-                "question15" : {
+                "question_15" : {
                     "type" : "true false",
                     "question" : "True/False: Generic classes allow you to define type-safe templates.",
                     "options" : {"1" :  "True", "2" :  "False"},

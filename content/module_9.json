@@ -4,7 +4,7 @@
     "number" : 9,
     "activity_count" : 4,
     "content" : {
-        "activity1" : {
+        "activity_1" : {
             "name" : "Reading 9",
             "id" : "9-1",
             "type" : "reading_activity",
@@ -24,7 +24,7 @@
                 "7p" : "Define generic classes and methods with type parameters. For example, a generic container:%cclass Box<T> {%n%tprivate T value;%n%tpublic void set(T value) { this.value = value; }%n%tpublic T get() { return value; }%n}%/c%nYou can also define generic methods:%cpublic static <U> void printArray(U[] arr) {%n%tfor (U elem : arr) System.out.println(elem);%n}%/c Generics support multiple type parameters and bounds: %cclass Pair<K, V> { ... }%/c."
             }
         },
-        "activity2": {
+        "activity_2": {
             "name": "Coding 9",
             "id": "9-2",
             "type": "coding_activity",
@@ -44,7 +44,7 @@
                 }
             }
         },
-        "activity3" : {
+        "activity_3" : {
             "name" : "Quiz 9",
             "id" : "9-3",
             "type" : "quiz_activity",

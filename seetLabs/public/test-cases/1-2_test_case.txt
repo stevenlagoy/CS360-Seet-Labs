@@ -1,2 +1,2 @@
-1 co
+1 io
 case_1 : "" : "100 20.0 J%true Hello"

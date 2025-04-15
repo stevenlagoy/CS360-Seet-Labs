@@ -4,7 +4,7 @@
     "number" : 4,
     "activity_count" : 4,
     "content" : {
-        "activity1" : {
+        "activity_1" : {
             "name" : "Reading 4",
             "id" : "4-1",
             "type" : "reading_activity",
@@ -28,7 +28,7 @@
                 "9p" : "- Keep classes focused: each should have a single responsibility.%n- Use private fields and public getters/setters for encapsulation.%n- Limit use of static: prefer instance methods unless shared behavior is needed.%n- Comment constructors and complex methods for clarity.%n- Follow naming conventions: classes in PascalCase, methods and fields in camelCase."
             }
         },
-        "activity2": {
+        "activity_2": {
             "name": "Coding 4",
             "id": "4-2",
             "type": "coding_activity",
@@ -48,7 +48,7 @@
                 }
             }
         },
-        "activity3" : {
+        "activity_3" : {
             "name" : "Quiz 4",
             "id" : "4-3",
             "type" : "quiz_activity",

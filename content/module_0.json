@@ -4,7 +4,7 @@
     "number" : 0,
     "activity_count" : 4,
     "content" : {
-        "activity1" : {
+        "activity_1" : {
             "name" : "Reading 1 : Meet Java",
             "id" : "0-1",
             "type" : "reading_activity",
@@ -22,7 +22,7 @@
                 "5p" : "While you could write Java code in a plain text editor like a true old-school hacker, most developers prefer something a little more… luxurious. Enter the %bIntegrated Development Environment%/b (or %bIDE%/b if you don't have much time) — a fancy, feature-packed tool that makes coding easier, faster, and a lot less frustrating.%nSome of the most popular Java IDEs include:%n%bIntelliJ IDEA%/b — Sleek, powerful, and loved by professionals. (Also, it tries to autocomplete everything.)%n%bEclipse%/b — A veteran in the Java world, with tons of plugins and customizations.%n%b%nNetBeans%/b — Great for beginners and packed with built-in tools.%n%bVS Code%/b — With the right extensions, a popular pick which can handle Java like a champ.%n%bWhy use an IDE?%/b. An IDE does more than just let you type code, it enables %ibetter%/i code with features like Syntax Highlighting (because black-and-white gets boring), Auto-Completion, Debugging Tools, and Built-in Compilers (which will save you from the terminal's fussiness). While we encourage you to set up an IDE on your own machine, SeetLabs: Code also provides you a built-in Java environment and compiler which you can access anytime in the Playground."
             }
         },
-        "activity2" : {
+        "activity_2" : {
             "name" : "Coding 1 : Hello World!",
             "id" : "0-2",
             "type" : "coding_activity",
@@ -39,7 +39,7 @@
                 }
             }
         },
-        "activity3" : {
+        "activity_3" : {
             "name" : "Quiz 1 : Java Introduction",
             "id" : "0-3",
             "type" : "quiz_activity",

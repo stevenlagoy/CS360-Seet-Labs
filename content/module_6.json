@@ -4,7 +4,7 @@
     "number" : 6,
     "activity_count" : 4,
     "content" : {
-        "activity1": {
+        "activity_1": {
             "name": "Reading 6",
             "id": "6-1",
             "type": "reading_activity",
@@ -26,7 +26,7 @@
                 "8p": "- Catch the most specific exception first, then broader types.%n- Avoid empty catch blocks—always handle or log errors with meaningful messages.%n- Use %kfinally%/k or try-with-resources for resource cleanup, ensuring no leaks even when exceptions occur.%n- Document thrown exceptions in method comments so users of your code know what to expect.%n- Prefer unchecked exceptions for programming logic errors where recovery is unlikely, such as illegal arguments or unsupported operations. Clean exception handling leads to more stable and user-friendly applications."
             }
         },
-        "activity2": {
+        "activity_2": {
             "name": "Coding 6",
             "id": "6-2",
             "type": "coding_activity",
@@ -45,7 +45,7 @@
                 }
             }
         },
-        "activity3" : {
+        "activity_3" : {
             "name" : "Quiz 6",
             "id" : "6-3",
             "type" : "quiz_activity",

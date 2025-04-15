@@ -65,7 +65,7 @@ public class HtmlGenerator {
         if (json.size() <= 1) return null;
         for (int i = 1; i < Integer.parseInt(json.get("activity_count").toString()); i++){
             @SuppressWarnings("unchecked")
-            LinkedHashMap<Object, Object> activityContent = (LinkedHashMap<Object, Object>) ((LinkedHashMap<Object, Object>) json.get("content")).get("activity" + i);
+            LinkedHashMap<Object, Object> activityContent = (LinkedHashMap<Object, Object>) ((LinkedHashMap<Object, Object>) json.get("content")).get("activity_" + i);
             if (activityContent != null)
                 htmlStrings.add(generateHtmlString(activityContent));
         }
@@ -195,42 +195,7 @@ public class HtmlGenerator {
         html.add("</body>");
         html.add("</html>");
 
-        // CREATE JAVA FILE FOR BASE CODE
-
-        try {
-            @SuppressWarnings("unchecked")
-            String baseCode = (((HashMap<Object, Object>) JSON.get("content")).get("base_code")).toString();
-            String processed = StringOperations.processJavaMarkup(baseCode, 0);
-            FileOperations.writeJava(JSON.get("id") + "_basecode", processed);
-        }
-        catch (NullPointerException e) {
-        }
-
-        // CREATE TEXT FILE FOR TEST CASES
-        try {
-            @SuppressWarnings("unchecked")
-            HashMap<Object, Object> content = (HashMap<Object, Object>) JSON.get("content");
-            String activityID = JSON.get("id").toString();
-            @SuppressWarnings("unchecked")
-            LinkedHashMap<Object, Object> testCases = (LinkedHashMap<Object, Object>) content.get("test_cases");
-            int numTestCases = Integer.parseInt(content.get("number_test_cases").toString());
-            boolean isInputOutput = content.get("output_type").toString().equals("input output");
-            createTestCaseFile(activityID, testCases, numTestCases, isInputOutput);
-        }
-        catch (NumberFormatException e){
-            System.out.println("Expected number, got " + JSON.get("number_test_cases").toString() + " in activity " + JSON.get("id").toString());
-        }
-        catch (NullPointerException e) {
-            System.out.print("WARNING: ");
-            e.printStackTrace();
-        }
-
-
         return html;
-
-        // create test cases file in a common useful format
-        // two types: console out, unit tests - identified by a flag in the file
-        // the user will write a function or class based on the instructions. the test code will use that function or class, by name as a black box, and check the output
     }
     
     private static List<String> generateQuizActivityHtmlString(LinkedHashMap<Object, Object> JSON) {
