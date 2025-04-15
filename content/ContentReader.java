@@ -129,7 +129,7 @@ public class ContentReader {
 
                 Map<Object, Object> activityContent = (Map<Object, Object>) activityContents.get("content");
                 String numberCases = activityContent.get("number_test_cases").toString();
-                String outputType = activityContent.get("output_type").toString().equals("console output") ? "co" : "io";
+                String outputType = activityContent.get("output_type").toString().equals("console out") ? "co" : "io";
                 testCaseStrings.add(String.format("%s %s", numberCases, outputType));
 
                 Map<Object, Object> testCases = (Map<Object, Object>) activityContent.get("test_cases");
