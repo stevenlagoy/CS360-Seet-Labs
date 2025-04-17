@@ -126,7 +126,11 @@ By God - a *sensation!* The Cogs are spinning up again.
 A fiery streak pierced my skull, trying to force my eyes open. It’s a sound. A Clarion call from Hell.
 
 I woke up at my desk.
+
 It was Monday.
+
 My Computer had crashed. 
+
 Another note on the desk.
+
 "Try harder next time, Harry."
