@@ -2,34 +2,27 @@ package content;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import content.FileOperations.ScannerUtil;
+
+//import seetLabs.public.java.LabLauncher; // broken because public is a reserved keyword
+
 public class CodeTester {
     
-    public static final Path BASE_PATH = Path.of("seetLabs");
-    public static final Path PUBLIC_PATH = BASE_PATH.resolve("public");
-    public static final Path unitTestSource = PUBLIC_PATH.resolve("test-cases");
-
     public static void main(String[] args) {
         for (String arg : args) {
             System.out.println(arg);
         }
-        String testFileName = "3-2_test_cases";
-        runAllTests(readTestCasesFile(unitTestSource.resolve(testFileName)));
-    }
+        String testFileName = args[0];
+        runAllTests(readTestCasesFile(FilePaths.TEST_CASE_DEST.resolve(testFileName)));
 
-    public static class ScannerUtil {
-        public static Scanner createScanner(InputStream inputStream) {
-            return new Scanner(inputStream, StandardCharsets.UTF_8.name());
-        }
-        public static Scanner createScanner(File file) throws FileNotFoundException {
-            return new Scanner(file, StandardCharsets.UTF_8.name());
-        }
+        // call launcher.getUserMethod("method name", return type, parameter types)
+        // then launcher.launchMethod(parameter values)
     }
 
     public static ArrayList<String> readTestCasesFile(Path filepath) {
@@ -49,18 +42,53 @@ public class CodeTester {
         return contents;
     }
 
+    /* 
+     * Tests look like this:
+     *  
+     * #tests co/io
+     * testname : "input, input, ..." : "output"
+     * testname : "method(input)" : "output"
+     * testname : "" : "console output"
+     */
+
     public static boolean runAllTests(List<String> tests) {
         for (String testLine : tests) {
             String[] parts = StringOperations.splitByUnquotedString(testLine, ":");
-            String testName = parts[0], input = parts[1], output = parts[2];
-            String programOutput;
+            String testName = parts[0], output = parts[2], input[], methodName = "";
+            if (parts[1].contains("(")) { // calling a method
+                methodName = parts[1].split("(")[0];
+                input = parts[1].split("(")[1].replace(")","").split(",");
+            }
+            else input = parts[1].split(",");
 
-            // use the input to run the user's defined functions
-            programOutput = "";
+            List<Object> parameters = Arrays.asList((Object[]) input); // Widening to object
 
-            if (!programOutput.equals(output)) return false;
+            Class<?> returnType = output.getClass();
+            
+            boolean result = runTest(testName, methodName, returnType, parameters, parameters, output);
+
+            if (!result) return false;
         }
         return true;
+    }
+
+    public static <T> boolean runTest(String testName, String methodName, Class<T> returnType, List<Object> args, List<Object> input, Object output) {
+        LabLauncher launcher = new LabLauncher();
+
+        if (!methodName.equals("")) {
+            // using a user-defined method
+            Class<?>[] parameterTypes = args.stream().map(Object::getClass).toArray(Class<?>[]::new);
+            launcher.getUserMethod(methodName, returnType, parameterTypes);
+            Object returned = launcher.launchMethod(input);
+
+            return returned.equals(output);
+        }
+        else {
+            // using console output
+            JSOutputStream jsOutputStream = new JSOutputStream(false);
+            System.setOut(new java.io.PrintStream(jsOutputStream));
+            return jsOutputStream.getOutput().equals(output.toString());
+        }
     }
 
 }

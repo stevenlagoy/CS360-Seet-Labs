@@ -1,4 +1,7 @@
-import java.io.*;
+package content;
+
+import java.io.OutputStream;
+
 //package com.seet.labs;
 public class JSOutputStream extends OutputStream
 {

@@ -4,7 +4,7 @@
     "number" : 8,
     "activity_count" : 4,
     "content" : {
-        "activity1" : {
+        "activity_1" : {
             "name" : "Reading 8",
             "id" : "8-1",
             "type" : "reading_activity",
@@ -38,9 +38,9 @@
                 "14p" : "- Prefer collections over arrays when size varies.%n- Use generics to enforce type safety (e.g., List<String>).%n- Choose the right implementation for performance (ArrayList vs LinkedList).%n- Avoid modifying a collection while iterating; use iterators or streams.%n- Always specify initial capacity when possible to reduce resizing overhead.%n- Leverage utility methods in Arrays and Collections for common tasks."
             }
         },
-        "activity2": {
+        "activity_2": {
             "name": "Coding 8",
-            "id": "8-3",
+            "id": "8-2",
             "type": "coding_activity",
             "content": {
                 "context": {
@@ -58,9 +58,9 @@
                 }
             }
         },
-        "activity3" : {
+        "activity_3" : {
             "name" : "Quiz 8",
-            "id" : "8-4",
+            "id" : "8-3",
             "type" : "quiz_activity",
             "content" : {
                 "question1" : {
@@ -69,7 +69,12 @@
                     "options" : {"1" : "int[][] a;", "2" : "int a[][][];", "3" : "int[2][3] a;", "4" : "int a[2][];"},
                     "correct_responses" : ["1"],
                     "points" : 10,
-                    "feedback" : {"1" : "Correct! int[][] a declares a 2D array.", "2" : "That's 3D.", "3" : "Invalid syntax.", "4" : "Cannot specify sizes in declaration."}
+                    "feedback" : {
+                        "1" : "Correct! int[][] a declares a 2D array.",
+                        "2" : "That's 3D.",
+                        "3" : "Invalid Syntax: you cannot specify sizes in declaration.",
+                        "4" : "Invalid Syntax: you cannot specify sizes in declaration."
+                    }
                 },
                 "question2" : {
                     "type" : "true false",

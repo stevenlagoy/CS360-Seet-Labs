@@ -2,6 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { assignmentType } from '../models/assignmentType.types';
 import { firstValueFrom } from 'rxjs';
+import { CodingActivityData } from '../models/codingActivityData';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,5 +27,11 @@ export class JsonServerTestService {
     const url = `http://localhost:3000/${moduleNumber}`;
     const data = await firstValueFrom(this.http.get(url, {responseType: 'json'}));
     return Object.keys(data).length;
+  }
+  
+  getCodingActivityData(id: string | null, assignment: string | null)
+  {
+    const url = `http://localhost:3000/${id}/${assignment}`;
+    return this.http.get<CodingActivityData>(url, {responseType: 'json'});
   }
 }

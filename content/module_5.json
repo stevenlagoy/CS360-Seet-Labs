@@ -4,7 +4,7 @@
     "number" : 5,
     "activity_count" : 4,
     "content" : {
-        "activity1": {
+        "activity_1": {
             "name": "Reading 5",
             "id": "5-1",
             "type": "reading_activity",
@@ -26,9 +26,9 @@
                 "8p": "- Favor composition over inheritance when possible to reduce tight coupling and increase flexibility.%n- Keep interfaces focused: define only related methods to uphold the Interface Segregation Principle.%n- Use abstract classes when you have shared code across multiple subclasses, and interfaces when you want multiple unrelated types to share a contract.%n- Apply polymorphism to write flexible and extensible code that can grow without constant refactoring.%n- Document overridden methods with @Override annotation for clarity and to help the compiler catch errors. Also, use Javadoc to explain non-obvious implementations so that others (and your future self) understand your design choices more easily."
             }
         },  
-        "activity2": {
+        "activity_2": {
             "name": "Coding 5",
-            "id": "5-3",
+            "id": "5-2",
             "type": "coding_activity",
             "content": {
                 "context": {
@@ -43,9 +43,9 @@
                 }
             }
         },
-        "activity3" : {
+        "activity_3" : {
             "name" : "Quiz 5",
-            "id" : "5-4",
+            "id" : "5-3",
             "type" : "quiz_activity",
             "content" : {
                 "question1" : {
@@ -54,7 +54,12 @@
                     "options" : {"1" : "Class inheritance", "2" : "Interface implementation", "3" : "Abstract class instantiation", "4" : "Method overriding"},
                     "correct_responses" : ["2"],
                     "points" : 10,
-                    "feedback" : {"1" : "Not quite. 'extends' is for inheritance.","2" : "Correct! 'implements' signals interface adoption.","3" : "Abstract classes use 'extends'.","4" : "Overriding uses @Override, not 'implements'."}
+                    "feedback" : {
+                        "1" : "Not quite. 'extends' is for inheritance.",
+                        "2" : "Correct! 'implements' signals interface adoption.",
+                        "3" : "Abstract classes use 'extends'.",
+                        "4" : "Overriding uses @Override, not 'implements'."
+                    }
                 },
                 "question2" : {
                     "type" : "true false",

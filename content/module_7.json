@@ -4,7 +4,7 @@
     "number" : 7,
     "activity_count" : 4,
     "content" : {
-        "activity1" : {
+        "activity_1" : {
             "name" : "Reading 7",
             "id" : "7-1",
             "type" : "reading_activity",
@@ -24,9 +24,9 @@
                 "7p" : "- Validate user input with Scanner methods.%n- Prefer buffered I/O for large files.%n- Use NIO.2 for simpler and faster file operations.%n- Always close resources or use try-with-resources.%n- Handle character encoding explicitly to avoid data corruption.%n- Log exceptions with meaningful messages."
             }
         },
-        "activity3" : {
+        "activity_2" : {
             "name" : "Quiz 7",
-            "id" : "7-4",
+            "id" : "7-2",
             "type" : "quiz_activity",
             "content" : {
                 "question1" : {
@@ -35,7 +35,12 @@
                     "options" : {"1" : "next()","2" : "nextLine()","3" : "nextInt()","4" : "nextChar()"},
                     "correct_responses" : ["3"],
                     "points" : 10,
-                    "feedback" : {"1" : "next() reads a token as String.","2" : "nextLine() reads a full line.","3" : "Correct! nextInt() reads an integer.","4" : "No such method in Scanner."}
+                    "feedback" : {
+                        "1" : "next() reads a token as String.",
+                        "2" : "nextLine() reads a full line.",
+                        "3" : "Correct! nextInt() reads an integer.",
+                        "4" : "The Scanner class has no such method."
+                    }
                 },
                 "question2" : {
                     "type" : "true false",
@@ -43,7 +48,10 @@
                     "options" : {"1" : "True","2" : "False"},
                     "correct_responses" : ["2"],
                     "points" : 10,
-                    "feedback" : {"1" : "Incorrect. FileInputStream reads bytes.","2" : "Correct! It handles raw bytes, not just characters."}
+                    "feedback" : {
+                        "1" : "Incorrect. FileInputStream reads bytes.",
+                        "2" : "Correct! It handles raw bytes, not just characters."
+                    }
                 },
                 "question3" : {
                     "type" : "multiple choice",
@@ -51,7 +59,12 @@
                     "options" : {"1" : "FileInputStream","2" : "Files","3" : "FileReader","4" : "BufferedWriter"},
                     "correct_responses" : ["2"],
                     "points" : 10,
-                    "feedback" : {"1" : "No. FileInputStream is for byte streams.","2" : "Correct! Files contains NIO.2 file utilities.","3" : "FileReader is character stream.","4" : "BufferedWriter is for buffered character output."}
+                    "feedback" : {
+                        "1" : "No. FileInputStream is for byte streams.",
+                        "2" : "Correct! Files contains NIO.2 file utilities.",
+                        "3" : "FileReader is character stream.",
+                        "4" : "BufferedWriter is for buffered character output."
+                    }
                 },
                 "question4" : {
                     "type" : "true false",
@@ -59,7 +72,10 @@
                     "options" : {"1" : "True","2" : "False"},
                     "correct_responses" : ["1"],
                     "points" : 10,
-                    "feedback" : {"1" : "Correct! It ensures resources are closed.","2" : "Incorrect. try-with-resources closes resources automatically."}
+                    "feedback" : {
+                        "1" : "Correct! It ensures resources are closed.",
+                        "2" : "Incorrect. try-with-resources closes resources automatically."
+                    }
                 }
             }
         }

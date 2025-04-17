@@ -8,6 +8,10 @@
 
 html {
   scroll-behavior: smooth;
+
+}
+.good{
+  color:#66ff66;
 }
 
 .cm-editor
@@ -53,6 +57,12 @@ html {
 body {
   padding: 0;
   margin: 0;
+}
+
+.keyword {
+  font-family: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', monospace;
+  color: indianred;
+  font-weight: bold;
 }
 
 :root {
