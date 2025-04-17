@@ -1,0 +1,42 @@
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+
+<div class="hero-parent">
+    <div class="hero">
+        <gradient-header size="40px" label="Welcome to SeetLabs: Code"></gradient-header>
+        <p>SeetLabs: Code aims to provide an engaging, practical learning experience that inspires high school students to explore computer science further. </p>
+        <div class="hero-call-to-actions">
+            <a href="#modules" mat-fab extended>
+                <mat-icon>explore</mat-icon>
+                Explore Modules
+            </a>
+            <a href="/" mat-fab extended>
+                <mat-icon>download</mat-icon>
+                Load Backup
+            </a>
+        </div>
+    </div>    
+</div>
+
+
+<div class="modules" id="modules">
+    <h2 id="title">Course Roadmap</h2>
+    <div class="module-parent">
+        @for (module of getModules(11); track module; let i = $index){
+            <div class="individual-module">
+                <a href="/module/{{i}}/1">Module {{i}}: {{moduleNames()[i]}}</a>
+                @for (activity of getActivities(moduleLengths()[i]); track activity; let j = $index){
+                    @if (activities()[i][j] == 0){
+                        <a href="/module/{{i}}/{{j+1}}">Reading Activity</a>
+                    } @else if (activities()[i][j] == 1){
+                        <a href="/module/{{i}}/{{j+1}}">Quiz Activity</a>
+                    } @else {
+                        <a href="/module/{{i}}/{{j+1}}">Coding Activity</a>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>

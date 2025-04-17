@@ -26,8 +26,8 @@ export class ModuleSubHeaderComponent implements OnInit {
   getDataService = inject(JsonServerTestService);
 
   async ngOnInit(): Promise<void> {
-    this.numberAssignments.set(await this.getDataService.getModuleContents(this.moduleNumber));
-    this.lastModuleLastActivityNum.set(await this.getDataService.getModuleContents(this.decrementModule()));
+    this.numberAssignments.set(await this.getDataService.getModuleContents(this.moduleNumber)-1);
+    this.lastModuleLastActivityNum.set(await this.getDataService.getModuleContents(this.decrementModule())-1);
   }
 
   incrementAssignment() : string {

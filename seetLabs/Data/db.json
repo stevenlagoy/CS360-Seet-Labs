@@ -1,5 +1,6 @@
 {
 	"0" : [
+        {"name": "Introduction to Java"},
 		{"id" : "1", "type" : 0, "file" : "0-1.html"},
 		{"id" : "2", "type" : 2, "file" : "0-2.html"},
 		{"id" : "3", "type" : 1, "questions" : {
@@ -52,6 +53,7 @@
 		}}
 	],
 	"1" : [
+        {"name": "Variables and Data Types"},
 		{"id" : "1", "type" : 0, "file" : "1-1.html"},
 		{"id" : "2", "type" : 2, "file" : "1-2.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -122,6 +124,7 @@
 		}}
 	],
 	"2" : [
+        {"name": "Control Flow"},
 		{"id" : "1", "type" : 0, "file" : "2-1.html"},
 		{"id" : "2", "type" : 2, "file" : "2-2.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -167,6 +170,7 @@
 		}}
 	],
 	"3" : [
+        {"name": "Methods and Subprograms"},
 		{"id" : "1", "type" : 0, "file" : "3-1.html"},
 		{"id" : "2", "type" : 2, "file" : "3-2.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -208,6 +212,7 @@
 		}}
 	],
 	"4" : [
+        {"name": "Objects and Classes"},
 		{"id" : "1", "type" : 0, "file" : "4-1.html"},
 		{"id" : "2", "type" : 2, "file" : "4-3.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -241,6 +246,7 @@
 		}}
 	],
 	"5" : [
+        {"name": "OOP, Interfaces, and Inheritance"},
 		{"id" : "1", "type" : 0, "file" : "5-1.html"},
 		{"id" : "2", "type" : 2, "file" : "5-3.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -266,6 +272,7 @@
 		}}
 	],
 	"6" : [
+        {"name": "Exception Handling"},
 		{"id" : "1", "type" : 0, "file" : "6-1.html"},
 		{"id" : "2", "type" : 2, "file" : "6-3.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -299,6 +306,7 @@
 		}}
 	],
 	"7" : [
+        {"name": "Input and Output"},
 		{"id" : "1", "type" : 0, "file" : "7-1.html"},
 		{"id" : "2", "type" : 1, "questions": {
 			"name" : "Quiz 7",
@@ -339,6 +347,7 @@
 		}}
 	],
 	"8" : [
+        {"name": "Arrays and Collections"},
 		{"id" : "1", "type" : 0, "file" : "8-1.html"},
 		{"id" : "2", "type" : 2, "file" : "8-3.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -409,6 +418,7 @@
 		}}
 	],
 	"9" : [
+        {"name": "Data Structures, Generics"},
 		{"id" : "1", "type" : 0, "file" : "9-1.html"},
 		{"id" : "2", "type" : 2, "file" : "9-3.html"},
 		{"id" : "3", "type" : 1, "questions": {
@@ -491,6 +501,7 @@
 		}}
 	],
 	"10" : [
+        {"name": "Recap"},
 		{"id" : "1", "type" : 0, "file" : "10-1.html"},
 		{"id" : "2", "type" : 1, "questions": {
 			"name" :  "Quiz 10",

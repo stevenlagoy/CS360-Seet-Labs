@@ -13,7 +13,14 @@ export class JsonServerTestService {
     const url = `http://localhost:3000/${id}/${assignment}`;
     return this.http.get<assignmentType>(url, {responseType: 'json'});
   }
+
+  //returns all module data (JSON)
+  getModuleData(moduleNumber: string) {
+    const url = `http://localhost:3000/${moduleNumber}`;
+    return this.http.get<any>(url, {responseType: 'json'}); 
+  }
   
+  //returns only the number of assignments in that module
   async getModuleContents(moduleNumber: string): Promise<number> {
     const url = `http://localhost:3000/${moduleNumber}`;
     const data = await firstValueFrom(this.http.get(url, {responseType: 'json'}));
