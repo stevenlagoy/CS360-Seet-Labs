@@ -1,5 +1,5 @@
 #!/bin/bash
 
 chmod -R 777 ./
-npx json-server ./Data/db.json &   
+npx json-server --watch ./Data/db.json &   
 ng serve

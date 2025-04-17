@@ -4,7 +4,7 @@
 
 .header {
     background-color: #fff;
-    opacity: 0.9;
+    opacity: 0.95;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,4 +30,40 @@
     flex-direction: row;
     display: flex;
     align-items: center;
+}
+.modules-href-drop-down-parent {
+    background-color: #5d94d7;
+    width: 43vw;
+    position: absolute;
+    top: 6.5vh;   
+    padding: 20px 20px;
+    right: 18vh;
+    border-radius: 10px;
+    display: none;
+    border: 1vh solid transparent;
+}
+
+.modules-href-drop-down {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+}
+
+.modules-href-drop-down a {
+    width: fit-content;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.modules-href-drop-down a:hover {
+    color: #f1f1f1;
+}
+
+#modules-href:hover + .modules-href-drop-down-parent {
+    display: block;
+}
+
+.modules-href-drop-down-parent:hover {
+    display: block;
 }

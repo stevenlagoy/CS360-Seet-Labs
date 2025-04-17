@@ -3,7 +3,20 @@ import { JsonServerTestService } from './services/json-server-test.service';
 import { inject } from '@angular/core';
 import { catchError } from 'rxjs';
 
-export const routes: Routes = [{
+export const routes: Routes = [
+    
+    {
+        path: '',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./pages/home-page/home-page.component').then(
+                module => module.HomePageComponent
+            )
+        },
+    },
+    
+    
+    {
         path: 'components',
         pathMatch: 'full',
         loadComponent: () => {

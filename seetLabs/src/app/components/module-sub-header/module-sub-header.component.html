@@ -5,17 +5,46 @@
 @if (headerBottom == false){
     <div class="sub-header-parent">
         <div class="sub-header">
-            <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" [ngStyle]="{'visibility': goBack() ? 'visible' : 'hidden'}" mat-fab extended>
-                <mat-icon>arrow_back</mat-icon>
-                Last Activity
-            </a>
+            @if (moduleNumber != '0' && getAssignmentNumber() > 1 || (moduleNumber == '0' && getAssignmentNumber() > 1)){
+                <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" mat-fab extended>
+                    <mat-icon>arrow_back</mat-icon>
+                    Last Activity
+                </a>
+            }
+            @else if (moduleNumber != '0' && getAssignmentNumber() == 1){
+                <a href="/module/{{decrementModule()}}/{{lastModuleLastActivityNum()}}" mat-fab extended>
+                    <mat-icon>arrow_back</mat-icon>
+                    Last Module
+                </a>
+            }
+            @else {
+                <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" mat-fab extended>
+                    <mat-icon>arrow_back</mat-icon>
+                    Last Module
+                </a>
+            }
             <div class="progress-bar">
-                <progress-bar title="Module Completion" value="50"></progress-bar>
+                <progress-bar title="Module {{moduleNumber}} Completion" value="50"></progress-bar>
             </div>
-            <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" [ngStyle]="{'visibility': goForward() ? 'visible' : 'hidden'}" mat-fab extended>
-                <mat-icon>arrow_forward</mat-icon>
-                Next Activity
-            </a>
+            @if (moduleNumber != '10' && getAssignmentNumber() < numberAssignments() || (moduleNumber == '10' && getAssignmentNumber() < numberAssignments())){
+                <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" mat-fab extended>
+                    <mat-icon>arrow_forward</mat-icon>
+                    Next Activity
+                </a>
+            }
+            @else if (moduleNumber != '10' && getAssignmentNumber() == numberAssignments()){
+                <a href="/module/{{incrementModule() }}/1" mat-fab extended>
+                    <mat-icon>arrow_forward</mat-icon>
+                    Next Module
+                </a>
+            }
+            @else {
+                <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" mat-fab extended>
+                    <mat-icon>arrow_back</mat-icon>
+                    Last Module
+                </a>
+            }
+            
         </div>
     </div>
 }
@@ -23,14 +52,43 @@
     <div class="sub-header-bottom-parent-parent">
         <div class="sub-header-bottom-parent">
             <div class="sub-header-bottom">
-                <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" [ngStyle]="{'visibility': goBack() ? 'visible' : 'hidden'}" mat-fab extended>
-                    <mat-icon>arrow_back</mat-icon>
-                    Last Activity
-                </a>
-                <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" [ngStyle]="{'visibility': goForward() ? 'visible' : 'hidden'}" mat-fab extended>
-                    <mat-icon>arrow_forward</mat-icon>
-                    Next Activity
-                </a>
+                @if (moduleNumber != '0' && getAssignmentNumber() > 1 || (moduleNumber == '0' && getAssignmentNumber() > 1)){
+                    <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" mat-fab extended>
+                        <mat-icon>arrow_back</mat-icon>
+                        Last Activity
+                    </a>
+                }
+                @else if (moduleNumber != '0' && getAssignmentNumber() == 1){
+                    <a href="/module/{{decrementModule()}}/{{lastModuleLastActivityNum()}}" mat-fab extended>
+                        <mat-icon>arrow_back</mat-icon>
+                        Last Module
+                    </a>
+                }
+                @else {
+                    <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" mat-fab extended>
+                        <mat-icon>arrow_back</mat-icon>
+                        Last Module
+                    </a>
+                }
+                
+                @if (moduleNumber != '10' && getAssignmentNumber() < numberAssignments() || (moduleNumber == '10' && getAssignmentNumber() < numberAssignments())){
+                    <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" mat-fab extended>
+                        <mat-icon>arrow_forward</mat-icon>
+                        Next Activity
+                    </a>
+                }
+                @else if (moduleNumber != '10' && getAssignmentNumber() == numberAssignments()){
+                    <a href="/module/{{incrementModule() }}/1" mat-fab extended>
+                        <mat-icon>arrow_forward</mat-icon>
+                        Next Module
+                    </a>
+                }
+                @else {
+                    <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" mat-fab extended>
+                        <mat-icon>arrow_back</mat-icon>
+                        Last Module
+                    </a>
+                }
             </div>
         </div>
     </div>

@@ -1,0 +1,112 @@
+.hero-parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.hero {
+    width: 50%;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 35px;
+}
+
+.hero p {
+    font-size: 17px;
+}
+
+.hero-call-to-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+}
+
+.hero-call-to-actions a:last-child {
+    margin-left: 2.5vw !important;
+}
+
+// MODULES
+
+.modules {
+    background: radial-gradient(circle at bottom left, #5494d0, #2a68b1);
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 10vh !important;
+}
+
+.module-parent {
+    width: 100%;
+    padding: 2% 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.individual-module {
+    width: 25%;
+    background-color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.individual-module:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.individual-module a:first-child {
+    text-decoration: none;
+    font-family: 'Inter-Medium', sans-serif;
+    font-size: 17px;
+    text-align: center;
+    color: #2b2b2b;
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.individual-module a:nth-child(n+2) {
+    text-decoration: none;
+    font-family: 'Inter-Regular', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    color: #4a4a4a;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    transition: background-color 0.2s ease;
+}
+
+.individual-module a:nth-child(n+2):hover {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+}
+
+.individual-module a:last-child {
+    border-bottom: none !important;
+}
+
+.modules h2 {
+    background: linear-gradient(to right, #ffffff, #e1ebfc,);
+    font-weight: 800;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 25px;
+}
+
+
+
+

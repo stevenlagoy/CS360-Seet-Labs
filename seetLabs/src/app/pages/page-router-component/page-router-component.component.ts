@@ -41,7 +41,7 @@ export class PageRouterComponentComponent {
       } else if (assignmentType === 1){
         const { QuizActivityComponent } = await import("../quiz-activity/quiz-activity.component");
         this.componentToRender = QuizActivityComponent;
-      } else if (assignmentType === 3){
+      } else if (assignmentType === 2){
         const { CodingActivityComponent } = await import("../coding-activity/coding-activity.component");
         this.componentToRender = CodingActivityComponent;
       }
