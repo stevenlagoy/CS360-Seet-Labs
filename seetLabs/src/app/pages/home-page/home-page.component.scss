@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .hero-parent {
     display: flex;
     flex-direction: row;
@@ -37,7 +39,7 @@
     border-radius: 20px;
     text-align: center;
     padding-top: 20px;
-    margin-top: 10vh !important;
+    margin-top: 5vh !important;
 }
 
 .module-parent {
@@ -105,6 +107,110 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 25px;
+}
+
+// SITE FEATURES
+
+.site-features-parent {
+    background: radial-gradient(circle at bottom, #225691, #2b2b2b);
+    border-radius: 20px;
+    padding: 3vh 30px;
+    margin-top: 7vh !important;
+    border: 0.5px solid #ebebeb; /* base border color */
+    box-shadow: 0 0 5px #ebebeb, 0 0 5px #ebebeb, 0 0 5px #ebebeb;
+}
+
+.site-features-parent h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 4vh;
+    font-size: 22px;
+}
+
+.site-features {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.site-features div {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include mat.icon-overrides((
+        color: #fff
+    ));
+    border: 0.2px solid white;
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+
+.site-features div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.site-features div h2 {
+    text-align: center !important;
+    color: #fff;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #efefef;
+    width: 50%;
+}
+
+.site-features div ul {
+    color: #fff;
+    font-family: 'Inter-Regular';
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+// PLAYGROUND
+
+.playground-parent {
+    background: radial-gradient(circle at bottom, #225691, #2b2b2b);
+    border-radius: 20px;
+    padding-left: 5vw;
+    margin-top: 7vh !important;
+    height: 20vh;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    border: 0.5px solid #ebebeb; /* base border color */
+    box-shadow: 0 0 5px #ebebeb, 0 0 5px #ebebeb, 0 0 5px #ebebeb;
+}
+
+.playground {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.playground-img img {
+    max-height: 32vh;
+    bottom: 1vh;
+}
+
+.playground-info {
+    padding: 1.5vh 0;
+    color: #fff;
+}
+
+.playground-info p {
+    margin-bottom: 3.5vh !important;
+}
+
+#playground-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Inter-Regular';
+    font-size: 14px;
+    color: #000;
+    background-color: #fff;
 }
 
 

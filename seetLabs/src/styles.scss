@@ -2,6 +2,11 @@
 @use './app/palettes/themePalette.scss';
 
 /*css for the playground specifically*/
+
+html {
+  scroll-behavior: smooth;
+}
+
 .error{
   color:red;
 }

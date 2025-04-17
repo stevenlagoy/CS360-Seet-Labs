@@ -4,11 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
 import { JsonServerTestService } from '../../services/json-server-test.service';
-import { first, firstValueFrom } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CommonModule, GradientHeaderComponent, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatButton, MatIcon, GradientHeaderComponent, MatIconModule, MatButtonModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
