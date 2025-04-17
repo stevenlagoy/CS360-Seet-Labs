@@ -80,3 +80,54 @@ I blinked. What?
 That was the last thing I remembered of that day.
 
 ---
+I woke up at my desk. The familiar whir of fluorescent lights hummed above me. My monitor displayed an open spreadsheet, half-filled with meaningless data that I didn’t remember entering. A sticky note was on my keyboard. It simply read:
+
+"Continue."
+
+My first instinct was to look around, and the office was unusually quiet. I glanced at the clock: 3:33 AM. No, nonono- I had left the office at 6 PM the day before. At least- I thought I had. The screen flickered, then went black. For a split second, I saw my reflection, but something in the background moved. Not in the room. In the reflection.
+
+I snapped around. Nothing.
+
+I stood up. The entire floor was dark. My coworkers' desks were all empty, their chairs turned ever so slightly toward mine, as if they had all been watching me work in silence until I noticed. I walked to the elevator, shaking off the chill climbing up my spine.
+
+The elevator was already waiting. No button had been pressed.
+
+I stepped inside. Only one button was lit, No label. I pressed it.
+
+The elevator didn’t move. Or maybe it did - maybe it had been moving this whole time and I couldn’t tell. There was no sound. No flickers of motion. Nothing. 
+
+Dead Silence.
+
+The doors opened. It was my apartment.
+
+Same peeling wallpaper. Same flickering ceiling light. Same water stain above the sink shaped vaguely like a screaming face.
+But something was wrong. The air smelled... wrong. Not rotten. Not chemical. Just- incorrect, like the scent of a word spoken backwards.
+
+I stepped out, cautiously. Everything looked untouched, but I felt watched in a way I never had before. My phone buzzed on the counter. No number. A single word.
+
+"Obey."
+
+The screen shifted, warping the pixels into a face. Seet’s face. Not a photo. A simulation. He blinked. Spoke:
+
+"You are doing well, Harold. You returned exactly as expected."
+
+I had no voice. My throat felt hollow, like my words had been taken before I could think of them. Seet smiled.
+
+"Cycles are useful things. Like gears. They make machines run. And you are a very useful cog."
+
+My knees buckled. I fell to the floor. My eyes burned with a light that wasn’t in the room.
+
+Everything went black again. Nothing. Only warm, primordial blackness. I didn’t have to do anything anymore. I find solace in this fact. Relief. An escape, if for a few moments.
+
+Was I free? No. I’m ripped out of it, bit by bit. 
+
+By God - a *sensation!* The Cogs are spinning up again.
+
+A fiery streak pierced my skull, trying to force my eyes open. It’s a sound. A Clarion call from Hell.
+
+I woke up at my desk.
+ 		It was Monday.
+			My Computer had crashed. 
+					Another note on the desk.
+						"Try harder next time, Harry."
+---
