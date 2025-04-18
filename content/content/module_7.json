@@ -1,0 +1,83 @@
+{
+    "name" : "module_7",
+    "title" : "Module 7: Input and Output",
+    "number" : 7,
+    "activity_count" : 4,
+    "content" : {
+        "activity_1" : {
+            "name" : "Reading 7",
+            "id" : "7-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Input and Output",
+                "2h1" : "Console Input with Scanner",
+                "2p" : "The %kScanner%/k class simplifies reading console input. Create a Scanner on %kSystem.in%/k and use methods like %knextLine()%/k, %knextInt()%/k, or %knextDouble()%/k to retrieve values:%cScanner scanner = new Scanner(System.in);%nSystem.out.print(%'Enter name:%');%nString name = scanner.nextLine();%nint age = scanner.nextInt();%n// consume leftover newline%nscanner.nextLine();%nString comment = scanner.nextLine();%nscanner.close();%/c Handle invalid input by checking %kscanner.hasNextInt()%/k first.",
+                "3h1" : "Buffered I/O with Readers and Writers",
+                "3p" : "For efficient character I/O, wrap file streams in %kBufferedReader%/k and %kBufferedWriter%/k. Example reading lines:%ctry (BufferedReader br = new BufferedReader(new FileReader(%'data.txt%'))) {%n%tString line;%n%twhile ((line = br.readLine()) != null) {%n%t%tSystem.out.println(line);%n%t}%n} catch (IOException e) {%n%t// handle exception%n}%/c Writing lines:%ctry (BufferedWriter bw = new BufferedWriter(new FileWriter(%'out.txt%'))) {%n%tbw.write(%'First line%');%n%tbw.newLine();%n%tbw.write(%'Second line%');%n} catch (IOException e) {%n%t// handle exception%n}%/c",
+                "4h1" : "Byte Streams: InputStream and OutputStream",
+                "4p" : "%bInputStream%/b and %bOutputStream%/b handle raw binary data. Use %kFileInputStream%/k and %kFileOutputStream%/k for files. Example copying a file with a buffer:%cctry (InputStream in = new FileInputStream(%'src.bin%');%n%tOutputStream out = new FileOutputStream(%'dest.bin%')) {%n%tbyte[] buffer = new byte[4096];%n%tint bytesRead;%n%twhile ((bytesRead = in.read(buffer)) != -1) {%n%t%tout.write(buffer, 0, bytesRead);%n%t}%n} catch (IOException e) {%n%t// handle exception%n}%/c Always choose a buffer size that balances memory and performance.",
+                "5h1" : "Serialization and Deserialization",
+                "5p" : "Serialization converts objects to byte streams via %kObjectOutputStream%/k. Deserialization uses %kObjectInputStream%/k to rebuild objects. Ensure classes implement %bSerializable%/b and define a %bserialVersionUID%/b. Example:%cctry (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(%'obj.dat%'))) {%n%toos.writeObject(myObject);%n} catch (IOException e) {%n%t// handle%n}%/c Deserialize:%ctry (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(%'obj.dat%'))) {%n%tMyClass obj = (MyClass) ois.readObject();%n} catch (IOException | ClassNotFoundException e) {%n%t// handle%n}%/c",
+                "6h1" : "I/O Exceptions and Try-with-Resources",
+                "6p" : "Most I/O operations throw %bIOException%/b. Use %ktry-with-resources%/k to auto-close streams and readers, ensuring resources are released even if exceptions occur. Always catch or declare exceptions to maintain robust code.",
+                "7h1" : "Tips & Best Practices",
+                "7p" : "- Validate user input with Scanner methods.%n- Prefer buffered I/O for large files.%n- Use NIO.2 for simpler and faster file operations.%n- Always close resources or use try-with-resources.%n- Handle character encoding explicitly to avoid data corruption.%n- Log exceptions with meaningful messages."
+            }
+        },
+        "activity_2" : {
+            "name" : "Quiz 7",
+            "id" : "7-2",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "Which Scanner method reads an integer from console?",
+                    "options" : {"1" : "next()","2" : "nextLine()","3" : "nextInt()","4" : "nextChar()"},
+                    "correct_responses" : ["3"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "next() reads a token as String.",
+                        "2" : "nextLine() reads a full line.",
+                        "3" : "Correct! nextInt() reads an integer.",
+                        "4" : "The Scanner class has no such method."
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: FileInputStream reads character data only.",
+                    "options" : {"1" : "True","2" : "False"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Incorrect. FileInputStream reads bytes.",
+                        "2" : "Correct! It handles raw bytes, not just characters."
+                    }
+                },
+                "question3" : {
+                    "type" : "multiple choice",
+                    "question" : "Which class provides methods for modern file operations in Java NIO.2?",
+                    "options" : {"1" : "FileInputStream","2" : "Files","3" : "FileReader","4" : "BufferedWriter"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "No. FileInputStream is for byte streams.",
+                        "2" : "Correct! Files contains NIO.2 file utilities.",
+                        "3" : "FileReader is character stream.",
+                        "4" : "BufferedWriter is for buffered character output."
+                    }
+                },
+                "question4" : {
+                    "type" : "true false",
+                    "question" : "True/False: try-with-resources automatically closes declared resources.",
+                    "options" : {"1" : "True","2" : "False"},
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Correct! It ensures resources are closed.",
+                        "2" : "Incorrect. try-with-resources closes resources automatically."
+                    }
+                }
+            }
+        }
+    }
+}

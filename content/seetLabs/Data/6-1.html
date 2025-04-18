@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<p>Reading 6</p>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<p>Exception Handling</p>
+	<h1>Understanding Exceptions</h1>
+	<p>Exceptions are unexpected events during program execution. In Java, an exception is an object that represents an error or unusual condition. By handling exceptions, you can prevent crashes and provide meaningful feedback. Exception handling allows the flow of execution to continue gracefully, instead of terminating the program abruptly. It also makes your code more robust and easier to debug, as you can include descriptive messages and actions to take when an error occurs.</p>
+	<h1>Try-Catch-Finally</h1>
+	<p>Use <span class="keyword">try</span> to wrap code that may throw exceptions, <span class="keyword">catch</span> to handle specific exception types, and <span class="keyword">finally</span> for cleanup:</p>
+	<pre><code class="language-java">try {<br>&#10;&#9;// risky code<br>&#10;} catch (IOException e) {<br>&#10;&#9;// handle I/O error<br>&#10;} finally {<br>&#10;&#9;// always runs<br>&#10;}</code></pre>
+	<p> This structure ensures that resources like file streams or database connections can be closed properly, even if an error occurs. You can include multiple <span class="keyword">catch</span> blocks to handle different exception types separately. The <span class="keyword">finally</span> block is optional, but it's a great place for releasing resources regardless of success or failure.</p>
+	<h1>Throwing Exceptions</h1>
+	<p>You can explicitly throw exceptions using <span class="keyword">throw</span>. This is useful for validating input or signaling errors:</p>
+	<pre><code class="language-java">throw new IllegalArgumentException("Invalid input");</code></pre>
+	<p> Throwing exceptions gives you control over error reporting and lets you notify callers when something goes wrong. It's especially useful in public APIs, where you want to ensure users provide valid input. By throwing an exception, you're enforcing correct usage and promoting defensive programming.</p>
+	<h1>Declaring Exceptions (throws)</h1>
+	<p>Methods that can throw checked exceptions must declare them with <span class="keyword">throws</span> in the signature:</p>
+	<pre><code class="language-java">public void readFile(String path) throws IOException {<br>&#10;&#9;// read file<br>&#10;}</code></pre>
+	<p> This alerts callers to handle or further declare the exception. It makes your method's contract clearer and helps tools like IDEs and compilers enforce proper handling. Declaring exceptions is especially important in large systems, where multiple layers of code may interact and propagate exceptions.</p>
+	<h1>Checked vs Unchecked</h1>
+	<p><b>Checked exceptions</b> (subclasses of Exception) must be handled or declared. <b>Unchecked exceptions</b> (subclasses of RuntimeException) can occur anywhere and need not be declared. Use checked for recoverable conditions, unchecked for programming errors. Examples of checked exceptions include <span class="keyword">IOException</span> and <span class="keyword">SQLException</span>. Unchecked exceptions include <span class="keyword">NullPointerException</span> and <span class="keyword">ArrayIndexOutOfBoundsException</span>. Use them thoughtfully to indicate whether an issue should be fixed in the code or recovered from at runtime.</p>
+	<h1>Custom Exceptions</h1>
+	<p>Define your own exceptions by extending <b>Exception</b> or <b>RuntimeException</b>:</p>
+	<pre><code class="language-java">public class MyException extends Exception {<br>&#10;&#9;public MyException(String msg) {<br>&#10;&#9;&#9;super(msg);<br>&#10;&#9;}<br>&#10;}</code></pre>
+	<p> Custom exceptions improve clarity and error categorization. They let you describe specific failure modes in your application, like <span class="keyword">InsufficientFundsException</span> in a banking app. This makes your code easier to understand and test, and lets you handle related errors in a consistent way throughout the codebase.</p>
+	<h1>Best Practices</h1>
+	<p>- Catch the most specific exception first, then broader types.<br>&#10;- Avoid empty catch blocks—always handle or log errors with meaningful messages.<br>&#10;- Use <span class="keyword">finally</span> or try-with-resources for resource cleanup, ensuring no leaks even when exceptions occur.<br>&#10;- Document thrown exceptions in method comments so users of your code know what to expect.<br>&#10;- Prefer unchecked exceptions for programming logic errors where recovery is unlikely, such as illegal arguments or unsupported operations. Clean exception handling leads to more stable and user-friendly applications.</p>
+</body>
+</html>

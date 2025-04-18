@@ -1,0 +1,93 @@
+{
+    "name" : "module_0",
+    "title" : "Module 0: Meet Java",
+    "number" : 0,
+    "activity_count" : 4,
+    "content" : {
+        "activity_1" : {
+            "name" : "Reading 1 : Meet Java",
+            "id" : "0-1",
+            "type" : "reading_activity",
+            "content" : {
+                "1t" : "Meet Java",
+                "1h1" : "What is Java?",
+                "1p" : "That's easy. %bJava%/b is a %bProgramming Language%/b designed to be %'Write Once, Run Anywhere%'. This means you can write Java code on your laptop, and — like a well-trained pet — it will happily run on different devices without needing major changes. It's a %bHigh-Level%/b language created by James Gosling and his team at Sun Microsystems in the mid-'90s, and it quickly became one of the most popular programming languages in the world. Whether you're building games, web apps, or software that controls a robot army (disclaimer: please use Java responsibly), Java has got you covered!",
+                "2h1" : "Why Use Java?",
+                "2p" : "Out of all the programming languages in the world, why use Java? Well, because Java is like the Swiss Army Knife of programming! It's powerful, versitile, and won't judge you for forgetting a semicolon (well… maybe a little). Java is used for everything from phone apps to banking systems, and it's even been to space — that's right, NASA has chosen Java as their favored language for interactive, mission-critical software. Java is designed to be %bsecure, portable, and scalable,%/b meaning it plays well with others and can handle everything from tiny projects to massive enterprise applications. So whether you're coding for fun, profit, or world domination (again, please use Java responsibly), it's a fantastic language to have in your toolbox!",
+                "3h1" : "Setting up the JDK",
+                "3p" : "Before you can start your Java adventure, you need to set up your JDK (Java Development Kit) — AKA, the magical toolbox that lets you write, compile, and run Java programs. Think of it as your wizard staff, but for coding.%n%bSTEP 1: Download the JDK%/b%nHead over to %lOracle's official website %'https://www.oracle.com/java/technologies/downloads/%'%/l or an open-source alternative like OpenJDK. Pick the right version for your operating system (Windows, macOS, or Linux) and download the installer.%n%bSTEP 2: Installation%/b%nRun the installer which you just downloaded, and follow the %inext-next-finish%/i ritual. Pay attention to where it installs Java — you might need that later!%n%bSTEP 3: Set Up the Environment Variables%/b%nIf you're on Windows, you may need to add Java to your PATH. This helps your computer find Java whenever you summon it from the command line. Search for %bEnvironment Variables%/b in your system settings. Find %kPath%/k under System Variables and add the directory where Java was installed (usually something like %kC:\\Program Files\\Java\\jdk-XX.X.X\bin%/k).%n%bSTEP 4: Test Your Setup%/b%nOpen a terminal or command prompt and type: %kjava -version%/k If Java responds with a version number instead of a tantrum, then congratulations! You're ready to code!",
+                "4h1" : "A Simple Java Program",
+                "4p" : "It's time to write your very first Java program! And, of course, we're going to start with the most legendary, time-honored tradition in programming: making the computer say %b%'Hello, World!%'%/b%n%bSTEP 1: Create a Java File —%/b Open your favorite text editor (Notepad++, VS Code, IntelliJ, or even just Notepad) and create a new file called: %kHelloWorld.java%/k.%n%bSTEP 2: Write the Code —%/bType (or copy, we won't judge) the following Java code into your new file: %cpublic class HelloWorld {%n%tpublic static void main(String[] args) {%n%t%tSystem.out.println(%'Hello, World!%');%n%t}%n}%/c%n%bSTEP 3: Compile the Code —%/bNow, open your terminal or command prompt and navigate to the folder where you saved %kHelloWorld.java%/k (use %kcd FOLDER_NAME%/k to find your folder). Then, type: %kjavac HelloWorld.java%/k. If Java is feeling cooperative, this will create a file called %kHelloWorld.class%/k, which is the compiled version of your program.%n%bSTEP 4: Run the Program —%/bNow it's time for the moment of truth! Run your program by typing: %kjava HelloWorld%/k. If everything went well, you should see: %kHello, World!%/k printed to the console. And just like that, you've made your computer talk! You're officially a Java programmer.%nNext step: world domination (or at least writing some more cool programs).",
+                "5h1" : "The Integrated Development Environment",
+                "5p" : "While you could write Java code in a plain text editor like a true old-school hacker, most developers prefer something a little more… luxurious. Enter the %bIntegrated Development Environment%/b (or %bIDE%/b if you don't have much time) — a fancy, feature-packed tool that makes coding easier, faster, and a lot less frustrating.%nSome of the most popular Java IDEs include:%n%bIntelliJ IDEA%/b — Sleek, powerful, and loved by professionals. (Also, it tries to autocomplete everything.)%n%bEclipse%/b — A veteran in the Java world, with tons of plugins and customizations.%n%b%nNetBeans%/b — Great for beginners and packed with built-in tools.%n%bVS Code%/b — With the right extensions, a popular pick which can handle Java like a champ.%n%bWhy use an IDE?%/b. An IDE does more than just let you type code, it enables %ibetter%/i code with features like Syntax Highlighting (because black-and-white gets boring), Auto-Completion, Debugging Tools, and Built-in Compilers (which will save you from the terminal's fussiness). While we encourage you to set up an IDE on your own machine, SeetLabs: Code also provides you a built-in Java environment and compiler which you can access anytime in the Playground."
+            }
+        },
+        "activity_2" : {
+            "name" : "Coding 1 : Hello World!",
+            "id" : "0-2",
+            "type" : "coding_activity",
+            "content" : {
+                "context" : {
+                    "1h1" : "Java Playground",
+                    "1p" : "Welcome to the Playground. While we don't have monkey bars or a slide, you can still have fun writing all kinds of programs here. Remember that %'Hello, World!%' program we talked about in the reading? Copy that program here and hit run to continue." 
+                },
+                "base_code" : "public class Lab {%n%tpublic static void HelloWorld() {%n%t%t// Write your code below%n%t%t%n%t}%n}",
+                "output_type" : "console out",
+                "number_test_cases" : 1,
+                "test_cases" : {
+                    "case_1" : {"input" : "", "output" : "Hello, World!"}
+                }
+            }
+        },
+        "activity_3" : {
+            "name" : "Quiz 1 : Java Introduction",
+            "id" : "0-3",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "Multiple choice",
+                    "question" : "In a few words, what is Java? Pick the best answer.",
+                    "options" : {
+                        "1" : "A Programming Language", "2" : "Where I get my Coffee from", "3" : "Something that prints 'Hello, World!'"
+                    },
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Correct! Java is a Programming Language.",
+                        "2" : "While that may be true, that's very different from the Java we're talking about.",
+                        "3" : "Sure, Java can do that, but it does a lot more too!"
+                    }
+                },
+                "question2" : {
+                    "type" : "True False",
+                    "question" : "Java is a relatively niche, unknown programming language.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Not quite. Java is one of the most popular coding languages used today and is anything but 'niche'.",
+                        "2" : "Correct! Java is proudly boasted to %'run on more than 60 billion machines worldwide%', and is one of the most popular coding languages used today."
+                    }
+                },
+                "question3" : {
+                    "type" : "Multiple choice",
+                    "question" : "Which of these programs or systems was made with Java?",
+                    "options" : {
+                        "1" : "NASA's Maestro Mars Rover controller",
+                        "2" : "Wikipedia Search",
+                        "3" : "Android",
+                        "4" : "Minecraft"
+                    },
+                    "correct_responses" : ["1", "2", "3", "4"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Actually, all of these are written with Java! Nice Job!",
+                        "2" : "Actually, all of these are written with Java! Nice Job!",
+                        "3" : "Actually, all of these are written with Java! Nice Job!",
+                        "4" : "Actually, all of these are written with Java! Nice Job!"
+                    }
+                }
+            }
+        }
+    }
+}

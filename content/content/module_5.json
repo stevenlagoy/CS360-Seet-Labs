@@ -1,0 +1,75 @@
+{
+    "name" : "module_5",
+    "title" : "Module 5: OOP, Interfaces, and Inheritance",
+    "number" : 5,
+    "activity_count" : 4,
+    "content" : {
+        "activity_1": {
+            "name": "Reading 5",
+            "id": "5-1",
+            "type": "reading_activity",
+            "content": {
+                "1t": "OOP, Interfaces, and Inheritance",
+                "2h1": "Encapsulation, Abstraction, Inheritance, Polymorphism",
+                "2p": "Object-Oriented Programming (OOP) relies on four core principles: %bEncapsulation%/b (hiding internal details), %bAbstraction%/b (exposing only necessary features), %bInheritance%/b (extending existing code), and %bPolymorphism%/b (treating objects of different types uniformly). These principles help organize complex systems into manageable components. By embracing these ideas, developers can build software that's modular, easier to debug, and more adaptable to future changes. Each of these principles reinforces the others, making them more powerful when used together. Mastering them is crucial for professional software development in Java and many other modern languages.",
+                "3h1": "Creating and Using Interfaces",
+                "3p": "An %kinterface%/k defines a contract of methods without implementation. Any class that %kimplements%/k the interface must provide bodies for its methods. Example:%cinterface Animal {%n%tvoid makeSound();%nt}%n%/c%ccclass Dog implements Animal {%n%tpublic void makeSound() {%n%t%tSystem.out.println(%'Bark!%');%n%t}%nt}%/c Interfaces allow unrelated classes to share common behavior. This helps create a flexible and scalable architecture. For instance, both a %kDog%/k and a %kRobot%/k can implement a %kSpeakable%/k interface. Even though they are unrelated by inheritance, they can be treated the same by code that relies on shared interfaces. This is a powerful tool for building reusable components in Java.",
+                "4h1": "Abstract Classes",
+                "4p": "An %kabstract class%/k can include both abstract methods (without body) and concrete methods. It cannot be instantiated directly. Example:%cabstract class Vehicle {%n%tabstract void move();%n%tvoid stop() { System.out.println(%'Stopped%'); }%nt}%n%ccclass Car extends Vehicle {%n%tvoid move() { System.out.println(%'Car moving%'); }%nt}%/c Abstract classes are useful for sharing code among related classes. They serve as partially implemented blueprints. This means you can enforce structure across multiple classes while avoiding repeating code. An abstract class might implement a common method like %kstop()%/k or %krefuel()%/k while leaving other behaviors to be implemented by subclasses. This is great for family-style hierarchies like %kAnimal%/k or %kShape%/k.",
+                "5h1": "Inheritance and Method Overriding",
+                "5p": "%bInheritance%/b lets a subclass reuse fields and methods from a superclass using %kextends%/k. Subclasses can %boverride%/b inherited methods to provide specialized behavior. Example:%cclass Animal {%n%tvoid makeSound() { System.out.println(%'Some sound%'); }%nt}%n%ccclass Cat extends Animal {%n%t@Override%n%tvoid makeSound() { System.out.println(%'Meow%'); }%nt}%/c Overriding requires matching method signature and allows polymorphic calls. When methods are overridden, Java chooses the correct version of the method at runtime, depending on the actual object type, not the reference type. This makes it possible to treat many subclasses as their parent class, yet still get customized behavior. It's a cornerstone of dynamic programming in Java.",
+                "6h1": "The %ksuper%/k Keyword",
+                "6p": "%ksuper%/k refers to the immediate parent class. Use it to call superclass constructors or methods. Example:%cclass Animal {%n%tString name;%n%tAnimal(String name) { this.name = name; }%nt}%n%ccclass Dog extends Animal {%n%tDog(String name) { super(name); }%n%tvoid printName() { System.out.println(super.name); }%nt}%/c Using %ksuper%/k helps initialize and access inherited members. It ensures proper construction of an object, especially when the parent class has its own setup logic. You can also use %ksuper%/k to invoke overridden methods from the parent class when you want to extend, rather than replace, its behavior—like calling %ksuper.toString()%/k before appending more information.",
+                "7h1": "Object Class and Common Methods",
+                "7p": "All classes implicitly extend %bObject%/b, which provides methods like %ktoString()%/k, %kequals()%/k, and %khashCode()%/k. Override these for meaningful behavior. Example:%c@Override%npublic String toString() { return %'Dog: %' + name; }%/c These methods are fundamental to how Java manages objects and compares them. For example, %kequals()%/k checks logical equality, while %khashCode()%/k is used in hashing structures like %kHashMap%/k. If you override %kequals()%/k, you should also override %khashCode()%/k to maintain consistency. A well-written %ktoString()%/k method helps during debugging and logging by providing useful object descriptions.",
+                "8h1": "Design Tips",
+                "8p": "- Favor composition over inheritance when possible to reduce tight coupling and increase flexibility.%n- Keep interfaces focused: define only related methods to uphold the Interface Segregation Principle.%n- Use abstract classes when you have shared code across multiple subclasses, and interfaces when you want multiple unrelated types to share a contract.%n- Apply polymorphism to write flexible and extensible code that can grow without constant refactoring.%n- Document overridden methods with @Override annotation for clarity and to help the compiler catch errors. Also, use Javadoc to explain non-obvious implementations so that others (and your future self) understand your design choices more easily."
+            }
+        },  
+        "activity_2": {
+            "name": "Coding 5",
+            "id": "5-2",
+            "type": "coding_activity",
+            "content": {
+                "context": {
+                    "1h1": "Practicing OOP: Inheritance and Interfaces",
+                    "1p": "In this activity, you're going to write a small hierarchy of classes to demonstrate your understanding of inheritance, interfaces, and method overriding. You'll define an interface called %kAnimal%/k, an abstract class called %kMammal%/k that implements the interface, and two concrete classes: %kDog%/k and %kCat%/k. Each class should have its own implementation of the %kmakeSound()%/k method. Finally, write a method called %krunTests()%/k that creates a %kDog%/k and a %kCat%/k and returns their sounds concatenated together."
+                },
+                "base_code": "interface Animal {%n%tString makeSound();%n}%n%nabstract class Mammal implements Animal {%n%tString name;%n%n%tMammal(String name) {%n%t%tthis.name = name;%n%t}%n}%n%nclass Dog extends Mammal {%n%tDog(String name) {%n%t%tsuper(name);%n%t}%n%n%tpublic String makeSound() {%n%t%treturn %'Woof%';%n%t}%n}%n%nclass Cat extends Mammal {%n%tCat(String name) {%n%t%tsuper(name);%n%t}%n%n%tpublic String makeSound() {%n%t%treturn %'Meow%';%n%t}%n}%n%npublic class Lab {%n%tpublic static String runTests() {%n%t%tAnimal d = new Dog(%'Rex%');%n%t%tAnimal c = new Cat(%'Whiskers%');%n%t%treturn d.makeSound() + %' %' + c.makeSound();%n%t}%n}",
+                "output_type": "input output",
+                "number_test_cases": 1,
+                "test_cases": {
+                    "case_1": {"input": "", "output": "Woof Meow"}
+                }
+            }
+        },
+        "activity_3" : {
+            "name" : "Quiz 5",
+            "id" : "5-3",
+            "type" : "quiz_activity",
+            "content" : {
+                "question1" : {
+                    "type" : "multiple choice",
+                    "question" : "What does the 'implements' keyword indicate in Java?",
+                    "options" : {"1" : "Class inheritance", "2" : "Interface implementation", "3" : "Abstract class instantiation", "4" : "Method overriding"},
+                    "correct_responses" : ["2"],
+                    "points" : 10,
+                    "feedback" : {
+                        "1" : "Not quite. 'extends' is for inheritance.",
+                        "2" : "Correct! 'implements' signals interface adoption.",
+                        "3" : "Abstract classes use 'extends'.",
+                        "4" : "Overriding uses @Override, not 'implements'."
+                    }
+                },
+                "question2" : {
+                    "type" : "true false",
+                    "question" : "True/False: Abstract classes can contain both abstract and concrete methods.",
+                    "options" : {"1" : "True", "2" : "False"},
+                    "correct_responses" : ["1"],
+                    "points" : 10,
+                    "feedback" : {"1" : "Correct! Abstract classes mix method types.","2" : "Incorrect. They can have concrete methods too."}
+                }
+            }
+        }
+    }
+}
