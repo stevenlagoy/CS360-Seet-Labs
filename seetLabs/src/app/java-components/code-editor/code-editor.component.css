@@ -1,11 +1,9 @@
 :host
 {
-    background-color:  #3d79bd;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: .7em;
-    border-radius: .7em 0 0 .7em;
     width:100%;
 }
 

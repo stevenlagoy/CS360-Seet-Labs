@@ -1,22 +1,12 @@
 :host{
-    background-color:  #3d79bd;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: .7em;
     padding-left: 0;
-    border-radius: 0 .7em .7em 0;
+  
     width:100%;
 }
-
-/*css for the playground specifically*/
-.error{
-    color:red !important;
-  }
-  
-  .good{
-    color:#77bb77 !important;
-  }
   
 
 .row

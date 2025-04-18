@@ -1,6 +1,8 @@
 .main{
     display: flex;
     flex-direction: row;
+    background: radial-gradient(circle at bottom left, #5494d0, #2a68b1);
+    border-radius: .7em;
 }
 
 .center-right

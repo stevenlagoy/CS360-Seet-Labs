@@ -325,7 +325,7 @@ public class ContentReader {
     public static List<String> createCodingDBActivity(String id, String contextFile, String baseFile, String launcherFile, String testCaseFile) {
         List<String> result = new ArrayList<>();
         result.add(String.format(
-            "{\"id\" : \"%s\", \"type\" : 3, \"context\" : \"%s\", \"base\" : \"%s\", \"launcher\" : \"%s\", \"testCases\" : \"%s\"}",
+            "{\"id\" : \"%s\", \"type\" : 2, \"context\" : \"%s\", \"base\" : \"%s\", \"launcher\" : \"%s\", \"testCases\" : \"%s\"}",
             id.split("-")[1], contextFile, baseFile, launcherFile, testCaseFile
         ));
         return result;

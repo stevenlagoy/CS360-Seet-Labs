@@ -76,7 +76,7 @@ public class HtmlGenerator {
         String type = json.get("type").toString();
         switch (type) {
             case "reading_activity" :
-                return new HtmlResult(json.get("id").toString(), generateReadingActivityHtmlString(json), json.get("type").toString());
+            return new HtmlResult(json.get("id").toString(), generateReadingActivityHtmlString(json), json.get("type").toString());
             case "coding_activity" :
                 return new HtmlResult(json.get("id").toString(), generateCodingActivityHtmlString(json), json.get("type").toString());
             case "quiz_activity" :
