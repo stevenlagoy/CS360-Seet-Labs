@@ -1,5 +1,7 @@
 @use '@angular/material' as mat;
 
+// HERO SECTION
+
 .hero-parent {
     display: flex;
     flex-direction: row;
@@ -7,7 +9,11 @@
     align-items: center;
     margin-top: 5vh;
     margin-bottom: 5vh;
+    // opacity: 0;
+    transition: opacity 0.3s ease-out;
 }
+
+
 
 .hero {
     width: 50%;
@@ -35,11 +41,14 @@
 // MODULES
 
 .modules {
-    background: radial-gradient(circle at bottom left, #5494d0, #2a68b1);
+    background: radial-gradient(circle at bottom left, #3d79bd, 
+    #1c60a2, #004881, #003d6e); 
     border-radius: 20px;
     text-align: center;
     padding-top: 20px;
     margin-top: 5vh !important;
+    border: 0.5px solid #ebebeb; /* base border color */
+    box-shadow: 0 0 5px #ebebeb, 0 0 5px #ebebeb, 0 0 5px #ebebeb;
 }
 
 .module-parent {
@@ -60,7 +69,6 @@
     flex-direction: column;
     padding: 12px 16px;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -214,6 +222,7 @@
     background-color: #fff;
 }
 
-
-
+#playground-button:hover {
+    background-color: #f3f3f3;
+}
 

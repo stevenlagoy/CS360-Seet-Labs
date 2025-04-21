@@ -56,4 +56,5 @@ export class HomePageComponent implements OnInit {
     return Array(num);
   }
 
+  
 }
