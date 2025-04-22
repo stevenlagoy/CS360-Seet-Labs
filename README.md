@@ -134,3 +134,30 @@ My Computer had crashed.
 Another note on the desk.
 
 "Try harder next time, Harry."
+
+---
+
+I picked up the sticky note. Nothing was written on it. I looked outside of my office. Everything seemed normal, but an hour had passed since the intern came in. My work was exactly as I had left it.
+
+It was a daydream, then. A strangely vivid one, to be sure, but I did sometimes fantasize about strange situations. I'd done it since I was a kid.
+
+I shook off the lingering feeling that I was somehow compromised, and continued my work. The day eventually passed, sluggishly as ever, and I found myself walking to the bus stop. The company had set up shop in a nondescript office building, unfortunately about far away from bus service as it could be.
+
+I couldn't help but think back to the one notable event of the day. None of it was real, of course. It couldn't be. I couldn't shake it though. 
+
+I passed by an alley between two brick townhomes. Blue graffitti caught my eye. "IT WAS REAL", in huge lettering. I stopped.
+
+It... must've been painted years ago. To admit otherwise would be, well, crazy. 
+
+It was a coincidence. I'm being silly about this.
+
+"Mr. Seet is just a man.", I told myself, shaking my head.
+
+---
+
+The next day...
+
+
+
+
+
