@@ -5,7 +5,9 @@ import java.util.List;
 
 public class FilePaths {
     
-    public static final Path BASE_PATH = Path.of("seetLabs");
+    public static final String OPERATING_SYSTEM = System.getProperty("os.name");
+    public static final Path ROOT_PATH = Path.of("CS360-SEET-LABS");
+    public static final Path BASE_PATH = OPERATING_SYSTEM.equals("Windows 10") ? Path.of("seetLabs") : ROOT_PATH.resolve("seetLabs");
     public static final Path JSON_SOURCE = Path.of("content");
     public static final Path DATA_PATH = BASE_PATH.resolve("Data");
     public static final Path PUBLIC_PATH = BASE_PATH.resolve("public");
