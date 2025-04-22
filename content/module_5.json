@@ -27,7 +27,7 @@
             }
         },  
         "activity_2": {
-            "name": "Coding 5",
+            "name": "Coding 5: Practicing OOP",
             "id": "5-2",
             "type": "coding_activity",
             "content": {
@@ -36,7 +36,7 @@
                     "1p": "In this activity, you're going to write a small hierarchy of classes to demonstrate your understanding of inheritance, interfaces, and method overriding. You'll define an interface called %kAnimal%/k, an abstract class called %kMammal%/k that implements the interface, and two concrete classes: %kDog%/k and %kCat%/k. Each class should have its own implementation of the %kmakeSound()%/k method. Finally, write a method called %krunTests()%/k that creates a %kDog%/k and a %kCat%/k and returns their sounds concatenated together."
                 },
                 "base_code": "interface Animal {%n%tString makeSound();%n}%n%nabstract class Mammal implements Animal {%n%tString name;%n%n%tMammal(String name) {%n%t%tthis.name = name;%n%t}%n}%n%nclass Dog extends Mammal {%n%tDog(String name) {%n%t%tsuper(name);%n%t}%n%n%tpublic String makeSound() {%n%t%treturn %'Woof%';%n%t}%n}%n%nclass Cat extends Mammal {%n%tCat(String name) {%n%t%tsuper(name);%n%t}%n%n%tpublic String makeSound() {%n%t%treturn %'Meow%';%n%t}%n}%n%npublic class Lab {%n%tpublic static String runTests() {%n%t%tAnimal d = new Dog(%'Rex%');%n%t%tAnimal c = new Cat(%'Whiskers%');%n%t%treturn d.makeSound() + %' %' + c.makeSound();%n%t}%n}",
-                "output_type": "input output",
+                "launcher": "TestCaseLauncher",
                 "number_test_cases": 1,
                 "test_cases": {
                     "case_1": {"input": "", "output": "Woof Meow"}
@@ -44,11 +44,11 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 5",
+            "name" : "Quiz 5: Inheritance",
             "id" : "5-3",
             "type" : "quiz_activity",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "multiple choice",
                     "question" : "What does the 'implements' keyword indicate in Java?",
                     "options" : {"1" : "Class inheritance", "2" : "Interface implementation", "3" : "Abstract class instantiation", "4" : "Method overriding"},
@@ -61,7 +61,7 @@
                         "4" : "Overriding uses @Override, not 'implements'."
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "true false",
                     "question" : "True/False: Abstract classes can contain both abstract and concrete methods.",
                     "options" : {"1" : "True", "2" : "False"},

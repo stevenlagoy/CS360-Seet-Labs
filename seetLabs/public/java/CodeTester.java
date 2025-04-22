@@ -1,15 +1,12 @@
-
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
-import content.StringOperations;
 
 
 
@@ -19,7 +16,7 @@ public class CodeTester
     public boolean test(String fileName) 
     {
         
-        return runAllTests(readTestCasesFile(Path.of("/app/test-cases/"+fileName)));
+        return runAllTests(readTestCasesFile(Paths.get("/app/test-cases/"+fileName)));
 
         // call launcher.getUserMethod("method name", return type, parameter types)
         // then launcher.launchMethod(parameter values)
@@ -61,7 +58,7 @@ public class CodeTester
      */
 
     public boolean runAllTests(List<String> tests)
-     {
+     {  
         for (String testLine : tests) 
         {
             String[] parts = StringOperations.splitByUnquotedString(testLine, ":");
@@ -104,7 +101,7 @@ public class CodeTester
 
 
         // using a user-defined method
-        launcher.getUserMethod(methodName, returnType, args);
+        launcher.getUserMethod(methodName, returnType, args.toArray(new Class[0]));
         Object returned = launcher.launchMethod(input);
 
         Boolean toReturn = returned.equals(output);
@@ -118,7 +115,7 @@ public class CodeTester
         }
 
       
-        
+        return toReturn;
     }
 
 }

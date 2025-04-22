@@ -9,7 +9,7 @@ import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CommonModule, MatButton, MatIcon, GradientHeaderComponent, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatIcon, GradientHeaderComponent, MatIconModule, MatButtonModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -56,4 +56,5 @@ export class HomePageComponent implements OnInit {
     return Array(num);
   }
 
+  
 }

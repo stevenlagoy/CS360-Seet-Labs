@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 8",
+            "name" : "Reading 8: Arrays and Collections",
             "id" : "8-1",
             "type" : "reading_activity",
             "content" : {
@@ -39,7 +39,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 8",
+            "name": "Coding 8: Arrays and Collections Practice",
             "id": "8-2",
             "type": "coding_activity",
             "content": {
@@ -48,7 +48,7 @@
                     "1p": "In this challenge, you will write a Java program that reads a list of integers from the user, stores them in an %kArrayList%/k, sorts them, and prints the result. Then, convert the list to a %kSet%/k to remove duplicates, and finally display the contents of the set."
                 },
                 "base_code": "import java.util.*;%n%npublic class Lab {%n%tpublic static void main(String[] args) {%n%t%tScanner scanner = new Scanner(System.in);%n%t%n%t// Read space-separated integers from user%n%tString input = scanner.nextLine();%n%t%n%t// Store integers in a list%n%t%n%t// Sort the list%n%t%n%t// Convert list to set to remove duplicates%n%t%n%t// Print sorted list and unique set%n%t%n%tscanner.close();%n%t}%n}",
-                "output_type": "console out",
+                "launcher": "ConsoleLauncher",
                 "number_test_cases": 1,
                 "test_cases": {
                     "case_1": {
@@ -59,11 +59,11 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 8",
+            "name" : "Quiz 8: Arrays",
             "id" : "8-3",
             "type" : "quiz_activity",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "multiple choice",
                     "question" : "Which declaration creates a 2D array?",
                     "options" : {"1" : "int[][] a;", "2" : "int a[][][];", "3" : "int[2][3] a;", "4" : "int a[2][];"},
@@ -76,7 +76,7 @@
                         "4" : "Invalid Syntax: you cannot specify sizes in declaration."
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "true false",
                     "question" : "True/False: ArrayList allows duplicate elements.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -87,7 +87,7 @@
                         "2" : "Incorrect. ArrayList can contain duplicates."
                     }
                 },
-                "question3" : {
+                "3" : {
                     "type" : "multiple choice",
                     "question" : "Which class provides utility methods for arrays?",
                     "options" : {"1" : "Collections", "2" : "Arrays", "3" : "ArrayList", "4" : "Math"},
@@ -100,7 +100,7 @@
                         "4" : "Math is for math operations."
                     }
                 },
-                "question4" : {
+                "4" : {
                     "type" : "multiple choice",
                     "question" : "What happens when you access index -1 in an array?",
                     "options" : {
@@ -118,7 +118,7 @@
                         "4" : "It's a runtime exception, not compile-time."
                     }
                 },
-                "question5" : {
+                "5" : {
                     "type" : "true false",
                     "question" : "True/False: HashSet maintains insertion order.",
                     "options" :  {"1" : "True", "2" : "False"},

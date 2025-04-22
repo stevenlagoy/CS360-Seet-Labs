@@ -7,7 +7,8 @@ declare var cheerpOSAddStringFile:any;
 export class LabCompiler
 {
 
-    private javaPaths = ["/app/java/LabLauncher.java", "/app/java/JSOutputStream.java","/app/java/CodeTester.java", "/app/java/ClassValue.java"];
+    private javaPaths = ["/app/java/LabLauncher.java", "/app/java/JSOutputStream.java","/app/java/CodeTester.java", 
+      "/app/java/ClassValue.java", "/app/java/StringOperations.java"];
     private launcherName:string ="PlaygroundLauncher";
     private status:Status;
 
@@ -73,6 +74,7 @@ export class LabCompiler
         this.javaPaths[2],  
         this.javaPaths[3],
         this.javaPaths[4],
+        this.javaPaths[5],
         javaFile
       );
       if(await retVal !== 0)
@@ -99,6 +101,7 @@ export class LabCompiler
           "JSOutputStream.class",
           "CodeTester.class",
           "ClassValue.class",
+          "StringOperations.class",
           this.launcherName+".class"
       );
   

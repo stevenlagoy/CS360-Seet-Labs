@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 9",
+            "name" : "Reading 9: Data Structures and Generics",
             "id" : "9-1",
             "type" : "reading_activity",
             "content" : {
@@ -25,7 +25,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 9",
+            "name": "Coding 9: Collections and Generics",
             "id": "9-2",
             "type": "coding_activity",
             "content": {
@@ -34,7 +34,7 @@
                     "1p": "Practice working with core Java data structures and generics. This challenge will involve using a stack, a queue, a map, and writing a generic method. Complete the tasks below using appropriate data structures."
                 },
                 "base_code": "import java.util.*;%n%npublic class Lab {%n%n%t// Task 1: Reverse an array using a stack%n%tpublic static int[] reverseArray(int[] input) {%n%t%t// Your code here%n%t%treturn input;%n%t}%n%n%t// Task 2: Sum the first and last elements in a queue%n%tpublic static int sumQueueEnds(Queue<Integer> queue) {%n%t%t// Your code here%n%t%treturn 0;%n%t}%n%n%t// Task 3: Count occurrences using HashMap%n%tpublic static Map<String, Integer> countWords(String[] words) {%n%t%t// Your code here%n%t%treturn new HashMap<>();%n%t}%n%n%t// Task 4: Generic method to print an array%n%tpublic static <T> void printArray(T[] arr) {%n%t%t// Your code here%n%t}%n%n%tpublic static void main(String[] args) {%n%t%t// You can test your methods here%n%t}%n}",
-                "output_type": "console out",
+                "launcher": "ConsoleLauncher",
                 "number_test_cases": 1,
                 "test_cases": {
                     "case_1": {
@@ -45,11 +45,11 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 9",
+            "name" : "Quiz 9: Data Structures",
             "id" : "9-3",
             "type" : "quiz_activity",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "multiple choice",
                     "question" : "Which data structure follows Last-In-First-Out (LIFO) order?",
                     "options" : {"1" : "Queue", "2" : "Stack", "3" : "HashSet", "4" : "Binary Tree"},
@@ -62,7 +62,7 @@
                         "4" : "Binary Tree is hierarchical."
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "true false",
                     "question" : "True/False: Generics in Java allow for defining methods that work with multiple data types.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -73,7 +73,7 @@
                         "2" : "Incorrect. Generics enhance flexibility."
                     }
                 },
-                "question3" : {
+                "3" : {
                     "type" : "multiple choice",
                     "question" : "Which implementation offers O(1) random access but O(n) insertion in the middle?",
                     "options" : {"1" : "LinkedList", "2" : "ArrayList", "3" : "HashSet", "4" : "TreeMap"},
@@ -85,7 +85,7 @@
                         "3" : "HashSet is unordered.", "4" : "TreeMap is a sorted map."
                     }
                 },
-                "question4" : {
+                "4" : {
                     "type" : "multiple choice",
                     "question" : "In a HashMap, what happens when two keys have the same hash code?",
                     "options" : {"1" : "One overwrites the other", "2" : "They collide and stored in the same bucket", "3" : "An exception is thrown", "4" : "HashMap resizes immediately"},
@@ -98,7 +98,7 @@
                         "4" : "Resize happens when load factor exceeded."
                     }
                 },
-                "question5" : {
+                "5" : {
                     "type" : "true false",
                     "question" : "True/False: A Deque can only add and remove elements at one end.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -109,7 +109,7 @@
                         "2" : "Correct! Deque is double-ended."
                     }
                 },
-                "question6" : {
+                "6" : {
                     "type" : "multiple choice",
                     "question" : "Which wildcard allows reading from a collection of Number or its subclasses?",
                     "options" : {"1" : "List<?>", "2" : "List<? extends Number>", "3" : "List<? super Number>", "4" : "List<Number>"},

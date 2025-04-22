@@ -1,2 +1,2 @@
-1 co
-case_1 : "" : "Toyota - 2022%nThe car is driving."
+Toyota - 2022
+The car is driving.

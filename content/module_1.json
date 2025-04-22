@@ -33,8 +33,8 @@
                     "1h1": "Working with Variables and Types",
                     "1p": "You've learned how to declare variables, assign values, and work with different primitive and reference types in Java. Now let's put it all together! In this activity, you'll define and use several variables of various types. Use at least one variable of each of the following types and values: %kint%/k with a value of 100, %kdouble%/k with a value of 20.0, %kchar%/k with a value of 'J', %kboolean%/k with a value of true, and %kString%/k with a value of %'Hello%'. Make sure your values match the ones here exactly. Finally, print out each of those values in the same order you created them using %kSystem.out.println()%/k."
                 },
-                "base_code": "public class Lab {%n%tpublic static void Variables() {%n%t%t// Declare and initialize variables below%n%t%t%n%t%t// Print all values using System.out.println%n%t}%n}",
-                "output_type": "console out",
+                "base_code": "public class Lab {%n%tpublic static void Variables() {%n%t%t// Declare and initialize variables below%n%t%t%n%t%t// Print all values using System.out.println()%n%t}%n}",
+                "launcher" : "ConsoleLauncher",
                 "number_test_cases": 1,
                 "test_cases": {
                     "case_1": {"input": "", "output": "100 20.0 J%true Hello"}
@@ -46,7 +46,7 @@
             "id" : "1-3",
             "type" : "quiz_activity",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "multiple choice",
                     "question" : "Select a real Java primitive type.",
                     "options" : {"1" : "String", "2" : "float", "3" : "Integer", "4" : "string"},
@@ -59,7 +59,7 @@
                         "4" : "String (with a capital S) is an Object in Java, but string (with lowercase s) is not."
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "true false",
                     "question" : "True/False: To create an object instance, use the 'create' keyword.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -70,7 +70,7 @@
                         "2" : "That's right. To create an object instance, we use the 'new' keyword."
                     }
                 },
-                "question3" : {
+                "3" : {
                     "type" : "true false",
                     "question" : "True/False: Variables declared as 'final' are immutable and their value cannot be changed.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -81,7 +81,7 @@
                         "2" : "Nope, 'final' variables are immutable with unchanging values."
                     }
                 },
-                "question4" : {
+                "4" : {
                     "type" : "multiple choice",
                     "question" : "Which of these statements represents or involves a Widening conversion?",
                     "options" : {"1" : "float total = 100.0f;", "2" : "int y = (int) 45.5;", "3" : "Integer myInt = 1_000_000;", "4" : "double x = 10;"},
@@ -94,7 +94,7 @@
                         "4" : "Correct! In this case, the (smaller) int value of 10 is being widened into the (larger) double value of 10.0."
                     }
                 },
-                "question5" : {
+                "5" : {
                     "type" : "true false",
                     "question" : "True/False: The name of the double type refers to the fact that it is double the size of a float.",
                     "options" : {"1" : "True", "2" : "False"},

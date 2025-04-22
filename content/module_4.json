@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 4",
+            "name" : "Reading 4: Objects and Classes",
             "id" : "4-1",
             "type" : "reading_activity",
             "content" : {
@@ -29,7 +29,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 4",
+            "name": "Coding 4: Designing Classes",
             "id": "4-2",
             "type": "coding_activity",
             "content": {
@@ -38,7 +38,7 @@
                     "1p": "Design a Java class named %kCar%/k with appropriate fields, constructors, and methods. Then instantiate and interact with an object of that class in the main method."
                 },
                 "base_code": "public class Lab {%n%tpublic static void main(String[] args) {%n%t%t// Create an instance of your Car class and call its methods here%n%t}%n}%n%n// Define your Car class here%n",
-                "output_type": "console out",
+                "launcher": "ConsoleLauncher",
                 "number_test_cases": 1,
                 "test_cases": {
                     "case_1": {
@@ -49,11 +49,11 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 4",
+            "name" : "Quiz 4: Classes",
             "id" : "4-3",
             "type" : "quiz_activity",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "multiple choice",
                     "question" : "What is the purpose of a constructor?",
                     "options" : {"1" : "To create a new class", "2" : "To initialize an object", "3" : "To destroy an object", "4" : "To define static methods"},
@@ -66,7 +66,7 @@
                         "4" : "Static methods are independent of constructors."
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "true false",
                     "question" : "True/False: Static methods can directly access instance variables.",
                     "options" : {"1" : "True", "2" : "False"},
