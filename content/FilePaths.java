@@ -15,7 +15,16 @@ public class FilePaths {
 
     public static final List<String> IGNORED_FILES = List.of(
         "TestOne.java",
-        "TestTwo.java"
+        "TestTwo.java",
+        "0-2_test_case.txt",
+        "1-2_test_case.txt",
+        "2-2_test_case.txt",
+        "3-2_test_case.txt",
+        "4-2_test_case.txt",
+        "5-2_test_case.txt",
+        "6-2_test_case.txt",
+        "8-2_test_case.txt",
+        "9-2_test_case.txt"
     );
     public static final List<String> CONTENT_FILES = List.of(
         "module_0.json",
