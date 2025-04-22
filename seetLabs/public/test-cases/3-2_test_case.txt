@@ -8,3 +8,6 @@ case_6 : "multiply(10000, 10000)" : "100000000"
 case_7 : "factorial(1)" : "1"
 case_8 : "factorial(3)" : "6"
 case_9 : "factorial(10)" : "3628800"
+
+
+case_1: add : int "3", int "7" : int "10"
