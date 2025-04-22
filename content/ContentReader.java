@@ -90,13 +90,14 @@ public class ContentReader {
             System.out.println("Successfully created base code Java files");
             
             // Create test case Text files
-            for (LinkedHashMap<Object, Object> module : contentsJson) {
-                List<String> result = generateAllTestCaseStrings(module);
-                if (result.size() == 0) continue;
-                String id = result.removeFirst();
-                FileOperations.writeFile(id + FileOperations.TEST_CASE_DESC, FileOperations.TEXT_EXT, FilePaths.TEST_CASE_DEST, result);
-            }
-            System.out.println("Successfully created test case Text files");
+            // for (LinkedHashMap<Object, Object> module : contentsJson) {
+            //     List<String> result = generateAllTestCaseStrings(module);
+            //     if (result.size() == 0) continue;
+            //     String id = result.removeFirst();
+            //     FileOperations.writeFile(id + FileOperations.TEST_CASE_DESC, FileOperations.TEXT_EXT, FilePaths.TEST_CASE_DEST, result);
+            // }
+            // System.out.println("Successfully created test case Text files");
+            System.out.println("Skipping generation of Test Case Text files");
             
             // Create DB File
             FileOperations.writeJSON(FileOperations.DB_FILE_NAME, createDBStrings(contentsJson));
@@ -281,7 +282,7 @@ public class ContentReader {
             case "coding_activity" :
                 String contextFile = id + FileOperations.HTML_EXT;
                 String baseFile = id + FileOperations.BASE_CODE_DESC + FileOperations.JAVA_EXT;
-                String launcherFile = "launcher";
+                String launcherFile = ((Map<Object, Object>) activity.get("content")).get("launcher").toString();
                 String testCaseFile = id + FileOperations.TEST_CASE_DESC + FileOperations.TEXT_EXT;
                 return createCodingDBActivity(id, contextFile, baseFile, launcherFile, testCaseFile);
             

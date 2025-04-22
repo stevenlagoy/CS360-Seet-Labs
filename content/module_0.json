@@ -32,7 +32,7 @@
                     "1p" : "Welcome to the Playground. While we don't have monkey bars or a slide, you can still have fun writing all kinds of programs here. Remember that %'Hello, World!%' program we talked about in the reading? Copy that program here and hit run to continue." 
                 },
                 "base_code" : "public class Lab {%n%tpublic static void HelloWorld() {%n%t%t// Write your code below%n%t%t%n%t}%n}",
-                "output_type" : "console out",
+                "launcher" : "ConsoleLauncher",
                 "number_test_cases" : 1,
                 "test_cases" : {
                     "case_1" : {"input" : "", "output" : "Hello, World!"}
@@ -44,7 +44,7 @@
             "id" : "0-3",
             "type" : "quiz_activity",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "Multiple choice",
                     "question" : "In a few words, what is Java? Pick the best answer.",
                     "options" : {
@@ -58,7 +58,7 @@
                         "3" : "Sure, Java can do that, but it does a lot more too!"
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "True False",
                     "question" : "Java is a relatively niche, unknown programming language.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -69,7 +69,7 @@
                         "2" : "Correct! Java is proudly boasted to %'run on more than 60 billion machines worldwide%', and is one of the most popular coding languages used today."
                     }
                 },
-                "question3" : {
+                "3" : {
                     "type" : "Multiple choice",
                     "question" : "Which of these programs or systems was made with Java?",
                     "options" : {

@@ -36,11 +36,33 @@
                     "1p": "You've learned how to define methods with parameters and return values, how to call those methods, and even how to overload and use recursion. In this challenge, you're going to write three different methods: one that adds two integers, one that multiplies two doubles, and one recursive method that returns the factorial of a number. Then, use each method and return a formatted string showing their results."
                 },
                 "base_code": "public class Lab {%n%tpublic static int add(int a, int b) {%n%t%t// Add and return the sum%n%t%treturn 0;%n%t}%n%n%tpublic static double multiply(double a, double b) {%n%t%t// Multiply and return the product%n%t%treturn 0.0;%n%t}%n%n%tpublic static int factorial(int n) {%n%t%t// Return the factorial using recursion%n%t%t// base case:%n%t%t%n%t%treturn 1;%n%n%t%t// recursive case:%n%t%t%n%t%treturn 1;%n%t}%n}",
-                "output_type": "input output",
+                "launcher": "TestCaseLauncher",
                 "number_test_cases": 9,
                 "test_cases" : {
-                    "case_1" : {"input": "add(3, 7)", "output": "10"},
-                    "case_2" : {"input" : "add(-10, 10)", "output" : "0"},
+                    "case_1" : {
+                        "function" : "add",
+                        "input" : [
+                            {
+                                "params" : [
+                                    {
+                                        "type" : "Integer",
+                                        "value" : "3"
+                                    },
+                                    {
+                                        "type" : "Integer",
+                                        "value" : "7"
+                                    }
+                                ]
+                            }
+                        ],
+                        "output" : {
+                            "type" : "Integer",
+                            "value" : "10"
+                        }
+                    },
+                    "case_2" : {
+                        "input" : "add(-10, 10)", "output" : "0"
+                    },
                     "case_3" : {"input" : "add(100000, 0)", "output" : "100000"},
                     "case_4" : {"input" : "multiply(2, 6)", "output" : "12"},
                     "case_5" : {"input" : "multiply(10, -1)", "output" : "-10"},
@@ -56,7 +78,7 @@
             "id" : "3-3",
             "type" : "quiz_activity",
             "content" : {
-                "question1" : {
+                "1" : {
                     "type" : "multiple choice",
                     "question" : "Which term best describes a method that calls itself?",
                     "options" : {
@@ -74,7 +96,7 @@
                         "4" : "Encapsulation bundles data and methods together."
                     }
                 },
-                "question2" : {
+                "2" : {
                     "type" : "true false",
                     "question" : "True/False: In Java, overloaded methods must have different parameter lists.",
                     "options" : {

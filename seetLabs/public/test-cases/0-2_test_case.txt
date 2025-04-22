@@ -1,2 +1,1 @@
-1 co
-case_1 : "" : "Hello, World!"
+Hello, World!

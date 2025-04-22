@@ -35,7 +35,7 @@
             "id" :  "10-2",
             "type" :  "quiz_activity",
             "content" :  {
-                "question_1" : {
+                "1" : {
                     "type" : "multiple choice",
                     "question" : "What keyword is used to define a class in Java?",
                     "options" : {"1" : "function", "2" : "define", "3" : "class", "4" : "public"},
@@ -43,7 +43,7 @@
                     "points" : 10,
                     "feedback" : {"3" : "Correct! 'class' is the keyword to define a class."}
                 },
-                "question_2" : {
+                "2" : {
                     "type" : "true false",
                     "question" : "True/False: A 'while' loop always runs at least once.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -51,7 +51,7 @@
                     "points" : 10,
                     "feedback" : {"2" : "Correct! Unlike 'do-while', 'while' might never run."}
                 },
-                "question_3" : {
+                "3" : {
                     "type" : "multiple choice",
                     "question" : "What is the return type of a method that doesn't return anything?",
                     "options" : {"1" : "null", "2" : "void", "3" : "None", "4" : "return"},
@@ -59,7 +59,7 @@
                     "points" : 10,
                     "feedback" : {"2" : "Correct! 'void' means no return value."}
                 },
-                "question_4" : {
+                "4" : {
                     "type" : "multiple choice",
                     "question" : "Which term best describes using the same method name with different parameters?",
                     "options" : {"1" : "Inheritance", "2" : "Overriding", "3" : "Overloading", "4" : "Encapsulation"},
@@ -67,7 +67,7 @@
                     "points" : 10,
                     "feedback" : {"3" : "Correct! Overloading allows multiple method signatures."}
                 },
-                "question_5" : {
+                "5" : {
                     "type" : "true false",
                     "question" : "True/False: Constructors have the same name as their class.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -75,7 +75,7 @@
                     "points" : 10,
                     "feedback" : {"1" : "Correct! Constructors match the class name."}
                 },
-                "question_6" : {
+                "6" : {
                     "type" : "multiple choice",
                     "question" :  "Which principle of OOP hides internal details?",
                     "options" : {"1" : "Abstraction", "2" : "Polymorphism", "3" : "Inheritance", "4" : "Encapsulation"},
@@ -83,7 +83,7 @@
                     "points" : 10,
                     "feedback" : {"4" : "Correct! Encapsulation hides implementation details."}
                 },
-                "question_7" : {
+                "7" : {
                     "type" : "multiple choice",
                     "question" : "Which keyword is used to create an interface in Java?",
                     "options" : {"1" : "class", "2" : "abstract", "3" : "interface", "4" : "object"},
@@ -91,7 +91,7 @@
                     "points" : 10,
                     "feedback" : {"3" : "Correct! 'interface' defines an interface."}
                 },
-                "question_8" : {
+                "8" : {
                     "type" : "multiple choice",
                     "question" : "Which block, when defined, always executes fully in exception handling?",
                     "options" : {"1" : "try", "2" : "catch", "3" : "throw", "4" : "finally"},
@@ -104,7 +104,7 @@
                         "4" : "Correct! 'finally' always runs."
                     }
                 },
-                "question_9" : {
+                "9" : {
                     "type" : "true false",
                     "question" : "True/False: FileReader is used to write data to a file.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -115,7 +115,7 @@
                         "2" : "Correct! FileReader is for reading, not writing."
                     }
                 },
-                "question_10" : {
+                "10" : {
                     "type" : "multiple choice",
                     "question" : "Which class is used to take console input in Java?",
                     "options" : {"1" : "InputStream", "2" : "Reader", "3" : "Scanner", "4" : "Stream"},
@@ -123,7 +123,7 @@
                     "points" : 10,
                     "feedback" : {"3" : "Correct! Scanner reads console input."}
                 },
-                "question_11" : {
+                "11" : {
                     "type" : "multiple choice",
                     "question" : "Which data structure allows duplicate values and maintains order?",
                     "options" : {"1" : "Set", "2" : "Map", "3" : "ArrayList", "4" : "HashSet"},
@@ -131,7 +131,7 @@
                     "points" : 10,
                     "feedback" : {"3" : "Correct! ArrayList supports duplicates and order."}
                 },
-                "question_12" : {
+                "12" : {
                     "type" : "true false",
                     "question" : "True/False: Arrays can be resized after creation.",
                     "options" : {"1" : "True", "2" : "False"},
@@ -142,7 +142,7 @@
                         "2" : "Correct! Arrays are fixed size."
                     }
                 },
-                "question_13" : {
+                "13" : {
                     "type" : "multiple choice",
                     "question" : "What is the default initial capacity of an ArrayList in Java?",
                     "options" : {"1" : "0", "2" : "8", "3" : "10", "4" : "16"},
@@ -152,7 +152,7 @@
                         "3" : "Correct! Default capacity is 10."
                     }
                 },
-                "question_14" : {
+                "14" : {
                     "type" : "multiple choice",
                     "question" : "Which class is thread-safe for concurrent hash-based maps?",
                     "options" : {"1" : "HashMap", "2" : "Hashtable", "3" : "ConcurrentHashMap", "4" : "TreeMap"},
@@ -162,7 +162,7 @@
                         "3" : "Correct! ConcurrentHashMap is thread-safe."
                     }
                 },
-                "question_15" : {
+                "15s" : {
                     "type" : "true false",
                     "question" : "True/False: Generic classes allow you to define type-safe templates.",
                     "options" : {"1" : "True", "2" : "False"},
