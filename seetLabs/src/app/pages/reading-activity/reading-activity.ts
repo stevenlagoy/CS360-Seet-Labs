@@ -22,6 +22,7 @@ export class readingActivity implements OnInit {
   jsonData = signal<assignmentType>({ "id": 0, "type": 0, "file": "reading Material One" });
   template: string = "";
   localStorage = new LocalStorageService();
+  moduleProgress = signal<number>(0);
 
   // Nav Data Members
   moduleNumber = signal<string>("");
@@ -33,6 +34,7 @@ export class readingActivity implements OnInit {
     const assignmentNumber = this._route.snapshot.paramMap.get('assignmentNumber');
     this.moduleNumber.set(id as string);
     this.assignmentNumber.set(assignmentNumber as string);
+    this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
     this.getDataService.getDataFromAPI(id, assignmentNumber).pipe(
       catchError((err) => {
         console.log(err);
@@ -63,6 +65,8 @@ export class readingActivity implements OnInit {
     if (top >= 0 && left >= 0 && bottom <= (window.innerHeight) && right <= (window.innerWidth)){
       this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber());
     }
+    this.localStorage.getModulePercentage(this.moduleNumber());
+    this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
   }
 
 

@@ -83,4 +83,17 @@ export class LocalStorageService {
   public getProgress() : LooseJsonObject {
     return JSON.parse(localStorage.getItem('progress')!);
   }
+
+  public getModulePercentage(module: String): number {
+    const moduleSize = Object.keys(this.current_data[Number(module)]).length;
+    let totalActivitiesPassed : number = 0;
+    for (let i : number = 0; i < moduleSize; i++){
+      if (this.current_data[Number(module)][i].passed == "true"){
+        totalActivitiesPassed++;
+      }
+    }
+    // console.log(totalActivitiesPassed);
+    return Math.round(((totalActivitiesPassed / moduleSize) * 100) * 10) / 10; //round to one decimal
+  }
 }
+  

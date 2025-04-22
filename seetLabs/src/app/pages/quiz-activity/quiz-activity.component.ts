@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { QuizCardComponent } from '../../components/quiz-card/quiz-card.component';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-quiz-activity',
@@ -34,6 +35,10 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
   //nav
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
+  
+  //other
+  moduleProgress = signal<number>(0);
+  localStorage = new LocalStorageService();
 
   @ViewChildren(QuizCardComponent) quizCards!: QueryList<QuizCardComponent>;
 
@@ -48,6 +53,7 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
     const assignmentNumber = this._route.snapshot.paramMap.get('assignmentNumber');
     this.moduleNumber.set(module as string);
     this.assignmentNumber.set(assignmentNumber as string);
+    this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
     this.jsonDataService.getDataFromAPI(module, assignmentNumber).pipe(
       catchError((err) => {
         console.error(err);
@@ -96,6 +102,10 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
       }
     })
     this.percentage.set(Math.round((this.earnedPoints() / this.totalPoints()) * 100));
+    if (this.percentage() >= 80){
+      this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber());
+      this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
+    }
     document.documentElement.scrollTop = 0; //scroll back to top of page
   }
 
