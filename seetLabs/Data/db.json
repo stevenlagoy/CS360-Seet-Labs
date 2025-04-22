@@ -761,7 +761,7 @@
 	"5" : [
 		{"name" : "Module 5: OOP, Interfaces, and Inheritance"},
 		{"name" : "Reading 5", "id" : "1", "type" : 0, "file" : "5-1.html"},
-		{"name" : "Coding 5: Practicing OOP", "id" : "2", "type" : 2, "context" : "5-2.html", "base" : "5-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "5-2_test_case.txt"},
+		{"name" : "Coding 5: Practicing OOP", "id" : "2", "type" : 2, "context" : "5-2.html", "base" : "5-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "5-2_test_case.txt"},
 		{"name" : "Quiz 5: Inheritance", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
