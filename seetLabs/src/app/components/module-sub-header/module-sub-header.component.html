@@ -12,13 +12,13 @@
                 </a>
             }
             @else if (moduleNumber != '0' && getAssignmentNumber() == 1){
-                <a href="/module/{{decrementModule()}}/{{lastModuleLastActivityNum()}}" mat-fab extended>
+                <a href="/module/{{decrementModule()}}/{{lastModuleLastActivityNum()}}" class="module_button" mat-fab extended>
                     <mat-icon>arrow_back</mat-icon>
                     Last Module
                 </a>
             }
             @else {
-                <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" mat-fab extended>
+                <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" class="module_button" mat-fab extended>
                     <mat-icon>arrow_back</mat-icon>
                     Last Module
                 </a>
@@ -33,13 +33,13 @@
                 </a>
             }
             @else if (moduleNumber != '10' && getAssignmentNumber() == numberAssignments()){
-                <a href="/module/{{incrementModule() }}/1" mat-fab extended>
+                <a href="/module/{{incrementModule() }}/1" class="module_button" mat-fab extended>
                     <mat-icon>arrow_forward</mat-icon>
                     Next Module
                 </a>
             }
             @else {
-                <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" mat-fab extended>
+                <a href="/module/{{decrementModule()}}/{{0}}"  [ngStyle]="{'visibility': 'hidden'}" class="module_button" mat-fab extended>
                     <mat-icon>arrow_back</mat-icon>
                     Last Module
                 </a>

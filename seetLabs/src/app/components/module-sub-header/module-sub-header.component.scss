@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .sub-header-parent {
     width: 100%;
 }
@@ -36,3 +38,10 @@
     width: 74vw;
     margin-bottom: 6vh;
 }
+
+.module_button {
+    @include mat.fab-overrides((
+        foreground-color: #fff,
+        container-color: #3d79bd,
+    ));
+  }
