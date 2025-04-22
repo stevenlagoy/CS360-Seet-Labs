@@ -50,13 +50,13 @@ public class HtmlGenerator {
     } 
     
     public static final Map<String, String> openingTags = Map.of(
-        "t", "<p>",
-        "h1", "<h1>",
+        "t", "<h1>",
+        "h1", "<h2>",
         "p", "<p>"
     );
     public static final Map<String, String> closingTags = Map.of(
-        "t", "</p>",
-        "h1", "</h1>",
+        "t", "</h1>",
+        "h1", "</h2>",
         "p", "</p>"
     );
 
@@ -159,7 +159,7 @@ public class HtmlGenerator {
 
         // CREATE HTML FOR INSTRUCTIONS / CONTEXT
         html.add("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-        html.add("\t<p>" + JSON.get("name") + "</p>");
+        html.add("\t<h1>" + JSON.get("name") + "</h1>");
         html.add("\t<link rel=\"stylesheet\" href=\"style.css\">");
         html.add("</head>");
         
