@@ -33,7 +33,7 @@
                     "1h1": "Working with Variables and Types",
                     "1p": "You've learned how to declare variables, assign values, and work with different primitive and reference types in Java. Now let's put it all together! In this activity, you'll define and use several variables of various types. Use at least one variable of each of the following types and values: %kint%/k with a value of 100, %kdouble%/k with a value of 20.0, %kchar%/k with a value of 'J', %kboolean%/k with a value of true, and %kString%/k with a value of %'Hello%'. Make sure your values match the ones here exactly. Finally, print out each of those values in the same order you created them using %kSystem.out.println()%/k."
                 },
-                "base_code": "public class Lab {%n%tpublic static void Variables() {%n%t%t// Declare and initialize variables below%n%t%t%n%t%t// Print all values using System.out.println()%n%t}%n}",
+                "base_code": "public class Lab {%n%tpublic static void main(String[] args) {%n%t%t// Declare and initialize variables below%n%t%t%n%t%t// Print all values using System.out.println()%n%t}%n}",
                 "launcher" : "ConsoleLauncher",
                 "number_test_cases": 1,
                 "test_cases": {

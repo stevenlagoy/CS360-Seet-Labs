@@ -1,5 +1,5 @@
 public class Lab {
-	public static void HelloWorld() {
+	public static void main(String[] args) {
 		// Write your code below
 		
 	}
