@@ -1,7 +1,8 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,10 @@ import { RouterOutlet } from '@angular/router';
   `,
   // encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
-  title = 'seetLabs';
+export class AppComponent implements OnInit {
+  title : String  = 'seetLabs';
+  
+  ngOnInit(): void {
+    new LocalStorageService();
+  }
 }
