@@ -5,7 +5,7 @@
 		{"id" : "2", "type" : 1, "questions" : {
 			"name" : "Quiz 7",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "Which Scanner method reads an integer from console?",
 					"options" : {
@@ -25,7 +25,7 @@
 						"4" : "The Scanner class has no such method."
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: FileInputStream reads character data only.",
 					"options" : {
@@ -41,7 +41,7 @@
 						"2" : "Correct! It handles raw bytes, not just characters."
 					}
 				},
-				"question3" : {
+				"3" : {
 					"type" : "multiple choice",
 					"question" : "Which class provides methods for modern file operations in Java NIO.2?",
 					"options" : {
@@ -61,7 +61,7 @@
 						"4" : "BufferedWriter is for buffered character output."
 					}
 				},
-				"question4" : {
+				"4" : {
 					"type" : "true false",
 					"question" : "True/False: try-with-resources automatically closes declared resources.",
 					"options" : {
@@ -81,14 +81,160 @@
 			}
 		}
 	],
+	"4" : [
+		{"name" : "Module 4: Objects and Classes"},
+		{"id" : "1", "type" : 0, "file" : "4-1.html"},
+		{"id" : "2", "type" : 2, "context" : "4-2.html", "base" : "4-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "4-2_test_case.txt"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 4",
+			"content" : {
+				"1" : {
+					"type" : "multiple choice",
+					"question" : "What is the purpose of a constructor?",
+					"options" : {
+						"1" : "To create a new class",
+						"2" : "To initialize an object",
+						"3" : "To destroy an object",
+						"4" : "To define static methods"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Not quite. Classes define types, constructors initialize instances.",
+						"2" : "Correct! A constructor sets up a new object's initial state.",
+						"3" : "Object destruction is handled by garbage collection.",
+						"4" : "Static methods are independent of constructors."
+					}
+				},
+				"2" : {
+					"type" : "true false",
+					"question" : "True/False: Static methods can directly access instance variables.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. Static methods belong to the class and can't access instance-specific data.",
+						"2" : "Correct! They can only access static members directly."
+					}
+				}
+				}
+			}
+		}
+	],
+	"1" : [
+		{"name" : "Module 1: Variables and Data Types"},
+		{"id" : "1", "type" : 0, "file" : "1-1.html"},
+		{"id" : "2", "type" : 2, "context" : "1-2.html", "base" : "1-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "1-2_test_case.txt"},
+		{"id" : "3", "type" : 1, "questions" : {
+			"name" : "Quiz 2 : Variables",
+			"content" : {
+				"1" : {
+					"type" : "multiple choice",
+					"question" : "Select a real Java primitive type.",
+					"options" : {
+						"1" : "String",
+						"2" : "float",
+						"3" : "Integer",
+						"4" : "string"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "String is a very useful and common data type, but it is not a primitive in Java. Notice that String starts with a capital letter: that indicates it is an Object.",
+						"2" : "Correct! Floats are a primitive data type used to store numbers with decimal parts.",
+						"3" : "While int is a primitive type, Integer is the associated wrapper type for int. Notice that Integer is capitalized, which indicates that it is an Object.",
+						"4" : "String (with a capital S) is an Object in Java, but string (with lowercase s) is not."
+					}
+				},
+				"2" : {
+					"type" : "true false",
+					"question" : "True/False: To create an object instance, use the 'create' keyword.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"2"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. To create an object instance, we use the 'new' keyword.",
+						"2" : "That's right. To create an object instance, we use the 'new' keyword."
+					}
+				},
+				"3" : {
+					"type" : "true false",
+					"question" : "True/False: Variables declared as 'final' are immutable and their value cannot be changed.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "That's correct. Using the 'final' keyword makes a variable immutable and means its value cannot be reassigned.",
+						"2" : "Nope, 'final' variables are immutable with unchanging values."
+					}
+				},
+				"4" : {
+					"type" : "multiple choice",
+					"question" : "Which of these statements represents or involves a Widening conversion?",
+					"options" : {
+						"1" : "float total = 100.0f;",
+						"2" : "int y = (int) 45.5;",
+						"3" : "Integer myInt = 1_000_000;",
+						"4" : "double x = 10;"
+					},
+					"correct_responses" : [
+						"4"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "Incorrect. There is neither a widening nor a narrowing in this statement.",
+						"2" : "Not quite. This is a narrowing conversion, since we're taking a double (with a larger size) and making it an int (with a smaller size).",
+						"3" : "Though this looks like widening at first, this is actually a distinct concept called Autoboxing. Integer is a wrapper class which contains the int value.",
+						"4" : "Correct! In this case, the (smaller) int value of 10 is being widened into the (larger) double value of 10.0."
+					}
+				},
+				"5" : {
+					"type" : "true false",
+					"question" : "True/False: The name of the double type refers to the fact that it is double the size of a float.",
+					"options" : {
+						"1" : "True",
+						"2" : "False"
+					},
+					"correct_responses" : [
+						"1"
+					],
+					"points" : 10,
+					"feedback" : {
+						"1" : "That's correct. A float is 32 bits (4 bytes) in size while a double is 64 bits (8 bytes).",
+						"2" : "This statement is true. A float is 32 bits (4 bytes) in size while a double is 64 bits (8 bytes)."
+					}
+				}
+				}
+			}
+		}
+	],
 	"0" : [
 		{"name" : "Module 0: Meet Java"},
 		{"id" : "1", "type" : 0, "file" : "0-1.html"},
-		{"id" : "2", "type" : 2, "context" : "0-2.html", "base" : "0-2_base_code.java", "launcher" : "launcher", "testCases" : "0-2_test_case.txt"},
+		{"id" : "2", "type" : 2, "context" : "0-2.html", "base" : "0-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "0-2_test_case.txt"},
 		{"id" : "3", "type" : 1, "questions" : {
 			"name" : "Quiz 1 : Java Introduction",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "Multiple choice",
 					"question" : "In a few words, what is Java? Pick the best answer.",
 					"options" : {
@@ -104,7 +250,7 @@
 						"3" : "Sure, Java can do that, but it does a lot more too!"
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "True False",
 					"question" : "Java is a relatively niche, unknown programming language.",
 					"options" : {
@@ -120,7 +266,7 @@
 						"2" : "Correct! Java is proudly boasted to %'run on more than 60 billion machines worldwide%', and is one of the most popular coding languages used today."
 					}
 				},
-				"question3" : {
+				"3" : {
 					"type" : "Multiple choice",
 					"question" : "Which of these programs or systems was made with Java?",
 					"options" : {
@@ -144,61 +290,14 @@
 			}
 		}
 	],
-	"4" : [
-		{"name" : "Module 4: Objects and Classes"},
-		{"id" : "1", "type" : 0, "file" : "4-1.html"},
-		{"id" : "2", "type" : 2, "context" : "4-2.html", "base" : "4-2_base_code.java", "launcher" : "launcher", "testCases" : "4-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 4",
-			"content" : {
-				"question1" : {
-					"type" : "multiple choice",
-					"question" : "What is the purpose of a constructor?",
-					"options" : {
-						"1" : "To create a new class",
-						"2" : "To initialize an object",
-						"3" : "To destroy an object",
-						"4" : "To define static methods"
-					},
-					"correct_responses" : [
-						"2"
-					],
-					"points" : 10,
-					"feedback" : {
-						"1" : "Not quite. Classes define types, constructors initialize instances.",
-						"2" : "Correct! A constructor sets up a new object's initial state.",
-						"3" : "Object destruction is handled by garbage collection.",
-						"4" : "Static methods are independent of constructors."
-					}
-				},
-				"question2" : {
-					"type" : "true false",
-					"question" : "True/False: Static methods can directly access instance variables.",
-					"options" : {
-						"1" : "True",
-						"2" : "False"
-					},
-					"correct_responses" : [
-						"2"
-					],
-					"points" : 10,
-					"feedback" : {
-						"1" : "Incorrect. Static methods belong to the class and can't access instance-specific data.",
-						"2" : "Correct! They can only access static members directly."
-					}
-				}
-				}
-			}
-		}
-	],
 	"9" : [
 		{"name" : "Module 9: Data Structures and Generics"},
 		{"id" : "1", "type" : 0, "file" : "9-1.html"},
-		{"id" : "2", "type" : 2, "context" : "9-2.html", "base" : "9-2_base_code.java", "launcher" : "launcher", "testCases" : "9-2_test_case.txt"},
+		{"id" : "2", "type" : 2, "context" : "9-2.html", "base" : "9-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "9-2_test_case.txt"},
 		{"id" : "3", "type" : 1, "questions" : {
 			"name" : "Quiz 9",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "Which data structure follows Last-In-First-Out (LIFO) order?",
 					"options" : {
@@ -218,7 +317,7 @@
 						"4" : "Binary Tree is hierarchical."
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: Generics in Java allow for defining methods that work with multiple data types.",
 					"options" : {
@@ -234,7 +333,7 @@
 						"2" : "Incorrect. Generics enhance flexibility."
 					}
 				},
-				"question3" : {
+				"3" : {
 					"type" : "multiple choice",
 					"question" : "Which implementation offers O(1) random access but O(n) insertion in the middle?",
 					"options" : {
@@ -253,7 +352,7 @@
 						"3" : "HashSet is unordered. 4 : TreeMap is a sorted map."
 					}
 				},
-				"question4" : {
+				"4" : {
 					"type" : "multiple choice",
 					"question" : "In a HashMap, what happens when two keys have the same hash code?",
 					"options" : {
@@ -273,7 +372,7 @@
 						"4" : "Resize happens when load factor exceeded."
 					}
 				},
-				"question5" : {
+				"5" : {
 					"type" : "true false",
 					"question" : "True/False: A Deque can only add and remove elements at one end.",
 					"options" : {
@@ -289,7 +388,7 @@
 						"2" : "Correct! Deque is double-ended."
 					}
 				},
-				"question6" : {
+				"6" : {
 					"type" : "multiple choice",
 					"question" : "Which wildcard allows reading from a collection of Number or its subclasses?",
 					"options" : {
@@ -316,11 +415,11 @@
 	"3" : [
 		{"name" : "Module 3: Methods and Subprograms"},
 		{"id" : "1", "type" : 0, "file" : "3-1.html"},
-		{"id" : "2", "type" : 2, "context" : "3-2.html", "base" : "3-2_base_code.java", "launcher" : "launcher", "testCases" : "3-2_test_case.txt"},
+		{"id" : "2", "type" : 2, "context" : "3-2.html", "base" : "3-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "3-2_test_case.txt"},
 		{"id" : "3", "type" : 1, "questions" : {
 			"name" : "Quiz 3",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "Which term best describes a method that calls itself?",
 					"options" : {
@@ -340,7 +439,7 @@
 						"4" : "Encapsulation bundles data and methods together."
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: In Java, overloaded methods must have different parameter lists.",
 					"options" : {
@@ -360,112 +459,13 @@
 			}
 		}
 	],
-	"1" : [
-		{"name" : "Module 1: Variables and Data Types"},
-		{"id" : "1", "type" : 0, "file" : "1-1.html"},
-		{"id" : "2", "type" : 2, "context" : "1-2.html", "base" : "1-2_base_code.java", "launcher" : "launcher", "testCases" : "1-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 2 : Variables",
-			"content" : {
-				"question1" : {
-					"type" : "multiple choice",
-					"question" : "Select a real Java primitive type.",
-					"options" : {
-						"1" : "String",
-						"2" : "float",
-						"3" : "Integer",
-						"4" : "string"
-					},
-					"correct_responses" : [
-						"2"
-					],
-					"points" : 10,
-					"feedback" : {
-						"1" : "String is a very useful and common data type, but it is not a primitive in Java. Notice that String starts with a capital letter: that indicates it is an Object.",
-						"2" : "Correct! Floats are a primitive data type used to store numbers with decimal parts.",
-						"3" : "While int is a primitive type, Integer is the associated wrapper type for int. Notice that Integer is capitalized, which indicates that it is an Object.",
-						"4" : "String (with a capital S) is an Object in Java, but string (with lowercase s) is not."
-					}
-				},
-				"question2" : {
-					"type" : "true false",
-					"question" : "True/False: To create an object instance, use the 'create' keyword.",
-					"options" : {
-						"1" : "True",
-						"2" : "False"
-					},
-					"correct_responses" : [
-						"2"
-					],
-					"points" : 10,
-					"feedback" : {
-						"1" : "Incorrect. To create an object instance, we use the 'new' keyword.",
-						"2" : "That's right. To create an object instance, we use the 'new' keyword."
-					}
-				},
-				"question3" : {
-					"type" : "true false",
-					"question" : "True/False: Variables declared as 'final' are immutable and their value cannot be changed.",
-					"options" : {
-						"1" : "True",
-						"2" : "False"
-					},
-					"correct_responses" : [
-						"1"
-					],
-					"points" : 10,
-					"feedback" : {
-						"1" : "That's correct. Using the 'final' keyword makes a variable immutable and means its value cannot be reassigned.",
-						"2" : "Nope, 'final' variables are immutable with unchanging values."
-					}
-				},
-				"question4" : {
-					"type" : "multiple choice",
-					"question" : "Which of these statements represents or involves a Widening conversion?",
-					"options" : {
-						"1" : "float total = 100.0f;",
-						"2" : "int y = (int) 45.5;",
-						"3" : "Integer myInt = 1_000_000;",
-						"4" : "double x = 10;"
-					},
-					"correct_responses" : [
-						"4"
-					],
-					"points" : 10,
-					"feedback" : {
-						"1" : "Incorrect. There is neither a widening nor a narrowing in this statement.",
-						"2" : "Not quite. This is a narrowing conversion, since we're taking a double (with a larger size) and making it an int (with a smaller size).",
-						"3" : "Though this looks like widening at first, this is actually a distinct concept called Autoboxing. Integer is a wrapper class which contains the int value.",
-						"4" : "Correct! In this case, the (smaller) int value of 10 is being widened into the (larger) double value of 10.0."
-					}
-				},
-				"question5" : {
-					"type" : "true false",
-					"question" : "True/False: The name of the double type refers to the fact that it is double the size of a float.",
-					"options" : {
-						"1" : "True",
-						"2" : "False"
-					},
-					"correct_responses" : [
-						"1"
-					],
-					"points" : 10,
-					"feedback" : {
-						"1" : "That's correct. A float is 32 bits (4 bytes) in size while a double is 64 bits (8 bytes).",
-						"2" : "This statement is true. A float is 32 bits (4 bytes) in size while a double is 64 bits (8 bytes)."
-					}
-				}
-				}
-			}
-		}
-	],
 	"10" : [
 		{"name" : "Module 10: Recap and Review"},
 		{"id" : "1", "type" : 0, "file" : "10-1.html"},
 		{"id" : "2", "type" : 1, "questions" : {
 			"name" : "Quiz 10",
 			"content" : {
-				"question_1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "What keyword is used to define a class in Java?",
 					"options" : {
@@ -482,7 +482,7 @@
 						"3" : "Correct! 'class' is the keyword to define a class."
 					}
 				},
-				"question_2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: A 'while' loop always runs at least once.",
 					"options" : {
@@ -497,7 +497,7 @@
 						"2" : "Correct! Unlike 'do-while', 'while' might never run."
 					}
 				},
-				"question_3" : {
+				"3" : {
 					"type" : "multiple choice",
 					"question" : "What is the return type of a method that doesn't return anything?",
 					"options" : {
@@ -514,7 +514,7 @@
 						"2" : "Correct! 'void' means no return value."
 					}
 				},
-				"question_4" : {
+				"4" : {
 					"type" : "multiple choice",
 					"question" : "Which term best describes using the same method name with different parameters?",
 					"options" : {
@@ -531,7 +531,7 @@
 						"3" : "Correct! Overloading allows multiple method signatures."
 					}
 				},
-				"question_5" : {
+				"5" : {
 					"type" : "true false",
 					"question" : "True/False: Constructors have the same name as their class.",
 					"options" : {
@@ -546,7 +546,7 @@
 						"1" : "Correct! Constructors match the class name."
 					}
 				},
-				"question_6" : {
+				"6" : {
 					"type" : "multiple choice",
 					"question" : "Which principle of OOP hides internal details?",
 					"options" : {
@@ -563,7 +563,7 @@
 						"4" : "Correct! Encapsulation hides implementation details."
 					}
 				},
-				"question_7" : {
+				"7" : {
 					"type" : "multiple choice",
 					"question" : "Which keyword is used to create an interface in Java?",
 					"options" : {
@@ -580,7 +580,7 @@
 						"3" : "Correct! 'interface' defines an interface."
 					}
 				},
-				"question_8" : {
+				"8" : {
 					"type" : "multiple choice",
 					"question" : "Which block, when defined, always executes fully in exception handling?",
 					"options" : {
@@ -600,7 +600,7 @@
 						"4" : "Correct! 'finally' always runs."
 					}
 				},
-				"question_9" : {
+				"9" : {
 					"type" : "true false",
 					"question" : "True/False: FileReader is used to write data to a file.",
 					"options" : {
@@ -616,7 +616,7 @@
 						"2" : "Correct! FileReader is for reading, not writing."
 					}
 				},
-				"question_10" : {
+				"10" : {
 					"type" : "multiple choice",
 					"question" : "Which class is used to take console input in Java?",
 					"options" : {
@@ -633,7 +633,7 @@
 						"3" : "Correct! Scanner reads console input."
 					}
 				},
-				"question_11" : {
+				"11" : {
 					"type" : "multiple choice",
 					"question" : "Which data structure allows duplicate values and maintains order?",
 					"options" : {
@@ -650,7 +650,7 @@
 						"3" : "Correct! ArrayList supports duplicates and order."
 					}
 				},
-				"question_12" : {
+				"12" : {
 					"type" : "true false",
 					"question" : "True/False: Arrays can be resized after creation.",
 					"options" : {
@@ -666,7 +666,7 @@
 						"2" : "Correct! Arrays are fixed size."
 					}
 				},
-				"question_13" : {
+				"13" : {
 					"type" : "multiple choice",
 					"question" : "What is the default initial capacity of an ArrayList in Java?",
 					"options" : {
@@ -683,7 +683,7 @@
 						"3" : "Correct! Default capacity is 10."
 					}
 				},
-				"question_14" : {
+				"14" : {
 					"type" : "multiple choice",
 					"question" : "Which class is thread-safe for concurrent hash-based maps?",
 					"options" : {
@@ -700,7 +700,7 @@
 						"3" : "Correct! ConcurrentHashMap is thread-safe."
 					}
 				},
-				"question_15" : {
+				"15s" : {
 					"type" : "true false",
 					"question" : "True/False: Generic classes allow you to define type-safe templates.",
 					"options" : {
@@ -722,11 +722,11 @@
 	"6" : [
 		{"name" : "Module 6: Exception Handling"},
 		{"id" : "1", "type" : 0, "file" : "6-1.html"},
-		{"id" : "2", "type" : 2, "context" : "6-2.html", "base" : "6-2_base_code.java", "launcher" : "launcher", "testCases" : "6-2_test_case.txt"},
+		{"id" : "2", "type" : 2, "context" : "6-2.html", "base" : "6-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "6-2_test_case.txt"},
 		{"id" : "3", "type" : 1, "questions" : {
 			"name" : "Quiz 6",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "Which keyword declares that a method may throw a checked exception?",
 					"options" : {
@@ -746,7 +746,7 @@
 						"4" : "'catch' handles exceptions, not declares them."
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: Unchecked exceptions must be declared in the method signature.",
 					"options" : {
@@ -769,11 +769,11 @@
 	"5" : [
 		{"name" : "Module 5: OOP, Interfaces, and Inheritance"},
 		{"id" : "1", "type" : 0, "file" : "5-1.html"},
-		{"id" : "2", "type" : 2, "context" : "5-2.html", "base" : "5-2_base_code.java", "launcher" : "launcher", "testCases" : "5-2_test_case.txt"},
+		{"id" : "2", "type" : 2, "context" : "5-2.html", "base" : "5-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "5-2_test_case.txt"},
 		{"id" : "3", "type" : 1, "questions" : {
 			"name" : "Quiz 5",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "What does the 'implements' keyword indicate in Java?",
 					"options" : {
@@ -793,7 +793,7 @@
 						"4" : "Overriding uses @Override, not 'implements'."
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: Abstract classes can contain both abstract and concrete methods.",
 					"options" : {
@@ -816,11 +816,11 @@
 	"8" : [
 		{"name" : "Module 8: Arrays and Collections"},
 		{"id" : "1", "type" : 0, "file" : "8-1.html"},
-		{"id" : "2", "type" : 2, "context" : "8-2.html", "base" : "8-2_base_code.java", "launcher" : "launcher", "testCases" : "8-2_test_case.txt"},
+		{"id" : "2", "type" : 2, "context" : "8-2.html", "base" : "8-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "8-2_test_case.txt"},
 		{"id" : "3", "type" : 1, "questions" : {
 			"name" : "Quiz 8",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "Which declaration creates a 2D array?",
 					"options" : {
@@ -840,7 +840,7 @@
 						"4" : "Invalid Syntax: you cannot specify sizes in declaration."
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: ArrayList allows duplicate elements.",
 					"options" : {
@@ -856,7 +856,7 @@
 						"2" : "Incorrect. ArrayList can contain duplicates."
 					}
 				},
-				"question3" : {
+				"3" : {
 					"type" : "multiple choice",
 					"question" : "Which class provides utility methods for arrays?",
 					"options" : {
@@ -876,7 +876,7 @@
 						"4" : "Math is for math operations."
 					}
 				},
-				"question4" : {
+				"4" : {
 					"type" : "multiple choice",
 					"question" : "What happens when you access index -1 in an array?",
 					"options" : {
@@ -896,7 +896,7 @@
 						"4" : "It's a runtime exception, not compile-time."
 					}
 				},
-				"question5" : {
+				"5" : {
 					"type" : "true false",
 					"question" : "True/False: HashSet maintains insertion order.",
 					"options" : {
@@ -919,11 +919,11 @@
 	"2" : [
 		{"name" : "Module 2: Control Flow"},
 		{"id" : "1", "type" : 0, "file" : "2-1.html"},
-		{"id" : "2", "type" : 2, "context" : "2-2.html", "base" : "2-2_base_code.java", "launcher" : "launcher", "testCases" : "2-2_test_case.txt"},
+		{"id" : "2", "type" : 2, "context" : "2-2.html", "base" : "2-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "2-2_test_case.txt"},
 		{"id" : "3", "type" : 1, "questions" : {
 			"name" : "Quiz 2",
 			"content" : {
-				"question1" : {
+				"1" : {
 					"type" : "multiple choice",
 					"question" : "Which loop is usually the best to use when you know exactly how many times to iterate?",
 					"options" : {
@@ -943,7 +943,7 @@
 						"4" : "The for-each loop is great for collections but not for a fixed number of iterations."
 					}
 				},
-				"question2" : {
+				"2" : {
 					"type" : "true false",
 					"question" : "True/False: The 'break' statement skips the rest of the current loop iteration and moves to the next one.",
 					"options" : {

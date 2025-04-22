@@ -1,5 +1,5 @@
 {
-	"7" : [
+    "7" : [
 		{"name" : "Module 7: Input and Output"},
 		{"id" : "1", "type" : 0, "file" : "7-1.html"},
 		{"id" : "2", "type" : 1, "questions" : {
@@ -963,4 +963,5 @@
 			}
 		}
 	]
+
 }

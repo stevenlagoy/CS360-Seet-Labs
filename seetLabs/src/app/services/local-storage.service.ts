@@ -12,7 +12,8 @@ export class LocalStorageService {
   default_data : LooseJsonObject = {
     "0": [
       { "id": "1", "type": 0, "passed": "false" },
-      { "id": "2", "type": 1, "passed": "false" }
+      { "id": "2", "type": 2, "code": "", "passed": "false" },
+      { "id": "3", "type": 1, "passed": "false" }
     ],
     "1": [
       { "id": "1", "type": 0, "passed": "false" },
@@ -46,8 +47,7 @@ export class LocalStorageService {
     ],
     "7": [
       { "id": "1", "type": 0, "passed": "false" },
-      { "id": "2", "type": 2, "code": "", "passed": "false" },
-      { "id": "3", "type": 1, "passed": "false" }
+      { "id": "2", "type": 1, "passed": "false" }
     ],
     "8": [
       { "id": "1", "type": 0, "passed": "false" },
@@ -63,7 +63,7 @@ export class LocalStorageService {
       { "id": "1", "type": 0, "passed": "false" },
       { "id": "2", "type": 1, "passed": "false" }
     ]
-  };
+  };  
   current_data : LooseJsonObject;
 
 
@@ -74,11 +74,10 @@ export class LocalStorageService {
       this.current_data = this.getProgress();
   }
 
-  public writeProgress(module: number, assignment_id: number){
+  public writeProgress(module: String, assignment_id: String){
     this.current_data  = this.getProgress();
-    this.current_data[module][assignment_id].passed = "true";
+    this.current_data[Number(module)][Number(assignment_id)-1].passed = "true";
     localStorage.setItem('progress', JSON.stringify(this.current_data));
-
   }
 
   public getProgress() : LooseJsonObject {

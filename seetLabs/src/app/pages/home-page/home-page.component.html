@@ -55,19 +55,21 @@
 <div class="modules" id="modules">
     <h2 id="title">Course Roadmap</h2>
     <div class="module-parent">
-        @for (module of getModules(11); track module; let i = $index){
-            <div class="individual-module">
-                <a href="/module/{{i}}/1">{{moduleNames()[i]}}</a>
-                @for (activity of getActivities(moduleLengths()[i]); track activity; let j = $index){
-                    @if (activities()[i][j] == 0){
-                        <a href="/module/{{i}}/{{j+1}}">Reading Activity</a>
-                    } @else if (activities()[i][j] == 1){
-                        <a href="/module/{{i}}/{{j+1}}">Quiz Activity</a>
-                    } @else {
-                        <a href="/module/{{i}}/{{j+1}}">Coding Activity</a>
+        @if (loading() == true){
+            @for (module of getModules(11); track module; let i = $index){
+                <div class="individual-module">
+                    <a href="/module/{{i}}/1">{{moduleNames()[i]}}</a>
+                    @for (activity of getActivities(moduleLengths()[i]); track activity; let j = $index){
+                        @if (activities()[i][j] == 0){
+                            <a href="/module/{{i}}/{{j+1}}">Reading Activity</a>
+                        } @else if (activities()[i][j] == 1){
+                            <a href="/module/{{i}}/{{j+1}}">Quiz Activity</a>
+                        } @else if (activities()[i][j] == 2) {
+                            <a href="/module/{{i}}/{{j+1}}">Coding Activity</a>
+                        }
                     }
-                }
-            </div>
+                </div>
+            }
         }
     </div>
 </div>

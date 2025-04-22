@@ -23,27 +23,28 @@ public class ContentReader {
             System.out.print("> ");
             input = Character.toLowerCase(stdin.next().charAt(0));
             switch (input) {
-                case 'c' :
+                case 'c':
                     active = active && clean();
                     break;
-                case 'm' :
+                case 'm':
                     active = active && make();
                     break;
-                case 'a' :
+                case 'a':
                     active = active && all();
                     break;
-                case 'q' :
+                case 'q':
                     System.out.println("Quit");
                     break;
-                default :
-                    System.out.println("Commands:\n - [c]lean - Delete all non-ignored, non-directory files from the Data folder.\n - [m]ake - Create all files from JSON content.\n - [a]ll - Clean and Make. (Make will not run if Clean fails).\n - [q]uit - Exit ContentReader.");
+                default:
+                    System.out.println(
+                            "Commands:\n - [c]lean - Delete all non-ignored, non-directory files from the Data folder.\n - [m]ake - Create all files from JSON content.\n - [a]ll - Clean and Make. (Make will not run if Clean fails).\n - [q]uit - Exit ContentReader.");
             }
         } while (active && input != 'q');
         System.out.println("ContentReader Finished");
         stdin.close();
         System.exit(0);
     }
-    
+
     public static boolean clean() {
         try {
             System.out.println("Clean");
@@ -53,8 +54,7 @@ public class ContentReader {
             FileOperations.emptyFiles(FilePaths.TEST_CASE_DEST, FileOperations.TEXT_EXT);
             System.out.println("Successfully cleared Data folder");
             return true;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
@@ -71,7 +71,7 @@ public class ContentReader {
                 List<HtmlResult> result = HtmlGenerator.generateAllHtmlStrings(module);
                 htmls.add(result);
             }
-            
+
             // Create all the Html files
             for (List<HtmlResult> module : htmls) {
                 for (HtmlResult activity : module) {
@@ -79,36 +79,38 @@ public class ContentReader {
                 }
             }
             System.out.println("Successfully created content HTML files");
-            
+
             // Create all the Java files
             for (LinkedHashMap<Object, Object> module : contentsJson) {
                 List<String> result = generateAllJavaBaseStrings(module);
-                if (result.size() == 0) continue;
+                if (result.size() == 0)
+                    continue;
                 String id = result.removeFirst();
-                FileOperations.writeFile(id + FileOperations.BASE_CODE_DESC, FileOperations.JAVA_EXT, FilePaths.JAVA_BASE_DEST, result);
+                FileOperations.writeFile(id + FileOperations.BASE_CODE_DESC, FileOperations.JAVA_EXT,
+                        FilePaths.JAVA_BASE_DEST, result);
             }
             System.out.println("Successfully created base code Java files");
-            
+
             // Create test case Text files
             // for (LinkedHashMap<Object, Object> module : contentsJson) {
-            //     List<String> result = generateAllTestCaseStrings(module);
-            //     if (result.size() == 0) continue;
-            //     String id = result.removeFirst();
-            //     FileOperations.writeFile(id + FileOperations.TEST_CASE_DESC, FileOperations.TEXT_EXT, FilePaths.TEST_CASE_DEST, result);
+            // List<String> result = generateAllTestCaseStrings(module);
+            // if (result.size() == 0) continue;
+            // String id = result.removeFirst();
+            // FileOperations.writeFile(id + FileOperations.TEST_CASE_DESC,
+            // FileOperations.TEXT_EXT, FilePaths.TEST_CASE_DEST, result);
             // }
             // System.out.println("Successfully created test case Text files");
             System.out.println("Skipping generation of Test Case Text files");
-            
+
             // Create DB File
             FileOperations.writeJSON(FileOperations.DB_FILE_NAME, createDBStrings(contentsJson));
             System.out.println("Successfully created database file");
             return true;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-            
+
     }
 
     public static boolean all() {
@@ -177,16 +179,17 @@ public class ContentReader {
     public static List<String> createDBStrings(List<LinkedHashMap<Object, Object>> contentsJson) {
         // 0 is reading, 1 is quiz, 2 is coding
 
-        /* like this:
-        "1": [
-            {"id": "1", "type": 0, "file": "readingOne.html"},
-            {"id": "2", "type": 0, "file": "readingTwo.html"}
-        ],
-        "2": [
-            {"id": "1", "type": 1, "file": "Quiz Material One"},
-            {"id": "2", "type": 1, "file": "Quiz Material Two"}
-        ]
-        */
+        /*
+         * like this:
+         * "1": [
+         * {"id": "1", "type": 0, "file": "readingOne.html"},
+         * {"id": "2", "type": 0, "file": "readingTwo.html"}
+         * ],
+         * "2": [
+         * {"id": "1", "type": 1, "file": "Quiz Material One"},
+         * {"id": "2", "type": 1, "file": "Quiz Material Two"}
+         * ]
+         */
 
         List<String> result = new ArrayList<>();
         result.add("{");
@@ -206,7 +209,8 @@ public class ContentReader {
         List<String> result = new ArrayList<>();
         @SuppressWarnings("unchecked")
         Map<Object, Object> activities = (Map<Object, Object>) module.get("content");
-        result.add(String.format("\"%s\" : [", module.get("name").toString().split("_")[module.get("name").toString().split("_").length - 1]));
+        result.add(String.format("\"%s\" : [",
+                module.get("name").toString().split("_")[module.get("name").toString().split("_").length - 1]));
         result.add(String.format("\t{\"name\" : \"%s\"},", module.get("title").toString()));
         for (Object activityKey : activities.keySet()) {
             @SuppressWarnings("unchecked")
@@ -226,18 +230,20 @@ public class ContentReader {
         String id = activity.get("id").toString();
         switch (activity.get("type").toString()) {
 
-            case "reading_activity" :
+            case "reading_activity":
                 return createReadingDBEntry(id, id + FileOperations.HTML_EXT);
-            
-            case "quiz_activity" :
+
+            case "quiz_activity":
                 List<List<String>> questions = new ArrayList<>();
-                @SuppressWarnings("unchecked") Map<Object, Object> content = (Map<Object, Object>) activity.get("content");
+                @SuppressWarnings("unchecked")
+                Map<Object, Object> content = (Map<Object, Object>) activity.get("content");
                 for (Object questionKey : content.keySet()) {
                     List<String> questionLines = new ArrayList<>();
                     @SuppressWarnings("unchecked")
                     Map<Object, Object> questionContents = (Map<Object, Object>) content.get(questionKey);
                     questionLines.add(String.format("\"type\" : \"%s\",", questionContents.get("type").toString()));
-                    questionLines.add(String.format("\"question\" : \"%s\",", questionContents.get("question").toString()));
+                    questionLines
+                            .add(String.format("\"question\" : \"%s\",", questionContents.get("question").toString()));
                     questionLines.add(String.format("\"options\" : {"));
                     @SuppressWarnings("unchecked")
                     Map<String, String> questionOptions = (Map<String, String>) questionContents.get("options");
@@ -245,15 +251,18 @@ public class ContentReader {
                         questionLines.add(String.format("\t\"%s\" : \"%s\"", option, questionOptions.get(option)));
                         questionLines.set(questionLines.size() - 1, questionLines.get(questionLines.size() - 1) + ",");
                     }
-                    questionLines.set(questionLines.size() - 1, StringOperations.replaceLast(questionLines.get(questionLines.size() - 1), ",", ""));
+                    questionLines.set(questionLines.size() - 1,
+                            StringOperations.replaceLast(questionLines.get(questionLines.size() - 1), ",", ""));
                     questionLines.add(String.format("},"));
                     questionLines.add(String.format("\"correct_responses\" : ["));
                     List<String> correctResponses = List.of(questionContents.get("correct_responses").toString());
                     for (String response : correctResponses) {
-                        questionLines.add(String.format("\t\"%s\"", response.replace("[", "").replace("]", "").replace(" ", "").replace(",", "\", \"")));
+                        questionLines.add(String.format("\t\"%s\"",
+                                response.replace("[", "").replace("]", "").replace(" ", "").replace(",", "\", \"")));
                         questionLines.set(questionLines.size() - 1, questionLines.get(questionLines.size() - 1) + ",");
                     }
-                    questionLines.set(questionLines.size() - 1, StringOperations.replaceLast(questionLines.get(questionLines.size() - 1), ",", ""));
+                    questionLines.set(questionLines.size() - 1,
+                            StringOperations.replaceLast(questionLines.get(questionLines.size() - 1), ",", ""));
                     questionLines.add(String.format("],"));
                     questionLines.add(String.format("\"points\" : %s,", questionContents.get("points")));
                     questionLines.add(String.format("\"feedback\" : {"));
@@ -263,7 +272,8 @@ public class ContentReader {
                         questionLines.add(String.format("\t\"%s\" : \"%s\"", feedback, feedbacks.get(feedback)));
                         questionLines.set(questionLines.size() - 1, questionLines.get(questionLines.size() - 1) + ",");
                     }
-                    questionLines.set(questionLines.size() - 1, StringOperations.replaceLast(questionLines.get(questionLines.size() - 1), ",", ""));
+                    questionLines.set(questionLines.size() - 1,
+                            StringOperations.replaceLast(questionLines.get(questionLines.size() - 1), ",", ""));
                     questionLines.add(String.format("}"));
                     List<String> fullQuestion = new ArrayList<>();
                     fullQuestion.add(String.format("\"%s\" : {", questionKey));
@@ -275,46 +285,44 @@ public class ContentReader {
                     questions.add(fullQuestion);
                 }
                 List<String> lastEntry = questions.get(questions.size() - 1);
-                lastEntry.set(lastEntry.size() - 1, StringOperations.replaceLast(lastEntry.get(lastEntry.size() - 1), ",", ""));
+                lastEntry.set(lastEntry.size() - 1,
+                        StringOperations.replaceLast(lastEntry.get(lastEntry.size() - 1), ",", ""));
                 String name = activity.get("name").toString();
                 return createQuizDBEntry(id, questions, name);
-            
-            case "coding_activity" :
+
+            case "coding_activity":
                 String contextFile = id + FileOperations.HTML_EXT;
                 String baseFile = id + FileOperations.BASE_CODE_DESC + FileOperations.JAVA_EXT;
                 String launcherFile = ((Map<Object, Object>) activity.get("content")).get("launcher").toString();
                 String testCaseFile = id + FileOperations.TEST_CASE_DESC + FileOperations.TEXT_EXT;
                 return createCodingDBActivity(id, contextFile, baseFile, launcherFile, testCaseFile);
-            
-            default : return null;
+
+            default:
+                return null;
         }
     }
 
     public static List<String> createReadingDBEntry(String id, String contentFile) {
         List<String> result = new ArrayList<>();
         result.add(String.format(
-            "{\"id\" : \"%s\", \"type\" : 0, \"file\" : \"%s\"}",
-            id.split("-")[1], contentFile
-        ));
+                "{\"id\" : \"%s\", \"type\" : 0, \"file\" : \"%s\"}",
+                id.split("-")[1], contentFile));
         return result;
     }
 
     public static List<String> createQuizDBEntry(String id, List<List<String>> questions, String name) {
         List<String> result = new ArrayList<>();
         result.add(String.format(
-            "{\"id\" : \"%s\", \"type\" : 1, \"questions\" : {",
-            id.split("-")[1]
-        ));
+                "{\"id\" : \"%s\", \"type\" : 1, \"questions\" : {",
+                id.split("-")[1]));
         result.add(String.format(
-            "\t\"name\" : \"%s\",",
-            name
-        ));
+                "\t\"name\" : \"%s\",",
+                name));
         result.add(String.format("\t\"content\" : {"));
         for (List<String> question : questions) {
             for (String line : question) {
                 result.add(String.format("\t\t%s",
-                    line
-                ));
+                        line));
             }
         }
         result.add(String.format("\t\t}"));
@@ -323,12 +331,12 @@ public class ContentReader {
         return result;
     }
 
-    public static List<String> createCodingDBActivity(String id, String contextFile, String baseFile, String launcherFile, String testCaseFile) {
+    public static List<String> createCodingDBActivity(String id, String contextFile, String baseFile,
+            String launcherFile, String testCaseFile) {
         List<String> result = new ArrayList<>();
         result.add(String.format(
-            "{\"id\" : \"%s\", \"type\" : 2, \"context\" : \"%s\", \"base\" : \"%s\", \"launcher\" : \"%s\", \"testCases\" : \"%s\"}",
-            id.split("-")[1], contextFile, baseFile, launcherFile, testCaseFile
-        ));
+                "{\"id\" : \"%s\", \"type\" : 2, \"context\" : \"%s\", \"base\" : \"%s\", \"launcher\" : \"%s\", \"testCases\" : \"%s\"}",
+                id.split("-")[1], contextFile, baseFile, launcherFile, testCaseFile));
         return result;
     }
 

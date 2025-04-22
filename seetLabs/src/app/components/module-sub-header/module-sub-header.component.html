@@ -8,7 +8,7 @@
             @if (moduleNumber != '0' && getAssignmentNumber() > 1 || (moduleNumber == '0' && getAssignmentNumber() > 1)){
                 <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" mat-fab extended>
                     <mat-icon>arrow_back</mat-icon>
-                    Last Activity
+                    Prev Activity
                 </a>
             }
             @else if (moduleNumber != '0' && getAssignmentNumber() == 1){
@@ -55,7 +55,7 @@
                 @if (moduleNumber != '0' && getAssignmentNumber() > 1 || (moduleNumber == '0' && getAssignmentNumber() > 1)){
                     <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" mat-fab extended>
                         <mat-icon>arrow_back</mat-icon>
-                        Last Activity
+                        Prev Activity
                     </a>
                 }
                 @else if (moduleNumber != '0' && getAssignmentNumber() == 1){

@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, signal, OnInit, ChangeDetectorRef, HostListener } from '@angular/core';
 import { JsonServerTestService } from '../../services/json-server-test.service';
 import { catchError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +7,7 @@ import hljs from 'highlight.js/lib/core';
 import java from 'highlight.js/lib/languages/java';
 import { CommonModule } from '@angular/common';
 import { ModuleSubHeaderComponent } from '../../components/module-sub-header/module-sub-header.component';
+import { LocalStorageService } from '../../services/local-storage.service';
 @Component({
   selector: 'readingActivity',
   imports: [CommonModule, ModuleSubHeaderComponent],
@@ -20,6 +21,7 @@ export class readingActivity implements OnInit {
   getDataService = inject(JsonServerTestService);
   jsonData = signal<assignmentType>({ "id": 0, "type": 0, "file": "reading Material One" });
   template: string = "";
+  localStorage = new LocalStorageService();
 
   // Nav Data Members
   moduleNumber = signal<string>("");
@@ -41,8 +43,6 @@ export class readingActivity implements OnInit {
       await this.loadReading(data.file);
     });
   }
-
-  
   
   async loadReading(fileName: string) {
     try {
@@ -54,5 +54,16 @@ export class readingActivity implements OnInit {
       console.error("Error loading template: " + error);
     }
   }
+
+  //check if the user has "read" the entire page
+  @HostListener("window:scroll", ['$event'])
+  hasFinished(event: Event): void {
+    const bottom_nav = document.getElementById('bottom_nav');
+    const {top, left, bottom, right }= bottom_nav!.getBoundingClientRect();
+    if (top >= 0 && left >= 0 && bottom <= (window.innerHeight) && right <= (window.innerWidth)){
+      this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber());
+    }
+  }
+
 
 }
