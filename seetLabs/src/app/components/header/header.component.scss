@@ -32,15 +32,16 @@
     align-items: center;
 }
 .modules-href-drop-down-parent {
-    background-color: #5d94d7;
+    background: radial-gradient(circle at bottom left, #3d79bd, 
+    #1c60a2, #004881, #003d6e); 
     width: 43vw;
     position: absolute;
-    top: 6.5vh;   
+    top: 6.0vh;   
     padding: 20px 20px;
     right: 18vh;
     border-radius: 10px;
     display: none;
-    border: 1vh solid transparent;
+    border: 1.5vh;
 }
 
 .modules-href-drop-down {
@@ -58,6 +59,7 @@
 
 .modules-href-drop-down a:hover {
     color: #f1f1f1;
+    text-decoration: underline;
 }
 
 #modules-href:hover + .modules-href-drop-down-parent {
