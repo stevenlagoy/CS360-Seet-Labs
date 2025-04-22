@@ -31,7 +31,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 2",
+            "name": "Coding 2: Conditionals and Loops",
             "id": "2-2",
             "type": "coding_activity",
             "content": {
@@ -54,7 +54,7 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 2",
+            "name" : "Quiz 2: Control Flow",
             "id" : "2-3",
             "type" : "quiz_activity",
             "content" : {

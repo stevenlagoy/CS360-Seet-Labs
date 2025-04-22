@@ -27,7 +27,7 @@
             }
         },  
         "activity_2": {
-            "name": "Coding 5",
+            "name": "Coding 5: Practicing OOP",
             "id": "5-2",
             "type": "coding_activity",
             "content": {
@@ -44,7 +44,7 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 5",
+            "name" : "Quiz 5: Inheritance",
             "id" : "5-3",
             "type" : "quiz_activity",
             "content" : {

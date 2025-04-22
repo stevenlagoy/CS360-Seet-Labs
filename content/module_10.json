@@ -5,7 +5,7 @@
     "activity_count" :  3,
     "content" :  {
         "activity_1" :  {
-            "name" :  "Reading 10",
+            "name" :  "Reading 10: Final Review",
             "id" :  "10-1",
             "type" :  "reading_activity",
             "content" :  {
@@ -31,7 +31,7 @@
             }
         },
         "activity_2" :  {
-            "name" :  "Quiz 10",
+            "name" :  "Quiz 10: Final Quiz",
             "id" :  "10-2",
             "type" :  "quiz_activity",
             "content" :  {
@@ -162,7 +162,7 @@
                         "3" : "Correct! ConcurrentHashMap is thread-safe."
                     }
                 },
-                "15s" : {
+                "15" : {
                     "type" : "true false",
                     "question" : "True/False: Generic classes allow you to define type-safe templates.",
                     "options" : {"1" : "True", "2" : "False"},

@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 3",
+            "name" : "Reading 3: Methods and Subprograms",
             "id" : "3-1",
             "type" : "reading_activity",
             "content" : {
@@ -27,7 +27,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 3",
+            "name": "Coding 3: Writing and Calling Methods",
             "id": "3-2",
             "type": "coding_activity",
             "content": {
@@ -74,7 +74,7 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 3",
+            "name" : "Quiz 3: Methods",
             "id" : "3-3",
             "type" : "quiz_activity",
             "content" : {

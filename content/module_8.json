@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 8",
+            "name" : "Reading 8: Arrays and Collections",
             "id" : "8-1",
             "type" : "reading_activity",
             "content" : {
@@ -39,7 +39,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 8",
+            "name": "Coding 8: Arrays and Collections Practice",
             "id": "8-2",
             "type": "coding_activity",
             "content": {
@@ -59,7 +59,7 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 8",
+            "name" : "Quiz 8: Arrays",
             "id" : "8-3",
             "type" : "quiz_activity",
             "content" : {
