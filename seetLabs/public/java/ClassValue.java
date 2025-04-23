@@ -32,11 +32,11 @@ public class ClassValue
     {
         if(classclass.equals(Integer.class))
         {
-            return (int)Integer.parseInt(input);
+            return Integer.parseInt(input);
         }
         if(classclass.equals(Double.class))
         {
-            return (double)Double.parseDouble(input);
+            return Double.parseDouble(input);
         }
         if(classclass.equals(String.class))
         {

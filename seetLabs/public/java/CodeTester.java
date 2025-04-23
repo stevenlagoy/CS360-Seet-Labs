@@ -106,7 +106,8 @@ public class CodeTester
        
         // using a user-defined method
         launcher.getUserMethod(methodName, returnType, args.toArray(new Class[0]));
-        Object returned = launcher.launchMethod(input);
+       
+        Object returned = launcher.launchMethod(input.toArray(new Object[input.size()]));
 
         Boolean toReturn = returned.equals(output);
         if(toReturn)
@@ -115,15 +116,18 @@ public class CodeTester
         }
         else
         {
-         
+            
             String print = "Called: "+methodName+"(";
             for(Object o : input)
             {
                 print+=o+", ";
             }
             print = print.substring(0,print.length()-2) + ")";
-            
-            System.err.println(testName+" Failed. "+print+";\nExpected "+output+", Got "+returned+".");
+           
+           System.err.println(testName+" Failed. "+print+";\nExpected "+output+", Got "+returned+".");
+        
+           
+           System.err.println((Integer) returned);
 
         }
 

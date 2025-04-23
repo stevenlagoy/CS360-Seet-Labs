@@ -21,7 +21,7 @@ public class ConsoleLauncher
         {
             while(sc.hasNext()) 
             {
-                testAgainst+=sc.nextLine()+"\n";
+                testAgainst+=sc.nextLine()+")";
             }     
         }
         catch(FileNotFoundException e)
