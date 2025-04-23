@@ -13,10 +13,16 @@ import java.util.Scanner;
 public class CodeTester 
 {
     
+    private LabLauncher launcher;
+
+    public CodeTester(LabLauncher ll)
+    {
+        launcher = ll;
+    }
     public boolean test(String fileName) 
     {
         
-        return runAllTests(readTestCasesFile(Paths.get("/app/test-cases/"+fileName)));
+        return runAllTests(readTestCasesFile(Paths.get(fileName)));
 
         // call launcher.getUserMethod("method name", return type, parameter types)
         // then launcher.launchMethod(parameter values)
@@ -95,11 +101,9 @@ public class CodeTester
   
   
 
-    public static boolean runTest(String testName, String methodName, Class<?> returnType, List<Class<?>> args, List<Object> input, Object output) 
+    public boolean runTest(String testName, String methodName, Class<?> returnType, List<Class<?>> args, List<Object> input, Object output) 
     {
-        LabLauncher launcher = new LabLauncher();
-
-
+       
         // using a user-defined method
         launcher.getUserMethod(methodName, returnType, args.toArray(new Class[0]));
         Object returned = launcher.launchMethod(input);
@@ -111,7 +115,16 @@ public class CodeTester
         }
         else
         {
-            System.err.println(testName+" Failed. Expected "+output+", Got "+returned);
+         
+            String print = "Called: "+methodName+"(";
+            for(Object o : input)
+            {
+                print+=o+", ";
+            }
+            print = print.substring(0,print.length()-2) + ")";
+            
+            System.err.println(testName+" Failed. "+print+";\nExpected "+output+", Got "+returned+".");
+
         }
 
       

@@ -17,7 +17,7 @@ public class ClassValue
         try
         {
             classclass = Class.forName(values[0]);   
-            instance = setValue(values[1].substring(1, input.length()-2));
+            instance = setValue(values[1].substring(1, values[1].length()-1));
         }
         catch(ClassNotFoundException e)
         {
@@ -32,7 +32,11 @@ public class ClassValue
     {
         if(classclass.equals(Integer.class))
         {
-            return Integer.parseInt(input);
+            return (int)Integer.parseInt(input);
+        }
+        if(classclass.equals(Double.class))
+        {
+            return (double)Double.parseDouble(input);
         }
         if(classclass.equals(String.class))
         {
@@ -44,6 +48,16 @@ public class ClassValue
 
     public Class<?> getClassClass()
     {
+
+        if((classclass.equals(Integer.class)))
+        {
+            return int.class;
+        }
+        if(classclass.equals(Double.class))
+        {
+            return double.class;
+        }
+
         return classclass;
     }
 
