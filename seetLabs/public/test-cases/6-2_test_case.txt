@@ -1,5 +1,5 @@
 4
-test 1 : divide : Integer "10", Integer "2" : String "5"
-test 2 : divide : Integer "9", Integer "0" : "Cannot divide by zero"
-test 3 : divide : Integer "100", Integer "4" : String "25"
-test 4 : divide : Integer "0", Integer "0" : "Cannot divide by zero"
+test 1 : divide : java.lang.Integer "10", java.lang.Integer "2" : java.lang.String "5"
+test 2 : divide : java.lang.Integer "9", java.lang.Integer "0" : java.lang.String "Cannot divide by zero"
+test 3 : divide : java.lang.Integer "100", java.lang.Integer "4" : java.lang.String "25"
+test 4 : divide : java.lang.Integer "0", java.lang.Integer "0" : java.lang.String "Cannot divide by zero"

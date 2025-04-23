@@ -47,7 +47,7 @@
                     "1h1": "Arrays and Collections Practice",
                     "1p": "In this challenge, you will write a Java program that reads a list of integers from the user, stores them in an %kArrayList%/k, sorts them, and prints the result. Then, convert the list to a %kSet%/k to remove duplicates, and finally display the contents of the set."
                 },
-                "base_code": "import java.util.*;%n%npublic class Lab {%n%tpublic static void main(String[] args) {%n%t%tScanner scanner = new Scanner(System.in);%n%t%n%t// Read space-separated integers from user%n%tString input = scanner.nextLine();%n%t%n%t// Store integers in a list%n%t%n%t// Sort the list%n%t%n%t// Convert list to set to remove duplicates%n%t%n%t// Print sorted list and unique set%n%t%n%tscanner.close();%n%t}%n}",
+                "base_code": "import java.util.*;%n%npublic class Lab {%n%tpublic static void main(String[] args) {%n%t%tScanner scanner = new Scanner(System.in);%n%t%t%n%t%t// Read space-separated integers from user%n%t%tString input = scanner.nextLine();%n%t%t%n%t%t// Store integers in a list%n%t%t%n%t%t// Sort the list%n%t%t%n%t%t// Convert list to set to remove duplicates%n%t%t%n%t%t// Print sorted list and unique set%n%t%t%n%t%tscanner.close();%n%t}%n}",
                 "launcher": "ConsoleLauncher",
                 "number_test_cases": 1,
                 "test_cases": {

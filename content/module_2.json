@@ -67,9 +67,7 @@
                         "3" : "do-while",
                         "4" : "foreach"
                     },
-                    "correct_responses" : [
-                        "2"
-                    ],
+                    "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
                         "1" : "Not quite. While loops are great when we don't know how many times we need to loop.",
@@ -85,9 +83,7 @@
                         "1" : "True",
                         "2" : "False"
                     },
-                    "correct_responses" : [
-                        "2"
-                    ],
+                    "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
                         "1" : "Incorrect. 'break' completely exits the loop, while 'continue' skips to the next iteration.",

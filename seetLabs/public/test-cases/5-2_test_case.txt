@@ -1,4 +1,2 @@
 1 io
-test 1 : "" : "Woof Meow"
-
-"1p": "In this activity, you're going to write a small hierarchy of classes to demonstrate your understanding of inheritance, interfaces, and method overriding. You'll define an interface called %kAnimal%/k, an abstract class called %kMammal%/k that implements the interface, and two concrete classes: %kDog%/k and %kCat%/k. Each class should have its own implementation of the %kmakeSound()%/k method. Finally, write a method called %krunTests()%/k that creates a %kDog%/k and a %kCat%/k and returns their sounds concatenated together."
+test 1 : : java.lang.String "Woof Meow"
