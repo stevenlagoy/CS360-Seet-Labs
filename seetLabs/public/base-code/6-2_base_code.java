@@ -1,11 +1,6 @@
 public class Lab {
+	// define your divide method here
 
-	public static int divide(int a, int b) {
-		if (b == 0) {
-			throw new IllegalArgumentException("Cannot divide by zero");
-		}
-		return a / b;
-	}
 
 	public static String runTests(int a, int b) {
 		try {
@@ -14,5 +9,8 @@ public class Lab {
 		} catch (IllegalArgumentException e) {
 			return e.getMessage();
 		}
+	}
+	public static void main(String[] args) {
+		runTests();
 	}
 }

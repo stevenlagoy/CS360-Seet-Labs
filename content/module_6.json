@@ -35,7 +35,7 @@
                     "1h1": "Handling Exceptions",
                     "1p": "In this activity, you're going to write a method that divides two integers and throws an %kIllegalArgumentException%/k if the divisor is zero. Then you'll handle this exception in a test method using a %ktry-catch%/k block. If an exception is caught, return the exception message. Otherwise, return the result as a string."
                 },
-                "base_code": "public class Lab {%n%t// define your divide method here%n%n%n%tpublic static String runTests(int a, int b) {%n%t%ttry {%n%t%t%tint result = divide(a, b);%n%t%t%treturn String.valueOf(result);%n%t%t} catch (IllegalArgumentException e) {%n%t%t%treturn e.getMessage();%n%t%t}%n%t}%n%tpublic static void main(String[] args) {%n%trunTests();%n%t}%n}",
+                "base_code": "public class Lab {%n%t// define your divide method here%n%n%n%tpublic static String runTests(int a, int b) {%n%t%ttry {%n%t%t%tint result = divide(a, b);%n%t%t%treturn String.valueOf(result);%n%t%t} catch (IllegalArgumentException e) {%n%t%t%treturn e.getMessage();%n%t%t}%n%t}%n%tpublic static void main(String[] args) {%n%t%trunTests();%n%t}%n}",
                 "launcher": "TestCaseLauncher",
                 "number_test_cases": 3,
                 "test_cases": {

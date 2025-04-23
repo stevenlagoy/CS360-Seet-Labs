@@ -5,4 +5,9 @@ public class Lab {
 }
 
 // Define your Car class here
+class Car {
+	
+	public Car() {
 
+	}
+}

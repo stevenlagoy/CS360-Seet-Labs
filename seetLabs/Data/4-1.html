@@ -26,7 +26,7 @@
 	<p><span class="keyword">static</span> fields and methods belong to the class itself rather than any instance. Use static for shared data or utility methods. Example:</p>
 	<pre><code class="language-java">public static int carCount = 0; // shared among all Car objects<br>&#10;public static void showTotalCars() {<br>&#10;&#9;System.out.println("Total cars: " + carCount);<br>&#10;}</code></pre>
 	<p> Access static members via <span class="keyword">Car.showTotalCars()</span>.</p>
-	<h2>The %kthis%/k Keyword</h2>
+	<h2>The 'this' Keyword</h2>
 	<p><span class="keyword">this</span> refers to the current object. It clarifies references when parameter names match field names:</p>
 	<pre><code class="language-java">public void setModel(String model) {<br>&#10;&#9;this.model = model; // assigns parameter to field<br>&#10;}</code></pre>
 	<p> Without <span class="keyword">this</span>, Java treats <span class="keyword">model</span> as the parameter.</p>
