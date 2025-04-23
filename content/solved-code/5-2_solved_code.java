@@ -31,7 +31,7 @@ class Cat extends Mammal {
 }
 
 public class Lab {
-	public static String runTests() {
+	public static static void main(String[] args) {
 		Animal d = new Dog("Rex");
 		Animal c = new Cat("Whiskers");
 		return d.makeSound() + " " + c.makeSound();

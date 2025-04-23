@@ -5,7 +5,7 @@ public class Lab {
 	// Task 1: Reverse an array using a stack
 	public static int[] reverseArray(int[] input) {
 		// Your code here
-		return input;
+		return null;
 	}
 
 	// Task 2: Sum the first and last elements in a queue
