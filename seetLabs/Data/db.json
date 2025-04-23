@@ -90,7 +90,9 @@
 					"type" : "Multiple choice",
 					"question" : "In a few words, what is Java? Pick the best answer.",
 					"options" : {
-						"1" : "A Programming Language 2 : Where I get my Coffee from 3 : Something that prints 'Hello, World!'"
+						"1" : "A Programming Language",
+						"2" : "Where I get my Coffee from",
+						"3" : "Something that prints 'Hello, World!'"
 					},
 					"correct_responses" : [
 						"1"
@@ -922,7 +924,7 @@
 						"4" : "foreach"
 					},
 					"correct_responses" : [
-						""
+						"2"
 					],
 					"points" : 10,
 					"feedback" : {
@@ -940,7 +942,7 @@
 						"2" : "False"
 					},
 					"correct_responses" : [
-						""
+						"2"
 					],
 					"points" : 10,
 					"feedback" : {
