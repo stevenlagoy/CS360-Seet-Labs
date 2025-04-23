@@ -1,7 +1,8 @@
-import { Component} from '@angular/core';
+import { Component, OnInit, signal} from '@angular/core';
 
 import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
 import { CodingEnvironmentComponent } from '../../java-components/coding-environment/coding-environment.component';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 
 declare var cheerpjInit: any;
@@ -18,7 +19,7 @@ let instance: PlaygroundComponent | null = null;
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.css'
 })
-export class PlaygroundComponent 
+export class PlaygroundComponent
 {
 
   public splashText:string = "";
@@ -39,7 +40,6 @@ export class PlaygroundComponent
       this.splashText="Be careful. Mr. Seet is watching.";
     }
   }
- 
 
 }
 

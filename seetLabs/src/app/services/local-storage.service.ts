@@ -74,6 +74,11 @@ export class LocalStorageService {
       this.current_data = this.getProgress();
   }
 
+  public getActivityStatus(module: String, assignment_id: String) : boolean {
+    this.current_data = this.getProgress();
+    return this.current_data[Number(module)][Number(assignment_id)-1].passed == "true" ? true : false;
+  }
+
   public writeProgress(module: String, assignment_id: String){
     this.current_data  = this.getProgress();
     this.current_data[Number(module)][Number(assignment_id)-1].passed = "true";

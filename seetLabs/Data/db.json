@@ -935,7 +935,7 @@
 						"4" : "foreach"
 					},
 					"correct_responses" : [
-						""
+						"2"
 					],
 					"points" : 10,
 					"feedback" : {
@@ -953,7 +953,7 @@
 						"2" : "False"
 					},
 					"correct_responses" : [
-						""
+						"2"
 					],
 					"points" : 10,
 					"feedback" : {

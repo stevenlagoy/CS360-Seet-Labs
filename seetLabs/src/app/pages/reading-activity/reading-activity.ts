@@ -8,6 +8,8 @@ import java from 'highlight.js/lib/languages/java';
 import { CommonModule } from '@angular/common';
 import { ModuleSubHeaderComponent } from '../../components/module-sub-header/module-sub-header.component';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 @Component({
   selector: 'readingActivity',
   imports: [CommonModule, ModuleSubHeaderComponent],
@@ -23,10 +25,13 @@ export class readingActivity implements OnInit {
   template: string = "";
   localStorage = new LocalStorageService();
   moduleProgress = signal<number>(0);
+  activityPassed = signal<boolean>(false);
 
   // Nav Data Members
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
+
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     hljs.registerLanguage('java', java);
@@ -35,6 +40,7 @@ export class readingActivity implements OnInit {
     this.moduleNumber.set(id as string);
     this.assignmentNumber.set(assignmentNumber as string);
     this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
+    this.activityPassed.set(this.localStorage.getActivityStatus(this.moduleNumber(), this.assignmentNumber()));
     this.getDataService.getDataFromAPI(id, assignmentNumber).pipe(
       catchError((err) => {
         console.log(err);
@@ -62,11 +68,23 @@ export class readingActivity implements OnInit {
   hasFinished(event: Event): void {
     const bottom_nav = document.getElementById('bottom_nav');
     const {top, left, bottom, right }= bottom_nav!.getBoundingClientRect();
+    
+    //user scrolled to bottom
     if (top >= 0 && left >= 0 && bottom <= (window.innerHeight) && right <= (window.innerWidth)){
       this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber());
+      this.localStorage.getModulePercentage(this.moduleNumber());
+      this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
+      if (this.activityPassed() == false){
+        this.openSnackBar();
+        this.activityPassed.set(true);
+      }
     }
-    this.localStorage.getModulePercentage(this.moduleNumber());
-    this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
+  }
+
+  openSnackBar(): void {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      duration: 2000
+    });
   }
 
 

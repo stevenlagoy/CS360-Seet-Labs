@@ -10,6 +10,8 @@ import { QuizCardComponent } from '../../components/quiz-card/quiz-card.componen
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-quiz-activity',
@@ -31,7 +33,8 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
   attempted = signal<number>(0);
   submitted = signal(false);
   rendered = signal<boolean>(false);
-  
+  activityPassed = signal<boolean>(false);
+
   //nav
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
@@ -39,6 +42,7 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
   //other
   moduleProgress = signal<number>(0);
   localStorage = new LocalStorageService();
+  private snackBar = inject(MatSnackBar);
 
   @ViewChildren(QuizCardComponent) quizCards!: QueryList<QuizCardComponent>;
 
@@ -54,6 +58,7 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
     this.moduleNumber.set(module as string);
     this.assignmentNumber.set(assignmentNumber as string);
     this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
+    this.activityPassed.set(this.localStorage.getActivityStatus(this.moduleNumber(), this.assignmentNumber()));
     this.jsonDataService.getDataFromAPI(module, assignmentNumber).pipe(
       catchError((err) => {
         console.error(err);
@@ -105,6 +110,10 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
     if (this.percentage() >= 80){
       this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber());
       this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
+      if (this.activityPassed() == false){
+        this.openSnackBar();
+        this.activityPassed.set(true);
+      }
     }
     document.documentElement.scrollTop = 0; //scroll back to top of page
   }
@@ -117,5 +126,11 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
     if (value){
       this.attempted.update(val => val + 1);
     }
+  }
+
+  openSnackBar(): void {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      duration: 2000
+    });
   }
 }
