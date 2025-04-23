@@ -5,7 +5,9 @@ import java.util.List;
 
 public class FilePaths {
     
-    public static final Path BASE_PATH = Path.of("seetLabs");
+    public static final String OPERATING_SYSTEM = System.getProperty("os.name");
+    public static final Path ROOT_PATH = Path.of("CS360-SEET-LABS");
+    public static final Path BASE_PATH = OPERATING_SYSTEM.equals("Windows 10") ? Path.of("seetLabs") : ROOT_PATH.resolve("seetLabs");
     public static final Path JSON_SOURCE = Path.of("content");
     public static final Path DATA_PATH = BASE_PATH.resolve("Data");
     public static final Path PUBLIC_PATH = BASE_PATH.resolve("public");
@@ -15,7 +17,16 @@ public class FilePaths {
 
     public static final List<String> IGNORED_FILES = List.of(
         "TestOne.java",
-        "TestTwo.java"
+        "TestTwo.java",
+        "0-2_test_case.txt",
+        "1-2_test_case.txt",
+        "2-2_test_case.txt",
+        "3-2_test_case.txt",
+        "4-2_test_case.txt",
+        "5-2_test_case.txt",
+        "6-2_test_case.txt",
+        "8-2_test_case.txt",
+        "9-2_test_case.txt"
     );
     public static final List<String> CONTENT_FILES = List.of(
         "module_0.json",
