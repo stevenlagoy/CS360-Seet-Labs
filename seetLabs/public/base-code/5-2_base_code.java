@@ -1,34 +1,4 @@
-interface Animal {
-	String makeSound();
-}
-
-abstract class Mammal implements Animal {
-	String name;
-
-	Mammal(String name) {
-		this.name = name;
-	}
-}
-
-class Dog extends Mammal {
-	Dog(String name) {
-		super(name);
-	}
-
-	public String makeSound() {
-		return "Woof";
-	}
-}
-
-class Cat extends Mammal {
-	Cat(String name) {
-		super(name);
-	}
-
-	public String makeSound() {
-		return "Meow";
-	}
-}
+//define your Animal, Mammal, Dog, and Cat classes here
 
 public class Lab {
 	public static static void main(String[] args) {
