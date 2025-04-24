@@ -69,7 +69,7 @@ export class LocalStorageService {
 
   constructor() { 
       if (localStorage.getItem('progress') == null){
-        localStorage.setItem('progress', JSON.stringify(this.default_data));
+        localStorage.setItem('progress', btoa(JSON.stringify(this.default_data)));
       }
       this.current_data = this.getProgress();
   }
@@ -79,14 +79,29 @@ export class LocalStorageService {
     return this.current_data[Number(module)][Number(assignment_id)-1].passed == "true" ? true : false;
   }
 
-  public writeProgress(module: String, assignment_id: String){
+  public writeProgress(module: String, assignment_id: String): void {
     this.current_data  = this.getProgress();
     this.current_data[Number(module)][Number(assignment_id)-1].passed = "true";
-    localStorage.setItem('progress', JSON.stringify(this.current_data));
+    localStorage.setItem('progress', btoa(JSON.stringify(this.current_data)));
+  }
+
+  public writeCode(module: String, assignment_id: String, code: String): void {
+    this.current_data  = this.getProgress();
+    this.current_data[Number(module)][Number(assignment_id)-1].code = code;
+    localStorage.setItem('progress', btoa(JSON.stringify(this.current_data)));
+  }
+
+  public codeSaved(module: String, assignment_id: String) : Boolean {
+    this.current_data  = this.getProgress();
+    return this.current_data[Number(module)][Number(assignment_id)-1].code != "";
+  }
+
+  public getCode(module: String, assignment_id: String) : String {
+    return this.current_data[Number(module)][Number(assignment_id)-1].code;
   }
 
   public getProgress() : LooseJsonObject {
-    return JSON.parse(localStorage.getItem('progress')!);
+    return JSON.parse(atob(localStorage.getItem('progress')!));
   }
 
   public getModulePercentage(module: String): number {
@@ -97,8 +112,12 @@ export class LocalStorageService {
         totalActivitiesPassed++;
       }
     }
-    // console.log(totalActivitiesPassed);
     return Math.round(((totalActivitiesPassed / moduleSize) * 100) * 10) / 10; //round to one decimal
   }
+
+  public updateKey(newKey: string): void {
+    localStorage.setItem('progress', btoa(atob(newKey)));
+  }
+
 }
   

@@ -1,0 +1,15 @@
+<h1 id="title" mat-dialog-title>Load Backup</h1>
+<mat-dialog-content>
+    <p>Paste a backup key to restore your progress from a previous session.</p>
+    <text-area label="Insert Key" width="100%" #key></text-area> 
+    <!-- <p>Paste a backup key to restore your progress from a previous session.</p> -->
+    @if (message() != ""){
+        <p>{{message()}}</p>
+    } @else {
+        <p></p>
+    }
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button (click)="writeKey(key.content())"  mat-button mat-dialog>Load</button>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

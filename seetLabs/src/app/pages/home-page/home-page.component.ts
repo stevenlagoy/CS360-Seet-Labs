@@ -5,7 +5,14 @@ import { CommonModule } from '@angular/common';
 import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
 import { JsonServerTestService } from '../../services/json-server-test.service';
 import { MatIcon } from '@angular/material/icon';
-import { MatButton } from '@angular/material/button';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { DialogBoxComponent } from '../../components/dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-home-page',
@@ -21,6 +28,7 @@ export class HomePageComponent implements OnInit {
   moduleLengths = signal<number[]>([]);
   activities = signal<number[][]>([]);
   loading = signal<boolean>(false);
+  private dialogBox = inject(MatDialog);
 
   async ngOnInit(): Promise<void> {
     let modNames: String[] = ["", "", "", "", "", "", "", "", "", "", ""];
@@ -49,6 +57,10 @@ export class HomePageComponent implements OnInit {
     this.loading.set(true);
   }
 
+  openDialogBox(): void {
+    this.dialogBox.open(DialogBoxComponent);
+  }
+
   public getModules(num: number): any[] {
     return Array(num);
   }
@@ -57,5 +69,4 @@ export class HomePageComponent implements OnInit {
     return Array(num);
   }
 
-  
 }

@@ -15,6 +15,9 @@ import { LocalStorageService } from '../../services/local-storage.service';
   templateUrl: './coding-activity.component.html',
   styleUrl: './coding-activity.component.css'
 })
+
+
+
 export class CodingActivityComponent 
 {
 
@@ -50,6 +53,11 @@ export class CodingActivityComponent
     this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
 
     this.readJSON();
+
+    const updateCode = setInterval(() => {
+      // console.log(this.environment.ControlPanel.getCode());
+      this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.environment.ControlPanel.getCode());
+    }, 2000);
     
   }
 
@@ -73,4 +81,5 @@ export class CodingActivityComponent
       });
     
   }
+
 }
