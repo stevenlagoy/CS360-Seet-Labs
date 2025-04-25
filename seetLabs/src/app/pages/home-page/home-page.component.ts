@@ -7,10 +7,6 @@ import { JsonServerTestService } from '../../services/json-server-test.service';
 import { MatIcon } from '@angular/material/icon';
 import {
   MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
 } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../../components/dialog-box/dialog-box.component';
 

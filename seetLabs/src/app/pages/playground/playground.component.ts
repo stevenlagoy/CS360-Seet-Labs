@@ -1,4 +1,4 @@
-import { Component, OnInit, signal} from '@angular/core';
+import { Component, OnInit, ViewChild, signal} from '@angular/core';
 
 import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
 import { CodingEnvironmentComponent } from '../../java-components/coding-environment/coding-environment.component';
@@ -19,7 +19,7 @@ let instance: PlaygroundComponent | null = null;
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.css'
 })
-export class PlaygroundComponent
+export class PlaygroundComponent implements OnInit
 {
 
   public splashText:string = "";
@@ -39,6 +39,19 @@ export class PlaygroundComponent
     {
       this.splashText="Be careful. Mr. Seet is watching.";
     }
+  }
+
+  @ViewChild(CodingEnvironmentComponent)environment!:CodingEnvironmentComponent;
+  private localStorage = new LocalStorageService();
+
+  ngOnInit(): void {  
+
+    // this.environment.Editor!.setPlaygroundCode();
+
+    const updateCode = setInterval(() => {
+      // console.log(this.environment.ControlPanel.getCode());
+      this.localStorage.writePlaygroundCode(this.environment.ControlPanel.getCode());
+    }, 2000);
   }
 
 }

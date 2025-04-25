@@ -62,7 +62,8 @@ export class LocalStorageService {
     "10": [
       { "id": "1", "type": 0, "passed": "false" },
       { "id": "2", "type": 1, "passed": "false" }
-    ]
+    ],
+    "playground": {"code": ""}
   };  
   current_data : LooseJsonObject;
 
@@ -91,6 +92,16 @@ export class LocalStorageService {
     localStorage.setItem('progress', btoa(JSON.stringify(this.current_data)));
   }
 
+  public writePlaygroundCode(code: String): void {
+    this.current_data  = this.getProgress();
+    this.current_data["playground"].code = code;
+    localStorage.setItem('progress', btoa(JSON.stringify(this.current_data)));
+  }
+
+  public getPlaygroundCode(): string {
+    return this.current_data["playground"].code;
+  }
+
   public codeSaved(module: String, assignment_id: String) : Boolean {
     this.current_data  = this.getProgress();
     return this.current_data[Number(module)][Number(assignment_id)-1].code != "";
@@ -117,6 +128,15 @@ export class LocalStorageService {
 
   public updateKey(newKey: string): void {
     localStorage.setItem('progress', btoa(atob(newKey)));
+  }
+
+  public getKey(): String {
+    return localStorage.getItem('progress')!;
+  }
+
+  public resetKey(): void {
+    localStorage.setItem('progress', btoa(JSON.stringify(this.default_data)));
+    this.current_data = this.default_data;
   }
 
 }

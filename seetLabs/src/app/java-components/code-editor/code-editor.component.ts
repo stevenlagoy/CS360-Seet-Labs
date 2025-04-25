@@ -46,7 +46,7 @@ export class CodeEditorComponent implements OnInit
   @ViewChild('codeMirrorInsert') codeMirrorInsert!:ElementRef;
   codeMirrorView! :EditorView;
 
-  private baseCode:string = `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis is from java!\");
+  private baseCode:string = `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis\");
   }\n}`;
 
   ngOnInit(): void {
@@ -60,10 +60,10 @@ export class CodeEditorComponent implements OnInit
   public getCode = () => this.codeMirrorView.state.doc.toString();
 
   public async setBaseCode(baseFile:string)
-  { 
+  {
     
     const codeSaved = this.localStorage.codeSaved(this.moduleNumber(), this.assignmentNumber());
-
+    
     if (!codeSaved){
       await fetch("base-code/"+baseFile)
       .then(res => res.text())
@@ -73,7 +73,6 @@ export class CodeEditorComponent implements OnInit
     } else {
       this.baseCode = this.localStorage.getCode(this.moduleNumber(), this.assignmentNumber()).toString();
     }
-    
  
     this.codeMirrorView.dispatch({changes: {
       from: 0,
@@ -94,6 +93,7 @@ export class CodeEditorComponent implements OnInit
       from: 0,
       to: this.codeMirrorView.state.doc.length,
       insert: this.baseCode
+
     }})
 
   }
@@ -101,9 +101,11 @@ export class CodeEditorComponent implements OnInit
   ngAfterViewInit()
   {
     
+    const code = this.localStorage.getPlaygroundCode();
+
     this.codeMirrorView = new EditorView({
       // starting code. Garbage format, I know, but temporary (hopefully).
-      doc: this.baseCode,
+      doc: code == "" ? this.baseCode : code,
       parent: this.codeMirrorInsert.nativeElement,
       extensions: [  // A line number gutter
         lineNumbers(),
