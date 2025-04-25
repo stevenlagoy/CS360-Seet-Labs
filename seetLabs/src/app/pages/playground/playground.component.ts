@@ -39,6 +39,10 @@ export class PlaygroundComponent implements OnInit
     {
       this.splashText="Be careful. Mr. Seet is watching.";
     }
+    else if(Math.random()<.01)
+    {
+      this.splashText="Milk: Required, available.";
+    }
   }
 
   @ViewChild(CodingEnvironmentComponent)environment!:CodingEnvironmentComponent;

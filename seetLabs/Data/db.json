@@ -1,9 +1,8 @@
 {
     "7" : [
 		{"name" : "Module 7: Input and Output"},
-		{"id" : "1", "type" : 0, "file" : "7-1.html"},
-		{"id" : "2", "type" : 1, "questions" : {
-			"name" : "Quiz 7",
+		{"name" : "Reading 7: Input and Output", "id" : "1", "type" : 0, "file" : "7-1.html"},
+		{"name" : "Quiz 7: Input Methodss", "id" : "2", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -83,10 +82,9 @@
 	],
 	"0" : [
 		{"name" : "Module 0: Meet Java"},
-		{"id" : "1", "type" : 0, "file" : "0-1.html"},
-		{"id" : "2", "type" : 2, "context" : "0-2.html", "base" : "0-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "0-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 1 : Java Introduction",
+		{"name" : "Reading 1 : Meet Java", "id" : "1", "type" : 0, "file" : "0-1.html"},
+		{"name" : "Coding 1 : Hello World!", "id" : "2", "type" : 2, "context" : "0-2.html", "base" : "0-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "0-2_test_case.txt"},
+		{"name" : "Quiz 1 : Java Introduction", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "Multiple choice",
@@ -95,6 +93,7 @@
 						"1" : "A Programming Language",
 						"2" : "Where I get my Coffee from",
 						"3" : "Something that prints 'Hello, World!"
+
 					},
 					"correct_responses" : [
 						"1"
@@ -148,10 +147,9 @@
 	],
 	"4" : [
 		{"name" : "Module 4: Objects and Classes"},
-		{"id" : "1", "type" : 0, "file" : "4-1.html"},
-		{"id" : "2", "type" : 2, "context" : "4-2.html", "base" : "4-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "4-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 4",
+		{"name" : "Reading 4: Objects and Classes", "id" : "1", "type" : 0, "file" : "4-1.html"},
+		{"name" : "Coding 4: Designing Classes", "id" : "2", "type" : 2, "context" : "4-2.html", "base" : "4-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "4-2_test_case.txt"},
+		{"name" : "Quiz 4: Classes", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -195,10 +193,9 @@
 	],
 	"9" : [
 		{"name" : "Module 9: Data Structures and Generics"},
-		{"id" : "1", "type" : 0, "file" : "9-1.html"},
-		{"id" : "2", "type" : 2, "context" : "9-2.html", "base" : "9-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "9-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 9",
+		{"name" : "Reading 9: Data Structures and Generics", "id" : "1", "type" : 0, "file" : "9-1.html"},
+		{"name" : "Coding 9: Collections and Generics", "id" : "2", "type" : 2, "context" : "9-2.html", "base" : "9-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "9-2_test_case.txt"},
+		{"name" : "Quiz 9: Data Structures", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -317,10 +314,9 @@
 	],
 	"3" : [
 		{"name" : "Module 3: Methods and Subprograms"},
-		{"id" : "1", "type" : 0, "file" : "3-1.html"},
-		{"id" : "2", "type" : 2, "context" : "3-2.html", "base" : "3-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "3-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 3",
+		{"name" : "Reading 3: Methods and Subprograms", "id" : "1", "type" : 0, "file" : "3-1.html"},
+		{"name" : "Coding 3: Writing and Calling Methods", "id" : "2", "type" : 2, "context" : "3-2.html", "base" : "3-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "3-2_test_case.txt"},
+		{"name" : "Quiz 3: Methods", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -364,10 +360,9 @@
 	],
 	"1" : [
 		{"name" : "Module 1: Variables and Data Types"},
-		{"id" : "1", "type" : 0, "file" : "1-1.html"},
-		{"id" : "2", "type" : 2, "context" : "1-2.html", "base" : "1-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "1-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 2 : Variables",
+		{"name" : "Reading 2 : Variables", "id" : "1", "type" : 0, "file" : "1-1.html"},
+		{"name" : "Coding 2 : Creating Variables", "id" : "2", "type" : 2, "context" : "1-2.html", "base" : "1-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "1-2_test_case.txt"},
+		{"name" : "Quiz 2 : Variables", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -463,9 +458,8 @@
 	],
 	"10" : [
 		{"name" : "Module 10: Recap and Review"},
-		{"id" : "1", "type" : 0, "file" : "10-1.html"},
-		{"id" : "2", "type" : 1, "questions" : {
-			"name" : "Quiz 10",
+		{"name" : "Reading 10: Final Review", "id" : "1", "type" : 0, "file" : "10-1.html"},
+		{"name" : "Quiz 10: Final Quiz", "id" : "2", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -702,7 +696,7 @@
 						"3" : "Correct! ConcurrentHashMap is thread-safe."
 					}
 				},
-				"15s" : {
+				"15" : {
 					"type" : "true false",
 					"question" : "True/False: Generic classes allow you to define type-safe templates.",
 					"options" : {
@@ -723,10 +717,9 @@
 	],
 	"6" : [
 		{"name" : "Module 6: Exception Handling"},
-		{"id" : "1", "type" : 0, "file" : "6-1.html"},
-		{"id" : "2", "type" : 2, "context" : "6-2.html", "base" : "6-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "6-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 6",
+		{"name" : "Reading 6: Exception Handling", "id" : "1", "type" : 0, "file" : "6-1.html"},
+		{"name" : "Coding 6: Throwing and Catching", "id" : "2", "type" : 2, "context" : "6-2.html", "base" : "6-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "6-2_test_case.txt"},
+		{"name" : "Quiz 6: Exceptions", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -770,10 +763,9 @@
 	],
 	"5" : [
 		{"name" : "Module 5: OOP, Interfaces, and Inheritance"},
-		{"id" : "1", "type" : 0, "file" : "5-1.html"},
-		{"id" : "2", "type" : 2, "context" : "5-2.html", "base" : "5-2_base_code.java", "launcher" : "TestCaseLauncher", "testCases" : "5-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 5",
+		{"name" : "Reading 5", "id" : "1", "type" : 0, "file" : "5-1.html"},
+		{"name" : "Coding 5: Practicing OOP", "id" : "2", "type" : 2, "context" : "5-2.html", "base" : "5-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "5-2_test_case.txt"},
+		{"name" : "Quiz 5: Inheritance", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -817,10 +809,9 @@
 	],
 	"8" : [
 		{"name" : "Module 8: Arrays and Collections"},
-		{"id" : "1", "type" : 0, "file" : "8-1.html"},
-		{"id" : "2", "type" : 2, "context" : "8-2.html", "base" : "8-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "8-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 8",
+		{"name" : "Reading 8: Arrays and Collections", "id" : "1", "type" : 0, "file" : "8-1.html"},
+		{"name" : "Coding 8: Arrays and Collections Practice", "id" : "2", "type" : 2, "context" : "8-2.html", "base" : "8-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "8-2_test_case.txt"},
+		{"name" : "Quiz 8: Arrays", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",
@@ -920,10 +911,9 @@
 	],
 	"2" : [
 		{"name" : "Module 2: Control Flow"},
-		{"id" : "1", "type" : 0, "file" : "2-1.html"},
-		{"id" : "2", "type" : 2, "context" : "2-2.html", "base" : "2-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "2-2_test_case.txt"},
-		{"id" : "3", "type" : 1, "questions" : {
-			"name" : "Quiz 2",
+		{"name" : "Reading 3 : Control Flow", "id" : "1", "type" : 0, "file" : "2-1.html"},
+		{"name" : "Coding 2: Conditionals and Loops", "id" : "2", "type" : 2, "context" : "2-2.html", "base" : "2-2_base_code.java", "launcher" : "ConsoleLauncher", "testCases" : "2-2_test_case.txt"},
+		{"name" : "Quiz 2: Control Flow", "id" : "3", "type" : 1, "questions" : {
 			"content" : {
 				"1" : {
 					"type" : "multiple choice",

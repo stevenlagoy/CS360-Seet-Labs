@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.*;
+import java.util.ArrayList;
 
 //package com.seet.labs;
 
@@ -80,6 +81,12 @@ public class LabLauncher
 			System.err.println("Your method should be declared as public, i.e. public static "+userMethod.getName()+"( ... arguments ... )");
 			System.exit(1);
         }
+		catch(Throwable e)
+		{
+			System.err.println("Oh god");
+			e.getCause().printStackTrace();
+			System.exit(1);	
+		}
 
 		return null;
 	

@@ -1,5 +1,1 @@
-1 co
-case_1 : "" : ""
-
-
 case_# : func_name : in_type_1 "value_1", in_type_2 "value_2" : out_type "out_value" ;

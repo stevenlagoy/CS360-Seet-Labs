@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 9",
+            "name" : "Reading 9: Data Structures and Generics",
             "id" : "9-1",
             "type" : "reading_activity",
             "content" : {
@@ -25,7 +25,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 9",
+            "name": "Coding 9: Collections and Generics",
             "id": "9-2",
             "type": "coding_activity",
             "content": {
@@ -45,7 +45,7 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 9",
+            "name" : "Quiz 9: Data Structures",
             "id" : "9-3",
             "type" : "quiz_activity",
             "content" : {

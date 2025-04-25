@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 4",
+            "name" : "Reading 4: Objects and Classes",
             "id" : "4-1",
             "type" : "reading_activity",
             "content" : {
@@ -18,7 +18,7 @@
                 "4p" : "A %kconstructor%/k initializes new objects. It has no return type and matches the class name. Example:%cpublic Car(String model, int year) {%n%tthis.model = model; // set instance field%n%tthis.year = year;%n}%/c If no constructor is defined, Java provides a default no-argument constructor.",
                 "5h1" : "Static Members",
                 "5p" : "%kstatic%/k fields and methods belong to the class itself rather than any instance. Use static for shared data or utility methods. Example:%cpublic static int carCount = 0; // shared among all Car objects%npublic static void showTotalCars() {%n%tSystem.out.println(%'Total cars: %' + carCount);%n}%/c Access static members via %kCar.showTotalCars()%/k.",
-                "6h1" : "The %kthis%/k Keyword",
+                "6h1" : "The 'this' Keyword",
                 "6p" : "%kthis%/k refers to the current object. It clarifies references when parameter names match field names:%cpublic void setModel(String model) {%n%tthis.model = model; // assigns parameter to field%n}%/c Without %kthis%/k, Java treats %kmodel%/k as the parameter.",
                 "7h1" : "Encapsulation",
                 "7p" : "%bEncapsulation%/b hides internal details by using %baccess modifiers%/b (private, public, protected). Provide %bgetters%/b and %bsetters%/b to control field access:%cprivate String model;%npublic String getModel() { return model; }%npublic void setModel(String model) { this.model = model; }%/c",
@@ -29,7 +29,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 4",
+            "name": "Coding 4: Designing Classes",
             "id": "4-2",
             "type": "coding_activity",
             "content": {
@@ -49,7 +49,7 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 4",
+            "name" : "Quiz 4: Classes",
             "id" : "4-3",
             "type" : "quiz_activity",
             "content" : {

@@ -8,7 +8,15 @@
     width:100%;
 }
   
+.error{
+    color:red !important;
+  }
+  
+  .good{
+    color:#2a2 !important;
+  }
 
+  
 .row
 {
     display: flex;

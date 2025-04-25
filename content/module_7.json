@@ -5,7 +5,7 @@
     "activity_count" : 4,
     "content" : {
         "activity_1" : {
-            "name" : "Reading 7",
+            "name" : "Reading 7: Input and Output",
             "id" : "7-1",
             "type" : "reading_activity",
             "content" : {
@@ -25,7 +25,7 @@
             }
         },
         "activity_2" : {
-            "name" : "Quiz 7",
+            "name" : "Quiz 7: Input Methodss",
             "id" : "7-2",
             "type" : "quiz_activity",
             "content" : {

@@ -31,7 +31,7 @@
             }
         },
         "activity_2": {
-            "name": "Coding 2",
+            "name": "Coding 2: Conditionals and Loops",
             "id": "2-2",
             "type": "coding_activity",
             "content": {
@@ -39,7 +39,7 @@
                     "1h1": "Practice with Control Flow",
                     "1p": "You've learned how Java uses conditionals and loops to control the flow of a program. In this activity, we'll solve a classic coding problem called FizzBuzz. Use a %kfor%/k or %kwhile%/k loop with a range from 0 to 100 (including 0 and 100). If the number is divisible by both 5 and 3, print %'FizzBuzz%'. If it is divisible only by 5, print %'Fizz%'. If divisible only by 3, print %'Buzz%'. If divisible by neither, print the number itself. Make sure your output matches these instructions exactly. Use conditionals to implement this behavior.%nHINT: To check if one number is a factor of another, use the modulo %k%%%/k operator. %kX %% Y == 0%/k is true if Y is a factor of X."
                 },
-                "base_code": "public class Lab {%n%tpublic static void fizzBuzz() {%n%t%t// Write your code below%n%t%t%n%t}%n}",
+                "base_code": "public class Lab {%n%tpublic static void main(String[] args) {%n%t%t// Write your code below%n%t%t%n%t}%n}",
                 "launcher": "ConsoleLauncher",
                 "number_test_cases": 1,
                 "test_cases": {
@@ -54,7 +54,7 @@
             }
         },
         "activity_3" : {
-            "name" : "Quiz 2",
+            "name" : "Quiz 2: Control Flow",
             "id" : "2-3",
             "type" : "quiz_activity",
             "content" : {
@@ -67,9 +67,7 @@
                         "3" : "do-while",
                         "4" : "foreach"
                     },
-                    "correct_responses" : [
-                        "2"
-                    ],
+                    "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
                         "1" : "Not quite. While loops are great when we don't know how many times we need to loop.",
@@ -85,9 +83,7 @@
                         "1" : "True",
                         "2" : "False"
                     },
-                    "correct_responses" : [
-                        "2"
-                    ],
+                    "correct_responses" : ["2"],
                     "points" : 10,
                     "feedback" : {
                         "1" : "Incorrect. 'break' completely exits the loop, while 'continue' skips to the next iteration.",
