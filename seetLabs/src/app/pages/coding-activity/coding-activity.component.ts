@@ -7,6 +7,7 @@ import java from 'highlight.js/lib/languages/java';
 import { JsonServerTestService } from '../../services/json-server-test.service';
 import { catchError } from 'rxjs';
 import { CodingActivityData } from '../../models/codingActivityData';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-coding-activity',
@@ -14,6 +15,9 @@ import { CodingActivityData } from '../../models/codingActivityData';
   templateUrl: './coding-activity.component.html',
   styleUrl: './coding-activity.component.css'
 })
+
+
+
 export class CodingActivityComponent 
 {
 
@@ -23,6 +27,10 @@ export class CodingActivityComponent
   // Nav Data Members
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
+
+  //signals
+  moduleProgress = signal<number>(0);
+  localStorage = new LocalStorageService();
 
 
   // My gorgeous Children
@@ -42,8 +50,14 @@ export class CodingActivityComponent
 
     this.moduleNumber.set(id as string);
     this.assignmentNumber.set(assignmentNumber as string);
+    this.moduleProgress.set(this.localStorage.getModulePercentage(this.moduleNumber()));
 
     this.readJSON();
+
+    const updateCode = setInterval(() => {
+      // console.log(this.environment.ControlPanel.getCode());
+      this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.environment.ControlPanel.getCode());
+    }, 2000);
     
   }
 
@@ -67,4 +81,5 @@ export class CodingActivityComponent
       });
     
   }
+
 }

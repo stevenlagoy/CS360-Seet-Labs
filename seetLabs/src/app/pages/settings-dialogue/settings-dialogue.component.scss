@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+
+#title {
+    font-family: 'Inter-Bold';
+    font-size: 20px;
+}
+
+#danger {
+    @include mat.fab-overrides((
+        container-color: rgb(247, 156, 156),
+        foreground-color: #000
+        // foreground-color: red,
+    ));
+}

@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, Signal, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, OnInit, signal, Signal, ViewChild } from '@angular/core';
 import {Extension, EditorState} from "@codemirror/state"
 import {
   EditorView, keymap, highlightSpecialChars, drawSelection,
@@ -22,6 +22,8 @@ import {
 } from "@codemirror/autocomplete"
 import {lintKeymap} from "@codemirror/lint"
 import {java} from "@codemirror/lang-java"
+import { LocalStorageService } from '../../services/local-storage.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-code-editor',
@@ -29,26 +31,48 @@ import {java} from "@codemirror/lang-java"
   templateUrl: './code-editor.component.html',
   styleUrl: './code-editor.component.css'
 })
-export class CodeEditorComponent
+export class CodeEditorComponent implements OnInit
 {
+
+  constructor(private _route: ActivatedRoute) {}
+
+  //routing
+  moduleNumber = signal<string>("");
+  assignmentNumber = signal<string>("");
+  localStorage = new LocalStorageService();
+
 
   // code mirror
   @ViewChild('codeMirrorInsert') codeMirrorInsert!:ElementRef;
   codeMirrorView! :EditorView;
 
-  private baseCode:string = `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis is from java!\");
+  private baseCode:string = `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis\");
   }\n}`;
+
+  ngOnInit(): void {
+    const id = this._route.snapshot.paramMap.get('id');
+    const assignmentNumber = this._route.snapshot.paramMap.get('assignmentNumber');
+
+    this.moduleNumber.set(id as string);
+    this.assignmentNumber.set(assignmentNumber as string);
+  }
 
   public getCode = () => this.codeMirrorView.state.doc.toString();
 
   public async setBaseCode(baseFile:string)
-  { 
+  {
     
-    await fetch("base-code/"+baseFile)
+    const codeSaved = this.localStorage.codeSaved(this.moduleNumber(), this.assignmentNumber());
+    
+    if (!codeSaved){
+      await fetch("base-code/"+baseFile)
       .then(res => res.text())
       .then(code => {
         this.baseCode = code;
       })
+    } else {
+      this.baseCode = this.localStorage.getCode(this.moduleNumber(), this.assignmentNumber()).toString();
+    }
  
     this.codeMirrorView.dispatch({changes: {
       from: 0,
@@ -69,6 +93,7 @@ export class CodeEditorComponent
       from: 0,
       to: this.codeMirrorView.state.doc.length,
       insert: this.baseCode
+
     }})
 
   }
@@ -76,9 +101,11 @@ export class CodeEditorComponent
   ngAfterViewInit()
   {
     
+    const code = this.localStorage.getPlaygroundCode();
+
     this.codeMirrorView = new EditorView({
       // starting code. Garbage format, I know, but temporary (hopefully).
-      doc: this.baseCode,
+      doc: code == "" ? this.baseCode : code,
       parent: this.codeMirrorInsert.nativeElement,
       extensions: [  // A line number gutter
         lineNumbers(),

@@ -8,7 +8,7 @@
             @if (moduleNumber != '0' && getAssignmentNumber() > 1 || (moduleNumber == '0' && getAssignmentNumber() > 1)){
                 <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" mat-fab extended>
                     <mat-icon>arrow_back</mat-icon>
-                    Last Activity
+                    Prev Activity
                 </a>
             }
             @else if (moduleNumber != '0' && getAssignmentNumber() == 1){
@@ -23,9 +23,26 @@
                     Last Module
                 </a>
             }
-            <div class="progress-bar">
-                <progress-bar title="Module {{moduleNumber}} Completion" value="50"></progress-bar>
+            <div class="progress-parent">
+                <div class="progress-bar">
+                    <progress-bar title="Module {{moduleNumber}} Completion" value="{{modulePercetage}}"></progress-bar>
+                </div>
+                <!-- <p>|</p> -->
+                <div class="activity-progress">
+                    @if (activityPassed == true){
+                        <div class="activity-progress-widget-passed">
+                            <mat-icon>check_circle</mat-icon>
+                            <p id="activity-progress-text">Activity Completed</p>
+                        </div>
+                    } @else {
+                        <div class="activity-progress-widget-failed">
+                            <mat-icon>error</mat-icon>
+                            <p id="activity-progress-text">Activity Incomplete</p>
+                        </div>
+                    }
+                </div>
             </div>
+            
             @if (moduleNumber != '10' && getAssignmentNumber() < numberAssignments() || (moduleNumber == '10' && getAssignmentNumber() < numberAssignments())){
                 <a href="/module/{{moduleNumber}}/{{ incrementAssignment() }}" mat-fab extended>
                     <mat-icon>arrow_forward</mat-icon>
@@ -55,7 +72,7 @@
                 @if (moduleNumber != '0' && getAssignmentNumber() > 1 || (moduleNumber == '0' && getAssignmentNumber() > 1)){
                     <a href="/module/{{moduleNumber}}/{{ decrementAssignment() }}" mat-fab extended>
                         <mat-icon>arrow_back</mat-icon>
-                        Last Activity
+                        Prev Activity
                     </a>
                 }
                 @else if (moduleNumber != '0' && getAssignmentNumber() == 1){

@@ -17,6 +17,8 @@ export class ModuleSubHeaderComponent implements OnInit {
   @Input() headerBottom = false;
   @Input() moduleNumber = '';
   @Input() assignmentNumber = '';
+  @Input() modulePercetage = 0;
+  @Input() activityPassed = false;
   goForward = signal<Boolean>(true);
   goBack = signal<Boolean>(true);
   

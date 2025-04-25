@@ -95,6 +95,16 @@ body {
     title-text-font: 'Inter-Medium',
     subtitle-text-font: 'Inter-Medium'
   ));
+  @include mat.snack-bar-overrides((
+    container-color: #005495,
+    supporting-text-color: rgb(255, 255, 255),
+    container-shape: 15px,
+  ));
+  
+}
+
+.mdc-snackbar__label {
+  padding: 0px !important;
 }
 
 a { font-family: 'Inter-Regular'; font-weight: 400; }

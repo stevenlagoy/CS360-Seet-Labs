@@ -14,11 +14,10 @@ export class CodingEnvironmentComponent {
 
   @Input() height = '';
   @Input() shouldDisplayContext:boolean = false;
-
-
+  
 
   @ViewChild(CodeEditorComponent)Editor!:CodeEditorComponent;
-  @ViewChild(CodeControlComponent)ControlPanel!:CodeControlComponent;
+  @ViewChild(CodeControlComponent) public ControlPanel!:CodeControlComponent;
   @ViewChild(ContextPaneComponent)ContextPane?:ContextPaneComponent;
 
 
@@ -27,8 +26,14 @@ export class CodingEnvironmentComponent {
   ngAfterViewInit()
   {
     this.ControlPanel.getCode = this.Editor.getCode;
-  
   }
+
+  
+
+
+
+
+
 
   
 

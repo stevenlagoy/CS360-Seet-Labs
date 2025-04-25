@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, signal } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
@@ -22,10 +22,12 @@ export class TextAreaComponent {
   @Input() label = '';
   @Input() initialValue='';
 
-  public content:string = "";
+  public content = signal<String>("");
+
+  // public content:string = "";
 
   ngOnInit(){
-    this.content = this.initialValue;
+    this.content.set(this.initialValue);
   }
 }
 

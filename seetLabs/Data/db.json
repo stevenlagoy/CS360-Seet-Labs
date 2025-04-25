@@ -1,5 +1,5 @@
 {
-	"7" : [
+    "7" : [
 		{"name" : "Module 7: Input and Output"},
 		{"name" : "Reading 7: Input and Output", "id" : "1", "type" : 0, "file" : "7-1.html"},
 		{"name" : "Quiz 7: Input Methodss", "id" : "2", "type" : 1, "questions" : {
@@ -92,7 +92,8 @@
 					"options" : {
 						"1" : "A Programming Language",
 						"2" : "Where I get my Coffee from",
-						"3" : "Something that prints 'Hello, World!'"
+						"3" : "Something that prints 'Hello, World!"
+
 					},
 					"correct_responses" : [
 						"1"
@@ -954,4 +955,5 @@
 			}
 		}
 	]
+
 }

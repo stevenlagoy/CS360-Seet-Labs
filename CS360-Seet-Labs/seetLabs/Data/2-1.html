@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<p>Reading 3 : Control Flow</p>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<p>Control Flow</p>
+	<h1>Conditionals</h1>
+	<p>Programs don't just execute line by line—they make decisions! <b>Conditionals</b> allow us to control which code runs based on certain conditions. In Java, we use <span class="keyword">if</span> statements to check conditions. The simplest <span class="keyword">if</span> statement is written like this: </p>
+	<pre><code class="language-java">if(condition) result;</code></pre>
+	<p>The <span class="keyword">if</span> keyword introduces a conditional. The condition inside the parentheses must evaluate to a boolean, that is, <span class="keyword">true</span> or <span class="keyword">false</span>. If the condition is <span class="keyword">true</span>, then the result is executed. Otherwise, nothing happens and the program continues to the next line. Even though this very simple <span class="keyword">if</span> statement is fine when there's only one line to be run inside the conditional, it's almost always best to use curly braces like this: </p>
+	<pre><code class="language-java">if (temperature > 30) { <br>&#10;&#9;System.out.println("It's hot outside!"); <br>&#10;}</code></pre>
+	<p> This way, we can include several lines of code inside the conditional statement, and it's more clear what's included and what's not.<br>&#10;We can extend our decision-making with <span class="keyword">else if</span> and <span class="keyword">else</span> clauses to handle multiple scenarios. Look at this program, and see if you can guess its output:</p>
+	<pre><code class="language-java">int my_race_time = 59;<br>&#10;int record_race_time = 51;<br>&#10;System.out.println("Your time was: " + my_race_time + " seconds");<br>&#10;if (my_race_time < 55) {<br>&#10;&#9;System.out.println("Wow! That was fast!");<br>&#10;}<br>&#10;else if (my_race_time < 60) {<br>&#10;&#9;System.out.println("Excellent!");<br>&#10;}<br>&#10;else if (my_race_time < 70) {<br>&#10;&#9;System.out.println("Good!");<br>&#10;}<br>&#10;else {<br>&#10;&#9;System.out.println("You finished the race!");<br>&#10;}<br>&#10;if (my_race_time < record_race_time) {<br>&#10;&#9;System.out.println("A new record!!");<br>&#10;}<br>&#10;else {<br>&#10;&#9;System.out.println("You were " + (record_race_time - my_race_time) + " seconds slower than the record.");<br>&#10;}</code></pre>
+	<p>In this example, the output will be:<br>&#10;<span class="keyword">Your time was: 59 seconds<br>&#10;Excellent!<br>&#10;You were 8 seconds slower than the record</span><br>&#10;Using <span class="keyword">if</span>, <span class="keyword">else if</span>, and <span class="keyword">else</span> blocks, we can implement all kinds of conditional behavior.</p>
+	<h1>Looping</h1>
+	<p>Sometimes, we need to repeat actions <b>multiple times</b>. Loops help us avoid writing the same code over and over. This makes code more <b>reusable</b> and expands the type of things we're able to do with our programs.</p>
+	<h1>While Loops: One more time!</h1>
+	<p>The <span class="keyword">while</span> loop repeats as long as a condition is true: </p>
+	<pre><code class="language-java">int count = 0;<br>&#10;while (count < 5) { <br>&#10;&#9;System.out.println(count); <br>&#10;&#9;count++; <br>&#10;}</code></pre>
+	<p>In this case, the body of the loop will be executed 5 times, once each when count is equal to 0, 1, 2, 3, and 4. When count becomes 5, the loop breaks since count is not less than 5. Here's another example of a while loop. Try and guess what this code is doing, and also what the output will be:</p>
+	<pre><code class="language-java">int value = 0;<br>&#10;while (value * value <= 100) {<br>&#10;&#9;value++;<br>&#10;}<br>&#10;System.out.println(value);</code></pre>
+	<p>This code searches for some value which has a square greater than 100. The first integer which fulfils this condition is 11.</p>
+	<h1>For Loops: A range of possibilities!</h1>
+	<p>The <span class="keyword">for</span> loop is perfect when you know exactly how many times you want the code to be run. Here's an example of looping on a <b>range</b>: </p>
+	<pre><code class="language-java">for (int i = 0; i <= 5; i++) { <br>&#10;&#9;System.out.println(i); <br>&#10;}</code></pre>
+	<p>This code will print all the integers between 0 and 5. The <span class="keyword">for</span> loop is defined by three statements, separated by semicolons (';').<br>&#10;The first is the <b>Initialization</b>, where we can create variables to be used inside the loop. In the loop above, <span class="keyword">int i = 0</span> creates a variable called i with an initial value of 0. Most commonly, these are single-letter variables starting alphabetically with i, then j, and so on if needed (some programmers choose to use 'ii' instead of 'j'. Always make your code as understandable as possible!). Remember when we talked about variable <b>scope</b>? These loop variables are scoped only to the inside of the loop: they're destroyed as soon as the loop breaks.<br>&#10;The second statement is the <b>Condition</b>, which tells the code when to continue and when to exit or break. This looks the very same as the conditional inside an <span class="keyword">if</span> or <span class="keyword">while</span> block. Once the condition becomes false, the loop exits. In the example above, the condition is <span class="keyword">i <= 5</span>. Once this condition is false (when i is 6 or above), the loop will stop executing. Note that the condition will only be evaluated <i>after</i> a loop is complete.<br>&#10;Finally, there is the <b>Increment</b>. This tells the loop what should change after each iteration. In the above example, <span class="keyword">i++</span> means that I should be incremented, or 1 added to it, after each loop execution. Like the condition, this will only be evaluated <i>after</i> the whole loop has been run.<br>&#10;Technically, you could leave any one of these statement out of the loop. If you don't want to initialize any variables, check a condition, or increment a value, you can put nothing between the semicolons at all! The following code results in an infinite loop, since there is no condition to end the looping:</p>
+	<pre><code class="language-java">for (;;) { ... }</code></pre>
+	<p></p>
+	<h1>Do-While Loops: Guaranteed Fun!</h1>
+	<p>What if we want to use a loop, but we want to ensure the body is executed at least once? The <span class="keyword">do-while</span> loop runs the code before it checks conditions, that way at least one execution is performed: </p>
+	<pre><code class="language-java">int i = 0;<br>&#10;do { <br>&#10;&#9;System.out.println(i); <br>&#10;&#9;i++; <br>&#10;} while (i < 5);</code></pre>
+	<p> In this example, the loop will run once for i = 0, 1, 2, 3, 4 <i>and</i> 5. The loop will only check if i is greater than 5 after the body is executed. Here's an example where the benefits of a <span class="keyword">do-while</span> loop are used: </p>
+	<pre><code class="language-java">int numPeople = 1;<br>&#10;do {<br>&#10;&#9;System.out.println("Welcome!");<br>&#10;&#9;numPeople--;<br>&#10;} while (numPeople > 0);</code></pre>
+	<p>In this example, even though the condition is false once we reach the end of the loop, the code was run one time. <span class="keyword">Do-While</span> loops are like someone who insists on trying every flavor before choosing a favorite!</p>
+	<h1>Understanding Loops</h1>
+	<p>The <span class="keyword">for</span> loop and the <span class="keyword">while</span> loop are closely related: they could be siblings! Every <span class="keyword">for</span> loop can be rewritted as a <span class="keyword">while</span> loop:</p>
+	<pre><code class="language-java">for (int i = 10; i > 0; i--) { ... }</code></pre>
+	<p> Is really the same as:</p>
+	<pre><code class="language-java">int i = 10;<br>&#10;while (i > 0) {<br>&#10;&#9;...<br>&#10;&#9;i--;<br>&#10;}</code></pre>
+	<p>So, why do we use <span class="keyword">for</span> loops? Well, <span class="keyword">for</span> loops have a much more <b>concise</b> syntax: almost every programmer would prefer to read a <span class="keyword">for</span> loop than a <span class="keyword">while</span> loop, even when they theoretically do the same thing. Each has their own use, but <b>clarity</b> and <b>readability</b> are key in everything. Learn to use these loops well, and they'll be excellent tools.</p>
+	<h1>Advanced Looping (For-Each)</h1>
+	<p>Sometimes, we just want to loop <b>through every item</b> in a collection without the hassle of managing indexes. The <span class="keyword">for-each</span> loop makes this easy: </p>
+	<pre><code class="language-java">int[] numbers = {1, 2, 3, 4, 5};<br>&#10;for (int num : numbers) { <br>&#10;&#9;System.out.println(num); <br>&#10;}</code></pre>
+	<p> Each entry in the array will be printed in this example. It's quick, clean, and gets you on with the fun stuff. We'll return to <span class="keyword">for-in</span> loops when we talk about Collections in a later module.</p>
+	<h1>Break and Continue: Controlling Loops</h1>
+	<p>Want to exit out of a loop early? Use <span class="keyword">break</span> to exit the loop like you'd like to escape a boring meeting: </p>
+	<pre><code class="language-java">for (int i = 0; i < 10; i++) { <br>&#10;&#9;if (i == 5) { <br>&#10;&#9;&#9;break; <br>&#10;&#9;} <br>&#10;&#9;System.out.println(i); <br>&#10;}</code></pre>
+	<p> Even though the condition is true when i equals 5, the inner break will be encountered and the loop will stop before printing 5. Here's another case: imagine you want to skip a part of the loop and move on, rather than completing all the rest of the body. Use <span class="keyword">continue</span> for this kind of functionality: </p>
+	<pre><code class="language-java">for (int i = 0; i < 10; i++) { <br>&#10;&#9;if (i % 2 == 0) { <br>&#10;&#9;&#9;continue; <br>&#10;&#9;} <br>&#10;&#9;System.out.println(i); <br>&#10;}</code></pre>
+	<p> In this code, 2 will not be print out, but 3, 4, and so on will be. Using <span class="keyword">break</span> statements is like skipping past the boring part of a movie!</p>
+	<h1>Nested Loops and Conditionals</h1>
+	<p>We can <b>nest</b> loops and conditionals inside each other to tackle complex problems. For example: </p>
+	<pre><code class="language-java">for (int i = 0; i < 3; i++) { <br>&#10;&#9;for (int j = 0; j < 3; j++) { <br>&#10;&#9;&#9;System.out.println("i: " + i + " j: " + j); <br>&#10;&#9;} <br>&#10;}</code></pre>
+	<p> This is when you might want to use 'j' as an index like we talked about before. In this code, the inner loop will be fully executed for each time the outer loop is run. A total of 9 lines will be print by this code.<br>&#10;Beware! nesting too many loops can make your code as tangled as a bowl of spaghetti! And nested conditionals? They're like decision trees in a magical forest- it's easy to lose the path: </p>
+	<pre><code class="language-java">if (score >= 90) { <br>&#10;&#9;if (bonus) { <br>&#10;&#9;&#9;System.out.println("A+"); <br>&#10;&#9;} else { <br>&#10;&#9;&#9;System.out.println("A"); <br>&#10;&#9;} <br>&#10;}</code></pre>
+	<p> There are certainly uses for nested conditionals, but you should be careful to make your code clear and readable.</p>
+</body>
+</html>

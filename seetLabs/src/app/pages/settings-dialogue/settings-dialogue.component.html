@@ -1,0 +1,32 @@
+<h1 id="title" mat-dialog-title>Settings</h1>
+<mat-dialog-content>
+    <p>Manage all of your session settings here.</p>
+    
+    <!-- COPY SESSION KEY -->
+    <h3>Copy Session Key</h3>
+    <p>The session key contains all of your progress. It is not gauranteed that this progress will be saved the next time you visit. However, having a copy of your key will allow you to retain your session on every visit.</p>
+    <button (click)="copyKey()" mat-fab extended>Copy Key</button>
+    <br><br>
+    
+    <!-- RESET PROGRESS -->
+    <h3>Reset Progress</h3>
+    <p>All your progress will be reset. Be careful and save a backup copy of your key if you want to save your progress.</p>
+    <button id="danger" (click)="removeKey()" mat-fab extended>Reset Progress</button>
+    <br><br>
+
+    <!-- UPDATE KEY -->
+    <h3>Update Key</h3>
+    <p>Paste a backup key to restore your progress from a previous session.</p>
+    <text-area label="Insert Key" width="100%" #key></text-area> 
+    <br><br>
+    @if (message() != ""){
+        <p>{{message()}}</p>
+    } @else {
+        <p></p>
+    }
+    <button (click)="writeKey(key.content())" mat-fab extended>Update Key</button>
+    <p></p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

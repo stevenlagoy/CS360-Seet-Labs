@@ -5,7 +5,10 @@ import { CommonModule } from '@angular/common';
 import { GradientHeaderComponent } from '../../components/gradient-header/gradient-header.component';
 import { JsonServerTestService } from '../../services/json-server-test.service';
 import { MatIcon } from '@angular/material/icon';
-import { MatButton } from '@angular/material/button';
+import {
+  MatDialog,
+} from '@angular/material/dialog';
+import { DialogBoxComponent } from '../../components/dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-home-page',
@@ -20,9 +23,12 @@ export class HomePageComponent implements OnInit {
   moduleNames = signal<String[]>([]);
   moduleLengths = signal<number[]>([]);
   activities = signal<number[][]>([]);
+  loading = signal<boolean>(false);
+  private dialogBox = inject(MatDialog);
 
   async ngOnInit(): Promise<void> {
     let modNames: String[] = ["", "", "", "", "", "", "", "", "", "", ""];
+    let modLengths : number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     for (let i = 0; i < 11; i++){
       //get content from each module
       const data = this.getDataService.getModuleData(i.toString()).pipe(
@@ -30,10 +36,7 @@ export class HomePageComponent implements OnInit {
         //set names of modules
         modNames[i] = data[0].name;
 
-        //set lengths of modules (# of assignments)
-        this.moduleLengths.update(vals => {
-          return [...vals, Object.keys(data).length-1];
-        })
+        modLengths[i] = (Object.keys(data).length-1);
 
         //set activity types
         this.activities.update(vals => {
@@ -45,7 +48,13 @@ export class HomePageComponent implements OnInit {
         })
       })
     }
+    this.moduleLengths.set(modLengths);
     this.moduleNames.set(modNames);
+    this.loading.set(true);
+  }
+
+  openDialogBox(): void {
+    this.dialogBox.open(DialogBoxComponent);
   }
 
   public getModules(num: number): any[] {
@@ -56,5 +65,4 @@ export class HomePageComponent implements OnInit {
     return Array(num);
   }
 
-  
 }
