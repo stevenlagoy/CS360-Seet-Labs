@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Buffer } from 'buffer';
 
 type LooseJsonObject = { [key: string]: any };
 
@@ -70,7 +71,9 @@ export class LocalStorageService {
 
   constructor() { 
       if (localStorage.getItem('progress') == null){
-        localStorage.setItem('progress', btoa(JSON.stringify(this.default_data)));
+        // console.log("HERE??");
+        console.log(Buffer.from("this is a test").toString('base64'));
+        localStorage.setItem('progress', Buffer.from(JSON.stringify(this.default_data)).toString('base64'));
       }
       this.current_data = this.getProgress();
   }
@@ -83,19 +86,19 @@ export class LocalStorageService {
   public writeProgress(module: String, assignment_id: String): void {
     this.current_data  = this.getProgress();
     this.current_data[Number(module)][Number(assignment_id)-1].passed = "true";
-    localStorage.setItem('progress', btoa(JSON.stringify(this.current_data)));
+    localStorage.setItem('progress', Buffer.from(JSON.stringify(this.current_data)).toString("base64"));
   }
 
   public writeCode(module: String, assignment_id: String, code: String): void {
     this.current_data  = this.getProgress();
     this.current_data[Number(module)][Number(assignment_id)-1].code = code;
-    localStorage.setItem('progress', btoa(JSON.stringify(this.current_data)));
+    localStorage.setItem('progress', Buffer.from(JSON.stringify(this.current_data)).toString("base64"));
   }
 
   public writePlaygroundCode(code: String): void {
     this.current_data  = this.getProgress();
     this.current_data["playground"].code = code;
-    localStorage.setItem('progress', btoa(JSON.stringify(this.current_data)));
+    localStorage.setItem('progress', Buffer.from(JSON.stringify(this.current_data)).toString("base64"));
   }
 
   public getPlaygroundCode(): string {
@@ -112,7 +115,7 @@ export class LocalStorageService {
   }
 
   public getProgress() : LooseJsonObject {
-    return JSON.parse(atob(localStorage.getItem('progress')!));
+    return JSON.parse(Buffer.from(localStorage.getItem('progress')!, 'base64').toString('utf-8'));
   }
 
   public getModulePercentage(module: String): number {
@@ -127,7 +130,7 @@ export class LocalStorageService {
   }
 
   public updateKey(newKey: string): void {
-    localStorage.setItem('progress', btoa(atob(newKey)));
+    localStorage.setItem('progress', Buffer.from(Buffer.from(newKey, 'base64').toString('utf-8')).toString("base64"));
   }
 
   public getKey(): String {
@@ -135,7 +138,7 @@ export class LocalStorageService {
   }
 
   public resetKey(): void {
-    localStorage.setItem('progress', btoa(JSON.stringify(this.default_data)));
+    localStorage.setItem('progress', Buffer.from(JSON.stringify(this.default_data)).toString("base64"));
     this.current_data = this.default_data;
   }
 
