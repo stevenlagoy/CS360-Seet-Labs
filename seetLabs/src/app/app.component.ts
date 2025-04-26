@@ -20,7 +20,9 @@ import { LocalStorageService } from './services/local-storage.service';
 export class AppComponent implements OnInit {
   title : String  = 'seetLabs';
   
+  constructor(private localStorage: LocalStorageService) {}
+  
   ngOnInit(): void {
-    new LocalStorageService();
+    // LocalStorageService is automatically initialized via DI
   }
 }

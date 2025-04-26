@@ -24,11 +24,14 @@ export class PlaygroundComponent implements OnInit
 
   public splashText:string = "";
 
-  constructor()
-  {
-    let splashTexts 
-    = ["What will you create?", "Infinite Possibilities.", 
-      "Go on, play!", "Don't let the bugs get you down.", 
+  @ViewChild(CodingEnvironmentComponent)environment!:CodingEnvironmentComponent;
+
+  constructor(
+    private localStorage: LocalStorageService
+  ) {
+    let splashTexts
+    = ["What will you create?", "Infinite Possibilities.",
+      "Go on, play!", "Don't let the bugs get you down.",
       "You can make anything you can imagine.",
        "Hmm. I wonder what this does...", "Remember to write your Javadoc(tm)!"]
 
@@ -44,9 +47,6 @@ export class PlaygroundComponent implements OnInit
       this.splashText="Milk: Required, available.";
     }
   }
-
-  @ViewChild(CodingEnvironmentComponent)environment!:CodingEnvironmentComponent;
-  private localStorage = new LocalStorageService();
 
   ngOnInit(): void {  
 

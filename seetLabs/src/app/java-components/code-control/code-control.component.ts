@@ -7,8 +7,6 @@ import { LabCompiler } from './LabCompiler';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { ActivatedRoute } from '@angular/router';
 
-
-
 declare let cheerpjInit: any;
 declare let cheerpjRunMain: any;
 declare let cheerpOSAddStringFile:any;
@@ -29,33 +27,30 @@ export async function Java_LabLauncher_callJS(lib:any /*: CJ3Library*/,self:any 
 
 export class CodeControlComponent implements OnInit
 {
-
-
     private _status:Status = new Status();
     
-    constructor(private _route: ActivatedRoute) {}
+    constructor(
+      private _route: ActivatedRoute,
+      private localStorage: LocalStorageService
+    ) {}
 
     get status() {return this._status;}
 
     @ViewChild(JavaOutputComponent)output!:JavaOutputComponent;
 
-
     public getCode!:() => string;
-
     
     private compiler!:LabCompiler;
 
     private launcherName = "PlaygroundLauncher";
     private testCasesPath = "";
     private isPlayground:boolean = true;
-    public localStorage = new LocalStorageService();
 
     public moduleNumber = signal<string>("");
     public assignmentNumber = signal<string>("");
 
     public setLauncherClass(value:string)
     {
-     
       this.isPlayground = false;
       this.launcherName = value;
       if(this.compiler !== undefined)
@@ -79,7 +74,6 @@ export class CodeControlComponent implements OnInit
 
     private async init()
     {
-
       // actually init cheerpj.
       await cheerpjInit( {natives: { Java_JSOutputStream_jsWrite, Java_LabLauncher_callJS }}  );
   
@@ -101,65 +95,58 @@ export class CodeControlComponent implements OnInit
       this._status.setStatus("", true, true);
     } 
 
-
-    
-  public async mainButton()
-  {
-    if(!this._status.programRunning)
+    public async mainButton()
     {
-      this.runJava();
-      return;
+      if(!this._status.programRunning)
+      {
+        this.runJava();
+        return;
+      }
+
+      // stop the program.
+      this._status.programRunning = false;
+      this._status.setStatus("Program Stopped", true);
+      LabLauncher?.end();
     }
 
-    // stop the program.
-    this._status.programRunning = false;
-    this._status.setStatus("Program Stopped", true);
-    LabLauncher?.end();
-  }
-
-
-  public async runJava()
-  {
-
-    this.output!.clear();  
-    
-   
-    if(!await this.compiler.compile(this.getCode()))
+    public async runJava()
     {
-      return;
-    }
-
-    this._status.setStatus("Stop Program", false, true);
-    this._status.programRunning = true;
-
-    let retVal = await cheerpjRunMain(
-        this.launcherName,
-        "/files/Lab.jar",
-        this.testCasesPath
-    );
-    this._status.programRunning = false;
-
-    if(this.isPlayground)
-    {
-      this._status.setStatus("Returned with code "+await retVal, true);
-      return;
-    }
-    
-    if((await retVal) == 0)
-    {
-      // this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber())
-      // this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.getCode());
-      this._status.setStatus("Activity Complete! Good job.", true);
-      this._status.setStatusClass("good");
+      this.output!.clear();  
       
-    }
-    else
-    {
-      // this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.getCode());
-      this._status.setStatus("Hmm. That's not quite what we were looking for.", true);
-      this._status.setStatusClass("error");
-    }
+      if(!await this.compiler.compile(this.getCode()))
+      {
+        return;
+      }
 
-  }
+      this._status.setStatus("Stop Program", false, true);
+      this._status.programRunning = true;
 
+      let retVal = await cheerpjRunMain(
+          this.launcherName,
+          "/files/Lab.jar",
+          this.testCasesPath
+      );
+      this._status.programRunning = false;
+
+      if(this.isPlayground)
+      {
+        this._status.setStatus("Returned with code "+await retVal, true);
+        return;
+      }
+      
+      if((await retVal) == 0)
+      {
+        // this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber())
+        // this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.getCode());
+        this._status.setStatus("Activity Complete! Good job.", true);
+        this._status.setStatusClass("good");
+        
+      }
+      else
+      {
+        // this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.getCode());
+        this._status.setStatus("Hmm. That's not quite what we were looking for.", true);
+        this._status.setStatusClass("error");
+      }
+    }
 }

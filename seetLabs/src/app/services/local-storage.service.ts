@@ -71,8 +71,6 @@ export class LocalStorageService {
 
   constructor() { 
       if (localStorage.getItem('progress') == null){
-        // console.log("HERE??");
-        console.log(Buffer.from("this is a test").toString('base64'));
         localStorage.setItem('progress', Buffer.from(JSON.stringify(this.default_data)).toString('base64'));
       }
       this.current_data = this.getProgress();

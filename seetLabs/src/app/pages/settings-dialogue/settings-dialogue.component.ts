@@ -21,10 +21,12 @@ import { LocalStorageService } from '../../services/local-storage.service';
 })
 export class SettingsDialogueComponent {
   
-  constructor(private clipboard: Clipboard) {}
-
   public message = signal<String>("");
-  private localStorage = new LocalStorageService();
+
+  constructor(
+    private clipboard: Clipboard,
+    private localStorage: LocalStorageService
+  ) {}
 
   copyKey(): void {
     const key = this.localStorage.getKey();
