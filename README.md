@@ -1,3 +1,9 @@
+## Setup Instructions
+in the seetLabs directory, run  `npm install`.
+To start the dev server, naviagate to the seetLabs Directory.
+On mac and linux, run `npm start`. On windows, run `start.bat`.
+Navigate to `localhost:4200` on your web browser to see the site.
+
 # Seet Labs
 
 I was in my office, trying to keep the many projects on my plate in motion, when an unfamiliar young man walked in. 
