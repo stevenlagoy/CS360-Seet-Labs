@@ -48,7 +48,13 @@ export class CodeControlComponent implements OnInit
 
     public moduleNumber = signal<string>("");
     public assignmentNumber = signal<string>("");
+    public activityPassed = signal<boolean>(false);
 
+
+    public getActivityPassed() : boolean {
+      return this.activityPassed();
+    }
+    
     public setLauncherClass(value:string)
     {
       this.isPlayground = false;
@@ -70,6 +76,10 @@ export class CodeControlComponent implements OnInit
       this.moduleNumber.set(id!);
       this.assignmentNumber.set(assignmentNumber!);
       this.init();
+
+      if (this.localStorage.getActivityStatus(this.moduleNumber(), this.assignmentNumber())){
+        this.activityPassed.set(true);
+      }
     }
 
     private async init()
@@ -136,9 +146,10 @@ export class CodeControlComponent implements OnInit
       
       if((await retVal) == 0)
       {
-        // this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber())
-        // this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.getCode());
+        this.localStorage.writeProgress(this.moduleNumber(), this.assignmentNumber())
+        this.localStorage.writeCode(this.moduleNumber(), this.assignmentNumber(), this.getCode());
         this._status.setStatus("Activity Complete! Good job.", true);
+        this.activityPassed.set(true);
         this._status.setStatusClass("good");
         
       }
