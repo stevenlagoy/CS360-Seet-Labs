@@ -40,6 +40,8 @@ export class CodingActivityComponent
     private cdr: ChangeDetectorRef,
     private localStorage: LocalStorageService
   ) {}
+
+  public passedActivity = signal<boolean>(false);
   
 
   ngOnInit(): void 
@@ -73,11 +75,12 @@ export class CodingActivityComponent
       ).subscribe(async (data) => {
         this.jsonData.set(data);
   
-      
         await this.environment.ContextPane!.loadContext(this.jsonData()!.context);
         await this.environment.Editor.setBaseCode(this.jsonData()!.base);
         this.environment.ControlPanel.setLauncherClass(this.jsonData()!.launcher);
         this.environment.ControlPanel.setTestCases(this.jsonData()!.testCases);
+        this.passedActivity.set(this.environment.ControlPanel!.getActivityPassed());
+
 
       });
     
