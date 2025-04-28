@@ -16,9 +16,9 @@ import { LocalStorageService } from '../../services/local-storage.service';
   styleUrl: './dialog-box.component.scss'
 })
 export class DialogBoxComponent {
-
-  private localStorage = new LocalStorageService();
   public message = signal<String>("");
+
+  constructor(private localStorage: LocalStorageService) {}
 
   writeKey(key: String) : void{
     try {

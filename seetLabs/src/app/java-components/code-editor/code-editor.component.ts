@@ -34,12 +34,14 @@ import { ActivatedRoute } from '@angular/router';
 export class CodeEditorComponent implements OnInit
 {
 
-  constructor(private _route: ActivatedRoute) {}
+  constructor(
+    private _route: ActivatedRoute,
+    private localStorage: LocalStorageService
+  ) {}
 
   //routing
   moduleNumber = signal<string>("");
   assignmentNumber = signal<string>("");
-  localStorage = new LocalStorageService();
 
 
   // code mirror

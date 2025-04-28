@@ -21,8 +21,6 @@ import { SnackbarComponent } from '../../components/snackbar/snackbar.component'
 })
 export class QuizActivityComponent implements OnInit, AfterViewInit {
 
-  constructor(private _route: ActivatedRoute) {}
-
   questions = signal<questionType[]>([]);
   jsonDataService = inject(JsonServerTestService);
   quizName = signal<string>('')
@@ -41,8 +39,12 @@ export class QuizActivityComponent implements OnInit, AfterViewInit {
   
   //other
   moduleProgress = signal<number>(0);
-  localStorage = new LocalStorageService();
   private snackBar = inject(MatSnackBar);
+
+  constructor(
+    private _route: ActivatedRoute,
+    private localStorage: LocalStorageService
+  ) {}
 
   @ViewChildren(QuizCardComponent) quizCards!: QueryList<QuizCardComponent>;
 

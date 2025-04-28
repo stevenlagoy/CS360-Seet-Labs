@@ -18,12 +18,9 @@ import { SnackbarComponent } from '../../components/snackbar/snackbar.component'
 })
 export class readingActivity implements OnInit {
 
-  constructor(private _route: ActivatedRoute, private cdr: ChangeDetectorRef) {}
-  
   getDataService = inject(JsonServerTestService);
   jsonData = signal<assignmentType>({ "id": 0, "type": 0, "file": "reading Material One" });
   template: string = "";
-  localStorage = new LocalStorageService();
   moduleProgress = signal<number>(0);
   activityPassed = signal<boolean>(false);
 
@@ -32,6 +29,12 @@ export class readingActivity implements OnInit {
   assignmentNumber = signal<string>("");
 
   private snackBar = inject(MatSnackBar);
+
+  constructor(
+    private _route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
+    private localStorage: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     hljs.registerLanguage('java', java);

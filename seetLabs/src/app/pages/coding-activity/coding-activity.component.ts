@@ -30,15 +30,16 @@ export class CodingActivityComponent
 
   //signals
   moduleProgress = signal<number>(0);
-  localStorage = new LocalStorageService();
-
 
   // My gorgeous Children
   @ViewChild(CodingEnvironmentComponent)environment!:CodingEnvironmentComponent;
   jsonData: WritableSignal<CodingActivityData|null> = signal(null);
 
-
-  constructor(private _route: ActivatedRoute, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private _route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
+    private localStorage: LocalStorageService
+  ) {}
   
 
   ngOnInit(): void 
