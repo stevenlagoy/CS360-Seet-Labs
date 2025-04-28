@@ -48,7 +48,7 @@ export class CodeEditorComponent implements OnInit
   @ViewChild('codeMirrorInsert') codeMirrorInsert!:ElementRef;
   codeMirrorView! :EditorView;
 
-  private baseCode:string = `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, world! \\nThis\");
+  private baseCode:string = `public class Lab\n{\n\tpublic static void main(String[] args)\n\t{\n\t\tSystem.out.println(\"Hello, World!\");
   }\n}`;
 
   ngOnInit(): void {
